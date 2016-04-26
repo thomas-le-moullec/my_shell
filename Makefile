@@ -5,16 +5,20 @@
 ## Login   <chabot_t@epitech.net>
 ## 
 ## Started on  Tue Apr 26 09:17:40 2016 Thomas CHABOT
-## Last update Tue Apr 26 10:53:53 2016 leo LE DIOURON
+## Last update Tue Apr 26 12:52:12 2016 leo LE DIOURON
 ##
 
 NAME		=	42sh
 
 MAIN		=	./sources/main/
 
+SHELL		=	./sources/shell/
+
 MYLIB		=	./sources/mylib/
 
 SRCS		=	$(MAIN)main.c			\
+			$(SHELL)get_env.c		\
+			$(SHELL)init.c			\
 			$(MYLIB)my_putchar.c		\
 			$(MYLIB)my_strlen.c		\
 			$(MYLIB)my_put_nbr.c		\
