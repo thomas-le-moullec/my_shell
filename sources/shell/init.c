@@ -5,14 +5,12 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 12:51:48 2016 Thomas CHABOT
-** Last update Tue Apr 26 12:59:38 2016 Thomas CHABOT
+** Last update Tue Apr 26 13:28:46 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
 void		init_shell(t_data *data)
 {
-  memset(data->shell, 0, sizeof(data->shell));
-  if (data->shell.env == NULL)
-    printf("env est NULL\n");
+  memset(&data->shell, 0, sizeof(data->shell));
 }

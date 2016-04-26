@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Tue Apr 26 12:52:39 2016 leo LE DIOURON
+** Last update Tue Apr 26 13:27:02 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -19,6 +19,7 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <string.h>
 #include "struct.h"
 
 /* **************** SHELL ****************** */
