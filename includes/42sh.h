@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Tue Apr 26 10:53:29 2016 leo LE DIOURON
+** Last update Tue Apr 26 12:52:39 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -20,6 +20,14 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include "struct.h"
+
+/* **************** SHELL ****************** */
+
+/* get_env.c */
+int		get_env(t_data *, char **);
+
+/* init.c */
+void		init_shell(t_data *);
 
 /* **************** MYLIB ****************** */
 
@@ -38,7 +46,7 @@ void		my_show_tab(char **);
 int		count_tab(char **);
 
 char            *get_next_line();
-char		*mallc_lien(char *);
+char		*mallc_line(char *);
 
 char		*my_epur_str(char *);
 

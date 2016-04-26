@@ -11,8 +11,11 @@
 #ifndef STRUCT_H_
 # define STRUCT_H_
 
+#define STOP		-2
 #define	ERROR		-1
 #define SUCCESS		0
+
+
 
 typedef struct		s_shell
 {
