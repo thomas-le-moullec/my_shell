@@ -5,14 +5,17 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Tue Apr 26 12:44:48 2016 leo LE DIOURON
+** Last update Tue Apr 26 13:02:15 2016 leo LE DIOURON
 */
 
 #ifndef STRUCT_H_
 # define STRUCT_H_
 
+#define STOP		-2
 #define	ERROR		-1
 #define SUCCESS		0
+
+
 
 typedef struct		s_shell
 {
