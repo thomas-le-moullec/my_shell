@@ -1,21 +1,20 @@
 /*
 ** get_next_line.c for get_next_line in /home/le-dio_l/Modules/Module_Prog_shell/Minishell2/PSU_2015_minishell2
-** 
+**
 ** Made by leo LE DIOURON
 ** Login   <le-dio_l@epitech.net>
-** 
+**
 ** Started on  Tue Mar 29 12:39:25 2016 leo LE DIOURON
-** Last update Sun Apr 10 14:17:29 2016 leo LE DIOURON
+** Last update Tue Apr 26 10:52:46 2016 Thomas CHABOT
 */
 
-#include "shell.h"
+#include "42sh.h"
 
 char		*mallc_line(char *line)
 {
   int		end;
 
-  if ((line = malloc(sizeof(char) * 1000)) == NULL)
-    return (NULL);
+  line = my_mallok(line, 1000);
   if ((end = read(0, line, 1000)) <= 0)
     return (NULL);
   line[end - 1] = '\0';
@@ -30,8 +29,7 @@ char            *get_next_line()
   int		j;
 
   j = 0;
-  if ((line_inter = malloc(sizeof(char) * 1000)) == NULL)
-    return (NULL);
+  my_mallok(&line_inter, 1000);
   line_inter[0] = '\0';
   if (i == 0)
     if ((line = mallc_line(line)) == NULL)

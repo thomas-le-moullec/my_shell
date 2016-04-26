@@ -5,19 +5,19 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:31:27 2016 Thomas CHABOT
-** Last update Tue Apr 26 09:31:42 2016 Thomas CHABOT
+** Last update Tue Apr 26 10:30:02 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-void    my_putstr(char  *str)
+void    my_putstr(char  *str, int out)
 {
   int   i;
 
   i = 0;
   while (str[i] != '\0')
     {
-      my_putchar(str[i]);
+      my_putchar(str[i], out);
       i++;
     }
 }
