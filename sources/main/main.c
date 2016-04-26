@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:08:44 2016 Thomas CHABOT
-** Last update Tue Apr 26 13:26:23 2016 Thomas CHABOT
+** Last update Tue Apr 26 13:32:40 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -19,5 +19,6 @@ int		main(int ac, char **av, char **ae)
     return (ERROR);
   init_shell(&data);
   get_env(&data, ae);
+  
   return (SUCCESS);
 }
