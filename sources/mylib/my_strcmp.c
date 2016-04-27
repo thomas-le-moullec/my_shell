@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:24:58 2016 Thomas CHABOT
-** Last update Tue Apr 26 10:27:19 2016 Thomas CHABOT
+** Last update Tue Apr 26 17:12:32 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -24,4 +24,20 @@ int		my_strcmp(char *src, char *dest)
       i++;
     }
   return (SUCCESS);
+}
+
+int		my_strcmp_equal(char *src, char *dest)
+{
+  int		i;
+
+  i = 0;
+  while (src[i] != '\0' && dest[i] != '\0' && dest[i] != '=')
+    {
+      if (src[i] != dest[i])
+	return (ERROR);
+      i++;
+    }
+  if (dest[i] == '=')
+    return (SUCCESS);
+  return (ERROR);
 }

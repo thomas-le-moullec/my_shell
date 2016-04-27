@@ -4,52 +4,69 @@
 ## Made by Thomas CHABOT
 ## Login   <chabot_t@epitech.net>
 ## 
-## Started on  Tue Apr 26 09:17:40 2016 Thomas CHABOT
-## Last update Tue Apr 26 13:24:21 2016 steeve payraudeau
+## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
+## Last update Wed Apr 27 13:28:22 2016 steeve payraudeau
 ##
 
-NAME		=	42sh
+NAME            =       42sh
 
-MAIN		=	./sources/main/
+MAIN            =       ./sources/main/
 
-SHEL		=	./sources/shell/
+MY_SHELL        =       ./sources/shell/
 
-MYLIB		=	./sources/mylib/
+MYLIB           =       ./sources/mylib/
 
-SRCS		=	$(MAIN)main.c			\
-			$(SHEL)get_env.c		\
-			$(SHEL)init.c			\
-			$(MYLIB)my_putchar.c		\
-			$(MYLIB)my_strlen.c		\
-			$(MYLIB)my_put_nbr.c		\
-			$(MYLIB)my_putstr.c		\
-			$(MYLIB)count_tab.c		\
-			$(MYLIB)my_show_tab.c		\
-			$(MYLIB)get_next_line.c		\
-			$(MYLIB)my_strcmp.c		\
-			$(MYLIB)my_free.c		\
-			$(MYLIB)my_mallok.c		\
-			$(MYLIB)my_epur_str.c		\
+PARSER		=	./soucres/parser/
 
-OBJS		=	$(SRCS:.c=.o)
+DISP		=	./sources/disp/
 
-INC		= 	includes/
+BUILTINS	=	./sources/builtins/
 
-CC		=	gcc -g
+SRCS            =       $(MAIN)main.c                   \
+                        $(MY_SHELL)shell.c              \
+                        $(MY_SHELL)get_env.c            \
+                        $(MY_SHELL)init.c               \
+			$(PARSER)parser.c		\
+			$(PARSER)take_redir.c		\
+			$(DISP)prompt.c			\
+			$(BUILTINS)my_exit.c		\
+			$(BUILTINS)my_env.c		\
+			$(BUILTINS)my_unsetenv.c	\
+			$(BUILTINS)my_setenv.c		\
+			$(MYLIB)my_putchar.c            \
+                        $(MYLIB)my_strlen.c             \
+			$(MYLIB)my_put_nbr.c            \
+			$(MYLIB)my_putstr.c             \
+			$(MYLIB)count_tab.c             \
+			$(MYLIB)my_show_tab.c           \
+			$(MYLIB)get_next_line.c         \
+			$(MYLIB)my_strcmp.c             \
+			$(MYLIB)my_free.c               \
+			$(MYLIB)my_mallok.c             \
+			$(MYLIB)my_epur_str.c           \
+			$(MYLIB)my_str_to_wordtab.c     \
+			$(MYLIB)my_strcpy.c             \
 
-RM		=	rm -rf
+OBJS            =       $(SRCS:.c=.o)
 
-CFLAGS		=	-I $(INC) -W -Wall -Werror -Wextra -lncurses
+INC             =       includes/
 
-all		:	$(NAME)
+CC              =       gcc -g
 
-$(NAME)		:	$(OBJS)
+RM              =       rm -rf
+
+CFLAGS          =       -I $(INC) -W -Wall -Werror -Wextra -lncurses
+
+all             :       $(NAME)
+
+$(NAME)         :       $(OBJS)
 			$(CC) -o $(NAME) $(OBJS) $(CFLAGS)
 
-clean		:
+clean           :
 			$(RM) $(OBJS)
 
-fclean		:	clean
+fclean          :       clean
 			$(RM) $(NAME)
 
-re		:	fclean all
+re              :       fclean all
+

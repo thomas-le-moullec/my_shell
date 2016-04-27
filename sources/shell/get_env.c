@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 12:42:17 2016 Thomas CHABOT
-** Last update Tue Apr 26 12:50:52 2016 Thomas CHABOT
+** Last update Tue Apr 26 13:28:36 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -22,6 +22,7 @@ int		get_env(t_data *data, char **ae)
   while (ae[i] != NULL)
     {
       j = 0;
+      data->shell.env[i] = NULL;
       data->shell.env[i] = my_mallok(data->shell.env[i], my_strlen(ae[i]) + 1);
       while (ae[i][j] != '\0')
 	{
