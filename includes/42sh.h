@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Fri Apr 29 15:53:36 2016 Thomas CHABOT
+** Last update Fri Apr 29 16:46:26 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -56,6 +56,10 @@ int		exec_with_path(t_data *, int);
 int		exec_without_path(t_data *);
 void		father(pid_t);
 
+/* redirection_outfile.c */
+int		redirection_outfile(t_data *);
+int		redirection_infile(t_data *);
+
 /* **************** BUILTINS ****************** */
 
 /* my_cd */
@@ -87,13 +91,13 @@ int		parser_sep(t_data *);
 
 /* take_redir.c */
 int		take_outfile(char *, int, t_data *);
-int		take_intfile(char *, int, t_data *);
+int		take_infile(char *, int, t_data *);
 int		manage_outfile(t_data *, int, int *);
 int		manage_infile(t_data *, int, int *);
 
 /* check_redir.c */
-int		chek_redir_in(char *);
-int		chek_redir_out(char *);
+int		check_redir_in(char *);
+int		check_redir_out(char *);
 
 /* parser_redir.c */
 int		parser_redir(t_data *, int);
