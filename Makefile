@@ -5,7 +5,7 @@
 ## Login   <chabot_t@epitech.net>
 ## 
 ## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
-## Last update Fri Apr 29 13:45:13 2016 Thomas CHABOT
+## Last update Fri Apr 29 15:18:59 2016 Thomas CHABOT
 ##
 
 NAME            =       42sh
@@ -32,6 +32,9 @@ SRCS            =       $(MAIN)main.c                   \
                         $(MY_SHELL)init.c               \
 			$(PARSER)parser.c		\
 			$(PARSER)take_redir.c		\
+			$(PARSER)parser_redir.c		\
+			$(PARSER)check_redir.c		\
+			$(PARSER)epur_redir.c		\
 			$(DISP)prompt.c			\
 			$(BUILTINS)my_exit.c		\
 			$(BUILTINS)my_env.c		\
