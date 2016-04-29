@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 15:18:44 2016 leo LE DIOURON
-** Last update Fri Apr 29 15:50:26 2016 leo LE DIOURON
+** Last update Fri Apr 29 16:09:13 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -26,7 +26,8 @@ char		*epur_redir(char *str, int i)
   i++;
   while (str[i] == ' ' || str[i] == '\t')
     i++;
-  while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
+  while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' \
+	 && str[i] != '>' && str[i] != '<')
     i++;
   while (str[i] != '\0')
     result[j++] = str[i++];

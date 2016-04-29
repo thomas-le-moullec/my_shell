@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 15:15:06 2016 leo LE DIOURON
-** Last update Fri Apr 29 15:15:52 2016 leo LE DIOURON
+** Last update Fri Apr 29 16:15:53 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -23,16 +23,14 @@ int             take_outfile(char *str, int i, t_data *data)
   while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t') && str[i] != '<')
     i++;
   if (str[i] == '<')
-    {
-      printf("SALAUDDDDDD\n");
-      return (ERROR);
-    }
+    return (ERROR);
   j = i;
   while (str[j] != '\0' && str[j] != ' ' && str[j] != '\t')
     j++;
   data->parser.outfile = my_mallok(data->parser.outfile, (j - i + 1));
   j = 0;
-  while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
+  while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' && \
+	 str[i] != '<' && str[i] != '>')
     data->parser.outfile[j++] = str[i++];
   data->parser.outfile[j] = '\0';
   return (SUCCESS);
@@ -57,7 +55,8 @@ int             take_infile(char *str, int i, t_data *data)
     j++;
   data->parser.infile = my_mallok(data->parser.infile, (j - i + 1));
   j = 0;
-  while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
+  while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' && \
+	 str[i] != '<' && str[i] != '>')
     data->parser.infile[j++] = str[i++];
   data->parser.infile[j] = '\0';
   return (SUCCESS);

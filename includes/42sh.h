@@ -1,11 +1,12 @@
 /*
 ** 42sh.h for 42sh in /home/chabot_t/rendu/PSU/PSU_2015_42sh
-** 
+**
 ** Made by Thomas CHABOT
 ** Login   <chabot_t@epitech.net>
-** 
+**#include <sys/stat.h>
+
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Fri Apr 29 13:58:52 2016 Thomas CHABOT
+** Last update Fri Apr 29 15:58:30 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -85,11 +86,20 @@ int	        parser_cond(t_data *);
 int		parser_sep(t_data *);
 
 /* take_redir.c */
-int		chek_redir_in(char *);
-int		chek_redir_out(char *);
 int		take_outfile(char *, int, t_data *);
-int		take_intfile(char *, int, t_data *);
-int		take_redir(t_data *, int);
+int		take_infile(char *, int, t_data *);
+int		manage_outfile(t_data *, int, int *);
+int		manage_infile(t_data *, int, int *);
+
+/* check_redir.c */
+int		check_redir_in(char *);
+int		check_redir_out(char *);
+
+/* parser_redir.c */
+int		parser_redir(t_data *, int);
+
+/* epur_redir.c */
+char		*epur_redir(char *, int);
 
 /* **************** ERROR ****************** */
 

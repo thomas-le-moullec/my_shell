@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 13:30:09 2016 leo LE DIOURON
-** Last update Fri Apr 29 14:12:05 2016 leo LE DIOURON
+** Last update Fri Apr 29 16:04:07 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -59,7 +59,7 @@ int		exec_with_path(t_data *data, int i)
     }
   else
     father(cpid);
-  free(tmp);
+  my_free(tmp);
   return (SUCCESS);
 }
 
@@ -79,10 +79,10 @@ int		access_path(t_data *data)
       tmp = my_strcat(data->shell.path[i], data->parser.tab_args[0], '/');
       if (access(tmp, X_OK) == SUCCESS)
 	{
-	  free(tmp);
+	  my_free(tmp);
 	  return (i);
 	}
-      free(tmp);
+      my_free(tmp);
       i++;
     }
   return (ERROR);
