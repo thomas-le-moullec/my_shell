@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Tue Apr 26 18:35:48 2016 leo LE DIOURON
+** Last update Wed Apr 27 17:22:05 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -34,15 +34,16 @@ int		my_shell(t_data *);
 int		get_env(t_data *, char **);
 
 /* init.c */
-void		get_home(t_data *);
-void		get_old_pwd(t_data *);
-void		get_pwd(t_data *);
-void		init_shell(t_data *);
+int		get_path(t_data *);
+int		get_home(t_data *);
+int		get_old_pwd(t_data *);
+int		get_pwd(t_data *);
+int		init_shell(t_data *);
 
 /* **************** EXEC ****************** */
 
 /* exec.c */
-int		exec(t_data *);
+int		my_exec(t_data *);
 
 /*my_builtins.c */
 int		my_builtins(t_data *);
@@ -57,7 +58,7 @@ int		my_cd(t_data *);
 int		my_env(t_data *);
 
 /* my_setenv.c */
-int		fill_env_none(t_data *);
+char		**fill_env_none(t_data *, int, int *, char **);
 int		check_env_exist(t_data *, char *);
 char		**fill_env(t_data *, int);
 int		setenv_empty(t_data *, int);
@@ -67,7 +68,7 @@ int		my_setenv(t_data *);
 int		my_exit(t_data *);
 
 /* my_unsetenv.c */
-int		unsetenv_loop(t_data *, int);
+char		**unsetenv_loop(t_data *, int);
 int		my_unsetenv(t_data *);
 
 /* **************** PARSER ****************** */
@@ -79,8 +80,8 @@ int		parser_sep(t_data *);
 /* take_redir.c */
 int		chek_redir_in(char *);
 int		chek_redir_out(char *);
-int		take_outfile(char *, int);
-int		take_intfile(char *, int);
+int		take_outfile(char *, int, t_data *);
+int		take_intfile(char *, int, t_data *);
 int		take_redir(t_data *, int);
 
 /* **************** ERROR ****************** */
@@ -106,7 +107,7 @@ void		my_show_tab(char **);
 
 int		count_tab(char **);
 
-char		*my_strcpy_equal(char *, char *);
+char		*my_strcpy_equal(char *);
 char		*my_strcpy_full(char *, char *);
 char		*my_strcpy_empty(char *);
 char		*my_strcpy(char *);
@@ -124,12 +125,14 @@ int		my_free_loop(t_data *);
 void		my_free(void *);
 
 void		*my_mallok(void *, int);
+char		**my_mallok_tab(char **, int);
 
 int		check_flags(char, char *);
-int		count_words(char *);
+int		count_words(char *, char *);
 char		**my_str_to_wordtab(char *, char *);
 
 int		check_cond(char, char, char *);
 char		**my_cond_to_wordtab(char *, char *);
+int             count_words_cond(char *);
 
 #endif /* SH42_H_ */

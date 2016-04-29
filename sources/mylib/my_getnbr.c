@@ -5,12 +5,12 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:33:06 2016 Thomas CHABOT
-** Last update Tue Apr 26 10:34:58 2016 Thomas CHABOT
+** Last update Wed Apr 27 16:13:04 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-int     my_get_nbr(char *str)
+int     my_getnbr(char *str)
 {
   int   i;
   int   nb;
@@ -30,6 +30,6 @@ int     my_get_nbr(char *str)
         }
     }
   if (str[0] == '-')
-    return ((nb / 10) * -1)
+    return ((nb / 10) * -1);
   return (nb / 10);
 }

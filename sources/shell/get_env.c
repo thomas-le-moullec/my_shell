@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 12:42:17 2016 Thomas CHABOT
-** Last update Tue Apr 26 13:28:36 2016 Thomas CHABOT
+** Last update Wed Apr 27 16:15:55 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -18,7 +18,8 @@ int		get_env(t_data *data, char **ae)
   i = 0;
   if (ae == NULL)
     return (STOP);
-  data->shell.env = my_mallok(data->shell.env, count_tab(ae) + 1);
+  /*  data->shell.env = my_mallok(data->shell.env, count_tab(ae) + 1);*/
+  data->shell.env = malloc(sizeof(*data->shell.env) * (count_tab(ae) + 1));
   while (ae[i] != NULL)
     {
       j = 0;

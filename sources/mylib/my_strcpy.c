@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:50:20 2016 Thomas CHABOT
-** Last update Tue Apr 26 18:12:01 2016 Thomas CHABOT
+** Last update Wed Apr 27 16:04:04 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -42,7 +42,10 @@ char		*my_strcpy_empty(char *str)
   new_str = NULL;
   new_str = my_mallok(new_str, my_strlen(str) + 2);
   while (str[i] != '\0')
-    new_str[i] = str[i++];
+    {
+      new_str[i] = str[i];
+      i++;
+    }
   new_str[i++] = '=';
   new_str[i] = '\0';
   return (new_str);
@@ -57,7 +60,10 @@ char		*my_strcpy(char *str)
   new_str = NULL;
   new_str = my_mallok(new_str, my_strlen(str) + 1);
   while (str[i] != '\0')
-    new_str[i] = str[i++];
+    {
+      new_str[i] = str[i];
+      i++;
+    }
   new_str[i] = '\0';
   return (new_str);
 }

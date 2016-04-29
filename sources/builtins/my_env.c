@@ -5,13 +5,14 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:36:55 2016 Thomas CHABOT
-** Last update Tue Apr 26 16:38:46 2016 Thomas CHABOT
+** Last update Wed Apr 27 15:51:21 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-void		my_env(t_data *data)
+int		my_env(t_data *data)
 {
   if (data->shell.env != NULL)
     my_show_tab(data->shell.env);
+  return (SUCCESS);
 }

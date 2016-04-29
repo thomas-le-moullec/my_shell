@@ -5,7 +5,7 @@
 ## Login   <chabot_t@epitech.net>
 ## 
 ## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
-## Last update Tue Apr 26 17:37:27 2016 leo LE DIOURON
+## Last update Wed Apr 27 16:10:46 2016 Thomas CHABOT
 ##
 
 NAME            =       42sh
@@ -18,11 +18,13 @@ MYLIB           =       ./sources/mylib/
 
 ERROR		=	./sources/error/
 
-PARSER		=	./soucres/parser/
+PARSER		=	./sources/parser/
 
 DISP		=	./sources/disp/
 
 BUILTINS	=	./sources/builtins/
+
+EXEC		=	./sources/exec/
 
 SRCS            =       $(MAIN)main.c                   \
                         $(MY_SHELL)shell.c              \
@@ -35,8 +37,12 @@ SRCS            =       $(MAIN)main.c                   \
 			$(BUILTINS)my_env.c		\
 			$(BUILTINS)my_unsetenv.c	\
 			$(BUILTINS)my_setenv.c		\
+			$(BUILTINS)my_cd.c		\
+			$(EXEC)exec.c                   \
+			$(EXEC)my_builtins.c            \
 			$(MYLIB)my_putchar.c            \
                         $(MYLIB)my_strlen.c             \
+                        $(MYLIB)my_getnbr.c             \
 			$(MYLIB)my_put_nbr.c            \
 			$(MYLIB)my_putstr.c             \
 			$(MYLIB)count_tab.c             \
@@ -47,6 +53,7 @@ SRCS            =       $(MAIN)main.c                   \
 			$(MYLIB)my_mallok.c             \
 			$(MYLIB)my_epur_str.c           \
 			$(MYLIB)my_str_to_wordtab.c     \
+			$(MYLIB)my_cond_to_wordtab.c    \
 			$(MYLIB)my_strcpy.c             \
 
 OBJS            =       $(SRCS:.c=.o)

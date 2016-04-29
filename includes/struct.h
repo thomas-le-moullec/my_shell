@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Tue Apr 26 18:38:24 2016 leo LE DIOURON
+** Last update Wed Apr 27 16:10:29 2016 Thomas CHABOT
 */
 
 #ifndef STRUCT_H_
@@ -34,6 +34,7 @@ typedef struct		s_shell
   char			*pwd;
   char			*oldpwd;
   char			*home;
+  char			**path;
   int			built;
 }			t_shell;
 
@@ -45,8 +46,8 @@ typedef struct		s_data
 
 typedef struct		s_buil
 {
-  char			*str;
+  char			*name;
   int			(*function)(t_data *data);
 }			t_buil;
 
-#ENDIF /* STRUCT_H_ */
+#endif /* STRUCT_H_ */

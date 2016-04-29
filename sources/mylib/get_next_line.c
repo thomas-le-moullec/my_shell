@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 **
 ** Started on  Tue Mar 29 12:39:25 2016 leo LE DIOURON
-** Last update Tue Apr 26 10:52:46 2016 Thomas CHABOT
+** Last update Wed Apr 27 17:24:34 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -29,7 +29,8 @@ char            *get_next_line()
   int		j;
 
   j = 0;
-  my_mallok(&line_inter, 1000);
+  line_inter = NULL;
+  line_inter = my_mallok(line_inter, 1000);
   line_inter[0] = '\0';
   if (i == 0)
     if ((line = mallc_line(line)) == NULL)

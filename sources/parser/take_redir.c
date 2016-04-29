@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 15:19:24 2016 Thomas CHABOT
-** Last update Tue Apr 26 16:19:41 2016 Thomas CHABOT
+** Last update Wed Apr 27 15:50:17 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -58,7 +58,7 @@ int		check_redir_out(char *str)
   return (SUCCESS);
 }
 
-int		take_outfile(char *str, int i)
+int		take_outfile(char *str, int i, t_data *data)
 {
   int		j;
 
@@ -74,7 +74,7 @@ int		take_outfile(char *str, int i)
     j++;
   if (str[j] == '<')
     return (ERROR);
-  data->parser.oufile = my_mallok(data->parser.outfile, (j - i + 1));
+  data->parser.outfile = my_mallok(data->parser.outfile, (j - i + 1));
   j = 0;
   while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
     data->parser.outfile[j++] = str[i++];
@@ -82,7 +82,7 @@ int		take_outfile(char *str, int i)
   return (SUCCESS);
 }
 
-int		take_infile(char *str, int i)
+int		take_infile(char *str, int i, t_data *data)
 {
   int		j;
 
@@ -117,10 +117,10 @@ int		take_redir(t_data *data, int i)
   while (data->parser.tab_cond[i][j] != '\0')
     {
       if (data->parser.tab_cond[i][j] == '>')
-	if (take_outfile(data->parser.tab_cond[i], j) == ERROR)
+	if (take_outfile(data->parser.tab_cond[i], j, data) == ERROR)
 	  return (ERROR);
       if (data->parser.tab_cond[i][j] == '<')
-	if (take_infile(data->parser.tab_cond[i], j) == ERROR)
+	if (take_infile(data->parser.tab_cond[i], j, data) == ERROR)
 	  return (ERROR);
       j++;
     }
