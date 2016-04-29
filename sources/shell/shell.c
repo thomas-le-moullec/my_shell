@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Fri Apr 29 10:27:46 2016 leo LE DIOURON
+** Last update Fri Apr 29 15:18:04 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -34,9 +34,10 @@ int		pipe_loop(t_data *data)
   i = 0;
   while (data->parser.tab_cond[i] != NULL)
     {
-      if (take_redir(data, i) != ERROR)
+      if (parser_redir(data, i) == ERROR)
 	return (ERROR);
       data->parser.tab_pipe = my_str_to_wordtab(data->parser.tab_cond[i], "|");
+      printf("..%s.. et .%s.\n", data->parser.tab_cond[i], data->parser.outfile);
       if (args_loop(data) == ERROR)
 	return (ERROR);
       my_free_tab(data->parser.tab_pipe);

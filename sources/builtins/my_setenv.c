@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:40:35 2016 Thomas CHABOT
-** Last update Fri Apr 29 13:15:10 2016 leo LE DIOURON
+** Last update Fri Apr 29 14:58:02 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -77,7 +77,6 @@ char		**fill_env(t_data *data, int value)
 
 int		setenv_empty(t_data *data, int nb)
 {
-  printf("rentre dans setenv_empty\n");
   if (data->shell.env == NULL)
     {
       data->shell.env = my_mallok(data->shell.env, 2);
@@ -94,7 +93,6 @@ int		my_setenv(t_data *data)
   int		nb;
 
   nb = count_tab(data->parser.tab_args);
-  printf("nb = %d\n", nb);
   if (nb > 3)
     return (ERROR);
   if (nb == 1)

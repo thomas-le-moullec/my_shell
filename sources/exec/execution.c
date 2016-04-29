@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 13:30:09 2016 leo LE DIOURON
-** Last update Fri Apr 29 14:03:50 2016 leo LE DIOURON
+** Last update Fri Apr 29 14:12:05 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -16,26 +16,26 @@ void		father(pid_t cpid)
 
   waitpid(cpid, &status, WUNTRACED | WCONTINUED);
   if (!WIFEXITED(status))
-    my_putstr("Segmentation fault\n");
+    my_putstr("Segmentation fault\n", 1);
 }
 
 int		exec_without_path(t_data *data)
 {
   pid_t cpid;
 
-  if (access(data->shell.tab_args[0], X_OK) == ERROR || \
-      (data->shell.tab_args[0][0] != '.' && \
-       data->shell.tab_args[0][0] != '/') ||
-      data->shell.tab_args[0][1] != '/')
+  if (access(data->parser.tab_args[0], X_OK) == ERROR || \
+      (data->parser.tab_args[0][0] != '.' && \
+       data->parser.tab_args[0][0] != '/') ||
+      data->parser.tab_args[0][1] != '/')
     {
-      my_putstr(data->shell.tab_args[0]);
-      my_putstr(": Command not found.\n");
+      my_putstr(data->parser.tab_args[0], 1);
+      my_putstr(": Command not found.\n", 1);
       return (ERROR);
     }
   cpid = fork();
   if (cpid == 0)
     {
-      if (execve(data->shell.tab_args[0], data->shell.tab_args, data->env) \
+      if (execve(data->parser.tab_args[0], data->parser.tab_args, data->shell.env) \
 	  == ERROR)
 	return (ERROR);
     }
@@ -50,11 +50,11 @@ int		exec_with_path(t_data *data, int i)
   char		*tmp;
 
   tmp = NULL;
-  tmp = my_strcat(data->paths[i], data->args[0], '/');
+  tmp = my_strcat(data->shell.path[i], data->parser.tab_args[0], '/');
   cpid = fork();
   if (cpid == 0)
     {
-      if (execve(tmp, data->shell.tab_args, data->shell.env) == -1)
+      if (execve(tmp, data->parser.tab_args, data->shell.env) == -1)
 	return (ERROR);
     }
   else
@@ -69,14 +69,14 @@ int		access_path(t_data *data)
   char		*tmp;
 
   i = 0;
-  if (data->shell.env == NULL || my_strlen(data->shell.tab_args[0]) > 2 && \
-      ((data->shell.tab_args[0][0] == '.' && data->shell.tab_args[0][1] == '/')
-       || data->shell.tab_args[0][0] == '/'))
+  if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) > 2 && \
+      ((data->parser.tab_args[0][0] == '.' && data->parser.tab_args[0][1] == '/')
+       || data->parser.tab_args[0][0] == '/')))
     return (ERROR);
   while (data->shell.path[i] != NULL)
     {
       tmp = NULL;
-      tmp = my_strcat(data->paths[i], data->args[0], '/');
+      tmp = my_strcat(data->shell.path[i], data->parser.tab_args[0], '/');
       if (access(tmp, X_OK) == SUCCESS)
 	{
 	  free(tmp);
@@ -100,6 +100,6 @@ int		execution(t_data *data)
     }
   else
     if (exec_without_path(data) == ERROR)
-      return (ERROR);
+      return (STOP);
   return (SUCCESS);
 }

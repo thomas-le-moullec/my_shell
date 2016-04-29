@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:23:05 2016 Thomas CHABOT
-** Last update Wed Apr 27 16:08:16 2016 Thomas CHABOT
+** Last update Fri Apr 29 14:10:57 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -18,6 +18,8 @@ int		my_exec(t_data *data)
   if (data->shell.built != STOP)
     return (STOP);
   if (get_path(data) == ERROR)
+    return (ERROR);
+  if (execution(data) == ERROR)
     return (ERROR);
   return (SUCCESS);
 }

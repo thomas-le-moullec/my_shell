@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 17:37:26 2016 Thomas CHABOT
-** Last update Fri Apr 29 13:18:57 2016 leo LE DIOURON
+** Last update Fri Apr 29 14:57:40 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -16,7 +16,6 @@ char		**unsetenv_loop(t_data* data, int i)
   int		j;
   int		k;
 
-  printf("Bonjour je m'appelle jean mich\n");
   j = 0;
   k = 0;
   new_env = NULL;
@@ -43,7 +42,6 @@ int		my_unsetenv(t_data *data)
     return (ERROR);
   while (i < nb)
     {
-      
       if ((j = check_env_exist(data, data->parser.tab_args[i])) > 0)
 	data->shell.env = unsetenv_loop(data, j);
       i++;
