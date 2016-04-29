@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 13:30:09 2016 leo LE DIOURON
-** Last update Fri Apr 29 16:04:07 2016 leo LE DIOURON
+** Last update Fri Apr 29 18:14:12 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -35,6 +35,8 @@ int		exec_without_path(t_data *data)
   cpid = fork();
   if (cpid == 0)
     {
+      if (in_and_out(data) == ERROR)
+	return (ERROR);
       if (execve(data->parser.tab_args[0], data->parser.tab_args, data->shell.env) \
 	  == ERROR)
 	return (ERROR);
@@ -54,6 +56,8 @@ int		exec_with_path(t_data *data, int i)
   cpid = fork();
   if (cpid == 0)
     {
+      if (in_and_out(data) == ERROR)
+	return (ERROR);
       if (execve(tmp, data->parser.tab_args, data->shell.env) == -1)
 	return (ERROR);
     }

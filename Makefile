@@ -5,7 +5,7 @@
 ## Login   <chabot_t@epitech.net>
 ## 
 ## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
-## Last update Fri Apr 29 15:18:59 2016 Thomas CHABOT
+## Last update Fri Apr 29 16:45:55 2016 Thomas CHABOT
 ##
 
 NAME            =       42sh
@@ -44,6 +44,8 @@ SRCS            =       $(MAIN)main.c                   \
 			$(EXEC)exec.c                   \
 			$(EXEC)execution.c              \
 			$(EXEC)my_builtins.c            \
+			$(EXEC)redirection_outfile.c    \
+			$(EXEC)redirection_infile.c     \
 			$(MYLIB)my_putchar.c            \
                         $(MYLIB)my_strlen.c             \
                         $(MYLIB)my_getnbr.c             \
