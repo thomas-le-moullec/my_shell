@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:50:20 2016 Thomas CHABOT
-** Last update Wed Apr 27 16:04:04 2016 Thomas CHABOT
+** Last update Fri Apr 29 10:45:41 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -80,8 +80,8 @@ char		*my_strcpy_full(char *one, char *two)
   new_str = my_mallok(new_str, my_strlen(one) + my_strlen(two) + 2);
   while (one[i] != '\0')
     new_str[j++] = one[i++];
-  new_str[j++] = '=';
   i = 0;
+  new_str[j++] = '=';
   while (two[i] != '\0')
     new_str[j++] = two[i++];
   new_str[j] = '\0';

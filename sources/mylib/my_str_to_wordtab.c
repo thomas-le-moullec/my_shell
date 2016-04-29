@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 13:58:51 2016 Thomas CHABOT
-** Last update Wed Apr 27 17:22:25 2016 Thomas CHABOT
+** Last update Fri Apr 29 10:29:02 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -17,11 +17,11 @@ int		check_flags(char c, char *flags)
   i = 0;
   while (flags[i] != '\0')
     {
-      if (c != flags[i])
-	return (ERROR);
+      if (c == flags[i])
+	return (SUCCESS);
       i++;
     }
-  return (SUCCESS);
+  return (ERROR);
 }
 
 int		count_words(char *str, char *flags)
@@ -63,6 +63,8 @@ char		**my_str_to_wordtab(char *str, char *flags)
 	i++;
       while (str[i] != '\0' && check_flags(str[i], flags) == ERROR)
 	tab[k][j++] = str[i++];
+      if (str[i] != '\0')
+	i++;
       tab[k++][j] = '\0';
     }
   tab[k] = NULL;

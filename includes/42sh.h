@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Wed Apr 27 17:22:05 2016 Thomas CHABOT
+** Last update Fri Apr 29 13:13:56 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -58,7 +58,7 @@ int		my_cd(t_data *);
 int		my_env(t_data *);
 
 /* my_setenv.c */
-char		**fill_env_none(t_data *, int, int *, char **);
+char		**fill_env_none(t_data *, char **, int);
 int		check_env_exist(t_data *, char *);
 char		**fill_env(t_data *, int);
 int		setenv_empty(t_data *, int);

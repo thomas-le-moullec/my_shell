@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 17:37:26 2016 Thomas CHABOT
-** Last update Wed Apr 27 15:52:48 2016 Thomas CHABOT
+** Last update Fri Apr 29 13:18:57 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -16,10 +16,11 @@ char		**unsetenv_loop(t_data* data, int i)
   int		j;
   int		k;
 
+  printf("Bonjour je m'appelle jean mich\n");
   j = 0;
   k = 0;
   new_env = NULL;
-  new_env = my_mallok(new_env, count_tab(data->shell.env));
+  new_env = my_mallok_tab(new_env, count_tab(data->shell.env));
   while (data->shell.env[j] != NULL)
     {
       if (j != i)
@@ -40,9 +41,10 @@ int		my_unsetenv(t_data *data)
   i = 0;
   if ((nb = count_tab(data->parser.tab_args)) <= 1)
     return (ERROR);
-  while (i < nb - 1)
+  while (i < nb)
     {
-      if ((j = check_env_exist(data, data->parser.tab_args[i])) != ERROR)
+      
+      if ((j = check_env_exist(data, data->parser.tab_args[i])) > 0)
 	data->shell.env = unsetenv_loop(data, j);
       i++;
     }
