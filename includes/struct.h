@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Wed Apr 27 16:10:29 2016 Thomas CHABOT
+** Last update Fri Apr 29 18:28:50 2016 leo LE DIOURON
 */
 
 #ifndef STRUCT_H_
@@ -14,6 +14,11 @@
 #define STOP		-2
 #define	ERROR		-1
 #define SUCCESS		0
+
+#define ALONE		0
+#define BEGIN		1
+#define MIDDLE		2
+#define END		3
 
 typedef struct		s_parser
 {
@@ -25,6 +30,8 @@ typedef struct		s_parser
   char			*outfile;
   int			db_in;
   int			db_out;
+  int			check_pos_pipe;
+  int			*nb_pipe;
 }			t_parser;
 
 typedef struct		s_shell
@@ -36,6 +43,8 @@ typedef struct		s_shell
   char			*home;
   char			**path;
   int			built;
+  int			fd[2];
+  int			save_fd;
 }			t_shell;
 
 typedef struct		s_data

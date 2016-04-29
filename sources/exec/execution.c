@@ -5,15 +5,18 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 13:30:09 2016 leo LE DIOURON
-** Last update Fri Apr 29 18:14:12 2016 leo LE DIOURON
+** Last update Fri Apr 29 18:35:46 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
 
-void		father(pid_t cpid)
+void		father(pid_t cpid, t_data *data)
 {
   int		status;
 
+  if (data->parser.check_pos_pipe != ALONE && \
+      data->parser.check_pos_pipe != END)
+    close(data->shell.fd[1]);
   waitpid(cpid, &status, WUNTRACED | WCONTINUED);
   if (!WIFEXITED(status))
     my_putstr("Segmentation fault\n", 1);
@@ -42,7 +45,7 @@ int		exec_without_path(t_data *data)
 	return (ERROR);
     }
   else
-    father(cpid);
+    father(cpid, data);
   return (SUCCESS);
 }
 
@@ -62,7 +65,7 @@ int		exec_with_path(t_data *data, int i)
 	return (ERROR);
     }
   else
-    father(cpid);
+    father(cpid, data);
   my_free(tmp);
   return (SUCCESS);
 }

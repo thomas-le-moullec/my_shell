@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 18:10:09 2016 leo LE DIOURON
-** Last update Fri Apr 29 18:12:04 2016 leo LE DIOURON
+** Last update Fri Apr 29 18:32:56 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -16,6 +16,6 @@ int		make_pipe(t_data *data)
   if (pipe(data->shell.fd) == ERROR)
     return (ERROR);
   if (data->shell.save_fd == 0)
-    data->shell.save_fd = data->fd[0];
+    data->shell.save_fd = data->shell.fd[0];
   return (SUCCESS);
 }
