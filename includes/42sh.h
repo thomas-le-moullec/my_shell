@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Fri Apr 29 13:13:56 2016 leo LE DIOURON
+** Last update Fri Apr 29 13:58:52 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -47,6 +47,13 @@ int		my_exec(t_data *);
 
 /*my_builtins.c */
 int		my_builtins(t_data *);
+
+/* execution.c */
+int		execution(t_data *);
+int		access_path(t_data *);
+int		exec_with_path(t_data *, int);
+int		exec_without_path(t_data *);
+void		father(pid_t);
 
 /* **************** BUILTINS ****************** */
 
@@ -134,5 +141,7 @@ char		**my_str_to_wordtab(char *, char *);
 int		check_cond(char, char, char *);
 char		**my_cond_to_wordtab(char *, char *);
 int             count_words_cond(char *);
+
+char		*my_strcat(char *, char *, char);
 
 #endif /* SH42_H_ */
