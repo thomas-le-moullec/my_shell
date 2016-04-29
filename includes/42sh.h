@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Fri Apr 29 16:46:26 2016 Thomas CHABOT
+** Last update Fri Apr 29 18:25:03 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -50,15 +50,23 @@ int		my_exec(t_data *);
 int		my_builtins(t_data *);
 
 /* execution.c */
+void		father(pid_t);
 int		execution(t_data *);
 int		access_path(t_data *);
 int		exec_with_path(t_data *, int);
 int		exec_without_path(t_data *);
-void		father(pid_t);
 
 /* redirection_outfile.c */
 int		redirection_outfile(t_data *);
 int		redirection_infile(t_data *);
+
+/* in_and_out.c */
+int		manage_all_redir(t_data *);
+int		manage_pipe(t_data *);
+int		in_and_out(t_data *);
+
+/* make_pipe.c */
+int		make_pipe(t_data *);
 
 /* **************** BUILTINS ****************** */
 
@@ -104,6 +112,9 @@ int		parser_redir(t_data *, int);
 
 /* epur_redir.c */
 char		*epur_redir(char *, int);
+
+/* take_nb_pipe.c */
+void		take_nb_pipe(t_data *);
 
 /* **************** ERROR ****************** */
 
