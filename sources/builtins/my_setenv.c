@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:40:35 2016 Thomas CHABOT
-** Last update Fri Apr 29 14:58:02 2016 leo LE DIOURON
+** Last update Sat Apr 30 11:49:16 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -31,7 +31,8 @@ char		**fill_env_none(t_data *data, char **new_env, int nb)
   int		j;
 
   j = 0;
-  new_env = my_mallok_tab(new_env, count_tab(data->shell.env) + 2);
+  new_env = my_mallok(new_env, \
+		      (count_tab(data->shell.env) + 2) * sizeof(char *));
   while (data->shell.env[j] != NULL)
     {
       new_env[j] = my_strcpy(data->shell.env[j]);
@@ -56,7 +57,8 @@ char		**fill_env(t_data *data, int value)
   new_env = NULL;
   if ((i = check_env_exist(data, data->parser.tab_args[1])) > 0)
     {
-      new_env = my_mallok_tab(new_env, count_tab(data->shell.env) + 1);
+      new_env = my_mallok(new_env, \
+			  (count_tab(data->shell.env) + 1) * sizeof(char *));
       while (data->shell.env[j] != NULL)
 	{
 	  if (j == i && value == 2)

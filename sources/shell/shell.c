@@ -4,8 +4,8 @@
 ** Made by Thomas CHABOT
 ** Login   <chabot_t@epitech.net>
 **
-** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Fri Apr 29 18:19:04 2016 leo LE DIOURON
+xs** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
+** Last update Sat Apr 30 14:01:28 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -40,19 +40,18 @@ int		pipe_loop(t_data *data)
     {
       if ((a = parser_redir(data, i)) == ERROR)
 	return (ERROR);
-      printf("%s et %s\n", data->parser.infile, data->parser.outfile);
       if (a != STOP)
 	{
 	  data->parser.tab_pipe = my_str_to_wordtab(data->parser.tab_cond[i], "|");
 	  take_nb_pipe(data);
-	  if (args_loop(data) == ERROR)
-	    return (ERROR);
+	  args_loop(data);
 	}
       data->parser.infile = NULL;
       data->parser.outfile = NULL;
-      /*      my_free(data->parser.infile);
-	      my_free(data->parser.outfile);*/
+      my_free(data->parser.infile);
+      my_free(data->parser.outfile);
       my_free_tab(data->parser.tab_pipe);
+      my_free(data->parser.nb_pipe);
       i++;
     }
   return (SUCCESS);

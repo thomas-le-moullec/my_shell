@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:23:05 2016 Thomas CHABOT
-** Last update Fri Apr 29 14:10:57 2016 leo LE DIOURON
+** Last update Sat Apr 30 13:44:18 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -21,5 +21,6 @@ int		my_exec(t_data *data)
     return (ERROR);
   if (execution(data) == ERROR)
     return (ERROR);
+  my_free_tab(data->shell.path);
   return (SUCCESS);
 }

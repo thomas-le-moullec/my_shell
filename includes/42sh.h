@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Fri Apr 29 18:37:22 2016 leo LE DIOURON
+** Last update Sat Apr 30 11:49:37 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -158,7 +158,6 @@ int		my_free_loop(t_data *);
 void		my_free(void *);
 
 void		*my_mallok(void *, int);
-char		**my_mallok_tab(char **, int);
 
 int		check_flags(char, char *);
 int		count_words(char *, char *);

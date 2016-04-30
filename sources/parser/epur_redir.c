@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 15:18:44 2016 leo LE DIOURON
-** Last update Fri Apr 29 16:09:13 2016 leo LE DIOURON
+** Last update Sat Apr 30 13:56:49 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -32,5 +32,6 @@ char		*epur_redir(char *str, int i)
   while (str[i] != '\0')
     result[j++] = str[i++];
   result[j] = '\0';
+  my_free(str);
   return (result);
 }

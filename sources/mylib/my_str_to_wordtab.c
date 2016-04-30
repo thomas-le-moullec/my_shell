@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 13:58:51 2016 Thomas CHABOT
-** Last update Fri Apr 29 10:29:02 2016 leo LE DIOURON
+** Last update Sat Apr 30 11:47:17 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -53,7 +53,7 @@ char		**my_str_to_wordtab(char *str, char *flags)
   i = 0;
   k = 0;
   tab = NULL;
-  tab = my_mallok_tab(tab, count_words(str, flags) + 1);
+  tab = my_mallok(tab, (count_words(str, flags) + 1) * sizeof(char *));
   while (str[i] != '\0')
     {
       j = 0;

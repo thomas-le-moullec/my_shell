@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 **
 ** Started on  Tue Mar 29 12:39:25 2016 leo LE DIOURON
-** Last update Wed Apr 27 17:24:34 2016 Thomas CHABOT
+** Last update Sat Apr 30 11:56:30 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -41,6 +41,9 @@ char            *get_next_line()
   if (line[i] == '\n')
     i++;
   else
-    i = 0;
+    {
+      i = 0;
+      my_free(line);
+    }
   return (line_inter);
 }

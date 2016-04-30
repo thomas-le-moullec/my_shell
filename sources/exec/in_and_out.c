@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 17:57:25 2016 leo LE DIOURON
-** Last update Fri Apr 29 18:39:03 2016 leo LE DIOURON
+** Last update Sat Apr 30 11:31:42 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -47,8 +47,8 @@ int		manage_pipe(t_data *data)
 int		in_and_out(t_data *data)
 {
   if (manage_all_redir(data) == ERROR)
-    return (ERROR);
+    return (STOP);
   if (manage_pipe(data) == ERROR)
-    return (ERROR);
-  return (0);
+    return (STOP);
+  return (SUCCESS);
 }

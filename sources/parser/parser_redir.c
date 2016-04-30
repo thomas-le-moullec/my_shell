@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 15:19:24 2016 Thomas CHABOT
-** Last update Fri Apr 29 16:06:58 2016 leo LE DIOURON
+** Last update Sat Apr 30 13:55:53 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -18,7 +18,6 @@ int		manage_outfile(t_data *data, int i, int *j)
        epur_redir(data->parser.tab_cond[i], *j)) == NULL)
     return (ERROR);
   *j = 0;
-  printf("out -----> %s\n", data->parser.tab_cond[i]);
   return (SUCCESS);
 }
 
@@ -30,7 +29,6 @@ int		manage_infile(t_data *data, int i, int *j)
        epur_redir(data->parser.tab_cond[i], *j)) == NULL)
     return (ERROR);
   *j = 0;
-  printf("in -----> %s\n", data->parser.tab_cond[i]);
   return (SUCCESS);
 }
 
