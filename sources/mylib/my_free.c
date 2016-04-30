@@ -5,10 +5,18 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:35:36 2016 Thomas CHABOT
-** Last update Sat Apr 30 13:54:33 2016 leo LE DIOURON
+** Last update Sat Apr 30 15:07:12 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
+
+void		my_free_cond(t_data *data)
+{
+  my_free(data->parser.infile);
+  my_free(data->parser.outfile);
+  my_free_tab(data->parser.tab_pipe);
+  my_free(data->parser.nb_pipe);
+}
 
 void		my_free_tab(char **tab)
 {

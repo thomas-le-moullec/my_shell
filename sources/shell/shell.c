@@ -5,12 +5,12 @@
 ** Login   <chabot_t@epitech.net>
 **
 xs** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sat Apr 30 14:01:28 2016 leo LE DIOURON
+** Last update Sat Apr 30 16:22:54 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
 
-int		args_loop(t_data *data)
+int		pipe_loop(t_data *data)
 {
   int		i;
 
@@ -21,7 +21,8 @@ int		args_loop(t_data *data)
       if (make_pipe(data) == ERROR)
 	return (STOP);
       data->parser.tab_pipe[i] = my_epur_str(data->parser.tab_pipe[i]);
-      data->parser.tab_args = my_str_to_wordtab(data->parser.tab_pipe[i], " \t");
+      data->parser.tab_args = my_str_to_wordtab\
+	(data->parser.tab_pipe[i], " \t");
       if (my_exec(data) == ERROR)
 	return (STOP);
       my_free_tab(data->parser.tab_args);
@@ -30,42 +31,46 @@ int		args_loop(t_data *data)
   return (SUCCESS);
 }
 
-int		pipe_loop(t_data *data)
+int		cond_loop(t_data *data)
 {
   int		i;
   int		a;
+  int		stop_loop;
 
   i = 0;
-  while (data->parser.tab_cond[i] != NULL)
+  stop_loop = SUCCESS;
+  while (data->parser.tab_cond[i] != NULL && stop_loop != ERROR)
     {
+      data->shell.status = SUCCESS;
       if ((a = parser_redir(data, i)) == ERROR)
 	return (ERROR);
       if (a != STOP)
 	{
-	  data->parser.tab_pipe = my_str_to_wordtab(data->parser.tab_cond[i], "|");
+	  data->parser.tab_pipe = my_str_to_wordtab \
+	    (data->parser.tab_cond[i], "|");
 	  take_nb_pipe(data);
-	  args_loop(data);
+	  pipe_loop(data);
 	}
-      data->parser.infile = NULL;
-      data->parser.outfile = NULL;
-      my_free(data->parser.infile);
-      my_free(data->parser.outfile);
-      my_free_tab(data->parser.tab_pipe);
-      my_free(data->parser.nb_pipe);
+      if ((data->shell.status == ERROR && data->shell.cond[i] == AND) || \
+	  (data->shell.status == SUCCESS && data->shell.cond[i] == OR))
+	stop_loop = ERROR;
+      my_free_cond(data);
       i++;
     }
   return (SUCCESS);
 }
 
-int		cond_loop(t_data *data)
+int		sep_loop(t_data *data)
 {
   int		i;
 
   i = 0;
   while (data->parser.tab_sep[i] != NULL)
     {
-      data->parser.tab_cond = my_cond_to_wordtab(data->parser.tab_sep[i], "&|");
-      if (pipe_loop(data) == ERROR)
+      data->parser.tab_cond = my_cond_to_wordtab \
+	(data->parser.tab_sep[i], "&|", 0);
+      take_type_cond(data, i);
+      if (cond_loop(data) == ERROR)
 	return (ERROR);
       my_free_tab(data->parser.tab_cond);
       i++;
@@ -80,7 +85,7 @@ int		my_shell(t_data *data)
     {
       if (parser_sep(data) != STOP)
 	{
-	  if (cond_loop(data) == ERROR)
+	  if (sep_loop(data) == ERROR)
 	    return (ERROR);
 	  my_free_loop(data);
 	}

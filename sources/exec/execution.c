@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 13:30:09 2016 leo LE DIOURON
-** Last update Fri Apr 29 18:35:46 2016 leo LE DIOURON
+** Last update Sat Apr 30 16:11:33 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -19,18 +19,22 @@ void		father(pid_t cpid, t_data *data)
     close(data->shell.fd[1]);
   waitpid(cpid, &status, WUNTRACED | WCONTINUED);
   if (!WIFEXITED(status))
-    my_putstr("Segmentation fault\n", 1);
+    {
+      data->shell.status = ERROR;
+      my_putstr("Segmentation fault\n", 1);
+    }
 }
 
 int		exec_without_path(t_data *data)
 {
-  pid_t cpid;
+  pid_t		cpid;
 
-  if (access(data->parser.tab_args[0], X_OK) == ERROR || \
-      (data->parser.tab_args[0][0] != '.' && \
-       data->parser.tab_args[0][0] != '/') ||
-      data->parser.tab_args[0][1] != '/')
+  if (access(data->parser.tab_args[0], X_OK) == ERROR && \
+      ((data->parser.tab_args[0][0] != '.' &&		 \
+       data->parser.tab_args[0][1] != '/') ||
+       data->parser.tab_args[0][0] != '/'))
     {
+      data->shell.status = ERROR;
       my_putstr(data->parser.tab_args[0], 1);
       my_putstr(": Command not found.\n", 1);
       return (ERROR);
@@ -40,8 +44,8 @@ int		exec_without_path(t_data *data)
     {
       if (in_and_out(data) == ERROR)
 	return (ERROR);
-      if (execve(data->parser.tab_args[0], data->parser.tab_args, data->shell.env) \
-	  == ERROR)
+      if (execve(data->parser.tab_args[0], \
+		 data->parser.tab_args, data->shell.env) == ERROR)
 	return (ERROR);
     }
   else
@@ -77,8 +81,9 @@ int		access_path(t_data *data)
 
   i = 0;
   if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) > 2 && \
-      ((data->parser.tab_args[0][0] == '.' && data->parser.tab_args[0][1] == '/')
-       || data->parser.tab_args[0][0] == '/')))
+      ((data->parser.tab_args[0][0] == '.' && \
+	data->parser.tab_args[0][1] == '/') || \
+       data->parser.tab_args[0][0] == '/')))
     return (ERROR);
   while (data->shell.path[i] != NULL)
     {
