@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 xs** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sat Apr 30 16:22:54 2016 leo LE DIOURON
+** Last update Sun May  1 16:00:07 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -42,8 +42,7 @@ int		cond_loop(t_data *data)
   while (data->parser.tab_cond[i] != NULL && stop_loop != ERROR)
     {
       data->shell.status = SUCCESS;
-      if ((a = parser_redir(data, i)) == ERROR)
-	return (ERROR);
+      a = parser_redir(data, i);
       if (a != STOP)
 	{
 	  data->parser.tab_pipe = my_str_to_wordtab \
@@ -54,6 +53,8 @@ int		cond_loop(t_data *data)
       if ((data->shell.status == ERROR && data->shell.cond[i] == AND) || \
 	  (data->shell.status == SUCCESS && data->shell.cond[i] == OR))
 	stop_loop = ERROR;
+      /*      data->parser.outfile = NULL;
+	      data->parser.infile = NULL;*/
       my_free_cond(data);
       i++;
     }

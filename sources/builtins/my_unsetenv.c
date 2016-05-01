@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 17:37:26 2016 Thomas CHABOT
-** Last update Sat Apr 30 11:48:01 2016 leo LE DIOURON
+** Last update Sun May  1 16:13:05 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -27,7 +27,7 @@ char		**unsetenv_loop(t_data* data, int i)
       j++;
     }
   new_env[k] = NULL;
-  my_free_tab(data->shell.env);
+  data->shell.env = my_free_tab(data->shell.env);
   return (new_env);
 }
 

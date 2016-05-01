@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Sat Apr 30 15:01:26 2016 leo LE DIOURON
+** Last update Sun May  1 15:22:42 2016 leo LE DIOURON
 */
 
 #ifndef STRUCT_H_
@@ -20,8 +20,9 @@
 #define MIDDLE		2
 #define END		3
 
-#define AND		0
-#define OR		1
+#define DEFAUT		0
+#define AND		1
+#define OR		2
 
 typedef struct		s_parser
 {

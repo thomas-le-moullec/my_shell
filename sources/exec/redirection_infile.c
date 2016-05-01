@@ -5,10 +5,32 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 16:45:44 2016 leo LE DIOURON
-** Last update Fri Apr 29 16:47:22 2016 leo LE DIOURON
+** Last update Sun May  1 14:41:17 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
+
+int		double_infile_redir(t_data *data)
+{
+  char		*str;
+  char		*result;
+
+  my_putstr("? ", 1);
+  if ((str = get_next_line()) == NULL)
+    return (ERROR);
+  result = my_strcpy(str);
+  while (my_strcmp(str, data->parser.infile) != SUCCESS)
+    {
+      my_putstr("? ", 1);
+      if ((str = get_next_line()) == NULL)
+	return (ERROR);
+      result = my_strcat(result, str, '\n');
+    }
+  dup2(0, 1);
+  my_putstr(result, 1);
+  dup2(1, 0);
+  return (SUCCESS);
+}
 
 int     redirection_infile(t_data *data)
 {
@@ -22,5 +44,8 @@ int     redirection_infile(t_data *data)
         return (ERROR);
       close(fd);
     }
+  else
+    if (double_infile_redir(data) == ERROR)
+      return (ERROR);
   return (SUCCESS);
 }

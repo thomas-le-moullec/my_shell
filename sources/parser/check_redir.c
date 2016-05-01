@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 15:16:32 2016 leo LE DIOURON
-** Last update Fri Apr 29 15:17:07 2016 leo LE DIOURON
+** Last update Sun May  1 16:21:22 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -30,7 +30,7 @@ int             check_redir_in(char *str)
         i++;
     }
   if (nb_in > 1)
-    return (ERROR);
+    return (ambiguous(0));
   return (SUCCESS);
 }
 
@@ -49,11 +49,11 @@ int             check_redir_out(char *str)
           i++;
         }
       if (str[i] == '>')
-        i++;
+	i++;
       if (str[i] != '\0')
         i++;
     }
   if (nb_out > 1)
-    return (ERROR);
+    return (ambiguous(1));
   return (SUCCESS);
 }

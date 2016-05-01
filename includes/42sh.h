@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Sat Apr 30 16:31:58 2016 leo LE DIOURON
+** Last update Sun May  1 16:09:54 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -59,7 +59,10 @@ int		exec_without_path(t_data *);
 
 /* redirection_outfile.c */
 int		redirection_outfile(t_data *);
+
+/* redirection_infile.c */
 int		redirection_infile(t_data *);
+int             double_infile_redir(t_data *);
 
 /* in_and_out.c */
 int		manage_all_redir(t_data *);
@@ -125,6 +128,12 @@ void		take_type_cond(t_data *, int);
 
 /* **************** ERROR ****************** */
 
+/* ambiguous.c */
+int		ambiguous(int);
+
+/* missing_name.c */
+int		missing_name();
+
 /* **************** DISP ****************** */
 
 /* prompt.c */
@@ -160,9 +169,9 @@ int		my_strcmp_equal(char *, char*);
 int		my_strcmp(char *, char*);
 
 void		my_free_cond(t_data *);
-void		my_free_tab(char **);
+void		*my_free_tab(char **);
 int		my_free_loop(t_data *);
-void		my_free(void *);
+void		*my_free(void *);
 
 void		*my_mallok(void *, int);
 

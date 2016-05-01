@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Sat Apr 30 16:26:26 2016 leo LE DIOURON
-** Last update Sat Apr 30 16:31:40 2016 leo LE DIOURON
+** Last update Sun May  1 16:14:16 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -64,6 +64,6 @@ char            **fill_env(t_data *data, int value)
     new_env = fill_env_loop(data, value, new_env, i);
   else
     new_env = fill_env_none(data, new_env, value);
-  my_free_tab(data->shell.env);
+  data->shell.env = my_free_tab(data->shell.env);
   return (new_env);
 }
