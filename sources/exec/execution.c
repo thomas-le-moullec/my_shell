@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 13:30:09 2016 leo LE DIOURON
-** Last update Fri Apr 29 18:35:46 2016 leo LE DIOURON
+** Last update Wed May  4 15:44:31 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -35,13 +35,14 @@ int		exec_without_path(t_data *data)
       my_putstr(": Command not found.\n", 1);
       return (ERROR);
     }
-  cpid = fork();
+  if (cpid = fork() == -1)
+    return (ERROR);
   if (cpid == 0)
     {
       if (in_and_out(data) == ERROR)
 	return (ERROR);
-      if (execve(data->parser.tab_args[0], data->parser.tab_args, data->shell.env) \
-	  == ERROR)
+      if (execve(data->parser.tab_args[0], \
+		 data->parser.tab_args, data->shell.env) == ERROR)
 	return (ERROR);
     }
   else

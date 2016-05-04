@@ -5,10 +5,23 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:34:12 2016 Thomas CHABOT
-** Last update Fri Apr 29 10:58:11 2016 leo LE DIOURON
+** Last update Wed May  4 15:59:51 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
+
+void            my_show_env(char **tab, int fd)
+{
+  int           i;
+
+  i = 0;
+  while (tab[i] != NULL)
+    {
+      my_putstr(tab[i], fd);
+      my_putchar('\n', fd);
+      i++;
+    }
+}
 
 void            my_show_tab(char **tab)
 {

@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Sat Apr 30 11:49:37 2016 leo LE DIOURON
+** Last update Wed May  4 16:00:50 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -136,6 +136,7 @@ int		my_getnbr(char *);
 
 int		my_strlen(char *);
 
+void		my_show_env(char **, int);
 void		my_show_tab(char **);
 
 int		count_tab(char **);
