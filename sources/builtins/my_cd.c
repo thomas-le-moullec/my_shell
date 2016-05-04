@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 18:20:10 2016 Thomas CHABOT
-** Last update Sat Apr 30 13:52:35 2016 leo LE DIOURON
+** Last update Sat Apr 30 14:46:56 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -30,7 +30,12 @@ int		my_cd(t_data *data)
     {
       data->shell.oldpwd = my_strcpy(data->shell.pwd);
       if (chdir(tmp) == ERROR)
-	return (ERROR);
+	{
+	  my_putstr(tmp, 1);
+	  my_putstr(": No such file or directory.\n", 1);
+	  data->shell.status = ERROR;
+	  return (ERROR);
+	}
       get_pwd(data);
       return (SUCCESS);
     }

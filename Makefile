@@ -5,7 +5,7 @@
 ## Login   <chabot_t@epitech.net>
 ## 
 ## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
-## Last update Fri Apr 29 18:21:45 2016 Thomas CHABOT
+## Last update Sun May  1 15:06:33 2016 leo LE DIOURON
 ##
 
 NAME            =       42sh
@@ -36,10 +36,12 @@ SRCS            =       $(MAIN)main.c                   \
 			$(PARSER)check_redir.c		\
 			$(PARSER)epur_redir.c		\
 			$(PARSER)take_nb_pipe.c		\
+			$(PARSER)take_type_cond.c	\
 			$(DISP)prompt.c			\
 			$(BUILTINS)my_exit.c		\
 			$(BUILTINS)my_env.c		\
 			$(BUILTINS)my_unsetenv.c	\
+			$(BUILTINS)fill_env.c		\
 			$(BUILTINS)my_setenv.c		\
 			$(BUILTINS)my_cd.c		\
 			$(EXEC)exec.c                   \
@@ -49,6 +51,8 @@ SRCS            =       $(MAIN)main.c                   \
 			$(EXEC)redirection_outfile.c    \
 			$(EXEC)redirection_infile.c     \
 			$(EXEC)make_pipe.c              \
+			$(ERROR)missing_name.c          \
+			$(ERROR)ambiguous.c		\
 			$(MYLIB)my_putchar.c            \
                         $(MYLIB)my_strlen.c             \
                         $(MYLIB)my_getnbr.c             \

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 14:51:13 2016 Thomas CHABOT
-** Last update Sat Apr 30 11:47:06 2016 leo LE DIOURON
+** Last update Sat Apr 30 16:33:09 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -51,14 +51,12 @@ int		count_words_cond(char *str)
   return (nb_words);
 }
 
-char            **my_cond_to_wordtab(char *str, char *flags)
+char            **my_cond_to_wordtab(char *str, char *flags, int i)
 {
-  int           i;
   int           j;
   int           k;
   char          **tab;
 
-  i = 0;
   k = 0;
   tab = NULL;
   tab = my_mallok(tab, (count_words_cond(str) + 1) * sizeof(char *));

@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Wed May  4 16:00:50 2016 Thomas CHABOT
+** Last update Wed May  4 16:04:24 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -27,7 +27,7 @@
 /* **************** SHELL ****************** */
 
 /* shell.c */
-int		args_loop(t_data *);
+int		pipe_loop(t_data *);
 int		cond_loop(t_data *);
 int		sep_loop(t_data *);
 int		my_shell(t_data *);
@@ -59,7 +59,10 @@ int		exec_without_path(t_data *);
 
 /* redirection_outfile.c */
 int		redirection_outfile(t_data *);
+
+/* redirection_infile.c */
 int		redirection_infile(t_data *);
+int             double_infile_redir(t_data *);
 
 /* in_and_out.c */
 int		manage_all_redir(t_data *);
@@ -79,11 +82,14 @@ int		my_cd(t_data *);
 int		my_env(t_data *);
 
 /* my_setenv.c */
-char		**fill_env_none(t_data *, char **, int);
 int		check_env_exist(t_data *, char *);
-char		**fill_env(t_data *, int);
 int		setenv_empty(t_data *, int);
 int		my_setenv(t_data *);
+
+/* fill_env.c */
+char		**fill_env_none(t_data *, char **, int);
+char		**fill_env_loop(t_data *, int, char **, int);
+char		**fill_env(t_data *, int);
 
 /* my_env.c */
 int		my_exit(t_data *);
@@ -117,7 +123,16 @@ char		*epur_redir(char *, int);
 /* take_nb_pipe.c */
 void		take_nb_pipe(t_data *);
 
+/*take_type_cond.c */
+void		take_type_cond(t_data *, int);
+
 /* **************** ERROR ****************** */
+
+/* ambiguous.c */
+int		ambiguous(int);
+
+/* missing_name.c */
+int		missing_name();
 
 /* **************** DISP ****************** */
 
@@ -154,9 +169,10 @@ char		*my_epur_str(char *);
 int		my_strcmp_equal(char *, char*);
 int		my_strcmp(char *, char*);
 
-void		my_free_tab(char **);
+void		my_free_cond(t_data *);
+void		*my_free_tab(char **);
 int		my_free_loop(t_data *);
-void		my_free(void *);
+void		*my_free(void *);
 
 void		*my_mallok(void *, int);
 
@@ -165,7 +181,7 @@ int		count_words(char *, char *);
 char		**my_str_to_wordtab(char *, char *);
 
 int		check_cond(char, char, char *);
-char		**my_cond_to_wordtab(char *, char *);
+char		**my_cond_to_wordtab(char *, char *, int);
 int             count_words_cond(char *);
 
 char		*my_strcat(char *, char *, char);

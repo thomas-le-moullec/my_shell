@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Fri Apr 29 18:28:50 2016 leo LE DIOURON
+** Last update Sun May  1 15:22:42 2016 leo LE DIOURON
 */
 
 #ifndef STRUCT_H_
@@ -19,6 +19,10 @@
 #define BEGIN		1
 #define MIDDLE		2
 #define END		3
+
+#define DEFAUT		0
+#define AND		1
+#define OR		2
 
 typedef struct		s_parser
 {
@@ -45,6 +49,8 @@ typedef struct		s_shell
   int			built;
   int			fd[2];
   int			save_fd;
+  int			status;
+  int			*cond;
 }			t_shell;
 
 typedef struct		s_data

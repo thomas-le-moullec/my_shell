@@ -1,11 +1,11 @@
 /*
-** execution.c for execution in /home/le-dio_l/Modules/Module_Prog_shell/42sh/PSU_2015_42sh
+** execution.c for execution in /home/chabot_t/rendu/PSU/PSU_2015_42sh
 ** 
-** Made by leo LE DIOURON
-** Login   <le-dio_l@epitech.net>
+** Made by Thomas CHABOT
+** Login   <chabot_t@epitech.net>
 ** 
-** Started on  Fri Apr 29 13:30:09 2016 leo LE DIOURON
-** Last update Wed May  4 15:44:31 2016 Thomas CHABOT
+** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
+** Last update Wed May  4 16:03:37 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -19,18 +19,22 @@ void		father(pid_t cpid, t_data *data)
     close(data->shell.fd[1]);
   waitpid(cpid, &status, WUNTRACED | WCONTINUED);
   if (!WIFEXITED(status))
-    my_putstr("Segmentation fault\n", 1);
+    {
+      data->shell.status = ERROR;
+      my_putstr("Segmentation fault\n", 1);
+    }
 }
 
 int		exec_without_path(t_data *data)
 {
-  pid_t cpid;
+  pid_t		cpid;
 
-  if (access(data->parser.tab_args[0], X_OK) == ERROR || \
-      (data->parser.tab_args[0][0] != '.' && \
-       data->parser.tab_args[0][0] != '/') ||
-      data->parser.tab_args[0][1] != '/')
+  if (access(data->parser.tab_args[0], X_OK) == ERROR && \
+      ((data->parser.tab_args[0][0] != '.' &&		 \
+       data->parser.tab_args[0][1] != '/') ||
+       data->parser.tab_args[0][0] != '/'))
     {
+      data->shell.status = ERROR;
       my_putstr(data->parser.tab_args[0], 1);
       my_putstr(": Command not found.\n", 1);
       return (ERROR);
@@ -78,8 +82,9 @@ int		access_path(t_data *data)
 
   i = 0;
   if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) > 2 && \
-      ((data->parser.tab_args[0][0] == '.' && data->parser.tab_args[0][1] == '/')
-       || data->parser.tab_args[0][0] == '/')))
+      ((data->parser.tab_args[0][0] == '.' && \
+	data->parser.tab_args[0][1] == '/') || \
+       data->parser.tab_args[0][0] == '/')))
     return (ERROR);
   while (data->shell.path[i] != NULL)
     {
