@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:36:55 2016 Thomas CHABOT
-** Last update Wed May  4 16:00:04 2016 Thomas CHABOT
+** Last update Wed May  4 16:06:15 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -43,6 +43,8 @@ int		my_env(t_data *data)
       || data->parser.check_pos_pipe == BEGIN)
     fd = data->shell.fd[1];
   if (data->shell.env != NULL)
-    my_show_env(data->shell.env);
+    my_show_env(data->shell.env, fd);
+  if (fd != 1)
+    close(fd);
   return (SUCCESS);
 }

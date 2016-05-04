@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Wed May  4 16:03:37 2016 Thomas CHABOT
+** Last update Wed May  4 16:06:44 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -39,7 +39,7 @@ int		exec_without_path(t_data *data)
       my_putstr(": Command not found.\n", 1);
       return (ERROR);
     }
-  if (cpid = fork() == -1)
+  if ((cpid = fork()) == -1)
     return (ERROR);
   if (cpid == 0)
     {
