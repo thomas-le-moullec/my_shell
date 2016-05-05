@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Wed May  4 16:04:24 2016 Thomas CHABOT
+** Last update Wed May  4 17:12:57 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -51,7 +51,7 @@ int		my_exec(t_data *);
 int		my_builtins(t_data *);
 
 /* execution.c */
-void		father(pid_t, t_data *);
+int		father(pid_t, t_data *);
 int		execution(t_data *);
 int		access_path(t_data *);
 int		exec_with_path(t_data *, int);

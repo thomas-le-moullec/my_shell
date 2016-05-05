@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 xs** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sun May  1 16:00:07 2016 leo LE DIOURON
+** Last update Wed May  4 17:56:32 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -21,6 +21,8 @@ int		pipe_loop(t_data *data)
       if (make_pipe(data) == ERROR)
 	return (STOP);
       data->parser.tab_pipe[i] = my_epur_str(data->parser.tab_pipe[i]);
+      if (data->parser.tab_pipe[i] == NULL)
+	return (STOP);
       data->parser.tab_args = my_str_to_wordtab\
 	(data->parser.tab_pipe[i], " \t");
       if (my_exec(data) == ERROR)
@@ -41,6 +43,7 @@ int		cond_loop(t_data *data)
   stop_loop = SUCCESS;
   while (data->parser.tab_cond[i] != NULL && stop_loop != ERROR)
     {
+      data->shell.fd_db = 0;
       data->shell.status = SUCCESS;
       a = parser_redir(data, i);
       if (a != STOP)
@@ -53,8 +56,6 @@ int		cond_loop(t_data *data)
       if ((data->shell.status == ERROR && data->shell.cond[i] == AND) || \
 	  (data->shell.status == SUCCESS && data->shell.cond[i] == OR))
 	stop_loop = ERROR;
-      /*      data->parser.outfile = NULL;
-	      data->parser.infile = NULL;*/
       my_free_cond(data);
       i++;
     }
@@ -68,7 +69,7 @@ int		sep_loop(t_data *data)
   i = 0;
   while (data->parser.tab_sep[i] != NULL)
     {
-      data->parser.tab_cond = my_cond_to_wordtab \
+      data->parser.tab_cond = my_cond_to_wordtab	\
 	(data->parser.tab_sep[i], "&|", 0);
       take_type_cond(data, i);
       if (cond_loop(data) == ERROR)

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:40:46 2016 Thomas CHABOT
-** Last update Wed Apr 27 17:43:45 2016 Thomas CHABOT
+** Last update Wed May  4 17:52:42 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -31,5 +31,7 @@ char            *my_epur_str(char *str)
     }
   new_str[a] = '\0';
   my_free(str);
+  if (a == 0)
+    return (NULL);
   return (new_str);
 }

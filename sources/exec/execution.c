@@ -5,33 +5,37 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Wed May  4 16:06:44 2016 Thomas CHABOT
+** Last update Wed May  4 17:39:08 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-void		father(pid_t cpid, t_data *data)
+int		father(pid_t cpid, t_data *data)
 {
   int		status;
 
   if (data->parser.check_pos_pipe != ALONE && \
       data->parser.check_pos_pipe != END)
     close(data->shell.fd[1]);
-  waitpid(cpid, &status, WUNTRACED | WCONTINUED);
+  if (data->shell.fd_db != 0)
+    close(data->shell.fd_db != 0);
+  if (waitpid(cpid, &status, WUNTRACED | WCONTINUED) == -1)
+    return (ERROR);
   if (!WIFEXITED(status))
     {
       data->shell.status = ERROR;
       my_putstr("Segmentation fault\n", 1);
     }
+  return (SUCCESS);
 }
 
 int		exec_without_path(t_data *data)
 {
   pid_t		cpid;
 
-  if (access(data->parser.tab_args[0], X_OK) == ERROR && \
+  if (access(data->parser.tab_args[0], X_OK) == ERROR || \
       ((data->parser.tab_args[0][0] != '.' &&		 \
-       data->parser.tab_args[0][1] != '/') ||
+       data->parser.tab_args[0][1] != '/') &&
        data->parser.tab_args[0][0] != '/'))
     {
       data->shell.status = ERROR;
@@ -61,7 +65,8 @@ int		exec_with_path(t_data *data, int i)
 
   tmp = NULL;
   tmp = my_strcat(data->shell.path[i], data->parser.tab_args[0], '/');
-  cpid = fork();
+  if ((cpid = fork()) == -1)
+    return (ERROR);
   if (cpid == 0)
     {
       if (in_and_out(data) == ERROR)
@@ -86,11 +91,11 @@ int		access_path(t_data *data)
 	data->parser.tab_args[0][1] == '/') || \
        data->parser.tab_args[0][0] == '/')))
     return (ERROR);
-  while (data->shell.path[i] != NULL)
+  while (data->shell.path != NULL && data->shell.path[i] != NULL)
     {
       tmp = NULL;
       tmp = my_strcat(data->shell.path[i], data->parser.tab_args[0], '/');
-      if (access(tmp, X_OK) == SUCCESS)
+      if (access(tmp, X_OK) == 0)
 	{
 	  my_free(tmp);
 	  return (i);

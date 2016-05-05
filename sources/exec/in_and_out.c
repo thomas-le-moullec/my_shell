@@ -1,11 +1,11 @@
 /*
 ** in_and_out.c for in_and_out in /home/le-dio_l/Modules/Module_Prog_shell/42sh/PSU_2015_42sh
-** 
+**
 ** Made by leo LE DIOURON
 ** Login   <le-dio_l@epitech.net>
-** 
+**
 ** Started on  Fri Apr 29 17:57:25 2016 leo LE DIOURON
-** Last update Sat Apr 30 11:31:42 2016 leo LE DIOURON
+** Last update Wed May  4 17:11:05 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -31,14 +31,14 @@ int		manage_pipe(t_data *data)
       data->parser.check_pos_pipe != END)
     {
       close(data->shell.fd[0]);
-      if (dup2(data->shell.fd[1], 1) == ERROR)
+      if (dup2(data->shell.fd[1], 1) == -1)
 	return (ERROR);
     }
   if (data->parser.check_pos_pipe != ALONE && \
       data->parser.check_pos_pipe != BEGIN)
     {
       close(data->shell.fd[1]);
-      if (dup2(data->shell.save_fd, 0) == ERROR)
+      if (dup2(data->shell.save_fd, 0) == -1)
 	return (ERROR);
     }
   return (SUCCESS);

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 12:51:48 2016 Thomas CHABOT
-** Last update Wed Apr 27 20:18:06 2016 Thomas CHABOT
+** Last update Wed May  4 17:37:11 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -17,6 +17,7 @@ int		get_path(t_data *data)
 
   i = 0;
   tmp = NULL;
+  data->shell.path = NULL;
   if ((i = check_env_exist(data, "PATH")) != ERROR)
     tmp = my_strcpy_equal(data->shell.env[i]);
   if (tmp != NULL)

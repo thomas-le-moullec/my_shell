@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 16:45:44 2016 leo LE DIOURON
-** Last update Sun May  1 14:41:17 2016 leo LE DIOURON
+** Last update Wed May  4 17:06:30 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -14,21 +14,34 @@ int		double_infile_redir(t_data *data)
 {
   char		*str;
   char		*result;
+  pid_t		cpid;
+  int		status;
 
-  my_putstr("? ", 1);
-  if ((str = get_next_line()) == NULL)
+  if ((data->shell.fd_db = dup(data->shell.fd_db)) == -1)
     return (ERROR);
-  result = my_strcpy(str);
-  while (my_strcmp(str, data->parser.infile) != SUCCESS)
+  if ((cpid = fork()) == -1)
+    return (ERROR);
+  if (cpid == 0)
     {
+      if (dup2(data->shell.fd_db, 0) == -1)
+	return (ERROR);
       my_putstr("? ", 1);
       if ((str = get_next_line()) == NULL)
 	return (ERROR);
-      result = my_strcat(result, str, '\n');
+      result = my_strcpy(str);
+      while (my_strcmp(str, data->parser.infile) != SUCCESS)
+	{
+	  my_putstr("? ", 1);
+	  if ((str = get_next_line()) == NULL)
+	    return (ERROR);
+	  result = my_strcat(result, str, '\n');
+	}
+      my_putstr(result, data->shell.fd_db);
+      exit(0);
     }
-  dup2(0, 1);
-  my_putstr(result, 1);
-  dup2(1, 0);
+  else
+    if (waitpid(cpid, &status, WUNTRACED | WCONTINUED) == -1)
+      return (ERROR);
   return (SUCCESS);
 }
 
@@ -38,9 +51,9 @@ int     redirection_infile(t_data *data)
 
   if (data->parser.db_in == 0)
     {
-      if ((fd = open(data->parser.infile, O_RDONLY)) == ERROR)
+      if ((fd = open(data->parser.infile, O_RDONLY)) == -1)
 	return (ERROR);
-      if (dup2(fd, 0) == ERROR)
+      if (dup2(fd, 0) == -1)
         return (ERROR);
       close(fd);
     }
