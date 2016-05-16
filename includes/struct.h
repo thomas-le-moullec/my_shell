@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Wed May  4 16:24:21 2016 Thomas CHABOT
+** Last update Mon May 16 10:51:32 2016 leo LE DIOURON
 */
 
 #ifndef STRUCT_H_
@@ -51,6 +51,7 @@ typedef struct		s_shell
   int			fd_db;
   int			save_fd;
   int			status;
+  int			exit_status;
   int			*cond;
 }			t_shell;
 

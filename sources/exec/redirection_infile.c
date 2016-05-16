@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 16:45:44 2016 leo LE DIOURON
-** Last update Wed May  4 17:06:30 2016 Thomas CHABOT
+** Last update Mon May 16 11:28:58 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -14,15 +14,15 @@ int		double_infile_redir(t_data *data)
 {
   char		*str;
   char		*result;
-  pid_t		cpid;
-  int		status;
+  /*pid_t		cpid;
+    int		status;*/
 
   if ((data->shell.fd_db = dup(data->shell.fd_db)) == -1)
     return (ERROR);
-  if ((cpid = fork()) == -1)
-    return (ERROR);
-  if (cpid == 0)
-    {
+  /*  if ((cpid = fork()) == -1)
+      return (ERROR);*/
+  /*  if (cpid == 0)
+      {*/
       if (dup2(data->shell.fd_db, 0) == -1)
 	return (ERROR);
       my_putstr("? ", 1);
@@ -38,10 +38,10 @@ int		double_infile_redir(t_data *data)
 	}
       my_putstr(result, data->shell.fd_db);
       exit(0);
-    }
-  else
+      /* }
+	 else
     if (waitpid(cpid, &status, WUNTRACED | WCONTINUED) == -1)
-      return (ERROR);
+    return (ERROR);*/
   return (SUCCESS);
 }
 

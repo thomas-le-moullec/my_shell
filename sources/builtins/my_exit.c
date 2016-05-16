@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:25:51 2016 Thomas CHABOT
-** Last update Sun May  1 16:13:45 2016 leo LE DIOURON
+** Last update Mon May 16 11:00:36 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -20,7 +20,7 @@ int		my_exit(t_data *data)
   data->shell.pwd = my_free(data->shell.pwd);
   data->shell.oldpwd = my_free(data->shell.oldpwd);
   if (count_tab(data->parser.tab_args) == 1)
-    exit(0);
+    exit(data->shell.exit_status);
   if ((nb = my_getnbr(data->parser.tab_args[1])) == ERROR \
       && my_strcmp(data->parser.tab_args[1], "-1") == ERROR)
     return (ERROR);

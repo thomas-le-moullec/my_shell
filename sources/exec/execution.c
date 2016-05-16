@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Wed May  4 17:39:08 2016 Thomas CHABOT
+** Last update Mon May 16 10:57:57 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -111,13 +111,20 @@ int		execution(t_data *data)
   int		i;
 
   i = 0;
+  data->shell.exit_status = 0;
   if ((i = access_path(data)) != ERROR)
     {
       if (exec_with_path(data, i) == ERROR)
-	return (ERROR);
+	{
+	  data->shell.exit_status = 1;
+	  return (ERROR);
+	}
     }
   else
     if (exec_without_path(data) == ERROR)
-      return (STOP);
+      {
+	data->shell.exit_status = 1;
+	return (ERROR);
+      }
   return (SUCCESS);
 }
