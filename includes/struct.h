@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Mon May 16 17:09:23 2016 leo LE DIOURON
+** Last update Tue May 17 17:41:27 2016 Hervé TCHIKLADZE
 */
 
 #ifndef STRUCT_H_
@@ -23,6 +23,8 @@
 #define DEFAUT		0
 #define AND		1
 #define OR		2
+
+typedef struct	       	s_data t_data;
 
 typedef struct		s_parser
 {
@@ -55,15 +57,27 @@ typedef struct		s_shell
   int			*cond;
 }			t_shell;
 
-typedef struct		s_option
+typedef struct		s_hist
 {
-}			t_option;
+  struct s_hist		*next;
+  struct s_hist		*prev;
+  char			*str;
+  int			pos;
+}			t_hist;
 
-typedef struct		s_data
+typedef struct		s_key
 {
+  char			*key;
+  int			(*function)(t_data *);
+}			t_key;
+
+struct		       	s_data
+{
+  t_key			tab_key[5];
+  t_hist		*list;
   t_shell		shell;
   t_parser		parser;
-}			t_data;
+};
 
 typedef struct		s_buil
 {

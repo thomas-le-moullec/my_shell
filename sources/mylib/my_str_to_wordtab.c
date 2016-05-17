@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 13:58:51 2016 Thomas CHABOT
-** Last update Sat Apr 30 11:47:17 2016 leo LE DIOURON
+** Last update Tue May 17 17:44:39 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -48,25 +48,25 @@ char		**my_str_to_wordtab(char *str, char *flags)
   int		i;
   int		j;
   int		k;
-  char		**tab;
+  char		**tabo;
 
   i = 0;
   k = 0;
-  tab = NULL;
-  tab = my_mallok(tab, (count_words(str, flags) + 1) * sizeof(char *));
+  tabo = NULL;
+  tabo = my_mallok(tabo, (count_words(str, flags) + 1) * sizeof(char *));
   while (str[i] != '\0')
     {
       j = 0;
-      tab[k] = NULL;
-      tab[k] = my_mallok(tab[k], my_strlen(str) + 1);
+      tabo[k] = NULL;
+      tabo[k] = my_mallok(tabo[k], my_strlen(str) + 1);
       while (str[i] != '\0' && check_flags(str[i], flags) == SUCCESS)
 	i++;
       while (str[i] != '\0' && check_flags(str[i], flags) == ERROR)
-	tab[k][j++] = str[i++];
+	tabo[k][j++] = str[i++];
       if (str[i] != '\0')
 	i++;
-      tab[k++][j] = '\0';
+      tabo[k++][j] = '\0';
     }
-  tab[k] = NULL;
-  return (tab);
+  tabo[k] = NULL;
+  return (tabo);
 }

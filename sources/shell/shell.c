@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 xs** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Tue May 17 15:06:29 2016 Hervé TCHIKLADZE
+** Last update Tue May 17 17:50:07 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -74,7 +74,7 @@ int		sep_loop(t_data *data)
     {
       data->parser.tab_cond = my_cond_to_wordtab \
 	(data->parser.tab_sep[i], "&|", 0);
-      take_type_cond(data, i);
+      take_type_cond(data, i, 0, 0);
       if (cond_loop(data) == ERROR)
 	return (ERROR);
       my_free_tab(data->parser.tab_cond);
@@ -86,8 +86,10 @@ int		sep_loop(t_data *data)
 int		my_shell(t_data *data)
 {
   disp_prompt(data);
+  data->list = NULL;
   while ((data->shell.line = get_next_line()) != NULL)
     {
+      data->list = add_elem(data->list, data->shell.line);
       if (inhib(data) != ERROR)
 	{
 	  if (parser_sep(data) != STOP)

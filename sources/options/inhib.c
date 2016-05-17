@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 13:07:47 2016 Hervé TCHIKLADZE
-** Last update Tue May 17 15:11:12 2016 Hervé TCHIKLADZE
+** Last update Tue May 17 15:59:17 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -48,14 +48,12 @@ char		*modify_str(t_data *data, char c, int i)
   char		*new_string;
   int		j;
 
-  j = 0;
+  j = -1;
   new_string = NULL;
-  new_string = my_mallok(new_string, sizeof(char) * (my_strlen(data->shell.line) + 1));
-  while (data->shell.line[j] != '\0' && j < i)
-    {
-      new_string[j] = data->shell.line[j];
-      j++;
-    }
+  new_string = my_mallok(new_string, sizeof(char) * \
+			 (my_strlen(data->shell.line) + 1));
+  while (data->shell.line[++j] != '\0' && j < i)
+    new_string[j] = data->shell.line[j];
   i++;
   while (data->shell.line[i] != '\0' && data->shell.line[i] != c)
     {
@@ -65,10 +63,7 @@ char		*modify_str(t_data *data, char c, int i)
       j++;
     }
   if (data->shell.line[i] == '\0')
-    {
-      my_putstr("Error of quotes.\n", 1);
-      return (NULL);
-    }
+    return (error_quote(c));
   i++;
   while (data->shell.line[i] != '\0')
     new_string[j++] = data->shell.line[i++];

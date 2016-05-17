@@ -5,18 +5,13 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Sat Apr 30 14:55:07 2016 leo LE DIOURON
-** Last update Sun May  1 15:22:25 2016 leo LE DIOURON
+** Last update Tue May 17 16:03:44 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
 
-void		take_type_cond(t_data *data, int i)
+void		take_type_cond(t_data *data, int i, int x, int y)
 {
-  int		x;
-  int		y;
-
-  x = 0;
-  y = 0;
   data->shell.cond = NULL;
   data->shell.cond = my_mallok\
     (data->shell.cond,(count_tab(data->parser.tab_cond) + 1) * sizeof(int));

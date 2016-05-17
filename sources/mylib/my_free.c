@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:35:36 2016 Thomas CHABOT
-** Last update Sun May  1 16:11:27 2016 leo LE DIOURON
+** Last update Tue May 17 17:46:30 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -18,19 +18,19 @@ void		my_free_cond(t_data *data)
   data->parser.nb_pipe = my_free(data->parser.nb_pipe);
 }
 
-void		*my_free_tab(char **tab)
+void		*my_free_tab(char **tabo)
 {
   int		i;
 
   i = 0;
-  if (tab != NULL)
+  if (tabo != NULL)
     {
-      while (tab[i] != NULL)
+      while (tabo[i] != NULL)
 	{
-	  my_free(tab[i]);
+	  my_free(tabo[i]);
 	  i++;
 	}
-      my_free(tab);
+      my_free(tabo);
     }
   return (NULL);
 }
