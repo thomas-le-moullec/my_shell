@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Tue May 17 10:55:22 2016 Thomas CHABOT
+** Last update Tue May 17 15:08:59 2016 Hervé TCHIKLADZE
 */
 
 #ifndef SH42_H_
@@ -150,6 +150,12 @@ int		var_env(t_data *, int);
 int		replace_string(t_data *, int, int, char *);
 char		*take_var(t_data *, int, int);
 void            creat_new_string(t_data *, char *, int);
+
+/* inhib.c */
+int             inhib(t_data *);
+char            *modify_str(t_data *, char, int);
+int             check_special_char(char, char *);
+void            args_convert(t_data *);
 
 /* **************** MYLIB ****************** */
 
