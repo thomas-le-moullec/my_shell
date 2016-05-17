@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Wed May  4 17:12:57 2016 Thomas CHABOT
+** Last update Tue May 17 10:00:45 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -139,6 +139,14 @@ int		missing_name();
 /* prompt.c */
 void		disp_prompt(t_data *);
 
+/* **************** OPTIONS ****************** */
+
+/* var_env.c */
+int		var_env(t_data *, int);
+int		replace_string(t_data *, int, int, char *);
+char		*take_var(t_data *, int, int);
+void            creat_new_string(t_data *, char *, int);
+
 /* **************** MYLIB ****************** */
 
 void		my_putchar(char, int);
@@ -160,6 +168,7 @@ char		*my_strcpy_equal(char *);
 char		*my_strcpy_full(char *, char *);
 char		*my_strcpy_empty(char *);
 char		*my_strcpy(char *);
+char		*my_cpy(char *, char *);
 
 char            *get_next_line();
 char		*mallc_line(char *);

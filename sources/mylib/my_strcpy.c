@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:50:20 2016 Thomas CHABOT
-** Last update Fri Apr 29 10:45:41 2016 leo LE DIOURON
+** Last update Mon May 16 17:45:17 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -86,4 +86,18 @@ char		*my_strcpy_full(char *one, char *two)
     new_str[j++] = two[i++];
   new_str[j] = '\0';
   return (new_str);
+}
+
+char		*my_cpy(char *one, char *two)
+{
+  int		i;
+
+  i = 0;
+  while (two[i] != '\0')
+    {
+      one[i] = two[i];
+      i++;
+    }
+  one[i] = '\0';
+  return (one);
 }

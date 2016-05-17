@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 xs** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Mon May 16 10:36:25 2016 leo LE DIOURON
+** Last update Tue May 17 10:01:09 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -17,6 +17,8 @@ int		pipe_loop(t_data *data)
   i = 0;
   while (data->parser.tab_pipe[i] != NULL)
     {
+      if (var_env(data, i) == ERROR)
+	return (STOP);
       data->parser.check_pos_pipe = data->parser.nb_pipe[i];
       if (make_pipe(data) == ERROR)
 	return (STOP);
@@ -26,9 +28,7 @@ int		pipe_loop(t_data *data)
       data->parser.tab_args = my_str_to_wordtab\
 	(data->parser.tab_pipe[i], " \t");
       if (my_exec(data) == ERROR)
-	{
-	  return (STOP);
-	}
+	return (STOP);
       my_free_tab(data->parser.tab_args);
       i++;
     }

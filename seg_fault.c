@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Sat Apr 30 14:39:02 2016 leo LE DIOURON
-** Last update Sat Apr 30 14:40:28 2016 leo LE DIOURON
+** Last update Tue May 17 09:44:36 2016 leo LE DIOURON
 */
 
 #include <stdlib.h>
@@ -14,6 +14,7 @@
 int	main(int ac, char **av)
 {
   av[2] = NULL;
+  printf("%s\n", av[1]);
   printf("%c\n", av[2][1]);
   return (0);
 }
