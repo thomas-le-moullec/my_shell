@@ -5,19 +5,22 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:23:05 2016 Thomas CHABOT
-** Last update Tue Apr 26 18:40:01 2016 Thomas CHABOT
+** Last update Sat Apr 30 13:44:18 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
 
-int		exec(t_data *data)
+int		my_exec(t_data *data)
 {
-  data->parser.built = STOP;
-  if ((data->parser.built = my_builtins(data)) == ERROR)
+  data->shell.built = STOP;
+  if ((data->shell.built = my_builtins(data)) == ERROR)
     return (ERROR);
-  if (data->parser.built != STOP)
+  if (data->shell.built != STOP)
     return (STOP);
   if (get_path(data) == ERROR)
     return (ERROR);
+  if (execution(data) == ERROR)
+    return (ERROR);
+  my_free_tab(data->shell.path);
   return (SUCCESS);
 }

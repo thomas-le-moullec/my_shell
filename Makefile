@@ -5,7 +5,7 @@
 ## Login   <chabot_t@epitech.net>
 ## 
 ## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
-## Last update Wed Apr 27 13:28:22 2016 steeve payraudeau
+## Last update Tue May 17 11:07:24 2016 steeve payraudeau
 ##
 
 NAME            =       42sh
@@ -16,11 +16,17 @@ MY_SHELL        =       ./sources/shell/
 
 MYLIB           =       ./sources/mylib/
 
-PARSER		=	./soucres/parser/
+ERROR		=	./sources/error/
+
+PARSER		=	./sources/parser/
 
 DISP		=	./sources/disp/
 
 BUILTINS	=	./sources/builtins/
+
+EXEC		=	./sources/exec/
+
+OPT		=	./sources/options/
 
 SRCS            =       $(MAIN)main.c                   \
                         $(MY_SHELL)shell.c              \
@@ -28,13 +34,32 @@ SRCS            =       $(MAIN)main.c                   \
                         $(MY_SHELL)init.c               \
 			$(PARSER)parser.c		\
 			$(PARSER)take_redir.c		\
+			$(PARSER)parser_redir.c		\
+			$(PARSER)check_redir.c		\
+			$(PARSER)epur_redir.c		\
+			$(PARSER)take_nb_pipe.c		\
+			$(PARSER)take_type_cond.c	\
 			$(DISP)prompt.c			\
 			$(BUILTINS)my_exit.c		\
 			$(BUILTINS)my_env.c		\
 			$(BUILTINS)my_unsetenv.c	\
+			$(BUILTINS)fill_env.c		\
 			$(BUILTINS)my_setenv.c		\
+			$(BUILTINS)my_cd.c		\
+			$(EXEC)exec.c                   \
+			$(EXEC)in_and_out.c             \
+			$(EXEC)execution.c              \
+			$(EXEC)my_builtins.c            \
+			$(EXEC)redirection_outfile.c    \
+			$(EXEC)redirection_infile.c     \
+			$(EXEC)make_pipe.c              \
+			$(ERROR)missing_name.c          \
+			$(ERROR)ambiguous.c		\
+			$(ERROR)error_builtins.c	\
+			$(OPT)var_env.c			\
 			$(MYLIB)my_putchar.c            \
                         $(MYLIB)my_strlen.c             \
+                        $(MYLIB)my_getnbr.c             \
 			$(MYLIB)my_put_nbr.c            \
 			$(MYLIB)my_putstr.c             \
 			$(MYLIB)count_tab.c             \
@@ -45,6 +70,8 @@ SRCS            =       $(MAIN)main.c                   \
 			$(MYLIB)my_mallok.c             \
 			$(MYLIB)my_epur_str.c           \
 			$(MYLIB)my_str_to_wordtab.c     \
+			$(MYLIB)my_cond_to_wordtab.c    \
+			$(MYLIB)my_strcat.c             \
 			$(MYLIB)my_strcpy.c             \
 
 OBJS            =       $(SRCS:.c=.o)

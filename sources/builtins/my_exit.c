@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:25:51 2016 Thomas CHABOT
-** Last update Tue Apr 26 16:36:16 2016 Thomas CHABOT
+** Last update Mon May 16 11:00:36 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -16,9 +16,12 @@ int		my_exit(t_data *data)
 
   if (count_tab(data->parser.tab_args) > 2)
     return (ERROR);
+  data->shell.env = my_free_tab(data->shell.env);
+  data->shell.pwd = my_free(data->shell.pwd);
+  data->shell.oldpwd = my_free(data->shell.oldpwd);
   if (count_tab(data->parser.tab_args) == 1)
-    exit(0);
-  if ((nb = my_get_nbr(data->parser.tab_args[1])) == ERROR	\
+    exit(data->shell.exit_status);
+  if ((nb = my_getnbr(data->parser.tab_args[1])) == ERROR \
       && my_strcmp(data->parser.tab_args[1], "-1") == ERROR)
     return (ERROR);
   exit(nb);

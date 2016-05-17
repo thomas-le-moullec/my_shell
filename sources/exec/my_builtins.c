@@ -1,11 +1,11 @@
 /*
 ** my_builtins.c for my_builtins in /home/chabot_t/rendu/PSU/PSU_2015_42sh
-** 
+**
 ** Made by Thomas CHABOT
 ** Login   <chabot_t@epitech.net>
-** 
+**
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Tue Apr 26 18:38:59 2016 Thomas CHABOT
+** Last update Sat Apr 30 11:16:22 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -25,6 +25,10 @@ int		my_builtins(t_data *data)
     {
       if (my_strcmp(data->parser.tab_args[0], function[i].name) == SUCCESS)
 	{
+	  if (i != 2 && i != 3 && \
+	      data->parser.check_pos_pipe != ALONE && \
+	      data->parser.check_pos_pipe != END)
+	    return (SUCCESS);
 	  if ((function[i].function)(data) == ERROR)
 	    return (ERROR);
 	  else

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:40:46 2016 Thomas CHABOT
-** Last update Tue Apr 26 14:33:41 2016 Thomas CHABOT
+** Last update Wed May  4 17:52:42 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -24,12 +24,14 @@ char            *my_epur_str(char *str)
     {
       while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t'))
         i++;
-      if (a != 0)
+      if (a != 0 && str[i] != '\0')
         new_str[a++] = ' ';
       while (str[i] != '\0' && (str[i] != ' ' && str[i] != '\t'))
         new_str[a++] = str[i++];
     }
   new_str[a] = '\0';
   my_free(str);
+  if (a == 0)
+    return (NULL);
   return (new_str);
 }
