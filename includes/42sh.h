@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Tue May 17 10:00:45 2016 leo LE DIOURON
+** Last update Tue May 17 10:55:22 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -133,6 +133,10 @@ int		ambiguous(int);
 
 /* missing_name.c */
 int		missing_name();
+
+/* error_bultins.c */
+int		error_unsetenv();
+int		error_setenv();
 
 /* **************** DISP ****************** */
 

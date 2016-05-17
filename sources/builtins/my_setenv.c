@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:40:35 2016 Thomas CHABOT
-** Last update Sat Apr 30 16:27:24 2016 leo LE DIOURON
+** Last update Tue May 17 10:55:44 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -45,7 +45,7 @@ int		my_setenv(t_data *data)
 
   nb = count_tab(data->parser.tab_args);
   if (nb > 3)
-    return (ERROR);
+    return (error_setenv());
   if (nb == 1)
     my_env(data);
   if (nb == 2 || nb == 3)

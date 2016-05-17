@@ -5,7 +5,7 @@
 ## Login   <chabot_t@epitech.net>
 ## 
 ## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
-## Last update Mon May 16 17:40:48 2016 leo LE DIOURON
+## Last update Tue May 17 10:52:17 2016 Thomas CHABOT
 ##
 
 NAME            =       42sh
@@ -55,6 +55,7 @@ SRCS            =       $(MAIN)main.c                   \
 			$(EXEC)make_pipe.c              \
 			$(ERROR)missing_name.c          \
 			$(ERROR)ambiguous.c		\
+			$(ERROR)error_builtins.c	\
 			$(OPT)var_env.c			\
 			$(MYLIB)my_putchar.c            \
                         $(MYLIB)my_strlen.c             \
