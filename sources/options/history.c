@@ -5,12 +5,12 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Tue May 17 16:43:05 2016 Hervé TCHIKLADZE
+** Last update Wed May 18 16:25:01 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-t_hist		*add_elem(t_hist *list, char *str)
+t_hist		*add_elem_key(t_hist *list, char *str)
 {
   t_hist	*new_elem;
 

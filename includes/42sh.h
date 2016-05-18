@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Tue May 17 17:42:47 2016 Hervé TCHIKLADZE
+** Last update Wed May 18 16:36:04 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -48,6 +48,7 @@ int		init_shell(t_data *);
 /* **************** EXEC ****************** */
 
 /* exec.c */
+int		check_str_access(char *);
 int		my_exec(t_data *);
 
 /*my_builtins.c */
@@ -100,6 +101,9 @@ int		my_exit(t_data *);
 /* my_unsetenv.c */
 char		**unsetenv_loop(t_data *, int);
 int		my_unsetenv(t_data *);
+
+/* alias.c */
+t_alias		*add_elem_alias(t_alias *alias, char *);
 
 /* **************** PARSER ****************** */
 
@@ -164,7 +168,7 @@ int             check_special_char(char, char *);
 void            args_convert(t_data *);
 
 /* history.c */
-t_hist		*add_elem(t_hist *, char *);
+t_hist		*add_elem_key(t_hist *, char *);
 void		print_list(t_hist *);
 
 /* mode_canon.c */

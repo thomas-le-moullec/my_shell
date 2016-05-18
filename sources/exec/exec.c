@@ -5,10 +5,24 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:23:05 2016 Thomas CHABOT
-** Last update Sat Apr 30 13:44:18 2016 leo LE DIOURON
+** Last update Wed May 18 15:11:20 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
+
+int		check_str_access(char *str)
+{
+  int		i;
+
+  i = 0;
+  while (str[i] != '\0')
+    {
+      if (str[i] != '/' && str[i] != '.')
+	return (SUCCESS);
+      i++;
+    }
+  return (ERROR);
+}
 
 int		my_exec(t_data *data)
 {

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Tue May 17 17:41:27 2016 Hervé TCHIKLADZE
+** Last update Wed May 18 16:23:05 2016 Thomas CHABOT
 */
 
 #ifndef STRUCT_H_
@@ -23,6 +23,8 @@
 #define DEFAUT		0
 #define AND		1
 #define OR		2
+
+#define MAGIC		"108 97 103 111 117 100 97 108 101"
 
 typedef struct	       	s_data t_data;
 
@@ -64,6 +66,14 @@ typedef struct		s_hist
   char			*str;
   int			pos;
 }			t_hist;
+
+typedef struct		s_alias
+{
+  char			*cmd;
+  char			*args;
+  struct s_alias	*prev;
+  struct s_alias	*next;
+}			t_alias;
 
 typedef struct		s_key
 {
