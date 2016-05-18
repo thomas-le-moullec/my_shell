@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 xs** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Tue May 17 10:01:09 2016 leo LE DIOURON
+** Last update Tue May 17 17:50:07 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -27,6 +27,7 @@ int		pipe_loop(t_data *data)
 	return (STOP);
       data->parser.tab_args = my_str_to_wordtab\
 	(data->parser.tab_pipe[i], " \t");
+      args_convert(data);
       if (my_exec(data) == ERROR)
 	return (STOP);
       my_free_tab(data->parser.tab_args);
@@ -71,9 +72,9 @@ int		sep_loop(t_data *data)
   i = 0;
   while (data->parser.tab_sep[i] != NULL)
     {
-      data->parser.tab_cond = my_cond_to_wordtab	\
+      data->parser.tab_cond = my_cond_to_wordtab \
 	(data->parser.tab_sep[i], "&|", 0);
-      take_type_cond(data, i);
+      take_type_cond(data, i, 0, 0);
       if (cond_loop(data) == ERROR)
 	return (ERROR);
       my_free_tab(data->parser.tab_cond);
@@ -85,13 +86,18 @@ int		sep_loop(t_data *data)
 int		my_shell(t_data *data)
 {
   disp_prompt(data);
+  data->list = NULL;
   while ((data->shell.line = get_next_line()) != NULL)
     {
-      if (parser_sep(data) != STOP)
+      data->list = add_elem(data->list, data->shell.line);
+      if (inhib(data) != ERROR)
 	{
-	  if (sep_loop(data) == ERROR)
-	    return (ERROR);
-	  my_free_loop(data);
+	  if (parser_sep(data) != STOP)
+	    {
+	      if (sep_loop(data) == ERROR)
+		return (ERROR);
+	      my_free_loop(data);
+	    }
 	}
       disp_prompt(data);
     }

@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Tue May 17 10:55:22 2016 Thomas CHABOT
+** Last update Tue May 17 17:42:47 2016 Hervé TCHIKLADZE
 */
 
 #ifndef SH42_H_
@@ -22,6 +22,9 @@
 #include <signal.h>
 #include <string.h>
 #include <fcntl.h>
+#include <sys/ioctl.h>
+#include <termios.h>
+#include <term.h>
 #include "struct.h"
 
 /* **************** SHELL ****************** */
@@ -124,7 +127,7 @@ char		*epur_redir(char *, int);
 void		take_nb_pipe(t_data *);
 
 /*take_type_cond.c */
-void		take_type_cond(t_data *, int);
+void		take_type_cond(t_data *, int, int, int);
 
 /* **************** ERROR ****************** */
 
@@ -138,6 +141,9 @@ int		missing_name();
 int		error_unsetenv();
 int		error_setenv();
 
+/* error_quote.c */
+void            *error_quote(char);
+
 /* **************** DISP ****************** */
 
 /* prompt.c */
@@ -150,6 +156,30 @@ int		var_env(t_data *, int);
 int		replace_string(t_data *, int, int, char *);
 char		*take_var(t_data *, int, int);
 void            creat_new_string(t_data *, char *, int);
+
+/* inhib.c */
+int             inhib(t_data *);
+char            *modify_str(t_data *, char, int);
+int             check_special_char(char, char *);
+void            args_convert(t_data *);
+
+/* history.c */
+t_hist		*add_elem(t_hist *, char *);
+void		print_list(t_hist *);
+
+/* mode_canon.c */
+int		mode_canon(int);
+
+/* **************** FCT_CLAVIER ************** */
+
+/* fct_up.c */
+int		fct_up(t_data *);
+/* fct_down.c */
+int		fct_down(t_data *);
+/* fct_right.c */
+int		fct_right(t_data *);
+/* fct_left.c */
+int		fct_left(t_data *);
 
 /* **************** MYLIB ****************** */
 

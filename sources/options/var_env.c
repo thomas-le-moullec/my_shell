@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Mon May 16 16:50:31 2016 leo LE DIOURON
-** Last update Tue May 17 10:01:49 2016 leo LE DIOURON
+** Last update Tue May 17 16:00:13 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -47,7 +47,7 @@ void		creat_new_string(t_data *data, char *result, int j)
   new_string = my_mallok(new_string, sizeof(char) * \
                          (my_strlen(data->parser.tab_pipe[j]) + \
                           my_strlen(result) + 1));
-  while (data->parser.tab_pipe[j][i] != '\0' && data->parser.tab_pipe[j][i] != '$')
+  while (data->parser.tab_pipe[j][i] && data->parser.tab_pipe[j][i] != '$')
     new_string[l++] = data->parser.tab_pipe[j][i++];
   while (result[k] != '\0')
     new_string[l++] = result[k++];

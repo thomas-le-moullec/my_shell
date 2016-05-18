@@ -5,7 +5,7 @@
 ## Login   <chabot_t@epitech.net>
 ## 
 ## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
-## Last update Tue May 17 11:07:24 2016 steeve payraudeau
+## Last update Wed May 18 14:32:11 2016 steeve payraudeau
 ##
 
 NAME            =       42sh
@@ -27,6 +27,8 @@ BUILTINS	=	./sources/builtins/
 EXEC		=	./sources/exec/
 
 OPT		=	./sources/options/
+
+OPT_KEY		=	./sources/options/fct_clavier/
 
 SRCS            =       $(MAIN)main.c                   \
                         $(MY_SHELL)shell.c              \
@@ -56,7 +58,15 @@ SRCS            =       $(MAIN)main.c                   \
 			$(ERROR)missing_name.c          \
 			$(ERROR)ambiguous.c		\
 			$(ERROR)error_builtins.c	\
+			$(ERROR)error_quote.c		\
 			$(OPT)var_env.c			\
+			$(OPT)inhib.c			\
+			$(OPT)history.c			\
+			$(OPT)mode_canon.c		\
+			$(OPT_KEY)fct_up.c		\
+			$(OPT_KEY)fct_down.c		\
+			$(OPT_KEY)fct_right.c		\
+			$(OPT_KEY)fct_left.c		\
 			$(MYLIB)my_putchar.c            \
                         $(MYLIB)my_strlen.c             \
                         $(MYLIB)my_getnbr.c             \

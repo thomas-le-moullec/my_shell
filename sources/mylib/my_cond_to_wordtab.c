@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 14:51:13 2016 Thomas CHABOT
-** Last update Sat Apr 30 16:33:09 2016 leo LE DIOURON
+** Last update Tue May 17 17:47:26 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -55,26 +55,26 @@ char            **my_cond_to_wordtab(char *str, char *flags, int i)
 {
   int           j;
   int           k;
-  char          **tab;
+  char          **tabo;
 
   k = 0;
-  tab = NULL;
-  tab = my_mallok(tab, (count_words_cond(str) + 1) * sizeof(char *));
+  tabo = NULL;
+  tabo = my_mallok(tabo, (count_words_cond(str) + 1) * sizeof(char *));
   while (str[i] != '\0')
     {
       j = 0;
-      tab[k] = NULL;
-      tab[k] = my_mallok(tab[k], my_strlen(str) + 1);
+      tabo[k] = NULL;
+      tabo[k] = my_mallok(tabo[k], my_strlen(str) + 1);
       while (str[i] != '\0' \
 	     && check_cond(str[i], str[i + 1], flags) == SUCCESS)
 	i = i + 2;
       while (str[i] != '\0' \
 	     && check_cond(str[i], str[i + 1], flags) == ERROR)
-        tab[k][j++] = str[i++];
+        tabo[k][j++] = str[i++];
       if (str[i] != '\0' && check_cond(str[i], str[i + 1], flags) == ERROR)
 	i++;
-      tab[k++][j] = '\0';
+      tabo[k++][j] = '\0';
     }
-  tab[k] = NULL;
-  return (tab);
+  tabo[k] = NULL;
+  return (tabo);
 }
