@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Wed May 18 16:36:04 2016 Thomas CHABOT
+** Last update Wed May 18 17:29:12 2016 steeve payraudeau
 */
 
 #ifndef SH42_H_
@@ -103,7 +103,8 @@ char		**unsetenv_loop(t_data *, int);
 int		my_unsetenv(t_data *);
 
 /* alias.c */
-t_alias		*add_elem_alias(t_alias *alias, char *);
+t_alias		*add_elem_alias(t_alias *alias, char *, char *);
+int             init_list_alias(t_data *);
 
 /* **************** PARSER ****************** */
 
@@ -187,6 +188,8 @@ int		fct_left(t_data *);
 
 /* **************** MYLIB ****************** */
 
+int		count_size_line_file(int, int);
+
 void		my_putchar(char, int);
 
 void		my_putstr(char *, int);
@@ -213,8 +216,9 @@ char		*mallc_line(char *);
 
 char		*my_epur_str(char *);
 
-int		my_strcmp_equal(char *, char*);
-int		my_strcmp(char *, char*);
+int		my_strcmp_equal(char *, char *);
+int		my_strcmp(char *, char *);
+int		my_strncmp(char *, char *, int);
 
 void		my_free_cond(t_data *);
 void		*my_free_tab(char **);

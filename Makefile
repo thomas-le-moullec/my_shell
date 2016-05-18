@@ -5,7 +5,7 @@
 ## Login   <chabot_t@epitech.net>
 ## 
 ## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
-## Last update Wed May 18 14:32:11 2016 steeve payraudeau
+## Last update Wed May 18 17:26:51 2016 steeve payraudeau
 ##
 
 NAME            =       42sh
@@ -47,6 +47,7 @@ SRCS            =       $(MAIN)main.c                   \
 			$(BUILTINS)my_unsetenv.c	\
 			$(BUILTINS)fill_env.c		\
 			$(BUILTINS)my_setenv.c		\
+			$(BUILTINS)alias.c		\
 			$(BUILTINS)my_cd.c		\
 			$(EXEC)exec.c                   \
 			$(EXEC)in_and_out.c             \
@@ -82,6 +83,7 @@ SRCS            =       $(MAIN)main.c                   \
 			$(MYLIB)my_str_to_wordtab.c     \
 			$(MYLIB)my_cond_to_wordtab.c    \
 			$(MYLIB)my_strcat.c             \
+			$(MYLIB)count_size_line_file.c	\
 			$(MYLIB)my_strcpy.c             \
 
 OBJS            =       $(SRCS:.c=.o)

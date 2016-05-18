@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Wed May 18 16:23:05 2016 Thomas CHABOT
+** Last update Wed May 18 18:03:57 2016 steeve payraudeau
 */
 
 #ifndef STRUCT_H_
@@ -69,8 +69,8 @@ typedef struct		s_hist
 
 typedef struct		s_alias
 {
+  char			*name;
   char			*cmd;
-  char			*args;
   struct s_alias	*prev;
   struct s_alias	*next;
 }			t_alias;
@@ -87,6 +87,7 @@ struct		       	s_data
   t_hist		*list;
   t_shell		shell;
   t_parser		parser;
+  t_alias		*alias;
 };
 
 typedef struct		s_buil

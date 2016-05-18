@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:24:58 2016 Thomas CHABOT
-** Last update Wed Apr 27 20:17:39 2016 Thomas CHABOT
+** Last update Wed May 18 17:22:55 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -20,6 +20,20 @@ int		my_strcmp(char *src, char *dest)
   while (src[i] != '\0' && dest[i] != '\0')
     {
       if (src[i] != dest[i])
+	return (ERROR);
+      i++;
+    }
+  return (SUCCESS);
+}
+
+int		my_strncmp(char *one, char *two, int n)
+{
+  int           i;
+
+  i = 0;
+  while (i < n && one[i] != '\0' && two[i] != '\0')
+    {
+      if (one[i] != two[i])
 	return (ERROR);
       i++;
     }
