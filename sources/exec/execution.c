@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Mon May 16 10:57:57 2016 leo LE DIOURON
+** Last update Wed May 18 15:20:01 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -33,8 +33,10 @@ int		exec_without_path(t_data *data)
 {
   pid_t		cpid;
 
-  if (access(data->parser.tab_args[0], X_OK) == ERROR || \
-      ((data->parser.tab_args[0][0] != '.' &&		 \
+  if (access(data->parser.tab_args[0], X_OK) == ERROR ||
+      check_str_access(data->parser.tab_args[0]) == ERROR ||
+    (my_strlen(data->parser.tab_args[0]) <= 2) ||	\
+      ((data->parser.tab_args[0][0] != '.' && \
        data->parser.tab_args[0][1] != '/') &&
        data->parser.tab_args[0][0] != '/'))
     {
@@ -51,7 +53,7 @@ int		exec_without_path(t_data *data)
 	return (ERROR);
       if (execve(data->parser.tab_args[0], \
 		 data->parser.tab_args, data->shell.env) == ERROR)
-	return (ERROR);
+	exit(ERROR);
     }
   else
     father(cpid, data);
@@ -72,7 +74,7 @@ int		exec_with_path(t_data *data, int i)
       if (in_and_out(data) == ERROR)
 	return (ERROR);
       if (execve(tmp, data->parser.tab_args, data->shell.env) == -1)
-	return (ERROR);
+	exit(ERROR);
     }
   else
     father(cpid, data);
@@ -86,7 +88,7 @@ int		access_path(t_data *data)
   char		*tmp;
 
   i = 0;
-  if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) > 2 && \
+  if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) < 2 || \
       ((data->parser.tab_args[0][0] == '.' && \
 	data->parser.tab_args[0][1] == '/') || \
        data->parser.tab_args[0][0] == '/')))

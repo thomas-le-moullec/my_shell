@@ -4,8 +4,8 @@
 ** Made by Thomas CHABOT
 ** Login   <chabot_t@epitech.net>
 **
-xs** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Tue May 17 17:50:07 2016 Hervé TCHIKLADZE
+** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
+** Last update Wed May 18 16:33:25 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -89,7 +89,7 @@ int		my_shell(t_data *data)
   data->list = NULL;
   while ((data->shell.line = get_next_line()) != NULL)
     {
-      data->list = add_elem(data->list, data->shell.line);
+      data->list = add_elem_key(data->list, data->shell.line);
       if (inhib(data) != ERROR)
 	{
 	  if (parser_sep(data) != STOP)
