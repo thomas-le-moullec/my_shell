@@ -1,111 +1,142 @@
+
 ##
-## Makefile for Makefile in /home/chabot_t/rendu/PSU/PSU_2015_42sh
+## Makefile for Makefile in /home/le-mou_t/rendu/marvin_le-mou_t
 ## 
-## Made by Thomas CHABOT
-## Login   <chabot_t@epitech.net>
+## Made by Thomas LE MOULLEC
+## Login   <le-mou_t@epitech.net>
 ## 
-## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
-## Last update Wed May 18 17:26:51 2016 steeve payraudeau
+## Started on  Fri May 13 21:49:50 2016 Thomas LE MOULLEC
+## Last update Fri May 20 10:57:58 2016 Thomas LE MOULLEC
 ##
 
-NAME            =       42sh
+DEBUG	=		no
 
-MAIN            =       ./sources/main/
+DETAILS	=		no
 
-MY_SHELL        =       ./sources/shell/
+CC	=		gcc
 
-MYLIB           =       ./sources/mylib/
+NAME	=		42sh
 
-ERROR		=	./sources/error/
+CFLAGS	+=		-Wall -W -Werror -Wextra -lncurses
+CFLAGS	+=		-I include/
 
-PARSER		=	./sources/parser/
+ifeq ($(DEBUG),yes)
+	CFLAGS	+= -g
+endif
 
-DISP		=	./sources/disp/
+MAIN		=		src/main/main.c					\
 
-BUILTINS	=	./sources/builtins/
+MY_SHELL	=		src/shell/shell.c				\
+				src/shell/get_env.c				\
+				src/shell/init.c				\
 
-EXEC		=	./sources/exec/
+PARSER		=		src/parser/parser.c				\
+				src/parser/take_redir.c				\
+				src/parser/check_redir.c			\
+				src/parser/parser_redir.c			\
+				src/parser/epur_redir.c				\
+				src/parser/take_nb_pipe.c			\
+				src/parser/take_type_cond.c			\
 
-OPT		=	./sources/options/
+DISP		=		src/disp/prompt.c				\
 
-OPT_KEY		=	./sources/options/fct_clavier/
 
-SRCS            =       $(MAIN)main.c                   \
-                        $(MY_SHELL)shell.c              \
-                        $(MY_SHELL)get_env.c            \
-                        $(MY_SHELL)init.c               \
-			$(PARSER)parser.c		\
-			$(PARSER)take_redir.c		\
-			$(PARSER)parser_redir.c		\
-			$(PARSER)check_redir.c		\
-			$(PARSER)epur_redir.c		\
-			$(PARSER)take_nb_pipe.c		\
-			$(PARSER)take_type_cond.c	\
-			$(DISP)prompt.c			\
-			$(BUILTINS)my_exit.c		\
-			$(BUILTINS)my_env.c		\
-			$(BUILTINS)my_unsetenv.c	\
-			$(BUILTINS)fill_env.c		\
-			$(BUILTINS)my_setenv.c		\
-			$(BUILTINS)alias.c		\
-			$(BUILTINS)my_cd.c		\
-			$(EXEC)exec.c                   \
-			$(EXEC)in_and_out.c             \
-			$(EXEC)execution.c              \
-			$(EXEC)my_builtins.c            \
-			$(EXEC)redirection_outfile.c    \
-			$(EXEC)redirection_infile.c     \
-			$(EXEC)make_pipe.c              \
-			$(ERROR)missing_name.c          \
-			$(ERROR)ambiguous.c		\
-			$(ERROR)error_builtins.c	\
-			$(ERROR)error_quote.c		\
-			$(OPT)var_env.c			\
-			$(OPT)inhib.c			\
-			$(OPT)history.c			\
-			$(OPT)mode_canon.c		\
-			$(OPT_KEY)fct_up.c		\
-			$(OPT_KEY)fct_down.c		\
-			$(OPT_KEY)fct_right.c		\
-			$(OPT_KEY)fct_left.c		\
-			$(MYLIB)my_putchar.c            \
-                        $(MYLIB)my_strlen.c             \
-                        $(MYLIB)my_getnbr.c             \
-			$(MYLIB)my_put_nbr.c            \
-			$(MYLIB)my_putstr.c             \
-			$(MYLIB)count_tab.c             \
-			$(MYLIB)my_show_tab.c           \
-			$(MYLIB)get_next_line.c         \
-			$(MYLIB)my_strcmp.c             \
-			$(MYLIB)my_free.c               \
-			$(MYLIB)my_mallok.c             \
-			$(MYLIB)my_epur_str.c           \
-			$(MYLIB)my_str_to_wordtab.c     \
-			$(MYLIB)my_cond_to_wordtab.c    \
-			$(MYLIB)my_strcat.c             \
-			$(MYLIB)count_size_line_file.c	\
-			$(MYLIB)my_strcpy.c             \
+BUILTINS	=		src/builtins/my_exit.c					\
+				src/builtins/my_env.c					\
+				src/builtins/my_unsetenv.c					\
+				src/builtins/fill_env.c					\
+				src/builtins/my_setenv.c					\
+				src/builtins/alias.c					\
+				src/builtins/my_cd.c					\
 
-OBJS            =       $(SRCS:.c=.o)
+EXEC		=		src/exec/exec.c					\
+				src/exec/in_and_out.c				\
+				src/exec/execution.c				\
+				src/exec/my_builtins.c				\
+				src/exec/redirection_outfile.c			\
+				src/exec/redirection_infile.c			\
+				src/exec/make_pipe.c				\
 
-INC             =       includes/
+ERROR		=		src/error/missing_name.c			\
+				src/error/ambiguous.c				\
+				src/error/error_builtins.c			\
+				src/error/error_quote.c				\
 
-CC              =       gcc -g
+OPT		=		src/options/var_env.c				\
+				src/options/inhib.c				\
+				src/options/history.c				\
+				src/options/mode_canon.c			\
 
-RM              =       rm -rf
+OPT_KEY		=		src/options/fct_clavier/fct_up.c		\
+				src/options/fct_clavier/fct_down.c		\
+				src/options/fct_clavier/fct_right.c		\
+				src/options/fct_clavier/fct_left.c		\
 
-CFLAGS          =       -I $(INC) -W -Wall -Werror -Wextra -lncurses
+MY_LIB		=		src/mylib/my_putstr.c				\
+				src/mylib/my_putchar.c				\
+				src/mylib/my_strlen.c				\
+				src/mylib/my_getnbr.c				\
+				src/mylib/my_put_nbr.c				\
+				src/mylib/count_tab.c				\
+				src/mylib/my_show_tab.c				\
+				src/mylib/get_next_line.c			\
+				src/mylib/my_strcmp.c				\
+				src/mylib/my_free.c				\
+				src/mylib/my_mallok.c				\
+				src/mylib/my_epur_str.c				\
+				src/mylib/my_str_to_wordtab.c			\
+				src/mylib/my_cond_to_wordtab.c			\
+				src/mylib/my_strcat.c				\
+				src/mylib/count_size_line_file.c		\
+				src/mylib/my_strcpy.c				\
 
-all             :       $(NAME)
 
-$(NAME)         :       $(OBJS)
-			$(CC) -o $(NAME) $(OBJS) $(CFLAGS)
+SRC	=		$(MAIN)						\
+			$(MY_SHELL)					\
+			$(PARSER)					\
+			$(DISP)						\
+			$(BUILTINS)					\
+			$(EXEC)						\
+			$(ERROR)					\
+			$(OPT)						\
+			$(OPT_KEY)					\
+			$(MY_LIB)					\
 
-clean           :
-			$(RM) $(OBJS)
+OBJ	=		$(SRC:src/%.c=$(OBJDIR)/%.o)
 
-fclean          :       clean
-			$(RM) $(NAME)
+OBJDIR	=		obj
 
-re              :       fclean all
+all:		$(NAME)
 
+$(NAME):	$(OBJ)
+ifeq ($(DETAILS),yes)
+	$(CC) $(OBJ) -o $(NAME) $(CFLAGS)
+else
+	@echo "Compiling executable..."
+	@$(CC) $(OBJ) -o $(NAME) $(CFLAGS)
+endif
+ifeq ($(DEBUG),yes)
+	@echo "$(NAME) compiled in debug mode."
+endif
+
+$(OBJDIR)/%.o:	src/%.c
+	@mkdir -p $(dir $@)
+ifeq ($(DETAILS),yes)
+	$(CC) $(CFLAGS) -c $< -o $@
+else
+	@echo -e "Compile:\t$<"
+	@$(CC) $(CFLAGS) -c $< -o $@
+endif
+
+clean:
+	@echo "Cleaning object files ..."
+	@$(RM) $(OBJS)
+	@$(RM) -r $(OBJDIR)
+	@echo "Object files cleaned."
+
+fclean:	clean
+	@echo "Cleaning files ..."
+	@$(RM) $(NAME)
+	@echo "Files cleaned."
+
+re:	fclean all
