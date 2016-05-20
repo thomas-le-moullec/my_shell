@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Wed May 18 18:03:57 2016 steeve payraudeau
+** Last update Fri May 20 14:25:07 2016 leo LE DIOURON
 */
 
 #ifndef STRUCT_H_
@@ -44,6 +44,7 @@ typedef struct		s_parser
 
 typedef struct		s_shell
 {
+  int			bin;
   char			*line;
   char			**env;
   char			*pwd;

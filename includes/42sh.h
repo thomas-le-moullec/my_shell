@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Wed May 18 17:29:12 2016 steeve payraudeau
+** Last update Fri May 20 11:12:42 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -75,6 +75,9 @@ int		in_and_out(t_data *);
 
 /* make_pipe.c */
 int		make_pipe(t_data *);
+
+/*check_all_access.c*/
+char		*take_path_exec(char *);
 
 /* **************** BUILTINS ****************** */
 

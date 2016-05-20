@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SHELL="./42sh"
+MYSHELL="./42sh"
 REFER="/bin/tcsh -f"
 
 CAT=`which cat`
@@ -15,6 +15,8 @@ CHMOD=`which chmod`
 EXPR=`which expr`
 MKDIR=`which mkdir`
 CP=`which cp`
+
+STDERR_DEBUG=1
 
 disp_test()
 {
@@ -43,14 +45,14 @@ load_test()
   echo "$TESTS" | $TR "²" "\n" >> /tmp/.test.$$
   $CHMOD 755 /tmp/.test.$$
   /bin/bash -c "/tmp/.test.$$ | $REFER ; echo exit "'$?' > /tmp/.output.refer.$$ 2>&1
-  /bin/bash -c "/tmp/.test.$$ | $SHELL ; echo exit "'$?' > /tmp/.output.shell.$$ 2>&1
+  /bin/bash -c "/tmp/.test.$$ | $MYSHELL ; echo exit "'$?' > /tmp/.output.shell.$$ 2>&1
   nb=`$CAT /tmp/.output.refer.$$ | $WC -l`
   i=1
   ok=1
   while [ $i -le $nb ]
   do
     l=`$CAT /tmp/.output.refer.$$ | $HEAD -$i | $TAIL -1`
-    a=`$CAT /tmp/.output.shell.$$ | $GREP -- "$l" | $WC -l`
+    a=`$CAT /tmp/.output.shell.$$ | $GREP -- "$l$" | $WC -l`
     if [ $a -eq 0 ]
     then
       ok=0
@@ -65,9 +67,9 @@ load_test()
       echo "Test $id ($NAME) : OK"
       if [ $debug -eq 2 ]
       then
-        echo "Output $SHELL :"
+        echo "Output $MYSHELL :"
         $CAT -e /tmp/.output.shell.$$
-        echo ""
+        echo "" >&2
         echo "Output $REFER :"
         $CAT -e /tmp/.output.refer.$$
         echo ""
@@ -78,12 +80,25 @@ load_test()
   else
     if [ $debug -ge 1 ]
     then
-      echo "Test $id ($NAME) : KO - Check output in /tmp/test.$$/$id/"
+      echo "Test $id ($NAME) : KO - Check output in /tmp/test.$$/$id/" 
       $MKDIR -p /tmp/test.$$/$id 2>/dev/null
       $CP /tmp/.output.refer.$$ /tmp/test.$$/$id/tcsh.out
       $CP /tmp/.output.shell.$$ /tmp/test.$$/$id/mysh.out
     else
-      echo "KO"
+      if [ $STDERR_DEBUG -eq 1 ]
+      then
+        echo "Test $id ($NAME) : KO" >&2
+        echo "---------- TCSH Output : ----------" >&2
+        $CAT "/tmp/.output.refer.$$" >&2
+        echo "---------- END ----------" >&2
+        echo "---------- 42SH Output : ----------" >&2
+        $CAT /tmp/.output.shell.$$ >&2
+        echo "---------- END ----------" >&2
+        echo "" >&2
+        echo "KO"
+      else
+        echo "KO"
+      fi
     fi
   fi
   $RM -f /tmp/.test.$$
@@ -132,21 +147,21 @@ done
 
 if [ ! -f tests ]
 then
-  echo "No tests file. Please read README.ME"
+  echo "No tests file. Please read README.ME" >&2
   exit 1
 fi
 
-if [ ! -x $SHELL ]
+if [ ! -x $MYSHELL ]
 then
-  echo "Can't exec $SHELL"
+  echo "Can't exec $MYSHELL" >&2
   exit 1
 fi
 
 if [ $# -eq 2 ]
 then
-  echo "Debug mode"
-  echo "Shell : $SHELL"
-  echo "Reference : $REFER"
+  echo "Debug mode" >&2
+  echo "Shell : $MYSHELL" >&2
+  echo "Reference : $REFER" >&2
   echo ""
 fi
 

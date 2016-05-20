@@ -5,36 +5,30 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri May  6 10:35:51 2016 leo LE DIOURON
-** Last update Fri May  6 10:46:24 2016 leo LE DIOURON
+** Last update Fri May 20 11:12:28 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
 
-int		exist_exec(char *str, t_data *data)
+char            *take_path_exec(char *str)
 {
-  return (SUCCESS);
-}
+  int           i;
+  int           a;
+  char          *res;
 
-int		check_all_access(t_data *data)
-{
-  int		j;
-  int		ok;
-  char		*tmp;
-
-  ok = SUCCESS;
-  while (data->shell.tab_pipe[j] != NULL)
+  res = NULL;
+  res = my_mallok(res, sizeof(char) * (my_strlen(str) + 1));
+  i = 0;
+  a = 0;
+  while (str[i] != '\0')
+    i++;
+  while (i > 0 && str[i] != '/')
+    i--;
+  while (a < i)
     {
-      tmp = take_first(data->shell.tab_pipe[j]);
-      if (exist_exec(tmp) == ERROR)
-	{
-	  data->shell.status = ERROR;
-	  my_putstr(data->parser.tab_args[0], 1);
-	  my_putstr(": Command not found.\n", 1);
-	  ok = ERROR;
-	}
-      j++;
+      res[a] = str[a];
+      a++;
     }
-  if (ok == ERROR)
-    return (ERROR);
-  return (SUCCESS);
+  res[a] = '\0';
+  return (res);
 }

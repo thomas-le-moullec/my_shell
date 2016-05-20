@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May 18 16:23:34 2016 Thomas CHABOT
-** Last update Wed May 18 18:14:53 2016 steeve payraudeau
+** Last update Fri May 20 10:16:28 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -72,8 +72,6 @@ int		pars_alias(char *str, t_data *data, char *cmd, char *name)
     cmd[i++] = str[j++];
   cmd[i] = '\0';
   data->alias = add_elem_alias(data->alias, cmd, name);
-  printf("name = %s\n", data->alias->name);
-  printf("et cmd = %s\n", data->alias->cmd);
   return (SUCCESS);
 }
 

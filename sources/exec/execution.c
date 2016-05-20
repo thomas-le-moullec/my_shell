@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Wed May 18 15:20:01 2016 Thomas CHABOT
+** Last update Fri May 20 14:26:12 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -33,12 +33,9 @@ int		exec_without_path(t_data *data)
 {
   pid_t		cpid;
 
-  if (access(data->parser.tab_args[0], X_OK) == ERROR ||
-      check_str_access(data->parser.tab_args[0]) == ERROR ||
-    (my_strlen(data->parser.tab_args[0]) <= 2) ||	\
-      ((data->parser.tab_args[0][0] != '.' && \
-       data->parser.tab_args[0][1] != '/') &&
-       data->parser.tab_args[0][0] != '/'))
+  if ((access(take_path_exec(data->parser.tab_args[0]), F_OK | R_OK) == ERROR) ||
+      access(data->parser.tab_args[0], X_OK) == ERROR ||
+      check_str_access(data->parser.tab_args[0]) == ERROR)
     {
       data->shell.status = ERROR;
       my_putstr(data->parser.tab_args[0], 1);
@@ -66,7 +63,10 @@ int		exec_with_path(t_data *data, int i)
   char		*tmp;
 
   tmp = NULL;
-  tmp = my_strcat(data->shell.path[i], data->parser.tab_args[0], '/');
+  if (i == -2)
+    tmp = my_strcat("/bin", data->parser.tab_args[0], '/');
+  else
+    tmp = my_strcat(data->shell.path[i], data->parser.tab_args[0], '/');
   if ((cpid = fork()) == -1)
     return (ERROR);
   if (cpid == 0)
@@ -97,14 +97,21 @@ int		access_path(t_data *data)
     {
       tmp = NULL;
       tmp = my_strcat(data->shell.path[i], data->parser.tab_args[0], '/');
-      if (access(tmp, X_OK) == 0)
+      if (access(tmp, X_OK | F_OK | R_OK) == 0)
 	{
 	  my_free(tmp);
 	  return (i);
 	}
-      my_free(tmp);
+      tmp = my_free(tmp);
       i++;
     }
+  /*  tmp = NULL;
+  tmp = my_strcat("/bin", data->parser.tab_args[0], '/');
+  if (data->shell.bin == 1 && access(tmp, X_OK | F_OK | R_OK) == 0)
+    {
+      tmp = my_free(tmp);
+      return (-2);
+      }*/
   return (ERROR);
 }
 

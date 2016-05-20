@@ -5,7 +5,7 @@
 ## Login   <chabot_t@epitech.net>
 ## 
 ## Started on  Tue Apr 26 13:18:48 2016 Thomas CHABOT
-## Last update Wed May 18 17:26:51 2016 steeve payraudeau
+## Last update Fri May 20 11:13:24 2016 leo LE DIOURON
 ##
 
 NAME            =       42sh
@@ -56,6 +56,7 @@ SRCS            =       $(MAIN)main.c                   \
 			$(EXEC)redirection_outfile.c    \
 			$(EXEC)redirection_infile.c     \
 			$(EXEC)make_pipe.c              \
+			$(EXEC)check_all_access.c	\
 			$(ERROR)missing_name.c          \
 			$(ERROR)ambiguous.c		\
 			$(ERROR)error_builtins.c	\

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 09:08:44 2016 Thomas CHABOT
-** Last update Sun May  1 16:12:31 2016 leo LE DIOURON
+** Last update Fri May 20 10:09:49 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -25,5 +25,5 @@ int		main(int ac, char **av, char **ae)
   my_free_tab(data.shell.env);
   my_free(data.shell.pwd);
   my_free(data.shell.oldpwd);
-  return (SUCCESS);
+  return (data.shell.exit_status);
 }
