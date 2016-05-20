@@ -1,24 +1,21 @@
-
 ##
-## Makefile for Makefile in /home/le-mou_t/rendu/marvin_le-mou_t
+## Makefile for Makefile in /home/tchikl_h/rendu/B2/PSU/PSU_2015_42sh
 ## 
-## Made by Thomas LE MOULLEC
-## Login   <le-mou_t@epitech.net>
+## Made by Hervé TCHIKLADZE
+## Login   <tchikl_h@epitech.net>
 ## 
-## Started on  Fri May 13 21:49:50 2016 Thomas LE MOULLEC
-## Last update Fri May 20 13:36:51 2016 Hervé TCHIKLADZE
+## Started on  Fri May 20 14:09:28 2016 Hervé TCHIKLADZE
+## Last update Fri May 20 14:09:32 2016 Hervé TCHIKLADZE
 ##
 
-DEBUG	=		no
+DETAILS		=		no
 
-DETAILS	=		no
+CC		=		gcc
 
-CC	=		gcc
+NAME		=		42sh
 
-NAME	=		42sh
-
-CFLAGS	+=		-Wall -W -Werror -Wextra -lncurses
-CFLAGS	+=		-I include/
+CFLAGS		+=		-Wall -W -Werror -Wextra -lncurses
+CFLAGS		+=		-I include/
 
 ifeq ($(DEBUG),yes)
 	CFLAGS	+= -g
@@ -92,20 +89,20 @@ MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/my_strcpy.c				\
 
 
-SRC	=		$(MAIN)						\
-			$(MY_SHELL)					\
-			$(PARSER)					\
-			$(DISP)						\
-			$(BUILTINS)					\
-			$(EXEC)						\
-			$(ERROR)					\
-			$(OPT)						\
-			$(OPT_KEY)					\
-			$(MY_LIB)					\
+SRC	=			$(MAIN)						\
+				$(MY_SHELL)					\
+				$(PARSER)					\
+				$(DISP)						\
+				$(BUILTINS)					\
+				$(EXEC)						\
+				$(ERROR)					\
+				$(OPT)						\
+				$(OPT_KEY)					\
+				$(MY_LIB)					\
 
-OBJ	=		$(SRC:src/%.c=$(OBJDIR)/%.o)
+OBJ	=			$(SRC:src/%.c=$(OBJDIR)/%.o)
 
-OBJDIR	=		obj
+OBJDIR	=			obj
 
 all:		$(NAME)
 
@@ -117,7 +114,7 @@ else
 	@$(CC) $(OBJ) -o $(NAME) $(CFLAGS)
 endif
 ifeq ($(DEBUG),yes)
-	@echo "$(NAME) compiled in debug mode."
+	@echo "$(NAME) compiled in debug mode dear $(USER)."
 endif
 
 $(OBJDIR)/%.o:	src/%.c
