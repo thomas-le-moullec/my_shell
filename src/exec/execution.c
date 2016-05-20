@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Fri May 20 14:26:12 2016 leo LE DIOURON
+** Last update Fri May 20 14:59:21 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -32,16 +32,16 @@ int		father(pid_t cpid, t_data *data)
 int		exec_without_path(t_data *data)
 {
   pid_t		cpid;
+  struct stat	s;
 
+  stat(data->parser.tab_args[0], &s);
   if ((access(take_path_exec(data->parser.tab_args[0]), F_OK | R_OK) == ERROR) ||
-      access(data->parser.tab_args[0], X_OK) == ERROR ||
-      check_str_access(data->parser.tab_args[0]) == ERROR)
-    {
-      data->shell.status = ERROR;
-      my_putstr(data->parser.tab_args[0], 1);
-      my_putstr(": Command not found.\n", 1);
-      return (ERROR);
-    }
+      (((access(data->parser.tab_args[0], X_OK) == ERROR)) ||		\
+       /*(S_ISREG(s.st_mode) != 0)) ||*/				\
+       (check_str_access(data->parser.tab_args[0]) == ERROR)))
+      return (error_not_found(data));
+  if (access(data->parser.tab_args[0], F_OK) == ERROR)
+    return (error_dir(data));
   if ((cpid = fork()) == -1)
     return (ERROR);
   if (cpid == 0)
@@ -105,13 +105,13 @@ int		access_path(t_data *data)
       tmp = my_free(tmp);
       i++;
     }
-  /*  tmp = NULL;
+  tmp = NULL;
   tmp = my_strcat("/bin", data->parser.tab_args[0], '/');
   if (data->shell.bin == 1 && access(tmp, X_OK | F_OK | R_OK) == 0)
     {
       tmp = my_free(tmp);
       return (-2);
-      }*/
+    }
   return (ERROR);
 }
 

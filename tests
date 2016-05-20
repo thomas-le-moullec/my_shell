@@ -1,4 +1,5 @@
 [01]
+
 NAME="Path 1"
 sETUP="PATH='/usr/bin:/bin' ; touch file$$"
 CLEAN="rm -f file$$"
