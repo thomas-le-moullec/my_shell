@@ -6,7 +6,7 @@
 ## Login   <le-mou_t@epitech.net>
 ## 
 ## Started on  Fri May 13 21:49:50 2016 Thomas LE MOULLEC
-## Last update Fri May 20 10:57:58 2016 Thomas LE MOULLEC
+## Last update Fri May 20 13:36:51 2016 Hervé TCHIKLADZE
 ##
 
 DEBUG	=		no
@@ -41,13 +41,13 @@ PARSER		=		src/parser/parser.c				\
 DISP		=		src/disp/prompt.c				\
 
 
-BUILTINS	=		src/builtins/my_exit.c					\
-				src/builtins/my_env.c					\
-				src/builtins/my_unsetenv.c					\
-				src/builtins/fill_env.c					\
-				src/builtins/my_setenv.c					\
-				src/builtins/alias.c					\
-				src/builtins/my_cd.c					\
+BUILTINS	=		src/builtins/my_exit.c				\
+				src/builtins/my_env.c				\
+				src/builtins/my_unsetenv.c			\
+				src/builtins/fill_env.c				\
+				src/builtins/my_setenv.c			\
+				src/builtins/alias.c				\
+				src/builtins/my_cd.c				\
 
 EXEC		=		src/exec/exec.c					\
 				src/exec/in_and_out.c				\
@@ -61,6 +61,7 @@ ERROR		=		src/error/missing_name.c			\
 				src/error/ambiguous.c				\
 				src/error/error_builtins.c			\
 				src/error/error_quote.c				\
+				src/error/error_dir.c				\
 
 OPT		=		src/options/var_env.c				\
 				src/options/inhib.c				\

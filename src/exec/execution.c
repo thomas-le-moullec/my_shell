@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Wed May 18 15:20:01 2016 Thomas CHABOT
+** Last update Fri May 20 14:03:10 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -32,19 +32,20 @@ int		father(pid_t cpid, t_data *data)
 int		exec_without_path(t_data *data)
 {
   pid_t		cpid;
+  struct stat	s;
 
-  if (access(data->parser.tab_args[0], X_OK) == ERROR ||
+  if (access(data->parser.tab_args[0], X_OK) == SUCCESS)
+    return (error_perm(data));
+  stat(data->parser.tab_args[0], &s);
+  if ((access(data->parser.tab_args[0], W_OK) == ERROR && S_ISREG(s.st_mode) != 0) ||
       check_str_access(data->parser.tab_args[0]) == ERROR ||
     (my_strlen(data->parser.tab_args[0]) <= 2) ||	\
       ((data->parser.tab_args[0][0] != '.' && \
        data->parser.tab_args[0][1] != '/') &&
        data->parser.tab_args[0][0] != '/'))
-    {
-      data->shell.status = ERROR;
-      my_putstr(data->parser.tab_args[0], 1);
-      my_putstr(": Command not found.\n", 1);
-      return (ERROR);
-    }
+    return (error_not_found(data));
+  if (access(data->parser.tab_args[0], F_OK) == ERROR)
+    return (error_dir(data));
   if ((cpid = fork()) == -1)
     return (ERROR);
   if (cpid == 0)

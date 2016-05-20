@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Wed May 18 17:29:12 2016 steeve payraudeau
+** Last update Fri May 20 13:37:31 2016 Hervé TCHIKLADZE
 */
 
 #ifndef SH42_H_
@@ -148,6 +148,11 @@ int		error_setenv();
 
 /* error_quote.c */
 void            *error_quote(char);
+
+/* error_dir.c */
+int             error_not_found(t_data *);
+int             error_dir(t_data *);
+int             error_perm(t_data *);
 
 /* **************** DISP ****************** */
 
