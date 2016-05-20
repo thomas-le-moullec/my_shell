@@ -6,19 +6,17 @@
 ## Login   <le-mou_t@epitech.net>
 ## 
 ## Started on  Fri May 13 21:49:50 2016 Thomas LE MOULLEC
-## Last update Fri May 20 10:57:58 2016 Thomas LE MOULLEC
+## Last update Fri May 20 11:11:54 2016 Thomas LE MOULLEC
 ##
 
-DEBUG	=		no
+DETAILS		=		no
 
-DETAILS	=		no
+CC		=		gcc
 
-CC	=		gcc
+NAME		=		42sh
 
-NAME	=		42sh
-
-CFLAGS	+=		-Wall -W -Werror -Wextra -lncurses
-CFLAGS	+=		-I include/
+CFLAGS		+=		-Wall -W -Werror -Wextra -lncurses
+CFLAGS		+=		-I include/
 
 ifeq ($(DEBUG),yes)
 	CFLAGS	+= -g
@@ -41,13 +39,13 @@ PARSER		=		src/parser/parser.c				\
 DISP		=		src/disp/prompt.c				\
 
 
-BUILTINS	=		src/builtins/my_exit.c					\
-				src/builtins/my_env.c					\
-				src/builtins/my_unsetenv.c					\
-				src/builtins/fill_env.c					\
-				src/builtins/my_setenv.c					\
-				src/builtins/alias.c					\
-				src/builtins/my_cd.c					\
+BUILTINS	=		src/builtins/my_exit.c				\
+				src/builtins/my_env.c				\
+				src/builtins/my_unsetenv.c			\
+				src/builtins/fill_env.c				\
+				src/builtins/my_setenv.c			\
+				src/builtins/alias.c				\
+				src/builtins/my_cd.c				\
 
 EXEC		=		src/exec/exec.c					\
 				src/exec/in_and_out.c				\
@@ -91,20 +89,20 @@ MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/my_strcpy.c				\
 
 
-SRC	=		$(MAIN)						\
-			$(MY_SHELL)					\
-			$(PARSER)					\
-			$(DISP)						\
-			$(BUILTINS)					\
-			$(EXEC)						\
-			$(ERROR)					\
-			$(OPT)						\
-			$(OPT_KEY)					\
-			$(MY_LIB)					\
+SRC	=			$(MAIN)						\
+				$(MY_SHELL)					\
+				$(PARSER)					\
+				$(DISP)						\
+				$(BUILTINS)					\
+				$(EXEC)						\
+				$(ERROR)					\
+				$(OPT)						\
+				$(OPT_KEY)					\
+				$(MY_LIB)					\
 
-OBJ	=		$(SRC:src/%.c=$(OBJDIR)/%.o)
+OBJ	=			$(SRC:src/%.c=$(OBJDIR)/%.o)
 
-OBJDIR	=		obj
+OBJDIR	=			obj
 
 all:		$(NAME)
 
@@ -116,7 +114,7 @@ else
 	@$(CC) $(OBJ) -o $(NAME) $(CFLAGS)
 endif
 ifeq ($(DEBUG),yes)
-	@echo "$(NAME) compiled in debug mode."
+	@echo "$(NAME) compiled in debug mode dear $(USER)."
 endif
 
 $(OBJDIR)/%.o:	src/%.c
