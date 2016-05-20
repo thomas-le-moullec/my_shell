@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Fri May 20 14:31:14 2016 leo LE DIOURON
+** Last update Fri May 20 15:18:18 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -25,6 +25,7 @@
 #include <sys/ioctl.h>
 #include <termios.h>
 #include <term.h>
+#include <errno.h>
 #include "struct.h"
 
 /* **************** SHELL ****************** */
