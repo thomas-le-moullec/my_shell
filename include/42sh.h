@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Fri May 20 15:18:18 2016 leo LE DIOURON
+** Last update Mon May 23 17:56:47 2016 Hervé TCHIKLADZE
 */
 
 #ifndef SH42_H_
@@ -109,6 +109,13 @@ int		my_unsetenv(t_data *);
 /* alias.c */
 t_alias		*add_elem_alias(t_alias *alias, char *, char *);
 int             init_list_alias(t_data *);
+void            show_alias(t_data *);
+
+/* change_alias.c */
+int             check_alias_in(t_data *, int, int *);
+void            modify_string_alias(t_data *, int, int, int);
+int             find_valid_alias(t_data *, int, int *);
+void            change_alias(t_data *, int);
 
 /* **************** PARSER ****************** */
 
@@ -245,5 +252,7 @@ char		**my_cond_to_wordtab(char *, char *, int);
 int             count_words_cond(char *);
 
 char		*my_strcat(char *, char *, char);
+
+char		*cut_extrem(char *);
 
 #endif /* SH42_H_ */

@@ -5,7 +5,7 @@
 ## Login   <tchikl_h@epitech.net>
 ## 
 ## Started on  Fri May 20 14:09:28 2016 Hervé TCHIKLADZE
-## Last update Fri May 20 14:35:10 2016 leo LE DIOURON
+## Last update Mon May 23 17:55:31 2016 Hervé TCHIKLADZE
 ##
 
 DETAILS		=		no
@@ -43,8 +43,10 @@ BUILTINS	=		src/builtins/my_exit.c				\
 				src/builtins/my_unsetenv.c			\
 				src/builtins/fill_env.c				\
 				src/builtins/my_setenv.c			\
-				src/builtins/alias.c				\
 				src/builtins/my_cd.c				\
+				src/builtins/alias.c				\
+				src/builtins/change_alias.c			\
+
 
 EXEC		=		src/exec/exec.c					\
 				src/exec/in_and_out.c				\
@@ -88,6 +90,8 @@ MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/my_strcat.c				\
 				src/mylib/count_size_line_file.c		\
 				src/mylib/my_strcpy.c				\
+				src/mylib/show_alias.c				\
+				src/mylib/cut.c					\
 
 
 SRC	=			$(MAIN)						\
