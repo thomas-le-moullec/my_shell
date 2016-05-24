@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Tue May 24 11:14:10 2016 Thomas CHABOT
+** Last update Tue May 24 16:05:18 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -21,9 +21,9 @@ int		father(pid_t cpid, t_data *data)
     close(data->shell.fd_db != 0);
   if (waitpid(cpid, &status, WUNTRACED | WCONTINUED) == -1)
     return (ERROR);
+  data->shell.exit_status = WEXITSTATUS(status);
   if (!WIFEXITED(status))
     {
-      data->shell.status = ERROR;
       my_putstr("Segmentation fault\n", 1);
     }
   return (SUCCESS);
@@ -120,7 +120,6 @@ int		execution(t_data *data)
   int		i;
 
   i = 0;
-  data->shell.exit_status = 0;
   if ((i = access_path(data)) != ERROR)
     {
       if (exec_with_path(data, i) == ERROR)

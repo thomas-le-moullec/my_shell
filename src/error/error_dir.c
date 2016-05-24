@@ -5,14 +5,13 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Fri May 20 13:32:31 2016 Hervé TCHIKLADZE
-** Last update Fri May 20 14:44:48 2016 leo LE DIOURON
+** Last update Tue May 24 16:05:42 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
 
 int		error_not_found(t_data *data)
 {
-  data->shell.status = ERROR;
   my_putstr(data->parser.tab_args[0], 1);
   my_putstr(": Command not found.\n", 1);
   return (ERROR);

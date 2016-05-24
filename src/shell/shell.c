@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Tue May 24 11:00:31 2016 Thomas CHABOT
+** Last update Tue May 24 16:12:58 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -53,7 +53,6 @@ int		cond_loop(t_data *data)
   while (data->parser.tab_cond[i] != NULL && stop_loop != ERROR)
     {
       data->shell.fd_db = 0;
-      data->shell.status = SUCCESS;
       a = parser_redir(data, i);
       if (a != STOP)
 	{
@@ -62,8 +61,8 @@ int		cond_loop(t_data *data)
 	  take_nb_pipe(data);
 	  pipe_loop(data);
 	}
-      if ((data->shell.status == ERROR && data->shell.cond[i] == AND) || \
-	  (data->shell.status == SUCCESS && data->shell.cond[i] == OR))
+      if ((data->shell.exit_status != 0 && data->shell.cond[i] == AND) || \
+	  (data->shell.exit_status == 0 && data->shell.cond[i] == OR))
 	stop_loop = ERROR;
       my_free_cond(data);
       i++;
@@ -91,6 +90,7 @@ int		sep_loop(t_data *data)
 
 int		my_shell(t_data *data)
 {
+  data->shell.exit_status = 0;
   data->alias = NULL;
   init_list_alias(data);
   disp_prompt(data);
