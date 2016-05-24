@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 24 14:02:34 2016 Thomas CHABOT
+** Last update Tue May 24 16:08:22 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -109,23 +109,15 @@ int		my_exit(t_data *);
 char		**unsetenv_loop(t_data *, int);
 int		my_unsetenv(t_data *);
 
-/* alias.c */
-t_alias		*add_elem_alias(t_alias *alias, char *, char *);
-int             init_list_alias(t_data *);
-void            show_alias(t_data *);
-
-/* change_alias.c */
-int             check_alias_in(t_data *, int, int *);
-void            modify_string_alias(t_data *, int, int, int);
-int             find_valid_alias(t_data *, int, int *);
-int            change_alias(t_data *, int);
-
 /* new_alias.c */
 int		new_alias(t_data *);
 
 /* unalias.c */
 void		delete_alias(t_data *);
 int		unalias(t_data *);
+
+/* echo.c */
+int		my_echo(t_data *);
 
 /* **************** PARSER ****************** */
 
@@ -197,6 +189,17 @@ void		print_list(t_hist *);
 
 /* mode_canon.c */
 int		mode_canon(int);
+
+/* alias.c */
+t_alias         *add_elem_alias(t_alias *alias, char *, char *);
+int             init_list_alias(t_data *);
+void            show_alias(t_data *);
+
+/* change_alias.c */
+int             check_alias_in(t_data *, int, int *);
+void            modify_string_alias(t_data *, int, int, int);
+int             find_valid_alias(t_data *, int, int *);
+int             change_alias(t_data *, int);
 
 /* **************** FCT_CLAVIER ************** */
 
