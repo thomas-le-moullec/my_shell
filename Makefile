@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Tue May 24 16:10:10 2016 steeve payraudeau
+## Last update Tue May 24 16:12:28 2016 Thomas CHABOT
 ##
 
 DETAILS		=		no
@@ -97,6 +97,7 @@ MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/show_alias.c				\
 				src/mylib/my_put_error.c			\
 				src/mylib/cut.c					\
+				src/mylib/get_dir.c				\
 
 
 SRC	=			$(MAIN)						\

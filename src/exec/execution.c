@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Tue May 24 16:05:09 2016 Thomas CHABOT
+** Last update Tue May 24 16:12:12 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -74,24 +74,6 @@ int		exec_with_path(t_data *data, int i)
     father(cpid, data);
   my_free(tmp);
   return (SUCCESS);
-}
-
-char		*get_dir(char *str)
-{
-  int		i;
-  int		j;
-  char		*new_str;
-
-  i = 0;
-  new_str = NULL;
-  new_str = my_mallok(new_str, my_strlen(str));
-  while (str[i] && (str[i] == '.' || str[i] == '/'))
-    i++;
-  j = 0;
-  while (str[i])
-    new_str[j++] = str[i++];
-  new_str[j] = '\0';
-  return (new_str);
 }
 
 int		access_path(t_data *data)

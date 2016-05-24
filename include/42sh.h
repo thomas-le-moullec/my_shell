@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 24 16:09:52 2016 steeve payraudeau
+** Last update Tue May 24 16:12:45 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -270,5 +270,7 @@ char		*my_strcat(char *, char *, char);
 char		*cut_extrem(char *);
 
 int		my_put_error(char *, int);
+
+char		*get_dir(char *);
 
 #endif /* SH42_H_ */
