@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Mon May 23 17:45:40 2016 Hervé TCHIKLADZE
-** Last update Mon May 23 18:27:35 2016 Hervé TCHIKLADZE
+** Last update Tue May 24 11:16:28 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -83,14 +83,14 @@ int		find_valid_alias(t_data *data, int i, int *j)
   return (a);
 }
 
-
-void            change_alias(t_data *data, int i)
+int            change_alias(t_data *data, int i)
 {
   int           j;
   int           a;
   int           k;
 
   j = 0;
+  a = 0;
   while (data->parser.tab_pipe[i][j] != '\0' && a == 0)
     {
       a = find_valid_alias(data, i, &j);
@@ -109,4 +109,7 @@ void            change_alias(t_data *data, int i)
       while (data->alias->next != NULL)
         data->alias = data->alias->next;
     }
+  if (a == 1)
+    return (1);
+  return (SUCCESS);
 }

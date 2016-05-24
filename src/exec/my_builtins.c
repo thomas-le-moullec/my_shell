@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Mon May 23 17:58:36 2016 Thomas CHABOT
+** Last update Tue May 24 10:15:40 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -13,11 +13,13 @@
 int		show_builtins(t_data *data)
 {
   (void)data;
-  my_putstr("builtins\t", 1);
+  my_putstr("alias\t", 1);
+  my_putstr("\tbuiltins", 1);
   my_putstr("\tcd", 1);
   my_putstr("\tenv", 1);
   my_putstr("\texit", 1);
   my_putstr("\tsetenv", 1);
+  my_putstr("\tunalias\n", 1);
   my_putstr("\tunsetenv\n", 1);
   return (SUCCESS);
 }
@@ -28,6 +30,8 @@ int		my_builtins(t_data *data)
 			      {"env", my_env}, {"setenv", my_setenv},
 			      {"unsetenv", my_unsetenv},
 			      {"builtins", show_builtins},
+			      {"alias", new_alias},
+			      {"unalias", unalias},
 			      {NULL, NULL}};
   int		i;
 

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 24 09:39:02 2016 Thomas CHABOT
+** Last update Tue May 24 11:21:28 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -115,7 +115,14 @@ void            show_alias(t_data *);
 int             check_alias_in(t_data *, int, int *);
 void            modify_string_alias(t_data *, int, int, int);
 int             find_valid_alias(t_data *, int, int *);
-void            change_alias(t_data *, int);
+int            change_alias(t_data *, int);
+
+/* new_alias.c */
+int		new_alias(t_data *);
+
+/* unalias.c */
+void		delete_alias(t_data *);
+int		unalias(t_data *);
 
 /* **************** PARSER ****************** */
 
@@ -156,6 +163,8 @@ int		missing_name();
 /* error_bultins.c */
 int		error_unsetenv();
 int		error_setenv();
+void		error_denied(t_data *, char *);
+void		error_no_file(t_data *, char *);
 
 /* error_quote.c */
 void            *error_quote(char);

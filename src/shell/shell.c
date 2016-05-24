@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Mon May 23 18:28:51 2016 Hervé TCHIKLADZE
+** Last update Tue May 24 11:00:31 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -13,11 +13,16 @@
 int		pipe_loop(t_data *data)
 {
   int		i;
+  int		a;
 
   i = 0;
   while (data->parser.tab_pipe[i] != NULL)
     {
-      change_alias(data, i);
+      a = 0;
+      if (my_strncmp(data->parser.tab_pipe[i], "alias ", 6) != SUCCESS &&
+	  my_strncmp(data->parser.tab_pipe[i], "unalias ", 8) != SUCCESS)
+	while (change_alias(data, i) == 1 && a < 2)
+	  a++;
       if (var_env(data, i) == ERROR)
 	return (STOP);
       data->parser.check_pos_pipe = data->parser.nb_pipe[i];
