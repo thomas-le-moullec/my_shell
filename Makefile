@@ -5,7 +5,7 @@
 ## Login   <tchikl_h@epitech.net>
 ## 
 ## Started on  Fri May 20 14:09:28 2016 Hervé TCHIKLADZE
-## Last update Tue May 24 10:23:59 2016 Thomas CHABOT
+## Last update Tue May 24 14:31:26 2016 steeve payraudeau
 ##
 
 DETAILS		=		no
@@ -26,6 +26,7 @@ MAIN		=		src/main/main.c					\
 MY_SHELL	=		src/shell/shell.c				\
 				src/shell/get_env.c				\
 				src/shell/init.c				\
+				src/shell/katch_signal.c			\
 
 PARSER		=		src/parser/parser.c				\
 				src/parser/take_redir.c				\

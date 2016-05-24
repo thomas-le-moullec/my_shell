@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 24 11:21:28 2016 Thomas CHABOT
+** Last update Tue May 24 16:02:48 2016 steeve payraudeau
 */
 
 #ifndef SH42_H_
@@ -44,6 +44,10 @@ int		get_home(t_data *);
 int		get_old_pwd(t_data *);
 int		get_pwd(t_data *);
 int		init_shell(t_data *);
+
+/* katch_signal.c */
+void    	*my_handler(int);
+void		init_signaux();
 
 /* **************** EXEC ****************** */
 
