@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 15:15:06 2016 leo LE DIOURON
-** Last update Sun May  1 15:15:04 2016 leo LE DIOURON
+** Last update Tue May 24 13:32:22 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -23,7 +23,7 @@ int             take_outfile(char *str, int i, t_data *data)
   while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t') && str[i] != '<')
     i++;
   if (str[i] == '<' || str[i] == '\0' || str[i] == '>')
-    return (missing_name());
+    return (my_put_error(MISSING_NAME, 1));
   j = i;
   while (str[j] != '\0' && str[j] != ' ' && str[j] != '\t')
     j++;
@@ -49,7 +49,7 @@ int             take_infile(char *str, int i, t_data *data)
   while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t') && str[i] != '>')
     i++;
   if (str[i] == '>' || str[i] == '\0' || str[i] == '<')
-    return (missing_name());
+    return (my_put_error(MISSING_NAME, 1));
   j = i;
   while (str[j] != '\0' && str[j] != ' ' && str[j] != '\t')
     j++;

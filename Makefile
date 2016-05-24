@@ -1,11 +1,11 @@
 ##
-## Makefile for Makefile in /home/tchikl_h/rendu/B2/PSU/PSU_2015_42sh
+## Makefile for Makefile in /home/payrau_a/rendu/aProjets/PSU/PSU_2015_42sh
 ## 
-## Made by Hervé TCHIKLADZE
-## Login   <tchikl_h@epitech.net>
+## Made by steeve payraudeau
+## Login   <payrau_a@epitech.net>
 ## 
-## Started on  Fri May 20 14:09:28 2016 Hervé TCHIKLADZE
-## Last update Tue May 24 14:25:33 2016 leo LE DIOURON
+## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
+## Last update Tue May 24 16:12:28 2016 Thomas CHABOT
 ##
 
 DETAILS		=		no
@@ -26,6 +26,7 @@ MAIN		=		src/main/main.c					\
 MY_SHELL	=		src/shell/shell.c				\
 				src/shell/get_env.c				\
 				src/shell/init.c				\
+				src/shell/katch_signal.c			\
 
 PARSER		=		src/parser/parser.c				\
 				src/parser/take_redir.c				\
@@ -57,9 +58,9 @@ EXEC		=		src/exec/exec.c					\
 				src/exec/redirection_infile.c			\
 				src/exec/make_pipe.c				\
 				src/exec/check_all_access.c			\
+				src/exec/signal.c				\
 
-ERROR		=		src/error/missing_name.c			\
-				src/error/ambiguous.c				\
+ERROR		=		src/error/ambiguous.c				\
 				src/error/error_builtins.c			\
 				src/error/error_quote.c				\
 				src/error/error_dir.c				\
@@ -94,7 +95,9 @@ MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/count_size_line_file.c		\
 				src/mylib/my_strcpy.c				\
 				src/mylib/show_alias.c				\
+				src/mylib/my_put_error.c			\
 				src/mylib/cut.c					\
+				src/mylib/get_dir.c				\
 
 
 SRC	=			$(MAIN)						\
