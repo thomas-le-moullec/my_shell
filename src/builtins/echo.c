@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Tue May 24 13:09:26 2016 leo LE DIOURON
-** Last update Tue May 24 14:00:34 2016 leo LE DIOURON
+** Last update Tue May 24 14:17:52 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -41,9 +41,7 @@ int		take_fd_echo(t_data *data)
       return (ERROR);
   if (data->parser.check_pos_pipe == MIDDLE
       || data->parser.check_pos_pipe == BEGIN)
-    {
-      fd = data->shell.fd[1];
-    }
+    fd = data->shell.fd[1];
   return (fd);
 }
 
@@ -53,7 +51,6 @@ int	my_echo(t_data *data)
   int	n;
   int	fd;
 
-  my_putstr("a\n", 1);
   j = 1;
   n = 0;
   fd = 1;

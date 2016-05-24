@@ -5,7 +5,7 @@
 ## Login   <tchikl_h@epitech.net>
 ## 
 ## Started on  Fri May 20 14:09:28 2016 Hervé TCHIKLADZE
-## Last update Tue May 24 13:18:19 2016 leo LE DIOURON
+## Last update Tue May 24 14:25:33 2016 leo LE DIOURON
 ##
 
 DETAILS		=		no
@@ -44,10 +44,8 @@ BUILTINS	=		src/builtins/my_exit.c				\
 				src/builtins/fill_env.c				\
 				src/builtins/my_setenv.c			\
 				src/builtins/my_cd.c				\
-				src/builtins/alias.c				\
 				src/builtins/unalias.c				\
 				src/builtins/new_alias.c			\
-				src/builtins/change_alias.c			\
 				src/builtins/echo.c				\
 
 
@@ -70,6 +68,8 @@ OPT		=		src/options/var_env.c				\
 				src/options/inhib.c				\
 				src/options/history.c				\
 				src/options/mode_canon.c			\
+				src/options/alias.c				\
+				src/options/change_alias.c			\
 
 OPT_KEY		=		src/options/fct_clavier/fct_up.c		\
 				src/options/fct_clavier/fct_down.c		\

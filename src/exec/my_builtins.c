@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Tue May 24 14:01:36 2016 leo LE DIOURON
+** Last update Tue May 24 14:17:19 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -41,7 +41,7 @@ int		my_builtins(t_data *data)
     {
       if (my_strcmp(data->parser.tab_args[0], function[i].name) == SUCCESS)
 	{
-	  if (i != 2 && i != 3 && \
+	  if (i != 2 && i != 3 && i != 5 && \
 	      data->parser.check_pos_pipe != ALONE && \
 	      data->parser.check_pos_pipe != END)
 	    return (SUCCESS);
