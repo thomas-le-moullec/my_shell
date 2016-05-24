@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 17:37:26 2016 Thomas CHABOT
-** Last update Tue May 17 10:56:01 2016 Thomas CHABOT
+** Last update Tue May 24 13:25:55 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -39,7 +39,7 @@ int		my_unsetenv(t_data *data)
 
   i = 0;
   if ((nb = count_tab(data->parser.tab_args)) <= 1)
-    return (error_unsetenv());
+    return (my_put_error(ER_UNSETENV, 1));
   while (i < nb)
     {
       if ((j = check_env_exist(data, data->parser.tab_args[i])) > 0)

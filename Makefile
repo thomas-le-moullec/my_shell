@@ -1,11 +1,11 @@
 ##
-## Makefile for Makefile in /home/tchikl_h/rendu/B2/PSU/PSU_2015_42sh
+## Makefile for Makefile in /home/payrau_a/rendu/aProjets/PSU/PSU_2015_42sh
 ## 
-## Made by Hervé TCHIKLADZE
-## Login   <tchikl_h@epitech.net>
+## Made by steeve payraudeau
+## Login   <payrau_a@epitech.net>
 ## 
-## Started on  Fri May 20 14:09:28 2016 Hervé TCHIKLADZE
-## Last update Tue May 24 14:31:26 2016 steeve payraudeau
+## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
+## Last update Tue May 24 16:10:10 2016 steeve payraudeau
 ##
 
 DETAILS		=		no
@@ -45,10 +45,9 @@ BUILTINS	=		src/builtins/my_exit.c				\
 				src/builtins/fill_env.c				\
 				src/builtins/my_setenv.c			\
 				src/builtins/my_cd.c				\
-				src/builtins/alias.c				\
 				src/builtins/unalias.c				\
 				src/builtins/new_alias.c			\
-				src/builtins/change_alias.c			\
+				src/builtins/echo.c				\
 
 
 EXEC		=		src/exec/exec.c					\
@@ -59,9 +58,9 @@ EXEC		=		src/exec/exec.c					\
 				src/exec/redirection_infile.c			\
 				src/exec/make_pipe.c				\
 				src/exec/check_all_access.c			\
+				src/exec/signal.c				\
 
-ERROR		=		src/error/missing_name.c			\
-				src/error/ambiguous.c				\
+ERROR		=		src/error/ambiguous.c				\
 				src/error/error_builtins.c			\
 				src/error/error_quote.c				\
 				src/error/error_dir.c				\
@@ -70,6 +69,8 @@ OPT		=		src/options/var_env.c				\
 				src/options/inhib.c				\
 				src/options/history.c				\
 				src/options/mode_canon.c			\
+				src/options/alias.c				\
+				src/options/change_alias.c			\
 
 OPT_KEY		=		src/options/fct_clavier/fct_up.c		\
 				src/options/fct_clavier/fct_down.c		\
@@ -94,6 +95,7 @@ MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/count_size_line_file.c		\
 				src/mylib/my_strcpy.c				\
 				src/mylib/show_alias.c				\
+				src/mylib/my_put_error.c			\
 				src/mylib/cut.c					\
 
 

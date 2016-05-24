@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 24 16:02:48 2016 steeve payraudeau
+** Last update Tue May 24 16:09:52 2016 steeve payraudeau
 */
 
 #ifndef SH42_H_
@@ -84,6 +84,9 @@ int		make_pipe(t_data *);
 /*check_all_access.c*/
 char		*take_path_exec(char *);
 
+/* signal.c */
+int		check_signal(int);
+
 /* **************** BUILTINS ****************** */
 
 /* my_cd */
@@ -110,23 +113,15 @@ int		my_exit(t_data *);
 char		**unsetenv_loop(t_data *, int);
 int		my_unsetenv(t_data *);
 
-/* alias.c */
-t_alias		*add_elem_alias(t_alias *alias, char *, char *);
-int             init_list_alias(t_data *);
-void            show_alias(t_data *);
-
-/* change_alias.c */
-int             check_alias_in(t_data *, int, int *);
-void            modify_string_alias(t_data *, int, int, int);
-int             find_valid_alias(t_data *, int, int *);
-int            change_alias(t_data *, int);
-
 /* new_alias.c */
 int		new_alias(t_data *);
 
 /* unalias.c */
 void		delete_alias(t_data *);
 int		unalias(t_data *);
+
+/* echo.c */
+int		my_echo(t_data *);
 
 /* **************** PARSER ****************** */
 
@@ -161,13 +156,8 @@ void		take_type_cond(t_data *, int, int, int);
 /* ambiguous.c */
 int		ambiguous(int);
 
-/* missing_name.c */
-int		missing_name();
-
 /* error_bultins.c */
-int		error_unsetenv();
-int		error_setenv();
-void		error_denied(t_data *, char *);
+int		error_denied(t_data *, char *);
 void		error_no_file(t_data *, char *);
 
 /* error_quote.c */
@@ -203,6 +193,17 @@ void		print_list(t_hist *);
 
 /* mode_canon.c */
 int		mode_canon(int);
+
+/* alias.c */
+t_alias         *add_elem_alias(t_alias *alias, char *, char *);
+int             init_list_alias(t_data *);
+void            show_alias(t_data *);
+
+/* change_alias.c */
+int             check_alias_in(t_data *, int, int *);
+void            modify_string_alias(t_data *, int, int, int);
+int             find_valid_alias(t_data *, int, int *);
+int             change_alias(t_data *, int);
 
 /* **************** FCT_CLAVIER ************** */
 
@@ -267,5 +268,7 @@ int             count_words_cond(char *);
 char		*my_strcat(char *, char *, char);
 
 char		*cut_extrem(char *);
+
+int		my_put_error(char *, int);
 
 #endif /* SH42_H_ */

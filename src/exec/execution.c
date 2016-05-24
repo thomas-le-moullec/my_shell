@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Tue May 24 11:14:10 2016 Thomas CHABOT
+** Last update Tue May 24 16:05:09 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -21,25 +21,18 @@ int		father(pid_t cpid, t_data *data)
     close(data->shell.fd_db != 0);
   if (waitpid(cpid, &status, WUNTRACED | WCONTINUED) == -1)
     return (ERROR);
-  if (!WIFEXITED(status))
-    {
-      data->shell.status = ERROR;
-      my_putstr("Segmentation fault\n", 1);
-    }
+  check_signal(status);
   return (SUCCESS);
 }
 
 int		exec_without_path(t_data *data)
 {
   pid_t		cpid;
-  struct stat	s;
 
-  stat(data->parser.tab_args[0], &s);
   if ((access(take_path_exec(data->parser.tab_args[0]), F_OK | R_OK) == ERROR)
       || (((access(data->parser.tab_args[0], X_OK) == ERROR)) \
-      || /*(S_ISREG(s.st_mode) != 0)) ||*/ \
-       (check_str_access(data->parser.tab_args[0]) == ERROR)))
-      return (error_not_found(data));
+      || (check_str_access(data->parser.tab_args[0]) == ERROR)))
+    return (error_not_found(data));
   if (access(data->parser.tab_args[0], F_OK) == ERROR)
     return (error_dir(data));
   if ((cpid = fork()) == -1)
@@ -53,7 +46,8 @@ int		exec_without_path(t_data *data)
 	exit(ERROR);
     }
   else
-    father(cpid, data);
+    if (father(cpid, data) == ERROR)
+      return (ERROR);
   return (SUCCESS);
 }
 
@@ -73,7 +67,7 @@ int		exec_with_path(t_data *data, int i)
     {
       if (in_and_out(data) == ERROR)
 	return (ERROR);
-      if (execve(tmp, data->parser.tab_args, data->shell.env) == -1)
+      if (execve(tmp, data->parser.tab_args, data->shell.env) == ERROR)
 	exit(ERROR);
     }
   else
@@ -82,12 +76,35 @@ int		exec_with_path(t_data *data, int i)
   return (SUCCESS);
 }
 
+char		*get_dir(char *str)
+{
+  int		i;
+  int		j;
+  char		*new_str;
+
+  i = 0;
+  new_str = NULL;
+  new_str = my_mallok(new_str, my_strlen(str));
+  while (str[i] && (str[i] == '.' || str[i] == '/'))
+    i++;
+  j = 0;
+  while (str[i])
+    new_str[j++] = str[i++];
+  new_str[j] = '\0';
+  return (new_str);
+}
+
 int		access_path(t_data *data)
 {
   int		i;
   char		*tmp;
+  char		*dir;
+  struct stat	s;
 
   i = 0;
+  dir = get_dir(data->parser.tab_args[0]);
+  if (stat(dir, &s) != ERROR && (s.st_mode & S_IFDIR))
+    return (error_perm(data));
   if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) < 2 || \
       ((data->parser.tab_args[0][0] == '.' && \
 	data->parser.tab_args[0][1] == '/') || \
