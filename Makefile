@@ -5,7 +5,7 @@
 ## Login   <tchikl_h@epitech.net>
 ## 
 ## Started on  Fri May 20 14:09:28 2016 Hervé TCHIKLADZE
-## Last update Tue May 24 10:23:59 2016 Thomas CHABOT
+## Last update Tue May 24 13:18:19 2016 leo LE DIOURON
 ##
 
 DETAILS		=		no
@@ -48,6 +48,7 @@ BUILTINS	=		src/builtins/my_exit.c				\
 				src/builtins/unalias.c				\
 				src/builtins/new_alias.c			\
 				src/builtins/change_alias.c			\
+				src/builtins/echo.c				\
 
 
 EXEC		=		src/exec/exec.c					\

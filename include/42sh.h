@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 24 11:21:28 2016 Thomas CHABOT
+** Last update Tue May 24 13:20:32 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -115,7 +115,7 @@ void            show_alias(t_data *);
 int             check_alias_in(t_data *, int, int *);
 void            modify_string_alias(t_data *, int, int, int);
 int             find_valid_alias(t_data *, int, int *);
-int            change_alias(t_data *, int);
+int		change_alias(t_data *, int);
 
 /* new_alias.c */
 int		new_alias(t_data *);
@@ -123,6 +123,9 @@ int		new_alias(t_data *);
 /* unalias.c */
 void		delete_alias(t_data *);
 int		unalias(t_data *);
+
+/* echo.c */
+int		my_echo(t_data *);
 
 /* **************** PARSER ****************** */
 
