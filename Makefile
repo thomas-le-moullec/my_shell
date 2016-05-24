@@ -5,7 +5,7 @@
 ## Login   <tchikl_h@epitech.net>
 ## 
 ## Started on  Fri May 20 14:09:28 2016 Hervé TCHIKLADZE
-## Last update Tue May 24 10:23:59 2016 Thomas CHABOT
+## Last update Tue May 24 14:06:20 2016 Thomas CHABOT
 ##
 
 DETAILS		=		no
@@ -58,9 +58,9 @@ EXEC		=		src/exec/exec.c					\
 				src/exec/redirection_infile.c			\
 				src/exec/make_pipe.c				\
 				src/exec/check_all_access.c			\
+				src/exec/signal.c				\
 
-ERROR		=		src/error/missing_name.c			\
-				src/error/ambiguous.c				\
+ERROR		=		src/error/ambiguous.c				\
 				src/error/error_builtins.c			\
 				src/error/error_quote.c				\
 				src/error/error_dir.c				\
@@ -93,6 +93,7 @@ MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/count_size_line_file.c		\
 				src/mylib/my_strcpy.c				\
 				src/mylib/show_alias.c				\
+				src/mylib/my_put_error.c			\
 				src/mylib/cut.c					\
 
 

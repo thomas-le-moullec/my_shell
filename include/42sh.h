@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 24 11:21:28 2016 Thomas CHABOT
+** Last update Tue May 24 14:02:34 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -79,6 +79,9 @@ int		make_pipe(t_data *);
 
 /*check_all_access.c*/
 char		*take_path_exec(char *);
+
+/* signal.c */
+int		check_signal(int);
 
 /* **************** BUILTINS ****************** */
 
@@ -157,13 +160,8 @@ void		take_type_cond(t_data *, int, int, int);
 /* ambiguous.c */
 int		ambiguous(int);
 
-/* missing_name.c */
-int		missing_name();
-
 /* error_bultins.c */
-int		error_unsetenv();
-int		error_setenv();
-void		error_denied(t_data *, char *);
+int		error_denied(t_data *, char *);
 void		error_no_file(t_data *, char *);
 
 /* error_quote.c */
@@ -263,5 +261,7 @@ int             count_words_cond(char *);
 char		*my_strcat(char *, char *, char);
 
 char		*cut_extrem(char *);
+
+int		my_put_error(char *, int);
 
 #endif /* SH42_H_ */
