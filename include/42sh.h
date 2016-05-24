@@ -1,12 +1,11 @@
 /*
 ** 42sh.h for 42sh in /home/chabot_t/rendu/PSU/PSU_2015_42sh
-**
+** 
 ** Made by Thomas CHABOT
 ** Login   <chabot_t@epitech.net>
-**#include <sys/stat.h>
-
-** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Mon May 23 17:56:35 2016 Thomas CHABOT
+** 
+** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
+** Last update Tue May 24 09:39:02 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -110,6 +109,13 @@ int		my_unsetenv(t_data *);
 /* alias.c */
 t_alias		*add_elem_alias(t_alias *alias, char *, char *);
 int             init_list_alias(t_data *);
+void            show_alias(t_data *);
+
+/* change_alias.c */
+int             check_alias_in(t_data *, int, int *);
+void            modify_string_alias(t_data *, int, int, int);
+int             find_valid_alias(t_data *, int, int *);
+void            change_alias(t_data *, int);
 
 /* **************** PARSER ****************** */
 
@@ -246,5 +252,7 @@ char		**my_cond_to_wordtab(char *, char *, int);
 int             count_words_cond(char *);
 
 char		*my_strcat(char *, char *, char);
+
+char		*cut_extrem(char *);
 
 #endif /* SH42_H_ */

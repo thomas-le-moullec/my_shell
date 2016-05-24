@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May 18 16:23:34 2016 Thomas CHABOT
-** Last update Fri May 20 10:16:28 2016 leo LE DIOURON
+** Last update Mon May 23 17:47:50 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -62,7 +62,7 @@ int		pars_alias(char *str, t_data *data, char *cmd, char *name)
     return (ERROR);
   name = my_mallok(name, sizeof(char) * (j + 1));
   cmd = my_mallok(cmd, sizeof(char) * (my_strlen(str) - j + 1));
-  j = 0;
+  j = 1;
   while (str[j] != '=')
     name[i++] = str[j++];
   name[i] = '\0';
@@ -71,6 +71,7 @@ int		pars_alias(char *str, t_data *data, char *cmd, char *name)
   while (str[j] != '\0')
     cmd[i++] = str[j++];
   cmd[i] = '\0';
+  cmd = cut_extrem(cmd);
   data->alias = add_elem_alias(data->alias, cmd, name);
   return (SUCCESS);
 }
