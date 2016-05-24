@@ -6,7 +6,7 @@
 **#include <sys/stat.h>
 
 ** Started on  Tue Apr 26 09:15:14 2016 Thomas CHABOT
-** Last update Fri May 20 15:18:18 2016 leo LE DIOURON
+** Last update Mon May 23 17:56:35 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -53,6 +53,7 @@ int		check_str_access(char *);
 int		my_exec(t_data *);
 
 /*my_builtins.c */
+int		show_builtins(t_data *);
 int		my_builtins(t_data *);
 
 /* execution.c */
