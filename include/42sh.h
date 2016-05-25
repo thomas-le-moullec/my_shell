@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Wed May 25 10:05:58 2016 leo LE DIOURON
+** Last update Wed May 25 15:54:37 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -28,6 +28,9 @@
 #include "struct.h"
 
 /* **************** SHELL ****************** */
+
+/* main.c */
+void            end_fct(t_data *);
 
 /* shell.c */
 int		pipe_loop(t_data *);
@@ -199,6 +202,7 @@ int		mode_canon(int);
 
 /* alias.c */
 t_alias         *add_elem_alias(t_alias *alias, char *, char *);
+int             pars_alias(char *, t_data *);
 int             init_list_alias(t_data *);
 void            show_alias(t_data *);
 
@@ -258,6 +262,8 @@ void		my_free_cond(t_data *);
 void		*my_free_tab(char **);
 int		my_free_loop(t_data *);
 void		*my_free(void *);
+
+void		my_free_alias(t_alias *);
 
 void		*my_mallok(void *, int);
 

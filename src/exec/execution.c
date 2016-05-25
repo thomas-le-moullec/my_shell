@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Tue May 24 16:17:39 2016 leo LE DIOURON
+** Last update Wed May 25 16:11:00 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -112,6 +112,7 @@ int		access_path(t_data *data)
       tmp = my_free(tmp);
       return (-2);
     }
+  tmp = my_free(tmp);
   return (ERROR);
 }
 
