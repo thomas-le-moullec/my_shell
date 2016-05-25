@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 13:07:47 2016 Hervé TCHIKLADZE
-** Last update Tue May 17 15:59:17 2016 Hervé TCHIKLADZE
+** Last update Wed May 25 09:54:14 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -80,7 +80,8 @@ int		inhib(t_data *data)
     {
       if (data->shell.line[i] == '\"' || data->shell.line[i] == '\'')
 	{
-	  if ((data->shell.line = modify_str(data, data->shell.line[i], i)) == NULL)
+	  if ((data->shell.line = modify_str
+	       (data, data->shell.line[i], i)) == NULL)
 	    return (ERROR);
 	  i = -1;
 	}

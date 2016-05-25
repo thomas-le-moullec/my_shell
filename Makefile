@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Tue May 24 16:12:28 2016 Thomas CHABOT
+## Last update Wed May 25 10:06:11 2016 leo LE DIOURON
 ##
 
 DETAILS		=		no
@@ -27,6 +27,7 @@ MY_SHELL	=		src/shell/shell.c				\
 				src/shell/get_env.c				\
 				src/shell/init.c				\
 				src/shell/katch_signal.c			\
+				src/shell/pipe_loop.c				\
 
 PARSER		=		src/parser/parser.c				\
 				src/parser/take_redir.c				\

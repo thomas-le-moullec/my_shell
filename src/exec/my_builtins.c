@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Tue May 24 14:17:19 2016 leo LE DIOURON
+** Last update Wed May 25 09:58:53 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -27,6 +27,7 @@ int		show_builtins(t_data *data)
 
 int		my_builtins(t_data *data)
 {
+  /* mettre le tableau en global ? */
   static t_buil function[] = {{"exit", my_exit}, {"cd", my_cd},
 			      {"env", my_env}, {"setenv", my_setenv},
 			      {"unsetenv", my_unsetenv}, {"echo", my_echo},

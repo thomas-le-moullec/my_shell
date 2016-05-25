@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 24 16:12:45 2016 Thomas CHABOT
+** Last update Wed May 25 10:05:58 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -48,6 +48,9 @@ int		init_shell(t_data *);
 /* katch_signal.c */
 void    	*my_handler(int);
 void		init_signaux();
+
+/* pipe_loop.c */
+void		pipe_alias(t_data *, int);
 
 /* **************** EXEC ****************** */
 
@@ -203,6 +206,7 @@ void            show_alias(t_data *);
 int             check_alias_in(t_data *, int, int *);
 void            modify_string_alias(t_data *, int, int, int);
 int             find_valid_alias(t_data *, int, int *);
+void            change_alias_loop(t_data *, int, int *, int);
 int             change_alias(t_data *, int);
 
 /* **************** FCT_CLAVIER ************** */

@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Tue May 24 13:09:26 2016 leo LE DIOURON
-** Last update Tue May 24 14:17:52 2016 leo LE DIOURON
+** Last update Wed May 25 10:09:03 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -53,7 +53,6 @@ int	my_echo(t_data *data)
 
   j = 1;
   n = 0;
-  fd = 1;
   if ((fd = take_fd_echo(data)) == ERROR)
     return (ERROR);
   if (data->parser.tab_args[1] != NULL && \

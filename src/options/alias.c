@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May 18 16:23:34 2016 Thomas CHABOT
-** Last update Mon May 23 17:47:50 2016 Hervé TCHIKLADZE
+** Last update Wed May 25 09:55:42 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -95,14 +95,11 @@ int		init_list_alias(t_data *data)
   if ((j = read(fd, tmp, size)) < 0)
     return (ERROR);
   tmp[j] = '\0';
-  j = 0;
+  j = -1;
   tabo = my_str_to_wordtab(tmp, "\n");
-  while (tabo[j] != NULL)
-    {
-      if (my_strncmp(tabo[j], "alias ", 5) == SUCCESS)
-	pars_alias(tabo[j], data, NULL, NULL);
-      j++;
-    }
+  while (tabo[++j] != NULL)
+    if (my_strncmp(tabo[j], "alias ", 5) == SUCCESS)
+      pars_alias(tabo[j], data, NULL, NULL);
   close(fd);
   return (SUCCESS);
 }
