@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri May 27 16:16:20 2016 Thomas CHABOT
+** Last update Fri May 27 17:47:30 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <curses.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>

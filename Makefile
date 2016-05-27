@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Fri May 27 16:15:54 2016 Thomas CHABOT
+## Last update Fri May 27 17:47:37 2016 Thomas CHABOT
 ##
 
 DETAILS		=		no
@@ -14,7 +14,7 @@ CC		=		gcc
 
 NAME		=		42sh
 
-CFLAGS		+=		-Wall -W -Werror -Wextra -lncurses
+CFLAGS		+=		-Wall -W -Werror -Wextra
 CFLAGS		+=		-I include/
 
 ifeq ($(DEBUG),yes)
