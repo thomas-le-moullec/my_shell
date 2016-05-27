@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Tue May 24 16:18:46 2016 leo LE DIOURON
+** Last update Wed May 25 15:55:22 2016 Thomas CHABOT
 */
 
 #ifndef STRUCT_H_
