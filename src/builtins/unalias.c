@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 10:15:56 2016 Thomas CHABOT
-** Last update Tue May 24 10:52:15 2016 Thomas CHABOT
+** Last update Fri May 27 14:33:56 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -41,7 +41,6 @@ int		unalias(t_data *data)
       if (data->alias->prev != NULL)
 	data->alias = data->alias->prev;
     }
-  printf("--> %s\n", data->alias->name);
   if (my_strcmp(data->parser.tab_args[1], data->alias->name) == SUCCESS)
     delete_alias(data);
   while (data->alias->next != NULL)

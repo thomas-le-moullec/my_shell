@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May 18 16:23:34 2016 Thomas CHABOT
-** Last update Wed May 25 16:04:43 2016 leo LE DIOURON
+** Last update Fri May 27 14:33:17 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -77,7 +77,6 @@ int		pars_alias(char *str, t_data *data)
   cmd[i] = '\0';
   cmd = cut_extrem(cmd);
   data->alias = add_elem_alias(data->alias, cmd, name);
-  printf("..%s.. && ..%s..\n", name, cmd);
   /*free(cmd);*/
   free(name);
   return (SUCCESS);
