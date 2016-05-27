@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Wed May 25 15:55:10 2016 Thomas CHABOT
+## Last update Fri May 27 14:35:55 2016 Thomas CHABOT
 ##
 
 DETAILS		=		no
@@ -27,6 +27,7 @@ MY_SHELL	=		src/shell/shell.c				\
 				src/shell/get_env.c				\
 				src/shell/init.c				\
 				src/shell/katch_signal.c			\
+				src/shell/pipe_loop.c				\
 
 PARSER		=		src/parser/parser.c				\
 				src/parser/take_redir.c				\
@@ -98,6 +99,7 @@ MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/my_put_error.c			\
 				src/mylib/cut.c					\
 				src/mylib/get_dir.c				\
+				src/mylib/my_free_alias.c			\
 
 
 SRC	=			$(MAIN)						\

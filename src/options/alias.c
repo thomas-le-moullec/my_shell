@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May 18 16:23:34 2016 Thomas CHABOT
-** Last update Mon May 23 17:47:50 2016 Hervé TCHIKLADZE
+** Last update Fri May 27 14:33:17 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -51,11 +51,15 @@ int		check_valid_alias(char *str)
   return (ret);
 }
 
-int		pars_alias(char *str, t_data *data, char *cmd, char *name)
+int		pars_alias(char *str, t_data *data)
 {
   int		i;
   int		j;
+  char		*name;
+  char		*cmd;
 
+  name = NULL;
+  cmd = NULL;
   i = 0;
   str = &str[5];
   if ((j = check_valid_alias(str)) == ERROR)
@@ -73,6 +77,8 @@ int		pars_alias(char *str, t_data *data, char *cmd, char *name)
   cmd[i] = '\0';
   cmd = cut_extrem(cmd);
   data->alias = add_elem_alias(data->alias, cmd, name);
+  /*free(cmd);*/
+  free(name);
   return (SUCCESS);
 }
 
@@ -85,24 +91,25 @@ int		init_list_alias(t_data *data)
   int		size;
 
   tmp = NULL;
-  if ((fd = open(my_strcat(data->shell.home,"/.bashrc", 0), O_RDONLY)) == ERROR)
+  tmp = my_strcat(data->shell.home,"/.bashrc", 0);
+  if ((fd = open(tmp, O_RDONLY)) == ERROR)
     return (ERROR);
   size = count_size_line_file(fd, 0);
   close(fd);
-  if ((fd = open(my_strcat(data->shell.home,"/.bashrc", 0), O_RDONLY)) == ERROR)
+  if ((fd = open(tmp, O_RDONLY)) == ERROR)
     return (ERROR);
+  tmp = my_free(tmp);
   tmp = my_mallok(tmp, sizeof(char) * (size + 1));
   if ((j = read(fd, tmp, size)) < 0)
     return (ERROR);
   tmp[j] = '\0';
-  j = 0;
+  j = -1;
   tabo = my_str_to_wordtab(tmp, "\n");
-  while (tabo[j] != NULL)
-    {
-      if (my_strncmp(tabo[j], "alias ", 5) == SUCCESS)
-	pars_alias(tabo[j], data, NULL, NULL);
-      j++;
-    }
+  while (tabo[++j] != NULL)
+    if (my_strncmp(tabo[j], "alias ", 5) == SUCCESS)
+      pars_alias(tabo[j], data);
+  my_free_tab(tabo);
+  tmp = my_free(tmp);
   close(fd);
   return (SUCCESS);
 }

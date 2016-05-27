@@ -5,10 +5,20 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 09:08:44 2016 Thomas CHABOT
-** Last update Fri May 20 14:28:24 2016 leo LE DIOURON
+** Last update Wed May 25 16:44:42 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
+
+void		end_fct(t_data *data)
+{
+  my_free_tab(data->shell.env);
+  my_free(data->shell.pwd);
+  my_free(data->shell.cond);
+  my_free(data->shell.oldpwd);
+  my_free_alias(data->alias);
+  data->shell.path = my_free_tab(data->shell.path);
+}
 
 int		main(int ac, char **av, char **ae)
 {
@@ -22,8 +32,6 @@ int		main(int ac, char **av, char **ae)
   get_env(&data, ae);
   init_shell(&data);
   my_shell(&data);
-  my_free_tab(data.shell.env);
-  my_free(data.shell.pwd);
-  my_free(data.shell.oldpwd);
+  end_fct(&data);
   return (data.shell.exit_status);
 }

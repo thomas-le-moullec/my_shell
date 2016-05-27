@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 12:51:48 2016 Thomas CHABOT
-** Last update Tue May 24 16:02:34 2016 steeve payraudeau
+** Last update Wed May 25 16:18:28 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -18,7 +18,6 @@ int		get_path(t_data *data)
   i = 0;
   tmp = NULL;
   data->shell.bin = 0;
-  data->shell.path = NULL;
   if ((i = check_env_exist(data, "PATH")) != ERROR)
     tmp = my_strcpy_equal(data->shell.env[i]);
   if (tmp != NULL && tmp[0] != '\0')
@@ -62,6 +61,7 @@ int		get_pwd(t_data *data)
 
 int		init_shell(t_data *data)
 {
+  data->shell.path = NULL;
   get_pwd(data);
   get_old_pwd(data);
   get_home(data);
