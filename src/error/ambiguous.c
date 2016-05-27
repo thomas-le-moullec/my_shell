@@ -5,16 +5,17 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Sun May  1 14:55:12 2016 leo LE DIOURON
-** Last update Tue May 24 13:18:45 2016 Thomas CHABOT
+** Last update Fri May 27 15:34:55 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-int		ambiguous(int type)
+int		ambiguous(t_data *data, int type)
 {
   if (type == 0)
-    my_putstr("AMBI_INPUT", 1);
+    my_putstr(AMBI_INPUT, 1);
   else
-    my_putstr("AMBI_OUTPUT", 1);
+    my_putstr(AMBI_OUTPUT, 1);
+  data->shell.exit_status = 1;
   return (ERROR);
 }

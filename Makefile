@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Fri May 27 14:35:55 2016 Thomas CHABOT
+## Last update Fri May 27 16:15:54 2016 Thomas CHABOT
 ##
 
 DETAILS		=		no
@@ -59,6 +59,7 @@ EXEC		=		src/exec/exec.c					\
 				src/exec/redirection_infile.c			\
 				src/exec/make_pipe.c				\
 				src/exec/check_all_access.c			\
+				src/exec/color.c				\
 				src/exec/signal.c				\
 
 ERROR		=		src/error/ambiguous.c				\

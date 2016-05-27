@@ -5,12 +5,12 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 15:16:32 2016 leo LE DIOURON
-** Last update Sun May  1 16:21:22 2016 leo LE DIOURON
+** Last update Fri May 27 15:36:03 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-int             check_redir_in(char *str)
+int             check_redir_in(t_data *data, char *str)
 {
   int           i;
   int           nb_in;
@@ -30,11 +30,11 @@ int             check_redir_in(char *str)
         i++;
     }
   if (nb_in > 1)
-    return (ambiguous(0));
+    return (ambiguous(data, 0));
   return (SUCCESS);
 }
 
-int             check_redir_out(char *str)
+int             check_redir_out(t_data *data, char *str)
 {
   int           i;
   int           nb_out;
@@ -54,6 +54,6 @@ int             check_redir_out(char *str)
         i++;
     }
   if (nb_out > 1)
-    return (ambiguous(1));
+    return (ambiguous(data, 1));
   return (SUCCESS);
 }

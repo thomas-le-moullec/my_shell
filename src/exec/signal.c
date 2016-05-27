@@ -5,12 +5,12 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 13:51:52 2016 Thomas CHABOT
-** Last update Tue May 24 14:03:39 2016 Thomas CHABOT
+** Last update Fri May 27 15:24:37 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-int			check_signal(int status)
+int			check_signal(t_data *data, int status)
 {
   int			i;
   static t_signal	signal[] = {
@@ -25,7 +25,10 @@ int			check_signal(int status)
   while (i < NB_SIGNALS)
     {
       if (status == signal[i].status)
-	my_putstr(signal[i].msg, 1);
+	{
+	  data->shell.exit_status = status + 128;
+	  my_putstr(signal[i].msg, 1);
+	}
       i++;
     }
   return (SUCCESS);

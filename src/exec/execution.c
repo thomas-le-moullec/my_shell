@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Wed May 25 16:11:00 2016 leo LE DIOURON
+** Last update Fri May 27 16:19:07 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -22,7 +22,7 @@ int		father(pid_t cpid, t_data *data)
   if (waitpid(cpid, &status, WUNTRACED | WCONTINUED) == -1)
     return (ERROR);
   data->shell.exit_status = WEXITSTATUS(status);
-  check_signal(status);
+  check_signal(data, status);
   return (SUCCESS);
 }
 
@@ -68,6 +68,9 @@ int		exec_with_path(t_data *data, int i)
     {
       if (in_and_out(data) == ERROR)
 	return (ERROR);
+      if (my_strcmp(data->parser.tab_args[0], "ls") == SUCCESS \
+	  || my_strcmp(data->parser.tab_args[0], "grep") == SUCCESS)
+	data->parser.tab_args = get_color(data->parser.tab_args);
       if (execve(tmp, data->parser.tab_args, data->shell.env) == ERROR)
 	exit(ERROR);
     }
