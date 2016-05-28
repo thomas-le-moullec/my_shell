@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:40:35 2016 Thomas CHABOT
-** Last update Tue May 24 13:24:42 2016 Thomas CHABOT
+** Last update Sat May 28 10:57:52 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -48,6 +48,11 @@ int		my_setenv(t_data *data)
     return (my_put_error(ER_SETENV, 1));
   if (nb == 1)
     my_env(data);
+  if (nb == 2 && my_strcmp("PATH", data->parser.tab_args[1]) == SUCCESS)
+    {
+      data->parser.tab_args[0] = my_strcpy("unsetenv");
+      return (my_unsetenv(data));
+    }
   if (nb == 2 || nb == 3)
     if (setenv_empty(data, nb) == ERROR)
       return (ERROR);

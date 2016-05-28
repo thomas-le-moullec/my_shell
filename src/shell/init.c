@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 12:51:48 2016 Thomas CHABOT
-** Last update Fri May 27 17:42:53 2016 Thomas CHABOT
+** Last update Sat May 28 11:02:45 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -18,10 +18,9 @@ int		get_path(t_data *data)
   i = 0;
   tmp = NULL;
   data->shell.bin = 0;
+  data->shell.path = NULL;
   if ((i = check_env_exist(data, "PATH")) != ERROR)
     tmp = my_strcpy_equal(data->shell.env[i]);
-  else
-    data->shell.path = NULL;
   if (tmp != NULL && tmp[0] != '\0')
     data->shell.path = my_str_to_wordtab(tmp, ":");
   if (i == ERROR)
