@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:24:58 2016 Thomas CHABOT
-** Last update Mon May 23 16:29:07 2016 Hervé TCHIKLADZE
+** Last update Sat May 28 10:17:22 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -51,7 +51,7 @@ int		my_strcmp_equal(char *src, char *dest)
 	return (ERROR);
       i++;
     }
-  if (dest[i] == '=')
+  if (dest[i] == '=' && src[i] == '\0')
     return (SUCCESS);
   return (ERROR);
 }
