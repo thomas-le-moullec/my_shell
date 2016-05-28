@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Sat May 28 10:20:53 2016 steeve payraudeau
+## Last update Sat May 28 16:39:58 2016 steeve payraudeau
 ##
 
 DETAILS		=		no
@@ -72,6 +72,7 @@ OPT		=		src/options/var_env.c				\
 				src/options/mode_canon.c			\
 				src/options/alias.c				\
 				src/options/change_alias.c			\
+				src/options/glob.c				\
 
 OPT_KEY		=		src/options/fct_clavier/fct_up.c		\
 				src/options/fct_clavier/fct_down.c		\

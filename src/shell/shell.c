@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sat May 28 14:40:51 2016 leo LE DIOURON
+** Last update Sat May 28 16:23:47 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -29,6 +29,8 @@ int		pipe_loop(t_data *data)
       data->parser.tab_args = my_str_to_wordtab\
 	(data->parser.tab_pipe[i], " \t");
       args_convert(data);
+      if (my_glob(data) == ERROR)
+	return (STOP);
       if (my_exec(data) == ERROR)
 	return (STOP);
       my_free_tab(data->parser.tab_args);
