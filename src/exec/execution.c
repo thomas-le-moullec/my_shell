@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Fri May 27 16:19:07 2016 Thomas CHABOT
+** Last update Sat May 28 10:22:12 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -68,9 +68,6 @@ int		exec_with_path(t_data *data, int i)
     {
       if (in_and_out(data) == ERROR)
 	return (ERROR);
-      if (my_strcmp(data->parser.tab_args[0], "ls") == SUCCESS \
-	  || my_strcmp(data->parser.tab_args[0], "grep") == SUCCESS)
-	data->parser.tab_args = get_color(data->parser.tab_args);
       if (execve(tmp, data->parser.tab_args, data->shell.env) == ERROR)
 	exit(ERROR);
     }
