@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Sat May 28 11:38:02 2016 steeve payraudeau
+** Last update Sat May 28 13:10:22 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -135,6 +135,5 @@ int		execution(t_data *data)
 	data->shell.exit_status = 1;
 	return (ERROR);
       }
-  data->shell.exit_status = 0;
   return (SUCCESS);
 }
