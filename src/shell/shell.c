@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sat May 28 11:37:07 2016 steeve payraudeau
+** Last update Sat May 28 13:28:00 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -17,9 +17,9 @@ int		pipe_loop(t_data *data)
   i = 0;
   while (data->parser.tab_pipe[i] != NULL)
     {
-      pipe_alias(data, i);
       if (var_env(data, i) == ERROR)
 	return (STOP);
+      pipe_alias(data, i);
       data->parser.check_pos_pipe = data->parser.nb_pipe[i];
       if (make_pipe(data) == ERROR)
 	return (STOP);
