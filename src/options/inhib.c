@@ -1,11 +1,11 @@
 /*
 ** inhib.c for inhib in /home/tchikl_h/rendu/B2/PSU/PSU_2015_42sh
-** 
+**
 ** Made by Hervé TCHIKLADZE
 ** Login   <tchikl_h@epitech.net>
-** 
+**
 ** Started on  Tue May 17 13:07:47 2016 Hervé TCHIKLADZE
-** Last update Wed May 25 09:54:14 2016 leo LE DIOURON
+** Last update Fri May 27 15:39:25 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -63,7 +63,7 @@ char		*modify_str(t_data *data, char c, int i)
       j++;
     }
   if (data->shell.line[i] == '\0')
-    return (error_quote(c));
+    return (error_quote(data, c));
   i++;
   while (data->shell.line[i] != '\0')
     new_string[j++] = data->shell.line[i++];

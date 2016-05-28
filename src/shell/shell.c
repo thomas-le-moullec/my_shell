@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Fri May 27 14:35:26 2016 Thomas CHABOT
+** Last update Fri May 27 16:01:41 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -85,13 +85,13 @@ int		sep_loop(t_data *data)
 
 int		my_shell(t_data *data)
 {
-  data->shell.exit_status = 0;
   data->alias = NULL;
   init_list_alias(data);
   disp_prompt(data);
   data->list = NULL;
   while ((data->shell.line = get_next_line()) != NULL)
     {
+      data->shell.exit_status = 0;
       data->list = add_elem_key(data->list, data->shell.line);
       if (inhib(data) != ERROR)
 	{

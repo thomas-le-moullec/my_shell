@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri May 27 14:35:39 2016 Thomas CHABOT
+** Last update Sat May 28 10:21:03 2016 steeve payraudeau
 */
 
 #ifndef SH42_H_
@@ -91,7 +91,7 @@ int		make_pipe(t_data *);
 char		*take_path_exec(char *);
 
 /* signal.c */
-int		check_signal(int);
+int		check_signal(t_data *, int);
 
 /* **************** BUILTINS ****************** */
 
@@ -142,8 +142,8 @@ int		manage_outfile(t_data *, int, int *);
 int		manage_infile(t_data *, int, int *);
 
 /* check_redir.c */
-int		check_redir_in(char *);
-int		check_redir_out(char *);
+int		check_redir_in(t_data *, char *);
+int		check_redir_out(t_data *, char *);
 
 /* parser_redir.c */
 int		parser_redir(t_data *, int);
@@ -160,14 +160,14 @@ void		take_type_cond(t_data *, int, int, int);
 /* **************** ERROR ****************** */
 
 /* ambiguous.c */
-int		ambiguous(int);
+int		ambiguous(t_data *, int);
 
 /* error_bultins.c */
 int		error_denied(t_data *, char *);
 void		error_no_file(t_data *, char *);
 
 /* error_quote.c */
-void            *error_quote(char);
+void            *error_quote(t_data *, char);
 
 /* error_dir.c */
 int             error_not_found(t_data *);

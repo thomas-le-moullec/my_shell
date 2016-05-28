@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 15:19:24 2016 Thomas CHABOT
-** Last update Sun May  1 15:08:54 2016 leo LE DIOURON
+** Last update Fri May 27 15:37:32 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -37,8 +37,8 @@ int		parser_redir(t_data *data, int i)
   int		j;
 
   j = 0;
-  if (check_redir_in(data->parser.tab_cond[i]) == ERROR \
-      || check_redir_out(data->parser.tab_cond[i]) == ERROR)
+  if (check_redir_in(data, data->parser.tab_cond[i]) == ERROR \
+      || check_redir_out(data, data->parser.tab_cond[i]) == ERROR)
     return (STOP);
   while (data->parser.tab_cond[i][j] != '\0')
     {
