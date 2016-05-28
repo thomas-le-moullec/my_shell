@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat May 28 10:21:03 2016 steeve payraudeau
+** Last update Sat May 28 14:38:54 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -152,7 +152,7 @@ int		parser_redir(t_data *, int);
 char		*epur_redir(char *, int);
 
 /* take_nb_pipe.c */
-void		take_nb_pipe(t_data *);
+int		take_nb_pipe(t_data *);
 
 /*take_type_cond.c */
 void		take_type_cond(t_data *, int, int, int);

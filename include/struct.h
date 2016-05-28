@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Wed May 25 15:55:22 2016 Thomas CHABOT
+** Last update Sat May 28 14:06:33 2016 leo LE DIOURON
 */
 
 #ifndef STRUCT_H_
@@ -28,8 +28,8 @@
 
 #define NB_SIGNALS	5
 
-#define AMBI_INPUT	"Ambiguous input redirect\n"
-#define AMBI_OUTPUT	"Ambiguous output redirect\n"
+#define AMBI_INPUT	"Ambiguous input redirect.\n"
+#define AMBI_OUTPUT	"Ambiguous output redirect.\n"
 #define ER_UNSETENV	"unsetenv: Too few arguments.\n"
 #define ER_SETENV	"setenv: Too many arguments.\n"
 #define NOT_FOUND	": Command not found.\n"
