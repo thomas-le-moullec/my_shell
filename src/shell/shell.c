@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Fri May 27 16:01:41 2016 Thomas CHABOT
+** Last update Sat May 28 11:37:07 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -56,9 +56,12 @@ int		cond_loop(t_data *data)
 	  take_nb_pipe(data);
 	  pipe_loop(data);
 	}
-      if ((data->shell.exit_status != 0 && data->shell.cond[i] == AND) || \
-	  (data->shell.exit_status == 0 && data->shell.cond[i] == OR))
-	stop_loop = ERROR;
+      if (data->shell.exit_status != 0 && data->shell.cond[i] == AND)
+	while (data->shell.cond[i] == AND)
+	  i++;
+      if (data->shell.exit_status == 0 && data->shell.cond[i] == OR)
+	while (data->shell.cond[i] == OR)
+	  i++;
       my_free_cond(data);
       i++;
     }
@@ -89,9 +92,9 @@ int		my_shell(t_data *data)
   init_list_alias(data);
   disp_prompt(data);
   data->list = NULL;
+  data->shell.exit_status = 0;
   while ((data->shell.line = get_next_line()) != NULL)
     {
-      data->shell.exit_status = 0;
       data->list = add_elem_key(data->list, data->shell.line);
       if (inhib(data) != ERROR)
 	{
