@@ -1,11 +1,11 @@
 /*
 ** execution.c for execution in /home/chabot_t/rendu/PSU/PSU_2015_42sh
-** 
+**
 ** Made by Thomas CHABOT
 ** Login   <chabot_t@epitech.net>
-** 
+**
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Sat May 28 13:10:22 2016 leo LE DIOURON
+** Last update Sun May 29 11:32:33 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -85,9 +85,15 @@ int		access_path(t_data *data)
   struct stat	s;
 
   i = 0;
+
   dir = get_dir(data->parser.tab_args[0]);
-  if (stat(dir, &s) != ERROR && (s.st_mode & S_IFDIR))
-    return (error_perm(data));
+  if ((stat(dir, &s) != ERROR) && (((s.st_mode & S_IFDIR)) \
+				   || ((s.st_mode & S_IFREG) \
+				       && !(s.st_mode & S_IXUSR))))
+    {
+      data->shell.exe = 1;
+      return (error_perm(data));
+    }
   if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) < 2 || \
       ((data->parser.tab_args[0][0] == '.' && \
 	data->parser.tab_args[0][1] == '/') || \
@@ -130,10 +136,14 @@ int		execution(t_data *data)
 	}
     }
   else
-    if (exec_without_path(data) == ERROR)
-      {
-	data->shell.exit_status = 1;
+    {
+      if (i == -2 || data->shell.exe != 0)
 	return (ERROR);
-      }
+      if (exec_without_path(data) == ERROR)
+	{
+	  data->shell.exit_status = 1;
+	  return (ERROR);
+	}
+    }
   return (SUCCESS);
 }

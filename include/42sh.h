@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat May 28 14:38:54 2016 leo LE DIOURON
+** Last update Sat May 28 15:29:34 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -25,6 +25,7 @@
 #include <termios.h>
 #include <term.h>
 #include <errno.h>
+#include <glob.h>
 #include "struct.h"
 
 /* **************** SHELL ****************** */

@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Sat Apr 30 16:26:26 2016 leo LE DIOURON
-** Last update Sun May  1 16:14:16 2016 leo LE DIOURON
+** Last update Sun May 29 11:24:55 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -60,7 +60,7 @@ char            **fill_env(t_data *data, int value)
   int           i;
 
   new_env = NULL;
-  if ((i = check_env_exist(data, data->parser.tab_args[1])) > 0)
+  if ((i = check_env_exist(data, data->parser.tab_args[1])) >= 0)
     new_env = fill_env_loop(data, value, new_env, i);
   else
     new_env = fill_env_none(data, new_env, value);
