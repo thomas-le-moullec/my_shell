@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Sun May 29 11:32:33 2016 Thomas CHABOT
+** Last update Sun May 29 14:10:38 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -90,10 +90,7 @@ int		access_path(t_data *data)
   if ((stat(dir, &s) != ERROR) && (((s.st_mode & S_IFDIR)) \
 				   || ((s.st_mode & S_IFREG) \
 				       && !(s.st_mode & S_IXUSR))))
-    {
-      data->shell.exe = 1;
-      return (error_perm(data));
-    }
+    return (error_perm(data));
   if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) < 2 || \
       ((data->parser.tab_args[0][0] == '.' && \
 	data->parser.tab_args[0][1] == '/') || \
@@ -137,7 +134,7 @@ int		execution(t_data *data)
     }
   else
     {
-      if (i == -2 || data->shell.exe != 0)
+      if (i == -2)
 	return (ERROR);
       if (exec_without_path(data) == ERROR)
 	{

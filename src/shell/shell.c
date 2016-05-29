@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sun May 29 13:49:22 2016 leo LE DIOURON
+** Last update Sun May 29 14:10:28 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -104,7 +104,6 @@ int		my_shell(t_data *data)
   data->shell.exit_status = 0;
   while ((data->shell.line = get_next_line()) != NULL)
     {
-      data->shell.exe = 0;
       data->list = add_elem_key(data->list, data->shell.line);
       if (inhib(data) != ERROR)
 	{
