@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sat May 28 16:23:47 2016 steeve payraudeau
+** Last update Sun May 29 11:13:02 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -80,9 +80,14 @@ int		sep_loop(t_data *data)
     {
       data->parser.tab_cond = my_cond_to_wordtab \
 	(data->parser.tab_sep[i], "&|", 0);
-      take_type_cond(data, i, 0, 0);
-      if (cond_loop(data) == ERROR)
-	return (ERROR);
+      if (data->parser.tab_cond != NULL &&
+	  data->parser.tab_cond[0] != NULL &&
+	  data->parser.tab_cond[0][0] != '\0')
+	{
+	  take_type_cond(data, i, 0, 0);
+	  if (cond_loop(data) == ERROR)
+	    return (ERROR);
+	}
       my_free_tab(data->parser.tab_cond);
       i++;
     }

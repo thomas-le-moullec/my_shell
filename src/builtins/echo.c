@@ -5,10 +5,24 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Tue May 24 13:09:26 2016 leo LE DIOURON
-** Last update Wed May 25 10:09:03 2016 leo LE DIOURON
+** Last update Sun May 29 11:37:48 2016 steeve payraudeau
 */
 
 #include "42sh.h"
+
+void		my_putstr_echo(t_data *data, char *str, int fd)
+{
+  int		i;
+
+  i = 0;
+  (void)data;
+  while (str[i] != '\0')
+    {
+      if (str[i] != '\\')
+	my_putchar(str[i], fd);
+      i++;
+    }
+}
 
 int             my_echo_outfile(t_data *data)
 {
@@ -63,7 +77,7 @@ int	my_echo(t_data *data)
     }
   while (data->parser.tab_args[j] != NULL)
     {
-      my_putstr(data->parser.tab_args[j++], fd);
+      my_putstr_echo(data, data->parser.tab_args[j++], fd);
       if (data->parser.tab_args[j] != NULL)
 	my_putchar(' ', fd);
     }
