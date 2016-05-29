@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 14:51:13 2016 Thomas CHABOT
-** Last update Tue May 17 17:47:26 2016 Hervé TCHIKLADZE
+** Last update Sun May 29 13:46:48 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -74,6 +74,8 @@ char            **my_cond_to_wordtab(char *str, char *flags, int i)
       if (str[i] != '\0' && check_cond(str[i], str[i + 1], flags) == ERROR)
 	i++;
       tabo[k++][j] = '\0';
+      if (j == 0)
+	return (NULL);
     }
   tabo[k] = NULL;
   return (tabo);
