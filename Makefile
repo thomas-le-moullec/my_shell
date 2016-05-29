@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Sat May 28 16:39:58 2016 steeve payraudeau
+## Last update Sun May 29 14:50:03 2016 Thomas CHABOT
 ##
 
 DETAILS		=		no
@@ -60,11 +60,13 @@ EXEC		=		src/exec/exec.c					\
 				src/exec/make_pipe.c				\
 				src/exec/check_all_access.c			\
 				src/exec/signal.c				\
+				src/exec/check_access.c				\
 
 ERROR		=		src/error/ambiguous.c				\
 				src/error/error_builtins.c			\
 				src/error/error_quote.c				\
 				src/error/error_dir.c				\
+				src/error/error_glob.c				\
 
 OPT		=		src/options/var_env.c				\
 				src/options/inhib.c				\

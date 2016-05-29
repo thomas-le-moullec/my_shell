@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Sat May 28 15:40:07 2016 steeve payraudeau
-** Last update Sat May 28 16:50:37 2016 steeve payraudeau
+** Last update Sun May 29 14:26:14 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -42,14 +42,6 @@ int		check_stars(char *str)
       i++;
     }
   return (ERROR);
-}
-
-int		glob_error(const char *path, int error)
-{
-  (void)path;
-  (void)error;
-  my_putstr("ERRROR GLOB\n", 1);
-  return (0);
 }
 
 char		**take_tab_stars(char *str, char *str_err)

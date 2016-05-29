@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sun May 29 14:14:37 2016 steeve payraudeau
+** Last update Sun May 29 15:09:53 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -79,7 +79,7 @@ int		sep_loop(t_data *data)
   while (data->parser.tab_sep[i] != NULL)
     {
       if ((data->parser.tab_cond = my_cond_to_wordtab	\
-	   (data->parser.tab_sep[i], "&|", 0)) == NULL)
+	   (data->parser.tab_sep[i], "&|")) == NULL)
 	return (my_put_error("Invalid null command.\n", 1));
       if (data->parser.tab_cond != NULL && \
 	  data->parser.tab_cond[0] != NULL &&	\

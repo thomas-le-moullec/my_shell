@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Sun May 29 14:10:38 2016 leo LE DIOURON
+** Last update Sun May 29 14:51:35 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -81,20 +81,11 @@ int		access_path(t_data *data)
 {
   int		i;
   char		*tmp;
-  char		*dir;
-  struct stat	s;
 
   i = 0;
-
-  dir = get_dir(data->parser.tab_args[0]);
-  if ((stat(dir, &s) != ERROR) && (((s.st_mode & S_IFDIR)) \
-				   || ((s.st_mode & S_IFREG) \
-				       && !(s.st_mode & S_IXUSR))))
+  if (access_path_file(data) != SUCCESS)
     return (error_perm(data));
-  if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) < 2 || \
-      ((data->parser.tab_args[0][0] == '.' && \
-	data->parser.tab_args[0][1] == '/') || \
-       data->parser.tab_args[0][0] == '/')))
+  if (access_path_er(data) == ERROR)
     return (ERROR);
   while (data->shell.path != NULL && data->shell.path[i] != NULL)
     {

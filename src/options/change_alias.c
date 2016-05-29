@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Mon May 23 17:45:40 2016 Hervé TCHIKLADZE
-** Last update Sat May 28 13:09:22 2016 leo LE DIOURON
+** Last update Sun May 29 14:24:42 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -73,12 +73,10 @@ int		find_valid_alias(t_data *data, int i, int *j)
   tmp[a] = '\0';
   a = 0;
   while (data->alias->prev != NULL && a == 0)
-    {
-      if (my_strcmp(tmp, data->alias->name) == SUCCESS)
-	a = 1;
-      else
-	data->alias = data->alias->prev;
-    }
+    if (my_strcmp(tmp, data->alias->name) == SUCCESS)
+      a = 1;
+    else
+      data->alias = data->alias->prev;
   if (my_strcmp(tmp, data->alias->name) == SUCCESS)
     a = 1;
   free(tmp);

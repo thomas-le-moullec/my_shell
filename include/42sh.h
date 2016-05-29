@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sun May 29 11:35:18 2016 Thomas CHABOT
+** Last update Sun May 29 15:07:06 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -94,6 +94,10 @@ char		*take_path_exec(char *);
 /* signal.c */
 int		check_signal(t_data *, int);
 
+/* check_signal.c */
+int		access_path_er(t_data *);
+int		access_path_file(t_data *);
+
 /* **************** BUILTINS ****************** */
 
 /* my_cd */
@@ -174,6 +178,9 @@ void            *error_quote(t_data *, char);
 int             error_not_found(t_data *);
 int             error_dir(t_data *);
 int             error_perm(t_data *);
+
+/* error_glob.c */
+int             glob_error(const char *, int);
 
 /* **************** DISP ****************** */
 
@@ -280,7 +287,8 @@ int		count_words(char *, char *);
 char		**my_str_to_wordtab(char *, char *);
 
 int		check_cond(char, char, char *);
-char		**my_cond_to_wordtab(char *, char *, int);
+char		**my_cond_to_wordtab_loop(char **, int, char *, char *);
+char		**my_cond_to_wordtab(char *, char *);
 int             count_words_cond(char *);
 
 char		*my_strcat(char *, char *, char);

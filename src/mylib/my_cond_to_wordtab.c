@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 14:51:13 2016 Thomas CHABOT
-** Last update Sun May 29 14:05:25 2016 leo LE DIOURON
+** Last update Sun May 29 15:05:27 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -51,15 +51,12 @@ int		count_words_cond(char *str)
   return (nb_words);
 }
 
-char            **my_cond_to_wordtab(char *str, char *flags, int i)
+char		**cond_to_wordtab_loop(char **tabo, int i, char *flags, char *str)
 {
-  int           j;
-  int           k;
-  char          **tabo;
+  int		k;
+  int		j;
 
   k = 0;
-  tabo = NULL;
-  tabo = my_mallok(tabo, (count_words_cond(str) + 1) * sizeof(char *));
   while (str[i] != '\0')
     {
       j = 0;
@@ -72,7 +69,7 @@ char            **my_cond_to_wordtab(char *str, char *flags, int i)
 	return (NULL);
       while (str[i] != '\0' \
 	     && check_cond(str[i], str[i + 1], flags) == ERROR)
-        tabo[k][j++] = str[i++];
+	tabo[k][j++] = str[i++];
       if (str[i] != '\0' && check_cond(str[i], str[i + 1], flags) == ERROR)
 	i++;
       tabo[k++][j] = '\0';
@@ -80,5 +77,15 @@ char            **my_cond_to_wordtab(char *str, char *flags, int i)
 	return (NULL);
     }
   tabo[k] = NULL;
+  return (tabo);
+}
+
+char            **my_cond_to_wordtab(char *str, char *flags)
+{
+  char          **tabo;
+
+  tabo = NULL;
+  tabo = my_mallok(tabo, (count_words_cond(str) + 1) * sizeof(char *));
+  tabo = cond_to_wordtab_loop(tabo, 0, flags, str);
   return (tabo);
 }
