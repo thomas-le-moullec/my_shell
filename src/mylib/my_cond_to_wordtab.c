@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 14:51:13 2016 Thomas CHABOT
-** Last update Sun May 29 13:46:48 2016 leo LE DIOURON
+** Last update Sun May 29 14:05:25 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -65,9 +65,11 @@ char            **my_cond_to_wordtab(char *str, char *flags, int i)
       j = 0;
       tabo[k] = NULL;
       tabo[k] = my_mallok(tabo[k], my_strlen(str) + 1);
-      while (str[i] != '\0' \
-	     && check_cond(str[i], str[i + 1], flags) == SUCCESS)
+      if (str[i] != '\0' \
+	  && check_cond(str[i], str[i + 1], flags) == SUCCESS)
 	i = i + 2;
+      if (str[i] == '&' || str[i] == '|')
+	return (NULL);
       while (str[i] != '\0' \
 	     && check_cond(str[i], str[i + 1], flags) == ERROR)
         tabo[k][j++] = str[i++];
