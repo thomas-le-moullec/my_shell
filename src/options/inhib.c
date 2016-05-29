@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 13:07:47 2016 Hervé TCHIKLADZE
-** Last update Fri May 27 15:39:25 2016 Thomas CHABOT
+** Last update Sun May 29 14:03:07 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -59,7 +59,7 @@ char		*modify_str(t_data *data, char c, int i)
     {
       new_string[j] = data->shell.line[i++];
       if (check_special_char(new_string[j], " \'\"\t|&;><") == SUCCESS)
-	  new_string[j] *= -1;
+	new_string[j] *= -1;
       j++;
     }
   if (data->shell.line[i] == '\0')
@@ -76,10 +76,12 @@ int		inhib(t_data *data)
   int		i;
 
   i = 0;
+  data->parser.quote = 0;
   while (data->shell.line[i] != '\0')
     {
       if (data->shell.line[i] == '\"' || data->shell.line[i] == '\'')
 	{
+	  data->parser.quote = 1;
 	  if ((data->shell.line = modify_str
 	       (data, data->shell.line[i], i)) == NULL)
 	    return (ERROR);

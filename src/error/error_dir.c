@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Fri May 20 13:32:31 2016 Hervé TCHIKLADZE
-** Last update Fri May 27 15:32:36 2016 Thomas CHABOT
+** Last update Sun May 29 11:27:45 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -31,5 +31,5 @@ int		error_perm(t_data *data)
   my_putstr(data->parser.tab_args[0], 1);
   my_putstr(PERM_DENIED, 1);
   data->shell.exit_status = 1;
-  return (ERROR);
+  return (-2);
 }

@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Tue May 24 13:09:26 2016 leo LE DIOURON
-** Last update Sun May 29 11:37:48 2016 steeve payraudeau
+** Last update Sun May 29 14:11:34 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -15,11 +15,22 @@ void		my_putstr_echo(t_data *data, char *str, int fd)
   int		i;
 
   i = 0;
-  (void)data;
   while (str[i] != '\0')
     {
-      if (str[i] != '\\')
+      if (str[i] != '\\' && data->parser.quote == 0)
 	my_putchar(str[i], fd);
+      if (data->parser.quote == 1)
+	{
+	  if (str[i] == '\\' && str[i + 1] == 'n')
+	    {
+	      i++;
+	      my_putchar('\n', fd);
+	      if (str[i] == '\0')
+		return ;
+	    }
+	  else
+	    my_putchar(str[i], fd);
+	}
       i++;
     }
 }

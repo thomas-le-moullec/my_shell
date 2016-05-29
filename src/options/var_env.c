@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Mon May 16 16:50:31 2016 leo LE DIOURON
-** Last update Tue May 17 16:00:13 2016 Hervé TCHIKLADZE
+** Last update Sun May 29 13:41:56 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -76,6 +76,8 @@ int		replace_string(t_data *data, int j, int i, char *var_env)
       return (ERROR);
     }
   result = my_strcpy_equal(data->shell.env[nb]);
+  if (result == NULL || result[0] == '\0')
+    return (ERROR);
   creat_new_string(data, result, j);
   return (SUCCESS);
 }

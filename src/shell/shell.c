@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sun May 29 11:13:02 2016 steeve payraudeau
+** Last update Sun May 29 14:04:01 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -78,10 +78,11 @@ int		sep_loop(t_data *data)
   i = 0;
   while (data->parser.tab_sep[i] != NULL)
     {
-      data->parser.tab_cond = my_cond_to_wordtab \
-	(data->parser.tab_sep[i], "&|", 0);
-      if (data->parser.tab_cond != NULL &&
-	  data->parser.tab_cond[0] != NULL &&
+      if ((data->parser.tab_cond = my_cond_to_wordtab	\
+	   (data->parser.tab_sep[i], "&|", 0)) == NULL)
+	return (my_put_error("Invalid null command.\n", 1));
+      if (data->parser.tab_cond != NULL && \
+	  data->parser.tab_cond[0] != NULL &&	\
 	  data->parser.tab_cond[0][0] != '\0')
 	{
 	  take_type_cond(data, i, 0, 0);
@@ -103,13 +104,13 @@ int		my_shell(t_data *data)
   data->shell.exit_status = 0;
   while ((data->shell.line = get_next_line()) != NULL)
     {
+      data->shell.exe = 0;
       data->list = add_elem_key(data->list, data->shell.line);
       if (inhib(data) != ERROR)
 	{
 	  if (parser_sep(data) != STOP)
 	    {
-	      if (sep_loop(data) == ERROR)
-		return (ERROR);
+	      sep_loop(data);
 	      my_free_loop(data);
 	    }
 	}

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Sat May 28 14:06:33 2016 leo LE DIOURON
+** Last update Sun May 29 14:04:09 2016 steeve payraudeau
 */
 
 #ifndef STRUCT_H_
@@ -57,6 +57,7 @@ typedef struct		s_parser
   int			db_out;
   int			check_pos_pipe;
   int			*nb_pipe;
+  int			quote;
 }			t_parser;
 
 typedef struct		s_shell
@@ -74,6 +75,7 @@ typedef struct		s_shell
   int			save_fd;
   int			exit_status;
   int			*cond;
+  int			exe;
 }			t_shell;
 
 typedef struct		s_hist
