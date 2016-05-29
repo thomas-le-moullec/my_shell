@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat May 28 15:29:34 2016 Thomas CHABOT
+** Last update Sun May 29 11:35:18 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -213,6 +213,13 @@ void            modify_string_alias(t_data *, int, int, int);
 int             find_valid_alias(t_data *, int, int *);
 void            change_alias_loop(t_data *, int, int *, int);
 int             change_alias(t_data *, int);
+
+/*     glob.c   */
+int             my_glob(t_data *);
+char            **replace_stars(t_data *, int *);
+char            **take_tab_stars(char *, char *);
+int             glob_error(const char *, int);
+int             check_stars(char *);
 
 /* **************** FCT_CLAVIER ************** */
 
