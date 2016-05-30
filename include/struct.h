@@ -5,11 +5,15 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Sun May 29 14:14:53 2016 steeve payraudeau
+** Last update Mon May 30 13:20:30 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
 # define STRUCT_H_
+
+#ifndef READ_SIZE
+# define READ_SIZE (1024)
+#endif
 
 #define STOP		-2
 #define	ERROR		-1
@@ -44,6 +48,15 @@
 #define SIG_SIGILL	"Illegal Instruction\n"
 
 typedef struct	       	s_data t_data;
+
+typedef struct          s_get
+{
+  int                   j;
+  int                   i;
+  int                   a;
+  char                  *stock;
+  int                   cmpt;
+}                       t_get;
 
 typedef struct		s_parser
 {
