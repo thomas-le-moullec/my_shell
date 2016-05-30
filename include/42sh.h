@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sun May 29 15:07:06 2016 Thomas CHABOT
+** Last update Mon May 30 10:46:43 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -176,7 +176,7 @@ void            *error_quote(t_data *, char);
 
 /* error_dir.c */
 int             error_not_found(t_data *);
-int             error_dir(t_data *);
+int             error_dir(t_data *, char *);
 int             error_perm(t_data *);
 
 /* error_glob.c */

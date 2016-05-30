@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Mon May 30 10:31:11 2016 Thomas CHABOT
+** Last update Mon May 30 10:47:15 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -35,7 +35,7 @@ int		exec_without_path(t_data *data)
       || (check_str_access(data->parser.tab_args[0]) == ERROR)))
     return (error_not_found(data));
   if (access(data->parser.tab_args[0], F_OK) == ERROR)
-    return (error_dir(data));
+    return (error_dir(data, data->parser.tab_args[0]));
   if ((cpid = fork()) == -1)
     return (ERROR);
   if (cpid == 0)

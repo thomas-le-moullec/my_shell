@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 18:20:10 2016 Thomas CHABOT
-** Last update Tue May 24 11:20:41 2016 Thomas CHABOT
+** Last update Mon May 30 10:46:01 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -24,9 +24,12 @@ int		my_cd(t_data *data)
 {
   char		*tmp;
   int		err;
+  struct stat	s;
 
   tmp = NULL;
   tmp = check_cd(data);
+  if (stat(tmp, &s) != ERROR && (s.st_mode & S_IFREG))
+    return (error_dir(data, tmp));
   if (tmp != NULL)
     {
       data->shell.oldpwd = my_strcpy(data->shell.pwd);
