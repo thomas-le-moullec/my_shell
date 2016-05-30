@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Mon May 30 13:00:00 2016 Thomas CHABOT
+** Last update Mon May 30 14:47:52 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -98,7 +98,7 @@ int		my_shell(t_data *data)
   disp_prompt(data);
   data->list = NULL;
   data->shell.exit_status = 0;
-  while ((data->shell.line = get_next_line()) != NULL)
+  while ((data->shell.line = get_next_line(0)) != NULL)
     {
       data->list = add_elem_key(data->list, data->shell.line);
       if (inhib(data) != ERROR)

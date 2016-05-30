@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:25:51 2016 Thomas CHABOT
-** Last update Wed May 25 15:44:48 2016 leo LE DIOURON
+** Last update Mon May 30 15:17:22 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -19,10 +19,11 @@ int		my_exit(t_data *data)
   if (count_tab(data->parser.tab_args) == 1)
     {
       end_fct(data);
-      exit(data->shell.exit_status);
+      exit(0);
     }
   if ((nb = my_getnbr(data->parser.tab_args[1])) == ERROR \
       && my_strcmp(data->parser.tab_args[1], "-1") == ERROR)
     return (ERROR);
+  end_fct(data);
   exit(nb);
 }
