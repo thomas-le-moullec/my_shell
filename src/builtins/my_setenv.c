@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:40:35 2016 Thomas CHABOT
-** Last update Mon May 30 13:25:13 2016 leo LE DIOURON
+** Last update Mon May 30 14:32:13 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -39,10 +39,33 @@ int		setenv_empty(t_data *data, int nb)
   return (SUCCESS);
 }
 
+int		check_alpha(char *str)
+{
+  int		i;
+
+  i = 0;
+  if ((str[0] < 'a' || str[0] > 'z') \
+      && (str[0] < 'A' || str[0] > 'Z'))
+    return (1);
+  if ((str[0] >= 'a' && str[0] <= 'z') \
+      || (str[0] >= 'A' && str[0] <= 'Z'))
+    while (str[i])
+      {
+	if ((str[i] < 'a' || str[i] > 'z') \
+	    && (str[i] < 'A' || str[i] > 'Z') \
+	    && (str[i] < '0' || str[i] > '9'))
+	  return (2);
+	i++;
+    }
+  return (SUCCESS);
+}
+
 int		my_setenv(t_data *data)
 {
   int		nb;
+  int		ret;
 
+  ret = 0;
   nb = count_tab(data->parser.tab_args);
   if (nb > 3)
     return (my_put_error(ER_SETENV, 1));
@@ -53,6 +76,9 @@ int		my_setenv(t_data *data)
       data->parser.tab_args[0] = my_strcpy("unsetenv");
       return (my_unsetenv(data));
       }*/
+  if (data->parser.tab_args[1] != NULL)
+    if ((ret = check_alpha(data->parser.tab_args[1])) > 0)
+      return (error_alpha(data, ret));
   if (nb == 2 || nb == 3)
     if (setenv_empty(data, nb) == ERROR)
       return (ERROR);

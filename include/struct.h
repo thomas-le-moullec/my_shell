@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Mon May 30 13:20:30 2016 Thomas LE MOULLEC
+** Last update Mon May 30 14:40:13 2016 Thomas CHABOT
 */
 
 #ifndef STRUCT_H_
@@ -42,7 +42,7 @@
 #define MISSING_NAME	"Missing name for redirect.\n"
 
 #define SIG_SIGABRT	"Aborted\n"
-#define SIG_SIGFPE	"Floating point exception\n"
+#define SIG_SIGFPE	"Floating exception\n"
 #define SIG_SIGQUIT	"Quit\n"
 #define SIG_SIGSEGV	"Segmentation fault\n"
 #define SIG_SIGILL	"Illegal Instruction\n"

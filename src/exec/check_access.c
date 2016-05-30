@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Sun May 29 14:48:43 2016 Thomas CHABOT
-** Last update Mon May 30 10:30:19 2016 Thomas CHABOT
+** Last update Mon May 30 15:18:42 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -14,8 +14,7 @@ int             access_path_er(t_data *data)
 {
   if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) < 2 || \
                                   ((data->parser.tab_args[0][0] == '.' && \
-                                    data->parser.tab_args[0][1] == '/') || \
-                                   data->parser.tab_args[0][0] == '/')))
+                                    data->parser.tab_args[0][1] == '/'))))
     return (ERROR);
   return (SUCCESS);
 }
@@ -28,7 +27,8 @@ int             access_path_file(t_data *data)
   dir = get_dir(data->parser.tab_args[0]);
   if ((stat(dir, &s) != ERROR) && (((s.st_mode & S_IFDIR)) \
                                    || ((s.st_mode & S_IFREG) \
-                                       && !(s.st_mode & S_IXUSR))))
+                                       && !(s.st_mode & S_IXUSR) \
+				       && access_path_er(data) == ERROR)))
     return (ERROR);
   return (SUCCESS);
 }
