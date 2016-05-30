@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Sun May 29 14:48:43 2016 Thomas CHABOT
-** Last update Sun May 29 14:51:50 2016 Thomas CHABOT
+** Last update Mon May 30 10:30:19 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -29,6 +29,6 @@ int             access_path_file(t_data *data)
   if ((stat(dir, &s) != ERROR) && (((s.st_mode & S_IFDIR)) \
                                    || ((s.st_mode & S_IFREG) \
                                        && !(s.st_mode & S_IXUSR))))
-    return (error_perm(data));
+    return (ERROR);
   return (SUCCESS);
 }

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Mon May 30 10:11:28 2016 leo LE DIOURON
+** Last update Mon May 30 10:31:11 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -46,8 +46,8 @@ int		exec_without_path(t_data *data)
 		 data->parser.tab_args, data->shell.env) == ERROR)
 	{
 	  my_putstr(data->parser.tab_args[0], 1);
-	  return (my_put_error
-		  (": Exec format error. Binary file not executable.\n", 1));
+	  my_putstr(": Exec format error. Binary file not executable.\n", 1);
+	  exit(data->shell.exit_status);
 	}
     }
   else
@@ -74,9 +74,9 @@ int		exec_with_path(t_data *data, int i)
 	return (ERROR);
       if (execve(tmp, data->parser.tab_args, data->shell.env) == ERROR)
 	{
-          my_putstr(data->parser.tab_args[0], 1);
-          return (my_put_error
-		  (": Exec format error. Binary file not executable.\n", 1));
+	  my_putstr(data->parser.tab_args[0], 1);
+	  my_putstr(": Exec format error. Binary file not executable.\n", 1);
+	  exit(data->shell.exit_status);
         }
     }
   else
