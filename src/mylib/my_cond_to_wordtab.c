@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 14:51:13 2016 Thomas CHABOT
-** Last update Sun May 29 15:05:27 2016 Thomas CHABOT
+** Last update Mon May 30 11:24:41 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -65,7 +65,7 @@ char		**cond_to_wordtab_loop(char **tabo, int i, char *flags, char *str)
       if (str[i] != '\0' \
 	  && check_cond(str[i], str[i + 1], flags) == SUCCESS)
 	i = i + 2;
-      if (str[i] == '&' || str[i] == '|')
+      if (i == 2 || str[i] == '&' || str[i] == '|')
 	return (NULL);
       while (str[i] != '\0' \
 	     && check_cond(str[i], str[i + 1], flags) == ERROR)
