@@ -1,0 +1,10 @@
+#!/bin/sh
+
+TEST=1
+
+if [ $TEST -eq 1 ]
+then
+  echo "OK"
+else
+  echo "KO"
+fi
