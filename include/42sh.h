@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Mon May 30 10:46:43 2016 Thomas CHABOT
+** Last update Mon May 30 14:26:19 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -111,6 +111,7 @@ int		my_env(t_data *);
 int		check_env_exist(t_data *, char *);
 int		setenv_empty(t_data *, int);
 int		my_setenv(t_data *);
+int		check_alpha(char *);
 
 /* fill_env.c */
 char		**fill_env_none(t_data *, char **, int);
@@ -170,6 +171,7 @@ int		ambiguous(t_data *, int);
 /* error_bultins.c */
 int		error_denied(t_data *, char *);
 void		error_no_file(t_data *, char *);
+int		error_alpha(t_data *, int);
 
 /* error_quote.c */
 void            *error_quote(t_data *, char);
@@ -259,8 +261,6 @@ void		my_show_tab(char **);
 int		count_tab(char **);
 
 char		*my_strcpy_equal(char *);
-char		*my_strcpy_full(char *, char *);
-char		*my_strcpy_empty(char *);
 char		*my_strcpy(char *);
 char		*my_cpy(char *, char *);
 

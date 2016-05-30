@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Mon May 16 14:34:21 2016 Thomas CHABOT
-** Last update Tue May 24 13:37:25 2016 Thomas CHABOT
+** Last update Mon May 30 14:07:56 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -23,4 +23,14 @@ void		error_no_file(t_data *data, char *str)
   my_putstr(str, 1);
   my_putstr(": No such file or directory.\n", 1);
   data->shell.exit_status = 1;
+}
+
+int		error_alpha(t_data *data, int flag)
+{
+  if (flag == 1)
+    my_putstr("setenv: Variable name must begin with a letter.\n", 1);
+  if (flag == 2)
+    my_putstr("setenv: Variable name must contain alphanumeric characters.\n", 1);
+  data->shell.exit_status = 1;
+  return (ERROR);
 }
