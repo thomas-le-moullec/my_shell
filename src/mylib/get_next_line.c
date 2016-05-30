@@ -1,11 +1,11 @@
 /*
-** get_next_line.c for get_next_line* in /home/le-mou_t/rendu/PSU_2015_42sh
+** get_next_line.c for get_next_line.c in /home/le-mou_t/rendu/CPE_2015_getnextline
 ** 
 ** Made by Thomas LE MOULLEC
 ** Login   <le-mou_t@epitech.net>
 ** 
-** Started on  Mon May 30 13:20:44 2016 Thomas LE MOULLEC
-** Last update Mon May 30 14:43:04 2016 Thomas CHABOT
+** Started on  Fri Jan  8 15:53:42 2016 Thomas LE MOULLEC
+** Last update Mon May 30 16:17:13 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -81,11 +81,11 @@ int		check_static(char *buffer, int *ptr, t_get *get)
   return (0);
 }
 
-char		*get_next_line(int fd)
+char		*get_next_line(const int fd)
 {
-  t_get		get;
   static char	buffer[READ_SIZE + 1];
   static int	ptr = 0;
+  t_get	get;
 
   if ((check_static(buffer, &ptr, &get)) == 1)
     return (get.stock);
