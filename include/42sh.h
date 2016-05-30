@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Mon May 30 10:46:43 2016 Thomas CHABOT
+** Last update Mon May 30 13:30:15 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -259,8 +259,6 @@ void		my_show_tab(char **);
 int		count_tab(char **);
 
 char		*my_strcpy_equal(char *);
-char		*my_strcpy_full(char *, char *);
-char		*my_strcpy_empty(char *);
 char		*my_strcpy(char *);
 char		*my_cpy(char *, char *);
 
