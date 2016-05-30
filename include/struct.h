@@ -5,14 +5,14 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Mon May 30 14:40:13 2016 Thomas CHABOT
+** Last update Mon May 30 18:27:56 2016 Thomas CHABOT
 */
 
 #ifndef STRUCT_H_
 # define STRUCT_H_
 
 #ifndef READ_SIZE
-# define READ_SIZE (1024)
+# define READ_SIZE (1000000)
 #endif
 
 #define STOP		-2
@@ -40,6 +40,7 @@
 #define NOT_DIR		": Not a directory.\n"
 #define PERM_DENIED	": Permissions denied.\n"
 #define MISSING_NAME	"Missing name for redirect.\n"
+#define EVENT		"Event not found.\n"
 
 #define SIG_SIGABRT	"Aborted\n"
 #define SIG_SIGFPE	"Floating exception\n"
@@ -96,6 +97,7 @@ typedef struct		s_hist
   struct s_hist		*prev;
   char			*str;
   int			pos;
+  char			*time;
 }			t_hist;
 
 typedef struct		s_alias
@@ -115,7 +117,7 @@ typedef struct		s_key
 struct		       	s_data
 {
   t_key			tab_key[5];
-  t_hist		*list;
+  t_hist		*hist;
   t_shell		shell;
   t_parser		parser;
   t_alias		*alias;

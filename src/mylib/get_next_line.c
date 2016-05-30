@@ -5,15 +5,15 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Mon May 30 13:20:44 2016 Thomas LE MOULLEC
-** Last update Mon May 30 14:43:04 2016 Thomas CHABOT
+** Last update Mon May 30 16:16:08 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-char    *my_strcar(char *str, char c)
+char		*my_strcar(char *str, char c)
 {
-  int   i;
-  char  *stock;
+  int		i;
+  char		*stock;
 
   i = 0;
   while (str[i] != '\0')

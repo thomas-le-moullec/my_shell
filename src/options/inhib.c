@@ -5,12 +5,12 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 13:07:47 2016 Hervé TCHIKLADZE
-** Last update Sun May 29 14:03:07 2016 steeve payraudeau
+** Last update Mon May 30 18:31:02 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-void		args_convert(t_data *data)
+int		args_convert(t_data *data)
 {
   int		i;
   int		j;
@@ -25,8 +25,11 @@ void		args_convert(t_data *data)
 	    data->parser.tab_args[i][j] *= -1;
 	  j++;
 	}
+      if (modif_args_hist(data, i) == ERROR)
+	return (STOP);
       i++;
     }
+  return (SUCCESS);
 }
 
 int		check_special_char(char c, char *sep)

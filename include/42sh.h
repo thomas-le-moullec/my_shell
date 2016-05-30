@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Mon May 30 14:48:16 2016 Thomas CHABOT
+** Last update Mon May 30 18:31:50 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -135,6 +135,9 @@ int		unalias(t_data *);
 /* echo.c */
 int		my_echo(t_data *);
 
+/* my_history.c */
+int		my_history(t_data *);
+
 /* **************** PARSER ****************** */
 
 /* parser.c */
@@ -172,6 +175,7 @@ int		ambiguous(t_data *, int);
 int		error_denied(t_data *, char *);
 void		error_no_file(t_data *, char *);
 int		error_alpha(t_data *, int);
+int		error_event(t_data *, char *);
 
 /* error_quote.c */
 void            *error_quote(t_data *, char);
@@ -201,11 +205,12 @@ void            creat_new_string(t_data *, char *, int);
 int             inhib(t_data *);
 char            *modify_str(t_data *, char, int);
 int             check_special_char(char, char *);
-void            args_convert(t_data *);
+int             args_convert(t_data *);
 
 /* history.c */
+int             modif_args_hist(t_data *, int);
 t_hist		*add_elem_key(t_hist *, char *);
-void		print_list(t_hist *);
+int		print_list(t_data *);
 
 /* mode_canon.c */
 int		mode_canon(int);

@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Sun May 29 15:18:09 2016 leo LE DIOURON
+## Last update Mon May 30 17:06:46 2016 Thomas CHABOT
 ##
 
 DETAILS		=		no
@@ -49,7 +49,6 @@ BUILTINS	=		src/builtins/my_exit.c				\
 				src/builtins/unalias.c				\
 				src/builtins/new_alias.c			\
 				src/builtins/echo.c				\
-
 
 EXEC		=		src/exec/exec.c					\
 				src/exec/in_and_out.c				\
