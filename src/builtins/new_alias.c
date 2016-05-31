@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:49:37 2016 Thomas CHABOT
-** Last update Tue May 31 11:27:54 2016 leo LE DIOURON
+** Last update Tue May 31 13:03:55 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -29,11 +29,7 @@ int		new_alias(t_data *data)
     data->alias = data->alias->next;
 
   if (my_strcmp(data->alias->name, data->parser.tab_args[1]) == SUCCESS)
-    {
-      printf("%s\n", data->alias->name);
       delete_alias(data);
-    }
-  printf("--->%s\n", data->alias->name);
   while (data->alias->next != NULL)
     data->alias = data->alias->next;
   data->alias = add_elem_alias(data->alias, data->parser.tab_args[2], \
