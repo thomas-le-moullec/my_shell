@@ -5,15 +5,51 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Tue May 31 10:42:25 2016 Thomas CHABOT
+** Last update Tue May 31 13:04:10 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
+
+int		get_n_hist(char *str)
+{
+  int		i;
+  int		j;
+  char		*tmp;
+
+  i = 0;
+  j = 0;
+  tmp = NULL;
+  tmp = my_mallok(tmp, my_strlen(str));
+  while (str[i] && str[i] == '!')
+    i++;
+  while (str[i])
+    tmp[j++] = str[i++];
+  tmp[j] = '\0';
+  return (my_getnbr(tmp));
+}
+
+int		modif_n_hist(t_data *data, int i)
+{
+  /*  int		j;*/
+  int		nb;
+
+  /*j = 0;*/
+  nb = get_n_hist(data->parser.tab_args[i]);
+  printf("nb = %d\n", nb);
+  data->parser.tab_args[i] = NULL;
+  /*  while (j 
+      data->parser.tab_args[i] = my_strcpy(data->hist->prev->str);*/
+  return (SUCCESS);
+}
 
 int		modif_args_hist(t_data *data, int i) /* BOUCLE SUR !! */
 {
   if (data->parser.tab_args[i][0] != '!')
     return (STOP);
+  if (data->parser.tab_args[i][0] == '!' \
+      && data->parser.tab_args[i][1] > '0' \
+      && data->parser.tab_args[i][1] <= '9')
+    modif_n_hist(data, i);
   data->parser.tab_args[i] = &data->parser.tab_args[i][1];
   if (data->parser.tab_args[i][0] == '!')
     {
@@ -22,8 +58,8 @@ int		modif_args_hist(t_data *data, int i) /* BOUCLE SUR !! */
     }
   else
     {
-      while (data->hist->prev != NULL &&
-	     my_strncmp(data->hist->str, data->parser.tab_args[i],
+      while (data->hist->prev != NULL \
+	     && my_strncmp(data->hist->str, data->parser.tab_args[i],
 			my_strlen(data->parser.tab_args[i])) == ERROR)
 	data->hist = data->hist->prev;
       if (data->hist->prev != NULL ||
@@ -74,13 +110,13 @@ int		print_list(t_data *data)
   while (data->hist->next != NULL)
     {
       my_put_nbr(nb_line++, 1);
-      my_putchar(' ', 1);
+      my_putstr("  ", 1);
       my_putstr(data->hist->str, 1);
       my_putstr("\n", 1);
       data->hist = data->hist->next;
     }
   my_put_nbr(nb_line++, 1);
-  my_putchar(' ', 1);
+  my_putstr("  ", 1);
   my_putstr(data->hist->str, 1);
   my_putstr("\n", 1);
   return (SUCCESS);
