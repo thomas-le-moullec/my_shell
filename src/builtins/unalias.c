@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 10:15:56 2016 Thomas CHABOT
-** Last update Tue May 31 12:57:59 2016 leo LE DIOURON
+** Last update Tue May 31 18:15:58 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -19,13 +19,18 @@ int		delete_alias(t_data *data)
       data->alias = data->alias->prev;
       return (SUCCESS);
     }
-  if (data->alias->next == NULL && data->alias->prev != NULL)
+  if (data->alias->prev == NULL && data->alias->next == NULL)
+    {
+      data->alias = NULL;
+      return (SUCCESS);
+    }
+  if (data->alias->next == NULL)
     {
       data->alias->prev->next = NULL;
       data->alias = data->alias->prev;
       return (SUCCESS);
     }
-  if (data->alias->prev == NULL && data->alias->next != NULL)
+  if (data->alias->prev == NULL)
     {
       data->alias->next->prev = NULL;
       data->alias = data->alias->next;
@@ -47,7 +52,8 @@ int		unalias(t_data *data)
     }
   if (my_strcmp(data->parser.tab_args[1], data->alias->name) == SUCCESS)
     delete_alias(data);
-  while (data->alias->next != NULL)
-    data->alias = data->alias->next;
+  if (data->alias != NULL)
+    while (data->alias->next != NULL)
+      data->alias = data->alias->next;
   return (SUCCESS);
 }

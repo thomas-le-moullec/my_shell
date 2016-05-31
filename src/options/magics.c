@@ -5,7 +5,7 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Tue May 31 14:37:40 2016 Thomas LE MOULLEC
-** Last update Tue May 31 17:00:38 2016 Thomas LE MOULLEC
+** Last update Tue May 31 17:47:01 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -67,18 +67,16 @@ char		*change_magic_result(char *line, char *buffer)
   result = NULL;
   result = my_mallok(result, sizeof(char) *
                      (my_strlen(line)
-                      + my_strlen(buffer) + 3));
+                      + my_strlen(buffer) + 1));
   while (line[k] != '\0' && line[k] != '`')
     {
       result[k] = line[k];
       k++;
     }
   j = k + 1;
-  result[k++] = '"';
   while (buffer[f] != '\0')
     result[k++] = buffer[f++];
   k--;
-  result[k++] = '"';
   f = 0;
   while (line[j] != '\0' && line[j] != '`')
     j++;
@@ -162,6 +160,7 @@ int		magic_quotes(t_data *data)
     return (STOP);
   if (cmpt % 2 == 1)
     return (my_put_error(MAGIC_ERROR, 1));
+  data->shell.chk_magic = 1;
   data->shell.tmp_magic = my_strcpy(data->shell.line);
   tabo = my_magic_wordtab(data->shell.line, cmpt);
   if ((loop_magic(data, tabo)) == ERROR)

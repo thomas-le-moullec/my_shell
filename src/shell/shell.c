@@ -6,7 +6,7 @@
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
 <<<<<<< HEAD
-** Last update Tue May 31 17:05:34 2016 Thomas LE MOULLEC
+** Last update Tue May 31 17:50:45 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -31,7 +31,10 @@ int		pipe_loop(t_data *data)
 	(data->parser.tab_pipe[i], " \t");
       if (args_convert(data) == STOP)
 	return (STOP);
-      if (my_glob(data) == ERROR || my_exec(data) == ERROR)
+      if (data->shell.chk_magic == 0)
+	if (my_glob(data) == ERROR)
+	  return (STOP);
+      if (my_exec(data) == ERROR)
 	return (STOP);
       my_free_tab(data->parser.tab_args);
       i++;
@@ -102,6 +105,7 @@ int		my_shell(t_data *data)
   data->shell.exit_status = 0;
   while ((data->shell.line = get_next_line(0)) != NULL)
     {
+      data->shell.chk_magic = 0;
       data->hist = add_elem_key(data->hist, data->shell.line);
       if ((magic_quotes(data)) == ERROR)
 	return (ERROR);

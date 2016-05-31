@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Tue May 31 17:05:53 2016 Thomas LE MOULLEC
+** Last update Tue May 31 17:44:21 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -77,6 +77,7 @@ typedef struct		s_parser
 
 typedef struct		s_shell
 {
+  int			chk_magic;
   int			bin;
   char			*line;
   char			*tmp_magic;
