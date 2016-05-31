@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Mon May 30 17:04:06 2016 Thomas CHABOT
+** Last update Tue May 31 13:42:44 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -35,7 +35,7 @@ int		my_builtins(t_data *data)
 			      {"builtins", show_builtins},
 			      {"alias", new_alias},
 			      {"unalias", unalias},
-			      {"history", print_list},
+			      {"history", print_hist},
 			      {NULL, NULL}};
   int		i;
 

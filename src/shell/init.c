@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 12:51:48 2016 Thomas CHABOT
-** Last update Sat May 28 11:02:45 2016 steeve payraudeau
+** Last update Tue May 31 10:31:05 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -35,7 +35,7 @@ int		get_home(t_data *data)
 
   if ((i = check_env_exist(data, "HOME")) != ERROR)
     data->shell.home = my_strcpy_equal(data->shell.env[i]);
-  else
+  if (i == ERROR || data->shell.home == NULL)
     data->shell.home = my_strcpy(".");
   return (SUCCESS);
 }

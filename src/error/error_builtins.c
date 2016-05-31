@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Mon May 16 14:34:21 2016 Thomas CHABOT
-** Last update Mon May 30 18:32:38 2016 Thomas CHABOT
+** Last update Tue May 31 13:40:46 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -40,5 +40,7 @@ int		error_event(t_data *data, char *str)
   my_putstr(str, 1);
   my_putstr(": Event not found.\n", 1);
   data->shell.exit_status = 1;
+  while (data->hist->next != NULL)
+    data->hist = data->hist->next;
   return (ERROR);
 }

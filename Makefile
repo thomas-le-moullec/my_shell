@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Mon May 30 17:06:46 2016 Thomas CHABOT
+## Last update Tue May 31 13:46:12 2016 Thomas CHABOT
 ##
 
 DETAILS		=		no
@@ -74,6 +74,7 @@ OPT		=		src/options/var_env.c				\
 				src/options/alias.c				\
 				src/options/change_alias.c			\
 				src/options/glob.c				\
+				src/options/print_hist.c			\
 
 OPT_KEY		=		src/options/fct_clavier/fct_up.c		\
 				src/options/fct_clavier/fct_down.c		\

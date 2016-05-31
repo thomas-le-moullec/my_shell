@@ -1,61 +1,79 @@
 /*
 ** history.c for history in /home/tchikl_h/rendu/B2/PSU/PSU_2015_42sh
-** 
+**
 ** Made by Hervé TCHIKLADZE
 ** Login   <tchikl_h@epitech.net>
-** 
+**
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Tue May 31 13:04:10 2016 Thomas CHABOT
+** Last update Tue May 31 13:46:41 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-int		get_n_hist(char *str)
+int		get_nb_cmd(t_data *data, int i)
 {
-  int		i;
-  int		j;
-  char		*tmp;
-
-  i = 0;
-  j = 0;
-  tmp = NULL;
-  tmp = my_mallok(tmp, my_strlen(str));
-  while (str[i] && str[i] == '!')
-    i++;
-  while (str[i])
-    tmp[j++] = str[i++];
-  tmp[j] = '\0';
-  return (my_getnbr(tmp));
-}
-
-int		modif_n_hist(t_data *data, int i)
-{
-  /*  int		j;*/
   int		nb;
 
-  /*j = 0;*/
-  nb = get_n_hist(data->parser.tab_args[i]);
-  printf("nb = %d\n", nb);
-  data->parser.tab_args[i] = NULL;
-  /*  while (j 
-      data->parser.tab_args[i] = my_strcpy(data->hist->prev->str);*/
+  nb = 0;
+  if ((nb = my_getnbr(data->parser.tab_args[i])) == ERROR)
+    return (ERROR);
+  while (data->hist->prev != NULL)
+    data->hist = data->hist->prev;
+  while (data->hist->next != NULL && nb > 0)
+    {
+      data->hist = data->hist->next;
+      nb--;
+    }
+  data->parser.tab_args[i] = my_strcpy(data->hist->str);
+  while (data->hist->next != NULL)
+    data->hist = data->hist->next;
   return (SUCCESS);
 }
 
-int		modif_args_hist(t_data *data, int i) /* BOUCLE SUR !! */
+int		get_relative_cmd(t_data *data, int i)
+{
+  int		nb;
+
+  nb = 0;
+  data->parser.tab_args[i] = &data->parser.tab_args[i][1];
+  if ((nb = my_getnbr(data->parser.tab_args[i])) == ERROR)
+    return (ERROR);
+  while (data->hist->prev != NULL && nb > 0)
+    {
+      data->hist = data->hist->prev;
+      nb--;
+    }
+  data->parser.tab_args[i] = my_strcpy(data->hist->str);
+  while (data->hist->next != NULL)
+    data->hist = data->hist->next;
+  return (SUCCESS);
+}
+
+int		check_n_hist(t_data *data, int i)
+{
+  if (data->parser.tab_args[i][0] != '-' \
+      && (data->parser.tab_args[i][0] < '0' \
+	  || data->parser.tab_args[i][0] > '9'))
+    return (STOP);
+  if (data->parser.tab_args[i][0] == '-')
+    if (get_relative_cmd(data, i) == ERROR)
+      return (ERROR);
+  if (data->parser.tab_args[i][0] != '-')
+    if (get_nb_cmd(data, i) == ERROR)
+      return (ERROR);
+  modif_args_hist(data, i);
+  return (SUCCESS);
+}
+
+int		modif_args_hist(t_data *data, int i)
 {
   if (data->parser.tab_args[i][0] != '!')
     return (STOP);
-  if (data->parser.tab_args[i][0] == '!' \
-      && data->parser.tab_args[i][1] > '0' \
-      && data->parser.tab_args[i][1] <= '9')
-    modif_n_hist(data, i);
   data->parser.tab_args[i] = &data->parser.tab_args[i][1];
+  if (check_n_hist(data, i) == SUCCESS)
+    return (SUCCESS);
   if (data->parser.tab_args[i][0] == '!')
-    {
-      data->parser.tab_args[i] = NULL;
-      data->parser.tab_args[i] = my_strcpy(data->hist->prev->str);
-    }
+    data->parser.tab_args[i] = my_strcpy(data->hist->prev->str);
   else
     {
       while (data->hist->prev != NULL \
@@ -65,15 +83,13 @@ int		modif_args_hist(t_data *data, int i) /* BOUCLE SUR !! */
       if (data->hist->prev != NULL ||
 	  my_strncmp(data->hist->str, data->parser.tab_args[i],
 	   my_strlen(data->parser.tab_args[i])) == SUCCESS)
-	{
-	  data->parser.tab_args[i] = NULL;
-	  data->parser.tab_args[i] = my_strcpy(data->hist->str);
-	}
+	data->parser.tab_args[i] = my_strcpy(data->hist->str);
       else
 	return (error_event(data, data->parser.tab_args[i]));
     }
   while (data->hist->next != NULL)
     data->hist = data->hist->next;
+  modif_args_hist(data, i);
   return (SUCCESS);
 }
 
@@ -96,28 +112,4 @@ t_hist		*add_elem_key(t_hist *list, char *str)
   new_elem->next = NULL;
   list->next = new_elem;
   return (new_elem);
-}
-
-int		print_list(t_data *data)
-{
-  int		nb_line;
-
-  nb_line = 0;
-  if (data->hist == NULL)
-    return (ERROR);
-  while (data->hist->prev != NULL)
-    data->hist = data->hist->prev;
-  while (data->hist->next != NULL)
-    {
-      my_put_nbr(nb_line++, 1);
-      my_putstr("  ", 1);
-      my_putstr(data->hist->str, 1);
-      my_putstr("\n", 1);
-      data->hist = data->hist->next;
-    }
-  my_put_nbr(nb_line++, 1);
-  my_putstr("  ", 1);
-  my_putstr(data->hist->str, 1);
-  my_putstr("\n", 1);
-  return (SUCCESS);
 }
