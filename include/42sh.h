@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 31 15:16:56 2016 Thomas LE MOULLEC
+** Last update Tue May 31 17:06:13 2016 Thomas LE MOULLEC
 */
 
 #ifndef SH42_H_
@@ -26,6 +26,7 @@
 #include <term.h>
 #include <errno.h>
 #include <glob.h>
+#include <time.h>
 #include "struct.h"
 
 /* **************** SHELL ****************** */
@@ -210,6 +211,10 @@ int             args_convert(t_data *);
 /* history.c */
 int             modif_args_hist(t_data *, int);
 t_hist		*add_elem_key(t_hist *, char *);
+
+/* print_hist.c */
+t_hist		*get_time(t_hist *);
+void		print_hist_date(t_data *);
 int		print_hist(t_data *);
 
 /* mode_canon.c */

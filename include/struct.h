@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Tue May 31 15:51:09 2016 Thomas LE MOULLEC
+** Last update Tue May 31 17:05:53 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -99,7 +99,8 @@ typedef struct		s_hist
   struct s_hist		*prev;
   char			*str;
   int			pos;
-  char			*time;
+  int			hour;
+  int			min;
 }			t_hist;
 
 typedef struct		s_alias

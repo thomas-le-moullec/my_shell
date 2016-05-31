@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Tue May 31 13:46:41 2016 Thomas CHABOT
+** Last update Tue May 31 14:54:28 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -100,6 +100,7 @@ t_hist		*add_elem_key(t_hist *list, char *str)
   new_elem = NULL;
   new_elem = my_mallok(new_elem, sizeof(*new_elem));
   new_elem->str = my_strcpy(str);
+  new_elem = get_time(new_elem);
   if (list == NULL)
     {
       new_elem->prev = NULL;
