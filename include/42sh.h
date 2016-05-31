@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Mon May 30 18:31:50 2016 Thomas CHABOT
+** Last update Tue May 31 11:30:00 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -129,7 +129,7 @@ int		my_unsetenv(t_data *);
 int		new_alias(t_data *);
 
 /* unalias.c */
-void		delete_alias(t_data *);
+int		delete_alias(t_data *);
 int		unalias(t_data *);
 
 /* echo.c */
@@ -216,10 +216,8 @@ int		print_list(t_data *);
 int		mode_canon(int);
 
 /* alias.c */
-t_alias         *add_elem_alias(t_alias *alias, char *, char *);
-int             pars_alias(char *, t_data *);
-int             init_list_alias(t_data *);
-void            show_alias(t_data *);
+t_alias         *add_elem_alias(t_alias *, char *, char *);
+
 
 /* change_alias.c */
 int             check_alias_in(t_data *, int, int *);
@@ -303,5 +301,7 @@ char		*cut_extrem(char *);
 int		my_put_error(char *, int);
 
 char		*get_dir(char *);
+
+void            show_alias(t_data *);
 
 #endif /* SH42_H_ */
