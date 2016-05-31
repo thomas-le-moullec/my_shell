@@ -6,7 +6,7 @@
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
 <<<<<<< HEAD
-** Last update Tue May 31 17:50:45 2016 Thomas LE MOULLEC
+** Last update Tue May 31 20:17:45 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -83,7 +83,7 @@ int		sep_loop(t_data *data)
     {
       if ((data->parser.tab_cond = my_cond_to_wordtab	\
 	   (data->parser.tab_sep[i], "&|")) == NULL)
-	return (my_put_error("Invalid null command.\n", 1));
+	return (my_put_error(NULL_CMD, 1));
       if (data->parser.tab_cond != NULL)
 	{
 	  take_type_cond(data, i, 0, 0);

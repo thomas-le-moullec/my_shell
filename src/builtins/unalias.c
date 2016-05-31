@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 10:15:56 2016 Thomas CHABOT
-** Last update Tue May 31 18:15:58 2016 Thomas LE MOULLEC
+** Last update Tue May 31 20:17:08 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -42,7 +42,7 @@ int		delete_alias(t_data *data)
 int		unalias(t_data *data)
 {
   if (data->parser.tab_args[1] == NULL || data->parser.tab_args[2] != NULL)
-    return (my_put_error("Unalias needs one argument.\n", 1));
+    return (my_put_error(ERROR_UNALIAS, 1));
   while (data->alias->prev != NULL)
     {
       if (my_strcmp(data->parser.tab_args[1], data->alias->name) == SUCCESS)

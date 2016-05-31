@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Tue May 31 17:44:21 2016 Thomas LE MOULLEC
+** Last update Tue May 31 20:16:13 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -32,6 +32,9 @@
 
 #define NB_SIGNALS	5
 
+#define ERROR_ALIAS	"Invalid alias name.\n"
+#define NULL_CMD	"Invalid null command.\n"
+#define ERROR_UNALIAS	"Unalias needs one argument.\n"
 #define AMBI_INPUT	"Ambiguous input redirect.\n"
 #define AMBI_OUTPUT	"Ambiguous output redirect.\n"
 #define ER_UNSETENV	"unsetenv: Too few arguments.\n"

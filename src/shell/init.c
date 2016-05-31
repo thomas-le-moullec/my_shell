@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 12:51:48 2016 Thomas CHABOT
-** Last update Tue May 31 10:31:05 2016 leo LE DIOURON
+** Last update Tue May 31 20:30:30 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -42,13 +42,9 @@ int		get_home(t_data *data)
 
 int		get_old_pwd(t_data *data)
 {
-  int		i;
-
-  if ((i = check_env_exist(data, "OLDPWD")) != ERROR)
-    data->shell.oldpwd = my_strcpy_equal(data->shell.env[i]);
-  if (i == ERROR && data->shell.pwd != NULL)
+  if (data->shell.pwd != NULL)
     data->shell.oldpwd = my_strcpy_equal(data->shell.pwd);
-  if (i == ERROR && data->shell.pwd == NULL)
+  if (data->shell.pwd == NULL)
     data->shell.oldpwd = NULL;
   return (SUCCESS);
 }
