@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Tue May 31 10:41:40 2016 Thomas CHABOT
+** Last update Tue May 31 15:52:15 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -102,6 +102,8 @@ int		my_shell(t_data *data)
   while ((data->shell.line = get_next_line(0)) != NULL)
     {
       data->hist = add_elem_key(data->hist, data->shell.line);
+      if ((magic_quotes(data)) == ERROR)
+	return (ERROR);
       if (inhib(data) != ERROR)
 	{
 	  if (parser_sep(data) != STOP)

@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Tue May 31 13:46:12 2016 Thomas CHABOT
+## Last update Tue May 31 15:15:08 2016 Thomas LE MOULLEC
 ##
 
 DETAILS		=		no
@@ -74,6 +74,7 @@ OPT		=		src/options/var_env.c				\
 				src/options/alias.c				\
 				src/options/change_alias.c			\
 				src/options/glob.c				\
+				src/options/magics.c				\
 				src/options/print_hist.c			\
 
 OPT_KEY		=		src/options/fct_clavier/fct_up.c		\
@@ -101,6 +102,7 @@ MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/show_alias.c				\
 				src/mylib/my_put_error.c			\
 				src/mylib/cut.c					\
+				src/mylib/count_occurrence.c			\
 				src/mylib/get_dir.c				\
 				src/mylib/my_free_alias.c			\
 

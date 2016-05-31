@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 31 13:42:30 2016 Thomas CHABOT
+** Last update Tue May 31 15:16:56 2016 Thomas LE MOULLEC
 */
 
 #ifndef SH42_H_
@@ -233,6 +233,11 @@ char            **take_tab_stars(char *, char *);
 int             glob_error(const char *, int);
 int             check_stars(char *);
 
+/*magics*/
+int             magic_quotes(t_data *);
+int             loop_magic(t_data *, char **);
+char            **my_magic_wordtab(char *, int);
+
 /* **************** FCT_CLAVIER ************** */
 
 /* fct_up.c */
@@ -303,5 +308,7 @@ int		my_put_error(char *, int);
 char		*get_dir(char *);
 
 void            show_alias(t_data *);
+
+int             count_occurrence(char *, char);
 
 #endif /* SH42_H_ */

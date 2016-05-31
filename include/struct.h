@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Mon May 30 18:27:56 2016 Thomas CHABOT
+** Last update Tue May 31 15:51:09 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -41,6 +41,7 @@
 #define PERM_DENIED	": Permissions denied.\n"
 #define MISSING_NAME	"Missing name for redirect.\n"
 #define EVENT		"Event not found.\n"
+#define MAGIC_ERROR	"Unmatched `.\n"
 
 #define SIG_SIGABRT	"Aborted\n"
 #define SIG_SIGFPE	"Floating exception\n"
@@ -78,6 +79,7 @@ typedef struct		s_shell
 {
   int			bin;
   char			*line;
+  char			*tmp_magic;
   char			**env;
   char			*pwd;
   char			*oldpwd;
