@@ -5,14 +5,14 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Mon May 30 18:33:34 2016 Thomas CHABOT
+** Last update Tue May 31 10:42:25 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
 int		modif_args_hist(t_data *data, int i) /* BOUCLE SUR !! */
 {
-  if (data->parser.tab_args[i][0] != '!')  /* ERROR A REVOIR*/
+  if (data->parser.tab_args[i][0] != '!')
     return (STOP);
   data->parser.tab_args[i] = &data->parser.tab_args[i][1];
   if (data->parser.tab_args[i][0] == '!')
