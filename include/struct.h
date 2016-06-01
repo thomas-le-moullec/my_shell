@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Wed Jun  1 21:41:47 2016 leo LE DIOURON
+** Last update Thu Jun  2 00:07:33 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -32,6 +32,9 @@
 
 #define NB_SIGNALS	5
 
+#define NO_MATCH	": No match.\n"
+#define SHOW_ALIAS	"alias "
+#define EXIT_THIS	"exit\n"
 #define ERROR_ALIAS	"Invalid alias name.\n"
 #define NULL_CMD	"Invalid null command.\n"
 #define ERROR_UNALIAS	"unalias: Too few arguments.\n"
@@ -45,8 +48,11 @@
 #define IS_DIR		": Is a directory.\n"
 #define FOUND_DIR	": No such file or directory.\n"
 #define MISSING_NAME	"Missing name for redirect.\n"
-#define EVENT		"Event not found.\n"
+#define EVENT		": Event not found.\n"
 #define MAGIC_ERROR	"Unmatched `.\n"
+#define UNDEF_VAR	": Undefined variable.\n"
+#define SET_LETTER	"setenv: Variable name must begin with a letter.\n"
+#define SET_ALPHA	"setenv: Variable name must contain alphanumeric characters.\n"
 
 #define SIG_SIGABRT	"Aborted\n"
 #define SIG_SIGFPE	"Floating exception\n"

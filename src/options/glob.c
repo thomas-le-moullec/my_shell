@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Sat May 28 15:40:07 2016 steeve payraudeau
-** Last update Wed Jun  1 14:32:51 2016 Thomas LE MOULLEC
+** Last update Wed Jun  1 23:47:38 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -53,7 +53,7 @@ char		**take_tab_stars(char *str, char *str_err, t_data *data)
   if (err != 0)
     {
       my_putstr(str_err, 1);
-      my_putstr(": No match.\n", 1);
+      my_putstr(NO_MATCH, 1);
       data->shell.exit_status = 1;
       return (NULL);
     }
