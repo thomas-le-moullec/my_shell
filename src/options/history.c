@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Wed Jun  1 18:46:57 2016 leo LE DIOURON
+** Last update Wed Jun  1 20:04:25 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -124,6 +124,8 @@ char		*take_tmp_hist(t_data *data, int y)
   while (data->parser.tab_pipe[y][i] != ' ' && data->parser.tab_pipe[y][i] != '\t' && data->parser.tab_pipe[y][i] != '\0')
     result[j++] = data->parser.tab_pipe[y][i++];
   result[j] = '\0';
+  if (j == 0)
+    return (NULL);
   return (result);
 }
 
