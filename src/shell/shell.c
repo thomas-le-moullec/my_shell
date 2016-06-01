@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Wed Jun  1 09:36:12 2016 Thomas LE MOULLEC
+** Last update Wed Jun  1 16:45:43 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -17,9 +17,12 @@ int		pipe_loop(t_data *data)
   i = 0;
   while (data->parser.tab_pipe[i] != NULL)
     {
-      if (var_env(data, i) == ERROR)
-	return (STOP);
-      pipe_alias(data, i);
+      if (data->parser.quote != 2)
+	{
+	  if (var_env(data, i) == ERROR)
+	    return (STOP);
+	  pipe_alias(data, i);
+	}
       data->parser.check_pos_pipe = data->parser.nb_pipe[i];
       if (make_pipe(data) == ERROR)
 	return (STOP);
@@ -30,7 +33,7 @@ int		pipe_loop(t_data *data)
 	(data->parser.tab_pipe[i], " \t");
       if (args_convert(data) == STOP)
 	return (STOP);
-      if (data->shell.chk_magic == 0)
+      if (data->shell.chk_magic == 0 && data->parser.quote == 0)
 	if (my_glob(data) == ERROR)
 	  return (STOP);
       if (my_exec(data) == ERROR)
@@ -106,10 +109,11 @@ int		my_shell(t_data *data)
     {
       data->shell.chk_magic = 0;
       data->hist = add_elem_key(data->hist, data->shell.line);
-      if ((magic_quotes(data)) == ERROR)
-	return (ERROR);
       if (inhib(data) != ERROR)
 	{
+	  if (data->parser.quote != 2)
+	    if ((magic_quotes(data)) == ERROR)
+	      return (ERROR);
 	  if (parser_sep(data) != STOP)
 	    {
 	      sep_loop(data);

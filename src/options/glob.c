@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Sat May 28 15:40:07 2016 steeve payraudeau
-** Last update Sun May 29 14:26:14 2016 Thomas CHABOT
+** Last update Wed Jun  1 14:32:51 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -44,7 +44,7 @@ int		check_stars(char *str)
   return (ERROR);
 }
 
-char		**take_tab_stars(char *str, char *str_err)
+char		**take_tab_stars(char *str, char *str_err, t_data *data)
 {
   glob_t	tab_glob;
   int		err;
@@ -54,6 +54,7 @@ char		**take_tab_stars(char *str, char *str_err)
     {
       my_putstr(str_err, 1);
       my_putstr(": No match.\n", 1);
+      data->shell.exit_status = 1;
       return (NULL);
     }
   return (tab_glob.gl_pathv);
@@ -70,7 +71,7 @@ char		**replace_stars(t_data *data, int *j)
   k = 0;
   result = NULL;
   if ((tabo = take_tab_stars(data->parser.tab_args[(*j)],
-			     data->parser.tab_args[0])) == NULL)
+			     data->parser.tab_args[0], data)) == NULL)
     return (NULL);
   result = my_mallok(result, sizeof(*result) *
 		     (count_tab(tabo) + count_tab(data->parser.tab_args) + 1));

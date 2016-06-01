@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 31 17:06:13 2016 Thomas LE MOULLEC
+** Last update Wed Jun  1 14:34:29 2016 Thomas LE MOULLEC
 */
 
 #ifndef SH42_H_
@@ -234,7 +234,7 @@ int             change_alias(t_data *, int);
 /*     glob.c   */
 int             my_glob(t_data *);
 char            **replace_stars(t_data *, int *);
-char            **take_tab_stars(char *, char *);
+char            **take_tab_stars(char *, char *, t_data *);
 int             glob_error(const char *, int);
 int             check_stars(char *);
 
