@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Wed Jun  1 14:34:29 2016 Thomas LE MOULLEC
+** Last update Wed Jun  1 18:09:29 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -222,7 +222,6 @@ int		mode_canon(int);
 
 /* alias.c */
 t_alias         *add_elem_alias(t_alias *, char *, char *);
-
 
 /* change_alias.c */
 int             check_alias_in(t_data *, int, int *);

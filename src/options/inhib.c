@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 13:07:47 2016 Hervé TCHIKLADZE
-** Last update Wed Jun  1 15:18:59 2016 Thomas LE MOULLEC
+** Last update Wed Jun  1 17:26:05 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -25,8 +25,6 @@ int		args_convert(t_data *data)
 	    data->parser.tab_args[i][j] *= -1;
 	  j++;
 	}
-      if (modif_args_hist(data, i) == ERROR)
-	return (STOP);
       i++;
     }
   return (SUCCESS);

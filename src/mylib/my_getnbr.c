@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:33:06 2016 Thomas CHABOT
-** Last update Wed Apr 27 16:13:04 2016 Thomas CHABOT
+** Last update Wed Jun  1 18:39:13 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -17,6 +17,8 @@ int     my_getnbr(char *str)
 
   nb = 0;
   i = 0;
+  if (str[0] == '\0')
+    return (ERROR);
   if (str[0] == '-')
     i++;
   while (str[i] != '\0')
