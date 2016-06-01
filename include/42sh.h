@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Tue May 31 17:06:13 2016 Thomas LE MOULLEC
+** Last update Wed Jun  1 18:15:12 2016 steeve payraudeau
 */
 
 #ifndef SH42_H_
@@ -39,6 +39,11 @@ int		pipe_loop(t_data *);
 int		cond_loop(t_data *);
 int		sep_loop(t_data *);
 int		my_shell(t_data *);
+int		parser_line(t_data *);
+
+/* my_shell_key.C */
+int             my_shell_key(t_data *);
+int	        catch_key(t_data *);
 
 /* get_env.c */
 int		get_env(t_data *, char **);
@@ -196,6 +201,10 @@ void		disp_prompt(t_data *);
 
 /* **************** OPTIONS ****************** */
 
+/* cp_str.c */
+char            *strcop_char(char **, char);
+char            *cp_str(char *, char *);
+
 /* var_env.c */
 int		var_env(t_data *, int);
 int		replace_string(t_data *, int, int, char *);
@@ -219,6 +228,8 @@ int		print_hist(t_data *);
 
 /* mode_canon.c */
 int		mode_canon(int);
+int		init_tab(t_data *);
+int		init_term(t_data *);
 
 /* alias.c */
 t_alias         *add_elem_alias(t_alias *, char *, char *);
@@ -246,13 +257,21 @@ char            **my_magic_wordtab(char *, int);
 /* **************** FCT_CLAVIER ************** */
 
 /* fct_up.c */
-int		fct_up(t_data *);
+int		fct_up(t_data *, int *);
 /* fct_down.c */
-int		fct_down(t_data *);
+int		fct_down(t_data *, int *);
 /* fct_right.c */
-int		fct_right(t_data *);
+int		fct_right(t_data *, int *);
 /* fct_left.c */
-int		fct_left(t_data *);
+int		fct_left(t_data *, int *);
+/* fct_tab.c */
+int		fct_tab(t_data *, int *);
+/* fct_delete.c */
+int		fct_delete(t_data *, int *);
+int		fct_supp(t_data *, int *);
+/* fct_move.c  */
+int		fct_end(t_data *, int *);
+int		fct_kome(t_data *, int *);
 
 /* **************** MYLIB ****************** */
 

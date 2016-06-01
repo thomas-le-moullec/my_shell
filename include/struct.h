@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Tue May 31 17:05:53 2016 Thomas LE MOULLEC
+** Last update Wed Jun  1 18:08:08 2016 steeve payraudeau
 */
 
 #ifndef STRUCT_H_
@@ -114,12 +114,12 @@ typedef struct		s_alias
 typedef struct		s_key
 {
   char			*key;
-  int			(*function)(t_data *);
+  int			(*function)(t_data *, int *);
 }			t_key;
 
 struct		       	s_data
 {
-  t_key			tab_key[5];
+  t_key			tab_key[10];
   t_hist		*hist;
   t_shell		shell;
   t_parser		parser;

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 09:08:44 2016 Thomas CHABOT
-** Last update Wed May 25 16:44:42 2016 leo LE DIOURON
+** Last update Tue May 31 20:14:20 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -31,7 +31,10 @@ int		main(int ac, char **av, char **ae)
   memset(&data.parser, 0, sizeof(data.parser));
   get_env(&data, ae);
   init_shell(&data);
-  my_shell(&data);
+  if (isatty(0) == 0)
+    my_shell(&data);
+  else
+    my_shell_key(&data);
   end_fct(&data);
   return (data.shell.exit_status);
 }

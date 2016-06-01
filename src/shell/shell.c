@@ -5,8 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-<<<<<<< HEAD
-** Last update Tue May 31 17:05:34 2016 Thomas LE MOULLEC
+** Last update Wed Jun  1 20:01:58 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -93,26 +92,29 @@ int		sep_loop(t_data *data)
   return (SUCCESS);
 }
 
+int		parser_line(t_data *data)
+{
+  data->hist = add_elem_key(data->hist, data->shell.line);
+  if ((magic_quotes(data)) == ERROR)
+    return (ERROR);
+  if (inhib(data) != ERROR)
+    {
+      if (parser_sep(data) != STOP)
+	{
+	  sep_loop(data);
+	  my_free_loop(data);
+	}
+    }
+  return (SUCCESS);
+}
+
 int		my_shell(t_data *data)
 {
-  data->alias = NULL;
-  data->alias = add_elem_alias(data->alias, "ls -l", "ll");
   disp_prompt(data);
-  data->hist = NULL;
-  data->shell.exit_status = 0;
   while ((data->shell.line = get_next_line(0)) != NULL)
     {
-      data->hist = add_elem_key(data->hist, data->shell.line);
-      if ((magic_quotes(data)) == ERROR)
+      if (parser_line(data) == ERROR)
 	return (ERROR);
-      if (inhib(data) != ERROR)
-	{
-	  if (parser_sep(data) != STOP)
-	    {
-	      sep_loop(data);
-	      my_free_loop(data);
-	    }
-	}
       disp_prompt(data);
     }
   my_putstr("exit\n", 1);

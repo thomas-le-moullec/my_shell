@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 12:51:48 2016 Thomas CHABOT
-** Last update Tue May 31 10:31:05 2016 leo LE DIOURON
+** Last update Tue May 31 19:51:52 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -67,5 +67,9 @@ int		init_shell(t_data *data)
   get_old_pwd(data);
   get_home(data);
   init_signaux();
+  data->alias = NULL;
+  data->alias = add_elem_alias(data->alias, "ls -l", "ll");
+  data->hist = NULL;
+  data->shell.exit_status = 0;
   return (SUCCESS);
 }

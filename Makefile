@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Tue May 31 15:15:08 2016 Thomas LE MOULLEC
+## Last update Wed Jun  1 18:14:16 2016 steeve payraudeau
 ##
 
 DETAILS		=		no
@@ -70,17 +70,22 @@ ERROR		=		src/error/ambiguous.c				\
 OPT		=		src/options/var_env.c				\
 				src/options/inhib.c				\
 				src/options/history.c				\
-				src/options/mode_canon.c			\
 				src/options/alias.c				\
 				src/options/change_alias.c			\
 				src/options/glob.c				\
 				src/options/magics.c				\
 				src/options/print_hist.c			\
 
-OPT_KEY		=		src/options/fct_clavier/fct_up.c		\
-				src/options/fct_clavier/fct_down.c		\
-				src/options/fct_clavier/fct_right.c		\
-				src/options/fct_clavier/fct_left.c		\
+OPT_KEY		=		src/options/line_edition/my_shell_key.c		\
+				src/options/line_edition/mode_canon.c		\
+				src/options/line_edition/cp_str.c		\
+				src/options/line_edition/fct_clavier/fct_move.c	\
+				src/options/line_edition/fct_clavier/fct_up.c	\
+				src/options/line_edition/fct_clavier/fct_down.c	\
+				src/options/line_edition/fct_clavier/fct_right.c\
+				src/options/line_edition/fct_clavier/fct_left.c	\
+				src/options/line_edition/fct_clavier/fct_tab.c	\
+				src/options/line_edition/fct_clavier/fct_delete.c\
 
 MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/my_putchar.c				\
