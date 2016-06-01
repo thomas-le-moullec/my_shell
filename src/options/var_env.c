@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Mon May 16 16:50:31 2016 leo LE DIOURON
-** Last update Sun May 29 13:41:56 2016 leo LE DIOURON
+** Last update Wed Jun  1 22:06:24 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -62,27 +62,47 @@ void		creat_new_string(t_data *data, char *result, int j)
   new_string = my_free(new_string);
 }
 
+char		*take_var_local(t_data *data, char *var)
+{
+  char		*result;
+
+  result = NULL;
+  while (data->local->prev != NULL)
+    data->local = data->local->prev;
+  while (data->local->next != NULL)
+    {
+      if (my_strcmp(data->local->name, var) == SUCCESS)
+	result = my_strcpy(data->local->cmd);
+      data->local = data->local->next;
+    }
+  if (my_strcmp(data->local->name, var) == SUCCESS)
+    result = my_strcpy(data->local->cmd);
+  return (result);
+}
+
 int		replace_string(t_data *data, int j, int i, char *var_env)
 {
   int		nb;
   char		*result;
 
   result = NULL;
-  if ((nb = check_env_exist(data, var_env)) == ERROR)
+  if ((nb = check_env_exist(data, var_env)) == ERROR &&
+      (result = take_var_local(data, var_env)) == NULL)
     {
       data->parser.tab_pipe[j][i] = ' ';
       my_putstr(var_env, 1);
       my_putstr(": Undefined variabe.\n", 1);
       return (ERROR);
     }
-  result = my_strcpy_equal(data->shell.env[nb]);
+  if (nb != ERROR)
+    result = my_strcpy_equal(data->shell.env[nb]);
   if (result == NULL || result[0] == '\0')
     return (ERROR);
   creat_new_string(data, result, j);
   return (SUCCESS);
 }
 
-int		var_env(t_data *data, int j)
+int		var_env_loc(t_data *data, int j)
 {
   int		i;
   char		*var_env;

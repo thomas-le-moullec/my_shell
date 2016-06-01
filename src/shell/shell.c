@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Wed Jun  1 20:08:34 2016 steeve payraudeau
+** Last update Wed Jun  1 20:57:50 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -19,7 +19,7 @@ int		pipe_loop(t_data *data)
     {
       if (data->parser.quote != 2)
 	{
-	  if (var_env(data, i) == ERROR)
+	  if (var_env_loc(data, i) == ERROR)
 	    return (STOP);
 
 	  pipe_alias(data, i);

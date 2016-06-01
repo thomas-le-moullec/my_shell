@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Wed Jun  1 20:15:17 2016 steeve payraudeau
+** Last update Wed Jun  1 21:43:35 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -144,6 +144,17 @@ int		my_echo(t_data *);
 /* my_history.c */
 int		my_history(t_data *);
 
+/* my_unset.c */
+int             delete_local(t_data *);
+int		my_unset(t_data *);
+
+/* set.c */
+void		show_set(t_data *);
+t_local         *add_elem_local(t_local *, char *, char *);
+char            *take_cmd_local(char *);
+char            *take_name_local(char *);
+int		my_set(t_data *);
+
 /* **************** PARSER ****************** */
 
 /* parser.c */
@@ -206,7 +217,7 @@ char            *strcop_char(char **, char);
 char            *cp_str(char *, char *, int);
 
 /* var_env.c */
-int		var_env(t_data *, int);
+int		var_env_loc(t_data *, int);
 int		replace_string(t_data *, int, int, char *);
 char		*take_var(t_data *, int, int);
 void            creat_new_string(t_data *, char *, int);
