@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Mon May 30 11:01:18 2016 Thomas CHABOT
+** Last update Wed Jun  1 09:42:37 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -41,7 +41,10 @@ int		exec_without_path(t_data *data)
   if (cpid == 0)
     {
       if (in_and_out(data) == ERROR)
-	return (ERROR);
+	{
+	  exit(1);
+	  return (ERROR);
+	}
       if (execve(data->parser.tab_args[0], \
 		 data->parser.tab_args, data->shell.env) == ERROR)
 	  exit(1);
@@ -67,7 +70,10 @@ int		exec_with_path(t_data *data, int i)
   if (cpid == 0)
     {
       if (in_and_out(data) == ERROR)
-	return (ERROR);
+	{
+	  exit(1);
+	  return (ERROR);
+	}
       if (execve(tmp, data->parser.tab_args, data->shell.env) == ERROR)
 	exit(1);
     }

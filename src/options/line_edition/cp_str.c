@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Wed Jun  1 16:08:54 2016 steeve payraudeau
-** Last update Wed Jun  1 16:45:44 2016 steeve payraudeau
+** Last update Wed Jun  1 20:27:53 2016 steeve payraudeau
 */
 
 #include <42sh.h>
@@ -38,12 +38,27 @@ char            *strcop_char(char **str, char c)
   return (back);
 }
 
-char		*cp_str(char *str, char *new)
+char		*cp_str(char *str, char *new, int pos)
 {
+  char		*tmp;
   int		i;
+  int		j;
 
   i = 0;
-  while (new[i] != '\0')
-    str = strcop_char(&str, new[i++]);
+  j = 0;
+  tmp = NULL;
+  if (str == NULL)
+    while (new[i] != '\0')
+      str = strcop_char(&str, new[i++]);
+  else
+    {
+      while (i < pos && str[i] != '\0')
+	tmp = strcop_char(&tmp, str[i++]);
+      while (new[j] != '\0')
+	tmp = strcop_char(&tmp, new[j++]);
+      while (str[i] != '\0' && i < my_strlen(str))
+	tmp = strcop_char(&tmp, str[i++]);
+      return (tmp);
+    }
   return (str);
 }

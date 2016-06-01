@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 15:15:06 2016 leo LE DIOURON
-** Last update Tue May 24 13:32:22 2016 Thomas CHABOT
+** Last update Wed Jun  1 09:49:56 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -14,6 +14,7 @@ int             take_outfile(char *str, int i, t_data *data)
 {
   int           j;
 
+  data->parser.db_out = 0;
   if (str[i + 1] == '>')
     {
       data->parser.db_out = 1;
@@ -40,6 +41,7 @@ int             take_infile(char *str, int i, t_data *data)
 {
   int           j;
 
+  data->parser.db_in = 0;
   if (str[i + 1] == '<')
     {
       data->parser.db_in = 1;

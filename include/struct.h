@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Wed Jun  1 18:08:08 2016 steeve payraudeau
+** Last update Wed Jun  1 20:11:31 2016 steeve payraudeau
 */
 
 #ifndef STRUCT_H_
@@ -32,13 +32,18 @@
 
 #define NB_SIGNALS	5
 
+#define ERROR_ALIAS	"Invalid alias name.\n"
+#define NULL_CMD	"Invalid null command.\n"
+#define ERROR_UNALIAS	"unalias: Too few arguments.\n"
 #define AMBI_INPUT	"Ambiguous input redirect.\n"
 #define AMBI_OUTPUT	"Ambiguous output redirect.\n"
 #define ER_UNSETENV	"unsetenv: Too few arguments.\n"
 #define ER_SETENV	"setenv: Too many arguments.\n"
 #define NOT_FOUND	": Command not found.\n"
 #define NOT_DIR		": Not a directory.\n"
-#define PERM_DENIED	": Permissions denied.\n"
+#define PERM_DENIED	": Permission denied.\n"
+#define IS_DIR		": Is a directory.\n"
+#define FOUND_DIR	": No such file or directory.\n"
 #define MISSING_NAME	"Missing name for redirect.\n"
 #define EVENT		"Event not found.\n"
 #define MAGIC_ERROR	"Unmatched `.\n"
@@ -77,6 +82,7 @@ typedef struct		s_parser
 
 typedef struct		s_shell
 {
+  int			chk_magic;
   int			bin;
   char			*line;
   char			*tmp_magic;

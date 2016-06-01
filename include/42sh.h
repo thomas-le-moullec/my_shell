@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Wed Jun  1 18:15:12 2016 steeve payraudeau
+** Last update Wed Jun  1 20:15:17 2016 steeve payraudeau
 */
 
 #ifndef SH42_H_
@@ -203,7 +203,7 @@ void		disp_prompt(t_data *);
 
 /* cp_str.c */
 char            *strcop_char(char **, char);
-char            *cp_str(char *, char *);
+char            *cp_str(char *, char *, int);
 
 /* var_env.c */
 int		var_env(t_data *, int);
@@ -234,7 +234,6 @@ int		init_term(t_data *);
 /* alias.c */
 t_alias         *add_elem_alias(t_alias *, char *, char *);
 
-
 /* change_alias.c */
 int             check_alias_in(t_data *, int, int *);
 void            modify_string_alias(t_data *, int, int, int);
@@ -245,7 +244,7 @@ int             change_alias(t_data *, int);
 /*     glob.c   */
 int             my_glob(t_data *);
 char            **replace_stars(t_data *, int *);
-char            **take_tab_stars(char *, char *);
+char            **take_tab_stars(char *, char *, t_data *);
 int             glob_error(const char *, int);
 int             check_stars(char *);
 

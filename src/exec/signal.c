@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 13:51:52 2016 Thomas CHABOT
-** Last update Tue May 31 15:16:39 2016 Thomas CHABOT
+** Last update Wed Jun  1 17:06:46 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -26,7 +26,7 @@ int			check_signal(t_data *data, int status)
     {
       if (status == signal[i].status)
 	{
-	  data->shell.exit_status = status;
+	  data->shell.exit_status = status + 128;
 	  my_putstr(signal[i].msg, 1);
 	}
       i++;

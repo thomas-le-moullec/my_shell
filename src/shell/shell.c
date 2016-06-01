@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Wed Jun  1 20:01:58 2016 steeve payraudeau
+** Last update Wed Jun  1 20:08:34 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -17,9 +17,16 @@ int		pipe_loop(t_data *data)
   i = 0;
   while (data->parser.tab_pipe[i] != NULL)
     {
-      if (var_env(data, i) == ERROR)
-	return (STOP);
-      pipe_alias(data, i);
+      if (data->parser.quote != 2)
+	{
+	  if (var_env(data, i) == ERROR)
+	    return (STOP);
+
+	  pipe_alias(data, i);
+
+	  if (modif_args_hist(data, i) == ERROR)
+	    return (STOP);
+	}
       data->parser.check_pos_pipe = data->parser.nb_pipe[i];
       if (make_pipe(data) == ERROR)
 	return (STOP);
@@ -30,7 +37,10 @@ int		pipe_loop(t_data *data)
 	(data->parser.tab_pipe[i], " \t");
       if (args_convert(data) == STOP)
 	return (STOP);
-      if (my_glob(data) == ERROR || my_exec(data) == ERROR)
+      if (data->shell.chk_magic == 0 && data->parser.quote == 0)
+	if (my_glob(data) == ERROR)
+	  return (STOP);
+      if (my_exec(data) == ERROR)
 	return (STOP);
       my_free_tab(data->parser.tab_args);
       i++;
@@ -79,7 +89,7 @@ int		sep_loop(t_data *data)
     {
       if ((data->parser.tab_cond = my_cond_to_wordtab	\
 	   (data->parser.tab_sep[i], "&|")) == NULL)
-	return (my_put_error("Invalid null command.\n", 1));
+	return (my_put_error(NULL_CMD, 1));
       if (data->parser.tab_cond != NULL)
 	{
 	  take_type_cond(data, i, 0, 0);
@@ -94,11 +104,13 @@ int		sep_loop(t_data *data)
 
 int		parser_line(t_data *data)
 {
+  data->shell.chk_magic = 0;
   data->hist = add_elem_key(data->hist, data->shell.line);
-  if ((magic_quotes(data)) == ERROR)
-    return (ERROR);
   if (inhib(data) != ERROR)
     {
+      if (data->parser.quote != 2)
+	if ((magic_quotes(data)) == ERROR)
+	  return (ERROR);
       if (parser_sep(data) != STOP)
 	{
 	  sep_loop(data);

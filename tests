@@ -298,3 +298,313 @@ TESTS=
   echo "cat fic"
 [32-END]
 
+[33]
+NAME="Segfault"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "./segfault"
+[33-END]
+
+[34]
+NAME="Divzero"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "./divzero"
+[34-END]
+
+[35]
+NAME="echo"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo 'echo plop\nplop'
+  echo 'echo "plop\nplop"'
+[35-END]
+
+[36]
+NAME="which"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "which ls"
+  echo "which which"
+  echo "which echo"
+  echo "which lol"
+  echo "which cat"
+[36-END]
+
+[37]
+NAME="double droit"
+SETUP="echo coucou > tata ; echo tata > tutu"
+CLEAN=""
+TESTS=
+  echo "cat tata > toto"
+  echo "cat tata >> toto"
+  echo "cat tutu >> toto ; cat toto >> toto"
+  echo "cat toto"
+[37-END]
+
+[38]
+NAME="precmd"
+SETUP=""
+CLEAN="rm -rf tata ; rm -rf toto ; rm -rf tutu"
+TESTS=
+  echo "alias precmd ls"
+  echo "ls -l"
+[38-END]
+
+[39]
+NAME="postcmd"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "alias postcmd ls"
+  echo "ls -l"
+[39-END]
+
+[40]
+NAME="where"
+SETUP=""
+CLEAN="rm -rf toto"
+TESTS=
+  echo "alias ls ls --color"
+  echo "where ls > toto"
+  echo "where lol >> toto"
+  echo "where which >> toto"
+  echo "cat toto"
+[40-END]
+
+[41]
+NAME="redir left"
+SETUP=""
+CLEAN="rm -rf toto"
+TESTS=
+  echo "echo plop > toto"
+  echo "wc < toto -c"
+[41-END]
+
+[42]
+NAME="cd binary"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "cd 42sh"
+[42-END]
+
+[43]
+NAME="cd file"
+SETUP="touch tutu"
+CLEAN="rm -rf tutu"
+TESTS=
+  echo "cd tutu"
+[43-END]
+
+[44]
+NAME="cd unknown file"
+SETUP="touch tutu"
+CLEAN="rm -rf tutu"
+TESTS=
+  echo "cd ploppy"
+[44-END]
+
+[45]
+NAME="alias simple"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "alias e echo"
+  echo "e lol"
+  echo "unalias e echo"
+  echo "e oui"
+  echo "alias e echo"
+  echo "alias e echo -n"
+  echo "e test"
+[45-END]
+
+[46]
+NAME="alias loop"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "alias a b"
+  echo "alias b c"
+  echo "alias c a"
+  echo "a"
+[46-END]
+
+[47]
+NAME="alias break loop"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "alias a b"
+  echo "alias b c"
+  echo "alias c a"
+  echo "unalias b"
+  echo "alias a c"
+  echo "a"
+[47-END]
+
+[48]
+NAME="alias multiple level"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "alias a b"
+  echo "alias b c"
+  echo "alias c d"
+  echo "alias d e"
+  echo "alias e f"
+  echo "alias f ls"
+  echo "a"
+[48-END]
+
+[49]
+NAME="alias empty + multiple word alias"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "alias a b c d e g"
+  echo "a"
+  echo "alias z"
+  echo "z"
+[49-END]
+
+[50]
+NAME="simple set/unset"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "set plop=toto"
+  echo "set plop=tutu"
+  echo 'echo $plop'
+  echo "unset plop"
+  echo 'echo $plop'
+[50-END]
+
+[51]
+NAME="setenv/unsetenv + set/unset"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "set plop=toto"
+  echo "setenv plop tutu"
+  echo 'echo $plop'
+  echo "unset plop"
+  echo 'echo $plop'
+[51-END]
+
+[52]
+NAME="empty env"
+SETUP="/usr/bin/env > .lstenv ; while read varenv ; do unset $varenv ; done < <(/bin/cat .lstenv | /usr/bin/cut -f1 -d=) ; export PATH=/bin:/usr/bin ; export _=ls ; export LS_COLORS=RED ; export MYBG=1 ; export LVL=42 ; export NOTE=0"
+CLEAN="while read varenv ; do export "$varenv" 2>/dev/null ; done  < <(/bin/cat .lstenv) ; /bin/rm -f .lstenv"
+TESTS=
+  echo 'unsetenv HOSTTYPE VENDOR OSTYPE MACHTYPE SHLVL PWD LOGNAME USER GROUP HOST REMOTEHOST'
+  echo 'unsetenv _'
+  echo 'unsetenv CPLUS_INCLUDE_PATH'
+  echo 'unsetenv LS_COLORS'
+  echo 'unsetenv NOTE'
+  echo 'setenv toto'
+  echo 'setenv tata coucou'
+  echo '/bin/env'
+  echo 'setenv titi abcd'
+  echo 'unsetenv tata'
+  echo 'unsetenv PATH'
+  echo 'unsetenv LVL'
+  echo 'unsetenv MYBG'
+  echo 'unsetenv toto'
+  echo 'unsetenv titi'
+  echo 'unsetenv PWD'
+  echo 'unsetenv SHLVL'
+  echo 'env'
+  echo 'ls'
+  echo 'setenv titi abcd'
+  echo 'env'
+[52-END]
+
+
+[53]
+NAME="double redirect"
+SETUP="touch tutu ; echo tamer > tutu"
+CLEAN="rm -rf tutu toto"
+TESTS=
+  echo "cat tutu > tutu"
+  echo "echo 5678 >> tutu"
+  echo "cat tutu > toto"
+  echo "cat tutu >> toto"
+  echo "ls >> toto -l"
+  echo "cat toto"
+[53-END]
+
+[54]
+NAME="simple redirect"
+SETUP="touch lol > toto"
+CLEAN=""
+TESTS=
+  echo "ls > toto -l"
+[54-END]
+
+[55]
+NAME="redirect < >"
+SETUP="ls -l > toto"
+CLEAN="rm -rf toto tutu"
+TESTS=
+  echo "wc < toto > tutu -l"
+  echo "cat tutu"
+[55-END]
+
+[56]
+NAME="input redir"
+SETUP="ls -l > toto"
+CLEAN="rm -rf toto"
+TESTS=
+  echo "cat < toto"
+  echo "<toto wc -l"
+  echo "ls"
+[56-END]
+
+[57]
+NAME="globbing"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo "ls M[a-z]k?file"
+  echo "ls Mak?file"
+  echo "ls {ghjk*,fghj*}"
+  echo "ls {l*,M*}"
+  echo "ls Mak[??]file"
+[57-END]
+
+[58]
+NAME="variables"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo 'setenv a Makefile'
+  echo 'set b=echo'
+  echo 'echo $a'
+  echo 'ls $a -l'
+  echo '$b $a'
+[58-END]
+
+[59]
+NAME="simple quote"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo 'echo 'lol''
+  echo 'alias ll ls -l'
+  echo "ll"
+  echo "'ll'"
+[59-END]
+
+[60]
+NAME="double quote"
+SETUP=""
+CLEAN=""
+TESTS=
+  echo 'echo "ma*"'
+  echo 'echo "$PATH"'
+[60-END]
