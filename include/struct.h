@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Tue May 31 20:16:13 2016 Thomas LE MOULLEC
+** Last update Wed Jun  1 11:11:58 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -41,7 +41,9 @@
 #define ER_SETENV	"setenv: Too many arguments.\n"
 #define NOT_FOUND	": Command not found.\n"
 #define NOT_DIR		": Not a directory.\n"
-#define PERM_DENIED	": Permissions denied.\n"
+#define PERM_DENIED	": Permission denied.\n"
+#define IS_DIR		": Is a directory.\n"
+#define FOUND_DIR	": No such file or directory.\n"
 #define MISSING_NAME	"Missing name for redirect.\n"
 #define EVENT		"Event not found.\n"
 #define MAGIC_ERROR	"Unmatched `.\n"

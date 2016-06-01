@@ -5,8 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-<<<<<<< HEAD
-** Last update Tue May 31 20:17:45 2016 Thomas LE MOULLEC
+** Last update Wed Jun  1 09:36:12 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
