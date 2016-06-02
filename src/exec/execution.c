@@ -5,7 +5,6 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Thu Jun  2 13:36:15 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -47,7 +46,11 @@ int		exec_without_path(t_data *data)
 	}
       if (execve(data->parser.tab_args[0], \
 		 data->parser.tab_args, data->shell.env) == ERROR)
+	{
+	  my_putstr(data->parser.tab_args[0], 1);
+	  my_putstr(EXEC_ERROR, 1);
 	  exit(1);
+	}
     }
   else
     if (father(cpid, data) == ERROR)

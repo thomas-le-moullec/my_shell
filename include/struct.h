@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Thu Jun  2 13:00:06 2016 Thomas CHABOT
+** Last update Thu Jun  2 17:10:50 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -50,6 +50,7 @@
 #define MISSING_NAME	"Missing name for redirect.\n"
 #define EVENT		": Event not found.\n"
 #define MAGIC_ERROR	"Unmatched `.\n"
+#define EXEC_ERROR	": Exec format error. Binary file not executable.\n"
 #define REPEAT_FEW	"repeat: Too few arguments.\n"
 #define UNDEF_VAR	": Undefined variable.\n"
 #define SET_LETTER	"setenv: Variable name must begin with a letter.\n"
