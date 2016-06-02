@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 13:07:47 2016 Hervé TCHIKLADZE
-** Last update Thu Jun  2 16:15:31 2016 leo LE DIOURON
+** Last update Thu Jun  2 16:18:52 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -31,8 +31,8 @@ int		args_convert(t_data *data)
   j = 0;
   if (data->parser.infile != NULL)
       while (data->parser.infile[j] != '\0')
-	if (data->parser.infile[j] < 0)
-	  data->parser.infile[j] *= -1;
+	if (data->parser.infile[j++] < 0)
+	  data->parser.infile[j - 1] *= -1;
   return (SUCCESS);
 }
 
