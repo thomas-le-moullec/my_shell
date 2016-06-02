@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:20:02 2016 leo LE DIOURON
-** Last update Wed Jun  1 21:35:08 2016 leo LE DIOURON
+** Last update Thu Jun  2 10:07:36 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -39,8 +39,32 @@ int             delete_local(t_data *data)
   return (SUCCESS);
 }
 
+void		unset_name(t_data *data, char *str)
+{
+  while (data->local != NULL && data->local->prev != NULL)
+    {
+      if (my_strcmp(data->local->name, str) == SUCCESS)
+	delete_local(data);
+      if (data->local != NULL && data->local->prev != NULL)
+      data->local = data->local->prev;
+    }
+  if (data->local != NULL && my_strcmp(data->local->name, str) == SUCCESS)
+    delete_local(data);
+  if (data->local != NULL && data->local->prev != NULL)
+    while (data->local->next != NULL)
+      data->local = data->local->next;
+}
+
 int		my_unset(t_data *data)
 {
-  delete_local(data);
+  int		j;
+  int		nb;
+
+  j = 1;
+  nb = count_tab(data->parser.tab_args);
+  if (nb == 1)
+    return (my_put_error("unset: Too few arguments.\n", 1));
+  while (data->parser.tab_args[j] != NULL && data->local != NULL)
+    unset_name(data, data->parser.tab_args[j++]);
   return (SUCCESS);
 }
