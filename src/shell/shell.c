@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Thu Jun  2 12:59:15 2016 Thomas CHABOT
+** Last update Thu Jun  2 13:22:02 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -17,14 +17,8 @@ int		pipe_loop(t_data *data)
   i = 0;
   while (data->parser.tab_pipe[i] != NULL)
     {
-      if (data->parser.quote != 2)
-	{
-	  if (var_env_loc(data, i) == ERROR)
-	    return (STOP);
-	  pipe_alias(data, i);
-	  if (modif_args_hist(data, i) == ERROR)
-	    return (STOP);
-	}
+      if (modify_str_pipe(data, i) == STOP)
+	return (STOP);
       data->parser.check_pos_pipe = data->parser.nb_pipe[i];
       if (make_pipe(data) == ERROR)
 	return (STOP);
@@ -33,11 +27,8 @@ int		pipe_loop(t_data *data)
 	return (STOP);
       data->parser.tab_args = my_str_to_wordtab\
 	(data->parser.tab_pipe[i], " \t");
-      if (args_convert(data) == STOP)
+      if (modify_inhib_glob_pipe(data) == STOP)
 	return (STOP);
-      if (data->shell.chk_magic == 0 && data->parser.quote == 0)
-	if (my_glob(data) == ERROR)
-	  return (STOP);
       if (my_exec(data) == ERROR)
 	return (STOP);
       my_free_tab(data->parser.tab_args);
@@ -66,12 +57,7 @@ int		cond_loop(t_data *data)
 	    return (STOP);
 	  pipe_loop(data);
 	}
-      if (data->shell.exit_status != 0 && data->shell.cond[i] == AND)
-	while (data->shell.cond[i] == AND)
-	  i++;
-      if (data->shell.exit_status == 0 && data->shell.cond[i] == OR)
-	while (data->shell.cond[i] == OR)
-	  i++;
+      gestion_condition(data, i);
       my_free_cond(data);
       i++;
     }

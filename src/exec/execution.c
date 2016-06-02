@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Wed May  4 16:03:28 2016 Thomas CHABOT
-** Last update Wed Jun  1 09:42:37 2016 Thomas LE MOULLEC
+** Last update Thu Jun  2 13:36:15 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -81,39 +81,6 @@ int		exec_with_path(t_data *data, int i)
     father(cpid, data);
   my_free(tmp);
   return (SUCCESS);
-}
-
-int		access_path(t_data *data)
-{
-  int		i;
-  char		*tmp;
-
-  i = 0;
-  if (access_path_file(data) != SUCCESS)
-    return (error_perm(data));
-  if (access_path_er(data) == ERROR)
-    return (ERROR);
-  while (data->shell.path != NULL && data->shell.path[i] != NULL)
-    {
-      tmp = NULL;
-      tmp = my_strcat(data->shell.path[i], data->parser.tab_args[0], '/');
-      if (access(tmp, X_OK | F_OK | R_OK) == 0)
-	{
-	  my_free(tmp);
-	  return (i);
-	}
-      tmp = my_free(tmp);
-      i++;
-    }
-  tmp = NULL;
-  tmp = my_strcat("/bin", data->parser.tab_args[0], '/');
-  if (data->shell.bin == 1 && access(tmp, X_OK | F_OK | R_OK) == 0)
-    {
-      tmp = my_free(tmp);
-      return (-2);
-    }
-  tmp = my_free(tmp);
-  return (ERROR);
 }
 
 int		execution(t_data *data)

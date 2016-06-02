@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Thu Jun  2 11:20:08 2016 Thomas CHABOT
+** Last update Thu Jun  2 13:31:57 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -31,37 +31,29 @@ int		show_builtins(t_data *data)
 
 int		my_builtins(t_data *data)
 {
-  /* mettre le tableau en global ? */
   static t_buil function[] = {{"exit", my_exit}, {"cd", my_cd},
 			      {"env", my_env}, {"setenv", my_setenv},
 			      {"unsetenv", my_unsetenv}, {"echo", my_echo},
 			      {"builtins", show_builtins},
-			      {"alias", new_alias},
-			      {"unalias", unalias},
-			      {"history", print_hist},
-			      {"set", my_set},
-			      {"unset", my_unset},
-			      {NULL, NULL}};
+			      {"alias", new_alias}, {"unalias", unalias},
+			      {"history", print_hist}, {"set", my_set},
+			      {"unset", my_unset},{NULL, NULL}};
   int		i;
 
-  i = 0;
-  while (function[i].name != NULL)
-    {
-      if (my_strcmp(data->parser.tab_args[0], function[i].name) == SUCCESS)
-	{
-	  if (i != 2 && i != 3 && i != 5 && \
-	      data->parser.check_pos_pipe != ALONE && \
-	      data->parser.check_pos_pipe != END)
+  i = -1;
+  while (function[++i].name != NULL)
+    if (my_strcmp(data->parser.tab_args[0], function[i].name) == SUCCESS)
+      {
+	if (i != 2 && i != 3 && i != 5 && data->parser.check_pos_pipe != ALONE
+	    && data->parser.check_pos_pipe != END)
+	  return (SUCCESS);
+	if ((function[i].function)(data) == ERROR)
+	  return (ERROR);
+	else
+	  {
+	    data->shell.exit_status = 0;
 	    return (SUCCESS);
-	  if ((function[i].function)(data) == ERROR)
-	    return (ERROR);
-	  else
-	    {
-	      data->shell.exit_status = 0;
-	      return (SUCCESS);
-	    }
-	}
-      i++;
-    }
+	  }
+      }
   return (STOP);
 }

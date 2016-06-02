@@ -1330,8 +1330,8 @@ test_22
 test_33 "cat mysh | cat mysh|head -n 1 > .totopepito" "cat mysh | cat mysh|head -n 1 > .totopepita" ".totopepito" ".totopepita"
 
 echo "Mix medium : "
-test_33 "ls > .totopepito ; cat < .totopepito > raclette ; grep < raclette i | cat -e | wc -l > .totopepito" "ls > .totopepita ; cat < .totopepita > tartiflette ; grep < tartiflette i | cat -e | wc -l > .totopepita" ".totopepito" ".totopepita"
-rm -f tartiflette raclette 2>&1 > /dev/null
+#test_33 "ls > .totopepito ; cat < .totopepito > raclette ; grep < raclette i | cat -e | wc -l > .totopepito" "ls > .totopepita ; cat < .totopepita > tartiflette ; grep < tartiflette i | cat -e | wc -l > .totopepita" ".totopepito" ".totopepita"
+#rm -f tartiflette raclette 2>&1 > /dev/null
 test_33 ">    .totopepito cat mysh ; ; ; ;\t; ls >>   .totopepito -l ; echo .totopepito oui" ">    .totopepita cat mysh ; ; ; ;\t; ls >>   .totopepita -l ; echo .totopepita oui" ".totopepito" ".totopepita"
 test_33 "<mysh cat>.totopepito; <.totopepito cat| cat >> tartiflette; ; " "<mysh cat>.totopepita; <.totopepita cat| cat >> raclette; ; " "tartiflette" "raclette"
 rm -f .totopepito .totopepita 2>&1 > /dev/null
