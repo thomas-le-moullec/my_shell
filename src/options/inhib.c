@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 13:07:47 2016 Hervé TCHIKLADZE
-** Last update Wed Jun  1 17:26:05 2016 leo LE DIOURON
+** Last update Thu Jun  2 16:15:31 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -15,18 +15,24 @@ int		args_convert(t_data *data)
   int		i;
   int		j;
 
-  i = 0;
-  while (data->parser.tab_args[i] != NULL)
+  i = -1;
+  while (data->parser.tab_args[++i] != NULL)
     {
       j = 0;
       while (data->parser.tab_args[i][j] != '\0')
-	{
-	  if (data->parser.tab_args[i][j] < 0)
-	    data->parser.tab_args[i][j] *= -1;
-	  j++;
-	}
-      i++;
+	if (data->parser.tab_args[i][j++] < 0)
+	  data->parser.tab_args[i][j - 1] *= -1;
     }
+  j = 0;
+  if (data->parser.outfile != NULL)
+    while (data->parser.outfile[j] != '\0')
+      if (data->parser.outfile[j++] < 0)
+	data->parser.outfile[j - 1] *= -1;
+  j = 0;
+  if (data->parser.infile != NULL)
+      while (data->parser.infile[j] != '\0')
+	if (data->parser.infile[j] < 0)
+	  data->parser.infile[j] *= -1;
   return (SUCCESS);
 }
 
