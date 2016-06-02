@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Thu Jun  2 13:00:06 2016 Thomas CHABOT
+** Last update Thu Jun  2 17:36:45 2016 Thomas CHABOT
 */
 
 #ifndef STRUCT_H_
@@ -54,6 +54,9 @@
 #define UNDEF_VAR	": Undefined variable.\n"
 #define SET_LETTER	"setenv: Variable name must begin with a letter.\n"
 #define SET_ALPHA	"setenv: Variable name must contain alphanumeric characters.\n"
+#define BAD_FORM	"repeat: Badly formed number.\n"
+#define ERR_WHERE	"where: Too few arguments.\n"
+#define ERR_WHICH	"which: Too few arguments.\n"
 
 #define SIG_SIGABRT	"Aborted\n"
 #define SIG_SIGFPE	"Floating exception\n"

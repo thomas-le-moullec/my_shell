@@ -5,10 +5,26 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Mon May 16 14:34:21 2016 Thomas CHABOT
-** Last update Thu Jun  2 00:05:54 2016 Thomas LE MOULLEC
+** Last update Thu Jun  2 19:19:35 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
+
+int		not_found_cmd(t_data *data)
+{
+  int		i;
+
+  i = 1;
+  while (data->parser.tab_args[i])
+    {
+      my_putstr(data->parser.tab_args[i], 1);
+      my_putchar(' ', 1);
+      i++;
+    }
+  my_putstr(NOT_FOUND, 1);
+  data->shell.exit_status = 1;
+  return (ERROR);
+}
 
 int		error_denied(t_data *data, char *str)
 {

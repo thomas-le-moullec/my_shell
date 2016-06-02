@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Thu Jun  2 11:20:08 2016 Thomas CHABOT
+** Last update Thu Jun  2 13:37:52 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -26,6 +26,8 @@ int		show_builtins(t_data *data)
   my_putstr("\tunalias", 1);
   my_putstr("\tunset\n", 1);
   my_putstr("\tunsetenv\n", 1);
+  my_putstr("\twhere\n", 1);
+  my_putstr("\twhich\n", 1);
   return (SUCCESS);
 }
 
@@ -36,11 +38,10 @@ int		my_builtins(t_data *data)
 			      {"env", my_env}, {"setenv", my_setenv},
 			      {"unsetenv", my_unsetenv}, {"echo", my_echo},
 			      {"builtins", show_builtins},
-			      {"alias", new_alias},
-			      {"unalias", unalias},
-			      {"history", print_hist},
-			      {"set", my_set},
-			      {"unset", my_unset},
+			      {"alias", new_alias},{"unalias", unalias},
+			      {"history", print_hist}, {"set", my_set},
+			      {"unset", my_unset}, {"which", my_which},
+			      {"where", my_where},
 			      {NULL, NULL}};
   int		i;
 
