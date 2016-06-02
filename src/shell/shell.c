@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Thu Jun  2 13:22:02 2016 leo LE DIOURON
+** Last update Thu Jun  2 15:57:11 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -95,7 +95,7 @@ int		parser_line(t_data *data)
     {
       if (data->parser.quote != 2)
 	if ((magic_quotes(data)) == ERROR)
-	  return (ERROR);
+	  return (STOP);
       if (parser_sep(data) != STOP)
 	{
 	  sep_loop(data);
