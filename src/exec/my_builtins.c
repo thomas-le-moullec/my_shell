@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Wed Jun  1 21:42:44 2016 leo LE DIOURON
+** Last update Thu Jun  2 11:20:08 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -20,6 +20,7 @@ int		show_builtins(t_data *data)
   my_putstr("\tenv", 1);
   my_putstr("\texit", 1);
   my_putstr("\thistory", 1);
+  my_putstr("\trepeat", 1);
   my_putstr("\tset", 1);
   my_putstr("\tsetenv", 1);
   my_putstr("\tunalias", 1);

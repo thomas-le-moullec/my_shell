@@ -5,7 +5,7 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Tue May 31 14:37:40 2016 Thomas LE MOULLEC
-** Last update Tue May 31 17:47:01 2016 Thomas LE MOULLEC
+** Last update Thu Jun  2 10:22:40 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -118,7 +118,8 @@ int		loop_magic(t_data *data, char **tabo)
   j = 0;
   while (tabo[j] != NULL)
     {
-      if ((fd = open("/tmp/magic_file", O_CREAT | O_RDWR | O_TRUNC, S_IRWXU)) == ERROR)
+      if ((fd = open("/tmp/magic_file", O_CREAT | O_RDWR \
+		     | O_TRUNC, S_IRWXU)) == ERROR)
 	return (ERROR);
       if ((cpid = fork()) == ERROR)
 	return (ERROR);
@@ -128,21 +129,17 @@ int		loop_magic(t_data *data, char **tabo)
 	    return (ERROR);
 	  data->shell.line = my_strcpy(tabo[j]);
 	  if (inhib(data) != ERROR)
-	    {
-	      if (parser_sep(data) != STOP)
-		{
-		  sep_loop(data);
-		  my_free_loop(data);
-		}
-	    }
+	    if (parser_sep(data) != STOP)
+	      {
+		sep_loop(data);
+		my_free_loop(data);
+	      }
 	  close(fd);
 	  exit(1);
 	}
       else
-	{
-	  if (waitpid(cpid, &status, WUNTRACED | WCONTINUED) == -1)
-	    return (ERROR);
-	}
+	if (waitpid(cpid, &status, WUNTRACED | WCONTINUED) == -1)
+	  return (ERROR);
       if (modify_magic_line(data) == ERROR)
 	return (ERROR);
       j++;

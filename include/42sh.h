@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Wed Jun  1 21:43:35 2016 leo LE DIOURON
+** Last update Thu Jun  2 10:43:45 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -80,6 +80,8 @@ int		exec_with_path(t_data *, int);
 int		exec_without_path(t_data *);
 
 /* redirection_outfile.c */
+int		err_redir_outfile(t_data *, int);
+int		err_db_redir_outfile(t_data *, int);
 int		redirection_outfile(t_data *);
 
 /* redirection_infile.c */
@@ -154,6 +156,7 @@ t_local         *add_elem_local(t_local *, char *, char *);
 char            *take_cmd_local(char *);
 char            *take_name_local(char *);
 int		my_set(t_data *);
+int		my_repeat(t_data *);
 
 /* **************** PARSER ****************** */
 

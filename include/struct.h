@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Wed Jun  1 21:41:47 2016 leo LE DIOURON
+** Last update Thu Jun  2 10:46:09 2016 Thomas CHABOT
 */
 
 #ifndef STRUCT_H_
@@ -47,6 +47,7 @@
 #define MISSING_NAME	"Missing name for redirect.\n"
 #define EVENT		"Event not found.\n"
 #define MAGIC_ERROR	"Unmatched `.\n"
+#define REPEAT_FEW	"repeat: Too few arguments.\n"
 
 #define SIG_SIGABRT	"Aborted\n"
 #define SIG_SIGFPE	"Floating exception\n"
@@ -97,6 +98,7 @@ typedef struct		s_shell
   int			save_fd;
   int			exit_status;
   int			*cond;
+  int			nb_repeat;
 }			t_shell;
 
 typedef struct		s_hist

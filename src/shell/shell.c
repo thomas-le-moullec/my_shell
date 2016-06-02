@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Wed Jun  1 20:57:50 2016 leo LE DIOURON
+** Last update Thu Jun  2 12:57:18 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -21,9 +21,7 @@ int		pipe_loop(t_data *data)
 	{
 	  if (var_env_loc(data, i) == ERROR)
 	    return (STOP);
-
 	  pipe_alias(data, i);
-
 	  if (modif_args_hist(data, i) == ERROR)
 	    return (STOP);
 	}
@@ -105,6 +103,7 @@ int		sep_loop(t_data *data)
 int		parser_line(t_data *data)
 {
   data->shell.chk_magic = 0;
+  data->shell.nb_repeat = 0;
   data->hist = add_elem_key(data->hist, data->shell.line);
   if (inhib(data) != ERROR)
     {
