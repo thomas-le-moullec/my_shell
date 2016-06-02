@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Mon May 16 16:50:31 2016 leo LE DIOURON
-** Last update Thu Jun  2 10:16:57 2016 Thomas CHABOT
+** Last update Thu Jun  2 12:59:43 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -91,7 +91,7 @@ int		replace_string(t_data *data, int j, int i, char *var_env)
     {
       data->parser.tab_pipe[j][i] = ' ';
       my_putstr(var_env, 1);
-      my_putstr(": Undefined variabe.\n", 1);
+      my_putstr(UNDEF_VAR, 1);
       return (ERROR);
     }
   if (nb != ERROR)

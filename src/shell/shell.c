@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Thu Jun  2 12:57:18 2016 Thomas CHABOT
+** Last update Thu Jun  2 12:59:15 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -128,6 +128,6 @@ int		my_shell(t_data *data)
 	return (ERROR);
       disp_prompt(data);
     }
-  my_putstr("exit\n", 1);
+  my_putstr(EXIT_THIS, 1);
   return (SUCCESS);
 }
