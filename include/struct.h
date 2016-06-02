@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Thu Jun  2 13:32:20 2016 Thomas LE MOULLEC
+** Last update Thu Jun  2 17:10:50 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -51,6 +51,7 @@
 #define EVENT		": Event not found.\n"
 #define MAGIC_ERROR	"Unmatched `.\n"
 #define EXEC_ERROR	": Exec format error. Binary file not executable.\n"
+#define REPEAT_FEW	"repeat: Too few arguments.\n"
 #define UNDEF_VAR	": Undefined variable.\n"
 #define SET_LETTER	"setenv: Variable name must begin with a letter.\n"
 #define SET_ALPHA	"setenv: Variable name must contain alphanumeric characters.\n"
@@ -104,6 +105,7 @@ typedef struct		s_shell
   int			save_fd;
   int			exit_status;
   int			*cond;
+  int			nb_repeat;
 }			t_shell;
 
 typedef struct		s_hist
