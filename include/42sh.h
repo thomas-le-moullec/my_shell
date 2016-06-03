@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Thu Jun  2 20:28:18 2016 Thomas CHABOT
+** Last update Fri Jun  3 10:36:53 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -168,11 +168,14 @@ int		my_set(t_data *);
 int		my_repeat(t_data *);
 
 /* my_where.c */
+int		check_where(char *, int);
 int		my_where_loop(t_data *, int, char *, int);
 int		is_builtin(t_data *, char *);
 int		my_where(t_data *);
 
 /* my_which.c */
+int		check_which(char *, int);
+char		*get_which(char *);
 int		my_which_loop(t_data *, char *, int, int);
 int		my_which(t_data *);
 

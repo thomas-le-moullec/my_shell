@@ -1,14 +1,25 @@
 /*
 ** my_where.c for my_where in /home/chabot_t/rendu/PSU/PSU_2015_42sh
-** 
+**
 ** Made by Thomas CHABOT
 ** Login   <chabot_t@epitech.net>
-** 
+**
 ** Started on  Thu Jun  2 13:38:03 2016 Thomas CHABOT
-** Last update Thu Jun  2 21:22:12 2016 Thomas CHABOT
+** Last update Fri Jun  3 10:31:24 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
+
+int		check_where(char *tmp, int found)
+{
+  if (access(tmp, X_OK) == SUCCESS)
+    {
+      my_putstr(tmp, 1);
+      my_putchar('\n', 1);
+      found = 1;
+    }
+  return (found);
+}
 
 int		my_where_loop(t_data *data, int nb, char *tmp, int found)
 {
@@ -31,12 +42,7 @@ int		my_where_loop(t_data *data, int nb, char *tmp, int found)
               my_putstr(" is a shell built-in\n", 1);
               b = 1;
             }
-	  if (access(tmp, X_OK) == SUCCESS)
-	    {
-	      my_putstr(tmp, 1);
-	      my_putchar('\n', 1);
-	      found = 1;
-	    }
+	  found = check_where(tmp, found);
 	  i++;
 	}
       a++;
@@ -72,7 +78,7 @@ int		my_where(t_data *data)
   if (data->shell.path == NULL)
     return (ERROR);
   found = my_where_loop(data, nb, tmp, found);
-  /*if (found == 0)
-    return (not_found_cmd(data));*/
+  if (found == 0)
+    return (not_found_cmd(data));
   return (SUCCESS);
 }

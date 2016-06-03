@@ -5,10 +5,21 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:52 2016 Thomas CHABOT
-** Last update Thu Jun  2 21:20:59 2016 Thomas CHABOT
+** Last update Fri Jun  3 10:36:00 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
+
+int		check_which(char *tmp, int limit)
+{
+  if (access(tmp, X_OK) == SUCCESS)
+    {
+      my_putstr(get_which(tmp), 1);
+      my_putchar('\n', 1);
+      limit = 1;
+    }
+  return (limit);
+}
 
 char		*get_which(char *str)
 {
@@ -50,16 +61,11 @@ int		my_which_loop(t_data *data, char *tmp, int nb, int limit)
 	  if (is_builtin(data, data->parser.tab_args[a]) == 2 && b == 0)
 	    {
 	      my_putstr(data->parser.tab_args[a], 1);
-	      my_putstr(": shell built-in command\n", 1);
+	      my_putstr(": shell built-in command.\n", 1);
 	      b = 1;
 	      limit = 1;
 	    }
-	  if (access(tmp, X_OK) == SUCCESS)
-	    {
-	      my_putstr(get_which(tmp), 1);
-	      my_putchar('\n', 1);
-	      limit = 1;
-	    }
+	  limit = check_which(tmp, limit);
 	  i++;
 	}
       if (nb > 1)
@@ -83,7 +89,7 @@ int		my_which(t_data *data)
   if (data->shell.path == NULL)
     return (ERROR);
   limit = my_which_loop(data, tmp, nb, limit);
-  /*if (limit == 0)
-    return (not_found_cmd(data)); */
+  if (limit == 0)
+    return (not_found_cmd(data));
   return (SUCCESS);
 }
