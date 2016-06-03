@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:52 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:50:50 2016 Thomas CHABOT
+** Last update Fri Jun  3 16:32:56 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -57,7 +57,7 @@ int		show_which_built(char *str, int b)
   return (b);
 }
 
-int		my_which_loop(t_data *data, char *tmp, int nb, int limit)
+void		my_which_loop(t_data *data, char *tmp, int nb, int limit)
 {
   int		a;
   int		i;
@@ -84,7 +84,6 @@ int		my_which_loop(t_data *data, char *tmp, int nb, int limit)
 	limit = 0;
       a++;
     }
-  return (limit);
 }
 
 int		my_which(t_data *data)

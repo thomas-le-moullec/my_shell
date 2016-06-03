@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Fri Jun  3 15:28:31 2016 Thomas LE MOULLEC
+## Last update Fri Jun  3 17:01:31 2016 leo LE DIOURON
 ##
 
 DETAILS		=		no
@@ -40,7 +40,6 @@ PARSER		=		src/parser/parser.c				\
 
 DISP		=		src/disp/prompt.c				\
 
-
 BUILTINS	=		src/builtins/my_exit.c				\
 				src/builtins/my_env.c				\
 				src/builtins/my_unsetenv.c			\
@@ -72,6 +71,7 @@ ERROR		=		src/error/ambiguous.c				\
 				src/error/error_quote.c				\
 				src/error/error_dir.c				\
 				src/error/error_glob.c				\
+				src/error/error_bin.c				\
 
 OPT		=		src/options/var_env.c				\
 				src/options/inhib.c				\
@@ -99,6 +99,7 @@ OPT_KEY		=		src/options/line_edition/my_shell_key.c		\
 				src/options/line_edition/fct_clavier/fct_tools.c\
 				src/options/line_edition/fct_clavier/fct_delete.c\
 				src/options/line_edition/fct_clavier/fct_clear.c\
+				src/options/line_edition/fct_clavier/print_autocompletion.c\
 
 MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/my_putchar.c				\
@@ -174,4 +175,3 @@ fclean:	clean
 	@echo "Files cleaned."
 
 re:	fclean all
-

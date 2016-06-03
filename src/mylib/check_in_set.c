@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Jun  3 13:20:30 2016 leo LE DIOURON
-** Last update Fri Jun  3 13:35:39 2016 leo LE DIOURON
+** Last update Fri Jun  3 16:34:58 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -27,7 +27,6 @@ char	*check_in_alias(t_data *data, char *str)
     }
   return (result);
 }
-
 
 char	*check_in_set(t_data *data, char *str)
 {

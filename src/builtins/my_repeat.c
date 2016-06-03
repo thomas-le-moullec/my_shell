@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Thu Jun  2 10:37:07 2016 Thomas CHABOT
-** Last update Fri Jun  3 14:13:47 2016 Thomas CHABOT
+** Last update Fri Jun  3 16:17:06 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -17,12 +17,12 @@ char		**my_repeat_change(char **tabo)
   int		a;
   char		**new_tabo;
 
-  i = 2;
+  i = 1;
   j = 0;
   a = 0;
   new_tabo = NULL;
   new_tabo = my_mallok(new_tabo, sizeof(char *) * count_tab(tabo));
-  while (tabo[i])
+  while (tabo[++i])
     {
       a = 0;
       new_tabo[j] = NULL;
@@ -34,7 +34,6 @@ char		**my_repeat_change(char **tabo)
 	  a++;
 	}
       new_tabo[j++][a] = '\0';
-      i++;
     }
   new_tabo[j] = '\0';
   return (new_tabo);

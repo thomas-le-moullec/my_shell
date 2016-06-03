@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:23:05 2016 Thomas CHABOT
-** Last update Fri Jun  3 16:08:26 2016 Thomas CHABOT
+** Last update Fri Jun  3 16:36:10 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -34,7 +34,7 @@ int		my_exec(t_data *data)
   while (i <= data->shell.nb_repeat)
     {
       data->shell.built = STOP;
-      if ((data->shell.built = my_builtins(data)) == ERROR)
+      if ((data->shell.built = my_builtins(data, -1)) == ERROR)
 	return (ERROR);
       if (data->shell.built != STOP && data->shell.nb_repeat == 0)
 	return (STOP);

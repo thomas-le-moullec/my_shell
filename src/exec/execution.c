@@ -46,11 +46,7 @@ int		exec_without_path(t_data *data)
 	}
       if (execve(data->parser.tab_args[0], \
 		 data->parser.tab_args, data->shell.env) == ERROR)
-	{
-	  my_putstr(data->parser.tab_args[0], 1);
-	  my_putstr(EXEC_ERROR, 1);
-	  exit(1);
-	}
+	bin_not_comp(data);
     }
   else
     if (father(cpid, data) == ERROR)

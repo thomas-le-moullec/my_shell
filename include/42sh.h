@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri Jun  3 15:32:44 2016 Thomas LE MOULLEC
+** Last update Fri Jun  3 17:02:55 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -76,7 +76,7 @@ int		my_exec(t_data *);
 /*my_builtins.c */
 void		init_tab_builtins(t_data *);
 int		show_builtins(t_data *);
-int		my_builtins(t_data *);
+int		my_builtins(t_data *, int);
 
 /* execution.c */
 int		father(pid_t, t_data *);
@@ -165,6 +165,8 @@ t_local         *add_elem_local(t_local *, char *, char *);
 char            *take_cmd_local(char *);
 char            *take_name_local(char *);
 int		my_set(t_data *);
+
+/* my_repeat.c */
 int		my_repeat(t_data *);
 
 /* my_where.c */
@@ -177,7 +179,7 @@ int		my_where(t_data *);
 char		*cut_str(char *);
 int		check_which(t_data *, char *, int, int);
 char		*get_which(char *);
-int		my_which_loop(t_data *, char *, int, int);
+void		my_which_loop(t_data *, char *, int, int);
 int		my_which(t_data *);
 
 /* **************** PARSER ****************** */
@@ -231,6 +233,9 @@ int             error_perm(t_data *);
 /* error_glob.c */
 int             glob_error(const char *, int);
 
+/* error_bin.c */
+void		bin_not_comp(t_data *);
+
 /* **************** DISP ****************** */
 
 /* prompt.c */
@@ -272,6 +277,7 @@ int		print_hist(t_data *);
 
 /* mode_canon.c */
 int		mode_canon(int);
+int             init_tab_ctrl(t_data *);
 int		init_tab(t_data *);
 int		init_term(t_data *);
 
@@ -341,6 +347,9 @@ char		*my_char(char);
 int             found_tabo_comp(char **, char *);
 int             reinit_cursor(t_data *, int);
 void            found_positions(char *, int, int *, int *);
+
+/* print_autocompletion.c*/
+int             print_autocompletion(t_data *, char *, int *);
 
 /* **************** MYLIB ****************** */
 

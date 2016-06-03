@@ -5,14 +5,14 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Fri Jun  3 15:25:06 2016 Thomas LE MOULLEC
+** Last update Fri Jun  3 16:41:42 2016 leo LE DIOURON
 */
 
 #ifndef STRUCT_H_
 # define STRUCT_H_
 
 #ifndef READ_SIZE
-# define READ_SIZE (1000000)
+# define READ_SIZE (4096)
 #endif
 
 #define STOP		-2
@@ -60,7 +60,8 @@
 #define REPEAT_FEW	"repeat: Too few arguments.\n"
 #define UNDEF_VAR	": Undefined variable.\n"
 #define SET_LETTER	"setenv: Variable name must begin with a letter.\n"
-#define SET_ALPHA	"setenv: Variable name must contain alphanumeric characters.\n"
+#define SET_ALPHA	"setenv: Variable name must contain alphanumeric " \
+  "characters.\n"
 #define BAD_FORM	"repeat: Badly formed number.\n"
 #define ERR_WHERE	"where: Too few arguments.\n"
 #define ERR_WHICH	"which: Too few arguments.\n"

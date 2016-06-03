@@ -5,19 +5,16 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Mon May 16 14:34:21 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:11:29 2016 Thomas CHABOT
+** Last update Fri Jun  3 16:43:54 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
 
 int		not_found_cmd(t_data *data, char *str, int i)
 {
-  /*while (str[i])
-    {*/
-      my_putstr(str, 1);
-      my_putchar(' ', 1);
-      i++;
-      /* } */
+  my_putstr(str, 1);
+  my_putchar(' ', 1);
+  i++;
   my_putstr(NOT_FOUND, 1);
   data->shell.exit_status = 1;
   return (ERROR);

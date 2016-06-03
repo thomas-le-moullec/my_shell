@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Thu Jun  2 20:18:41 2016 Thomas CHABOT
+** Last update Fri Jun  3 16:35:49 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -44,7 +44,7 @@ int		show_builtins(t_data *data)
   return (SUCCESS);
 }
 
-int		my_builtins(t_data *data)
+int		my_builtins(t_data *data, int i)
 {
   static t_buil function[] = {{"exit", my_exit}, {"cd", my_cd},
 			      {"env", my_env}, {"setenv", my_setenv},
@@ -53,11 +53,8 @@ int		my_builtins(t_data *data)
 			      {"alias", new_alias},{"unalias", unalias},
 			      {"history", print_hist}, {"set", my_set},
 			      {"unset", my_unset}, {"which", my_which},
-			      {"where", my_where},
-			      {NULL, NULL}};
-  int		i;
+			      {"where", my_where}, {NULL, NULL}};
 
-  i = -1;
   while (function[++i].name != NULL)
     if (my_strcmp(data->parser.tab_args[0], function[i].name) == SUCCESS)
       {
