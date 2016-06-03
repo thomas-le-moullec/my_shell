@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Mon May 16 16:50:31 2016 leo LE DIOURON
-** Last update Thu Jun  2 12:59:43 2016 Thomas CHABOT
+** Last update Thu Jun  2 19:15:20 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -87,6 +87,7 @@ int		replace_string(t_data *data, int j, int i, char *var_env)
 
   result = NULL;
   if ((nb = check_env_exist(data, var_env)) == ERROR &&
+      data->local != NULL &&
       (result = take_var_local(data, var_env)) == NULL)
     {
       data->parser.tab_pipe[j][i] = ' ';

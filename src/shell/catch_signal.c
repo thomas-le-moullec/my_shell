@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 24 13:24:43 2016 steeve payraudeau
-** Last update Wed Jun  1 16:06:01 2016 steeve payraudeau
+** Last update Thu Jun  2 13:24:53 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -21,7 +21,7 @@ void		init_signaux()
 {
   if ((signal(SIGINT, (void (*)(int))my_handler)) == SIG_ERR)
     my_putstr("ERROR SIGINT\n", 2);
-  /*  if ((signal(SIGTERM, (void (*)(int))my_handler)) == SIG_ERR)
+  if ((signal(SIGTERM, (void (*)(int))my_handler)) == SIG_ERR)
     my_putstr("ERROR SIGTERM\n", 2);
   if ((signal(SIGQUIT, (void (*)(int))my_handler)) == SIG_ERR)
     my_putstr("ERROR SIGQUIT\n", 2);
@@ -31,6 +31,4 @@ void		init_signaux()
     my_putstr("ERROR SIGUSR2\n", 2);
   if ((signal(SIGTSTP, (void (*)(int))my_handler)) == SIG_ERR)
     my_putstr("ERROR SIGTSTP\n", 2);
-  if ((signal(SIGTSTP, (void (*)(int))my_handler)) == SIG_ERR)
-  my_putstr("ERROR SIGTSTP\n", 2); */
 }

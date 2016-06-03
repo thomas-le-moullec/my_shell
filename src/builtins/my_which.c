@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:52 2016 Thomas CHABOT
-** Last update Thu Jun  2 19:38:45 2016 Thomas CHABOT
+** Last update Thu Jun  2 21:20:59 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -36,15 +36,24 @@ int		my_which_loop(t_data *data, char *tmp, int nb, int limit)
 {
   int		a;
   int		i;
+  static int	b = 0;
 
   a = 1;
   while (nb-- > 1 && limit == 0)
     {
       i = 0;
+      b = 0;
       while (data->shell.path[i] && limit == 0)
 	{
 	  tmp = NULL;
 	  tmp = my_strcat(data->shell.path[i], data->parser.tab_args[a], '/');
+	  if (is_builtin(data, data->parser.tab_args[a]) == 2 && b == 0)
+	    {
+	      my_putstr(data->parser.tab_args[a], 1);
+	      my_putstr(": shell built-in command\n", 1);
+	      b = 1;
+	      limit = 1;
+	    }
 	  if (access(tmp, X_OK) == SUCCESS)
 	    {
 	      my_putstr(get_which(tmp), 1);
@@ -74,7 +83,7 @@ int		my_which(t_data *data)
   if (data->shell.path == NULL)
     return (ERROR);
   limit = my_which_loop(data, tmp, nb, limit);
-  if (limit == 0)
-    return (not_found_cmd(data));
+  /*if (limit == 0)
+    return (not_found_cmd(data)); */
   return (SUCCESS);
 }

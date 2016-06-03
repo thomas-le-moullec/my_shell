@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 12:51:48 2016 Thomas CHABOT
-** Last update Wed Jun  1 21:09:32 2016 leo LE DIOURON
+** Last update Thu Jun  2 20:15:35 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -68,5 +68,6 @@ int		init_shell(t_data *data)
   data->hist = NULL;
   data->shell.exit_status = 0;
   data->local = NULL;
+  init_tab_builtins(data);
   return (SUCCESS);
 }

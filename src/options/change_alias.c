@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Mon May 23 17:45:40 2016 Hervé TCHIKLADZE
-** Last update Sun May 29 14:24:42 2016 Thomas CHABOT
+** Last update Thu Jun  2 14:56:21 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -109,12 +109,15 @@ int            change_alias(t_data *data, int i)
 
   j = 0;
   a = 0;
-  a = find_valid_alias(data, i, &j);
-  change_alias_loop(data, i, &j, a);
-  if (a == 1)
-    return (1);
-  else
-    while (data->alias->next != NULL)
-      data->alias = data->alias->next;
+  if (data->alias != NULL)
+    {
+      a = find_valid_alias(data, i, &j);
+      change_alias_loop(data, i, &j, a);
+      if (a == 1)
+	return (1);
+      else
+	while (data->alias->next != NULL)
+	  data->alias = data->alias->next;
+    }
   return (SUCCESS);
 }

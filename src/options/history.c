@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Thu Jun  2 10:27:24 2016 Thomas CHABOT
+** Last update Thu Jun  2 14:07:00 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -37,73 +37,6 @@ char            *change_line_hist(t_data *data, char *tmp_hist, int y)
   result[k] = '\0';
   my_free(data->parser.tab_pipe[y]);
   return (result);
-}
-
-int		get_nb_cmd(t_data *data, char *tmp_hist, int y)
-{
-  int		nb;
-
-  nb = 0;
-  if ((nb = my_getnbr(tmp_hist)) == ERROR)
-    return (ERROR);
-  while (data->hist->prev != NULL)
-    data->hist = data->hist->prev;
-  while (data->hist->next != NULL && nb > 0)
-    {
-      data->hist = data->hist->next;
-      nb--;
-    }
-  data->parser.tab_pipe[y] = change_line_hist(data, tmp_hist, y);
-  while (data->hist->next != NULL)
-    data->hist = data->hist->next;
-  return (SUCCESS);
-}
-
-int		get_relative_cmd(t_data *data, char *tmp_hist, int y)
-{
-  int		nb;
-
-  nb = 0;
-  tmp_hist = &tmp_hist[1];
-  if ((nb = my_getnbr(tmp_hist)) == ERROR || nb == 0)
-    return (ERROR);
-  tmp_hist = my_strcat("\0", tmp_hist, '-');
-  while (data->hist->prev != NULL && nb > 0)
-    {
-      data->hist = data->hist->prev;
-      nb--;
-    }
-  data->parser.tab_pipe[y] = change_line_hist(data, tmp_hist, y);
-  while (data->hist->next != NULL)
-    data->hist = data->hist->next;
-  return (SUCCESS);
-}
-
-int		check_n_hist(t_data *data, char *tmp_hist, int y)
-{
-  if (tmp_hist[0] == '!')
-    {
-      if (data->hist->prev != NULL)
-	{
-	  data->hist = data->hist->prev;
-	  data->parser.tab_pipe[y] = change_line_hist(data, tmp_hist, y);
-	  modif_args_hist(data, y);
-	  return (SUCCESS);
-	}
-      return (SUCCESS);
-    }
-  if (tmp_hist[0] != '-' \
-      && (tmp_hist[0] < '0' \
-	  || tmp_hist[0] > '9'))
-    return (STOP);
-  if (tmp_hist[0] == '-')
-    if (get_relative_cmd(data, tmp_hist, y) == ERROR)
-      return (ERROR);
-  if (tmp_hist[0] != '-')
-    if (get_nb_cmd(data, tmp_hist, y) == ERROR)
-      return (ERROR);
-  modif_args_hist(data, y);
-  return (SUCCESS);
 }
 
 char		*take_tmp_hist(t_data *data, int y)
