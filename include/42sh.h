@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri Jun  3 14:02:35 2016 leo LE DIOURON
+** Last update Fri Jun  3 14:12:59 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -324,6 +324,7 @@ int		fct_tab(t_data *, int *);
 /* fct_delete.c */
 int		fct_delete(t_data *, int *);
 int		fct_supp(t_data *, int *);
+int		fct_reset(t_data *, int *);
 /* fct_move.c  */
 int		fct_end(t_data *, int *);
 int		fct_kome(t_data *, int *);

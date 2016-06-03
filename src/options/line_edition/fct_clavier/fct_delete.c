@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:34 2016 Hervé TCHIKLADZE
-** Last update Thu Jun  2 22:13:29 2016 steeve payraudeau
+** Last update Fri Jun  3 13:18:57 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -54,5 +54,17 @@ int             fct_delete(t_data *data, int *i)
       my_putstr(tgetstr("dc", NULL), 1);
       delete_char(data, *i);
     }
+  return (SUCCESS);
+}
+
+int		fct_reset(t_data *data, int *i)
+{
+  int		tmp;
+
+  if (data->shell.line == NULL || data->shell.line[0] == '\0')
+    return (STOP);
+  tmp = my_strlen(data->shell.line);
+  data->shell.line[0] = '\0';
+  clear_print_line(data->shell.line, i, tmp);
   return (SUCCESS);
 }
