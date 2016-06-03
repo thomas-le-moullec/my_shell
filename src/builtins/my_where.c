@@ -5,29 +5,26 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:03 2016 Thomas CHABOT
-** Last update Fri Jun  3 10:31:24 2016 Thomas CHABOT
+** Last update Fri Jun  3 13:33:29 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-int		check_where(char *tmp, int found)
+int		check_where(char *tmp)
 {
   if (access(tmp, X_OK) == SUCCESS)
     {
       my_putstr(tmp, 1);
       my_putchar('\n', 1);
-      found = 1;
     }
-  return (found);
+  return (SUCCESS);
 }
 
-int		my_where_loop(t_data *data, int nb, char *tmp, int found)
+int		my_where_loop(t_data *data, int nb, char *tmp, int a)
 {
   int		i;
-  int		a;
   static int	b = 0;
 
-  a = 1;
   while (nb-- > 1)
     {
       i = 0;
@@ -42,12 +39,13 @@ int		my_where_loop(t_data *data, int nb, char *tmp, int found)
               my_putstr(" is a shell built-in\n", 1);
               b = 1;
             }
-	  found = check_where(tmp, found);
+	  check_where(tmp);
 	  i++;
+	  free(tmp);
 	}
       a++;
     }
-  return (found);
+  return (SUCCESS);
 }
 
 int		is_builtin(t_data *data, char *str)
@@ -68,17 +66,13 @@ int		my_where(t_data *data)
 {
   int		nb;
   char		*tmp;
-  int		found;
 
-  found = 0;
   tmp = NULL;
   nb = count_tab(data->parser.tab_args);
   if (nb < 2)
     return (my_put_error(ERR_WHERE, 1));
   if (data->shell.path == NULL)
     return (ERROR);
-  found = my_where_loop(data, nb, tmp, found);
-  if (found == 0)
-    return (not_found_cmd(data));
+  my_where_loop(data, nb, tmp, 1);
   return (SUCCESS);
 }

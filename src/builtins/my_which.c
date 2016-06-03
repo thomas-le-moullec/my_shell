@@ -5,12 +5,31 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:52 2016 Thomas CHABOT
-** Last update Fri Jun  3 10:36:00 2016 Thomas CHABOT
+** Last update Fri Jun  3 13:14:37 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
 
-int		check_which(char *tmp, int limit)
+char		*cut_str(char *str)
+{
+  char		*new_str;
+  int		i;
+  int		j;
+
+  new_str = NULL;
+  i = my_strlen(str);
+  new_str = my_mallok(new_str, my_strlen(str));
+  while (i > 0 && str[i] != '/')
+    i--;
+  i++;
+  j = 0;
+  while (str[i])
+    new_str[j++] = str[i++];
+  new_str[j] = '\0';
+  return (new_str);
+}
+
+int		check_which(t_data *data, char *tmp, int limit, int i)
 {
   if (access(tmp, X_OK) == SUCCESS)
     {
@@ -18,6 +37,12 @@ int		check_which(char *tmp, int limit)
       my_putchar('\n', 1);
       limit = 1;
     }
+  else
+    if (i + 1 == count_tab(data->shell.path))
+      {
+	not_found_cmd(data, cut_str(tmp), i);
+	limit = 1;
+      }
   return (limit);
 }
 
@@ -65,8 +90,9 @@ int		my_which_loop(t_data *data, char *tmp, int nb, int limit)
 	      b = 1;
 	      limit = 1;
 	    }
-	  limit = check_which(tmp, limit);
+	  limit = check_which(data, tmp, limit, i);
 	  i++;
+	  free(tmp);
 	}
       if (nb > 1)
 	limit = 0;
@@ -79,17 +105,13 @@ int		my_which(t_data *data)
 {
   int		nb;
   char          *tmp;
-  int		limit;
 
   tmp = NULL;
   nb = count_tab(data->parser.tab_args);
-  limit = 0;
   if (nb < 2)
     return (my_put_error(ERR_WHICH, 1));
   if (data->shell.path == NULL)
     return (ERROR);
-  limit = my_which_loop(data, tmp, nb, limit);
-  if (limit == 0)
-    return (not_found_cmd(data));
+  my_which_loop(data, tmp, nb, 0);
   return (SUCCESS);
 }

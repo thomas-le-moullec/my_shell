@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri Jun  3 10:36:53 2016 Thomas CHABOT
+** Last update Fri Jun  3 13:33:02 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -168,13 +168,14 @@ int		my_set(t_data *);
 int		my_repeat(t_data *);
 
 /* my_where.c */
-int		check_where(char *, int);
+int		check_where(char *);
 int		my_where_loop(t_data *, int, char *, int);
 int		is_builtin(t_data *, char *);
 int		my_where(t_data *);
 
 /* my_which.c */
-int		check_which(char *, int);
+char		*cut_str(char *);
+int		check_which(t_data *, char *, int, int);
 char		*get_which(char *);
 int		my_which_loop(t_data *, char *, int, int);
 int		my_which(t_data *);
@@ -213,7 +214,7 @@ void		take_type_cond(t_data *, int, int, int);
 int		ambiguous(t_data *, int);
 
 /* error_bultins.c */
-int		not_found_cmd(t_data *);
+int		not_found_cmd(t_data *, char *, int);
 int		error_denied(t_data *, char *);
 void		error_no_file(t_data *, char *);
 int		error_alpha(t_data *, int);
