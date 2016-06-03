@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 24 13:24:43 2016 steeve payraudeau
-** Last update Fri Jun  3 13:26:22 2016 steeve payraudeau
+** Last update Fri Jun  3 13:35:27 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -15,7 +15,7 @@ void		*my_handler(int sign)
   if (sign == SIGINT)
     {
       my_putstr("\n/$> ", 1);
-      return ;
+      return (NULL);
     }
   if (sign == SIGTERM)
     my_putstr("\nSIGNAL SIGTERM!\n", 1);

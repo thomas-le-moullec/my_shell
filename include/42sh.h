@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:18:41 2016 steeve payraudeau
+** Last update Fri Jun  3 13:32:47 2016 steeve payraudeau
 */
 
 #ifndef SH42_H_
@@ -394,5 +394,7 @@ char		*get_dir(char *);
 void            show_alias(t_data *);
 
 int             count_occurrence(char *, char);
+
+char		*check_in_set(t_data *, char *);
 
 #endif /* SH42_H_ */

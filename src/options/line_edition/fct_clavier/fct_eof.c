@@ -5,14 +5,22 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:49:45 2016 steeve payraudeau
-** Last update Fri Jun  3 11:16:54 2016 steeve payraudeau
+** Last update Fri Jun  3 13:37:20 2016 steeve payraudeau
 */
 
 #include "42sh.h"
 
 int             fct_eof(t_data *data, int *i)
 {
-  (void)data;
   (void)i;
+  if (check_in_set(data, "ignoreeof") != NULL)
+    {
+      my_putstr("^D\n", 1);
+      my_putstr(IEOF, 1);
+      disp_prompt(data);
+      if (data->shell.line != NULL)
+	my_putstr(data->shell.line, 1);
+      return (SUCCESS);
+    }
   return (ERROR);
 }
