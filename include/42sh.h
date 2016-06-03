@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:37:37 2016 Thomas CHABOT
+** Last update Fri Jun  3 14:15:24 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -304,6 +304,11 @@ int             loop_magic(t_data *, char **);
 char            *change_magic_result(char *, char *);
 char            *fill_result_magic(char *, char *, char *);
 
+/* pre_post_cmd.c */
+void		precmd(t_data);
+void		postcmd(t_data);
+
+
 /* **************** FCT_CLAVIER ************** */
 
 /* fct_up.c */
@@ -320,6 +325,7 @@ int		fct_tab(t_data *, int *);
 /* fct_delete.c */
 int		fct_delete(t_data *, int *);
 int		fct_supp(t_data *, int *);
+int		fct_reset(t_data *, int *);
 /* fct_move.c  */
 int		fct_end(t_data *, int *);
 int		fct_kome(t_data *, int *);
@@ -395,6 +401,7 @@ void            show_alias(t_data *);
 
 int             count_occurrence(char *, char);
 
+char		*check_in_alias(t_data *, char *);
 char		*check_in_set(t_data *, char *);
 
 #endif /* SH42_H_ */

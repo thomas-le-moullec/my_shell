@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 16:44:55 2016 Hervé TCHIKLADZE
-** Last update Wed Jun  1 22:12:30 2016 steeve payraudeau
+** Last update Fri Jun  3 13:13:05 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -61,8 +61,14 @@ int		init_tab(t_data *data)
   data->tab_key[9].function = fct_clear;
   data->tab_key[10].key = my_char(DCTRL);
   data->tab_key[10].function = fct_eof;
-  data->tab_key[11].key = NULL;
-  data->tab_key[11].function = NULL;
+  data->tab_key[11].key = my_char(ACTRL);
+  data->tab_key[11].function = fct_kome;
+  data->tab_key[12].key = my_char(ECTRL);
+  data->tab_key[12].function = fct_end;
+  data->tab_key[13].key = my_char(UCTRL);
+  data->tab_key[13].function = fct_reset;
+  data->tab_key[14].key = NULL;
+  data->tab_key[14].function = NULL;
   return (SUCCESS);
 }
 
