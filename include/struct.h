@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Fri Jun  3 11:00:21 2016 steeve payraudeau
+** Last update Fri Jun  3 13:10:36 2016 steeve payraudeau
 */
 
 #ifndef STRUCT_H_
@@ -30,6 +30,9 @@
 
 #define LCTRL		12
 #define DCTRL		4
+#define ACTRL		1
+#define ECTRL		5
+#define UCTRL		21
 
 #define MAGIC		"108 97 103 111 117 100 97 108 101"
 
@@ -151,7 +154,7 @@ typedef struct		s_key
 
 struct		       	s_data
 {
-  t_key			tab_key[12];
+  t_key			tab_key[15];
   t_hist		*hist;
   t_shell		shell;
   t_parser		parser;
