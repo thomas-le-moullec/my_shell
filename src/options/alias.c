@@ -5,34 +5,10 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May 18 16:23:34 2016 Thomas CHABOT
-** Last update Tue May 31 11:20:09 2016 leo LE DIOURON
+** Last update Wed Jun  1 21:10:18 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
-
-/*t_alias		*delete_elem_alias(t_alias *alias)
-{
-  if (alias->prev == NULL && alias->next != NULL)
-    {
-      alias->next->prev = NULL;
-      alias = alias->next;
-      return (alias);
-    }
-  if (alias->next == NULL && alias->prev != NULL)
-    {
-      alias->prev->next = NULL;
-      alias = alias->prev;
-      return (alias);
-    }
-  if (alias->prev != NULL && alias->next != NULL)
-    {
-      alias->next->prev = alias->prev;
-      alias->prev->next = alias->next;
-      alias = alias->prev;
-      return (alias);
-    }
-  return (alias);
-  }*/
 
 t_alias		*add_elem_alias(t_alias *alias, char *cmd, char *name)
 {

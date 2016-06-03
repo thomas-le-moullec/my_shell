@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Thu Jun  2 13:18:49 2016 steeve payraudeau
+## Last update Fri Jun  3 11:00:57 2016 steeve payraudeau
 ##
 
 DETAILS		=		no
@@ -28,6 +28,7 @@ MY_SHELL	=		src/shell/shell.c				\
 				src/shell/init.c				\
 				src/shell/catch_signal.c			\
 				src/shell/pipe_loop.c				\
+				src/shell/cond_loop.c				\
 
 PARSER		=		src/parser/parser.c				\
 				src/parser/take_redir.c				\
@@ -49,6 +50,11 @@ BUILTINS	=		src/builtins/my_exit.c				\
 				src/builtins/unalias.c				\
 				src/builtins/new_alias.c			\
 				src/builtins/echo.c				\
+				src/builtins/set.c				\
+				src/builtins/unset.c				\
+				src/builtins/my_repeat.c			\
+				src/builtins/my_which.c				\
+				src/builtins/my_where.c				\
 
 EXEC		=		src/exec/exec.c					\
 				src/exec/in_and_out.c				\
@@ -70,9 +76,11 @@ ERROR		=		src/error/ambiguous.c				\
 OPT		=		src/options/var_env.c				\
 				src/options/inhib.c				\
 				src/options/history.c				\
+				src/options/special_history.c			\
 				src/options/alias.c				\
 				src/options/change_alias.c			\
 				src/options/glob.c				\
+				src/options/magics_tools.c			\
 				src/options/magics.c				\
 				src/options/print_hist.c			\
 

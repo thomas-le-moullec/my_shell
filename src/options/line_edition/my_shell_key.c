@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 31 19:48:27 2016 steeve payraudeau
-** Last update Thu Jun  2 23:39:53 2016 steeve payraudeau
+** Last update Fri Jun  3 10:59:20 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -91,6 +91,6 @@ int		my_shell_key(t_data *data)
       data->shell.tmp_hist = my_strcpy("\0");
     }
   mode_canon(1);
-  my_putstr("exit\n", 1);
+  my_putstr(EXIT_THIS, 1);
   return (SUCCESS);
 }

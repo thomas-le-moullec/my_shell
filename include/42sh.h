@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Thu Jun  2 22:40:25 2016 steeve payraudeau
+** Last update Fri Jun  3 11:00:14 2016 steeve payraudeau
 */
 
 #ifndef SH42_H_
@@ -60,7 +60,12 @@ void    	*my_handler(int);
 void		init_signaux();
 
 /* pipe_loop.c */
+int             modify_str_pipe(t_data *, int);
+int             modify_inhib_glob_pipe(t_data *);
 void		pipe_alias(t_data *, int);
+
+/* cond_loop.c */
+void		gestion_condition(t_data *, int);
 
 /* **************** EXEC ****************** */
 
@@ -69,22 +74,25 @@ int		check_str_access(char *);
 int		my_exec(t_data *);
 
 /*my_builtins.c */
+void		init_tab_builtins(t_data *);
 int		show_builtins(t_data *);
 int		my_builtins(t_data *);
 
 /* execution.c */
 int		father(pid_t, t_data *);
 int		execution(t_data *);
-int		access_path(t_data *);
 int		exec_with_path(t_data *, int);
 int		exec_without_path(t_data *);
 
 /* redirection_outfile.c */
+int		err_redir_outfile(t_data *, int);
+int		err_db_redir_outfile(t_data *, int);
 int		redirection_outfile(t_data *);
 
 /* redirection_infile.c */
 int		redirection_infile(t_data *);
 int             double_infile_redir(t_data *);
+int             infile_simple(t_data *);
 
 /* in_and_out.c */
 int		manage_all_redir(t_data *);
@@ -100,9 +108,11 @@ char		*take_path_exec(char *);
 /* signal.c */
 int		check_signal(t_data *, int);
 
-/* check_signal.c */
+/* check_access.c */
 int		access_path_er(t_data *);
 int		access_path_file(t_data *);
+int             find_path_exec(t_data *);
+int		access_path(t_data *);
 
 /* **************** BUILTINS ****************** */
 
@@ -132,6 +142,7 @@ char		**unsetenv_loop(t_data *, int);
 int		my_unsetenv(t_data *);
 
 /* new_alias.c */
+void            delete_existant_alias(t_data *);
 int		new_alias(t_data *);
 
 /* unalias.c */
@@ -143,6 +154,30 @@ int		my_echo(t_data *);
 
 /* my_history.c */
 int		my_history(t_data *);
+
+/* my_unset.c */
+int             delete_local(t_data *);
+int		my_unset(t_data *);
+
+/* set.c */
+void		show_set(t_data *);
+t_local         *add_elem_local(t_local *, char *, char *);
+char            *take_cmd_local(char *);
+char            *take_name_local(char *);
+int		my_set(t_data *);
+int		my_repeat(t_data *);
+
+/* my_where.c */
+int		check_where(char *, int);
+int		my_where_loop(t_data *, int, char *, int);
+int		is_builtin(t_data *, char *);
+int		my_where(t_data *);
+
+/* my_which.c */
+int		check_which(char *, int);
+char		*get_which(char *);
+int		my_which_loop(t_data *, char *, int, int);
+int		my_which(t_data *);
 
 /* **************** PARSER ****************** */
 
@@ -178,6 +213,7 @@ void		take_type_cond(t_data *, int, int, int);
 int		ambiguous(t_data *, int);
 
 /* error_bultins.c */
+int		not_found_cmd(t_data *);
 int		error_denied(t_data *, char *);
 void		error_no_file(t_data *, char *);
 int		error_alpha(t_data *, int);
@@ -206,7 +242,7 @@ char            *strcop_char(char **, char);
 char            *cp_str(char *, char *, int);
 
 /* var_env.c */
-int		var_env(t_data *, int);
+int		var_env_loc(t_data *, int);
 int		replace_string(t_data *, int, int, char *);
 char		*take_var(t_data *, int, int);
 void            creat_new_string(t_data *, char *, int);
@@ -217,7 +253,14 @@ char            *modify_str(t_data *, char, int);
 int             check_special_char(char, char *);
 int             args_convert(t_data *);
 
+/* special_history.c */
+int             get_nb_cmd(t_data *, char *, int);
+int             get_relative_cmd(t_data *, char *, int);
+int             check_n_hist(t_data *, char *, int);
+
 /* history.c */
+char            *change_line_hist(t_data *, char *, int);
+char            *take_tmp_hist(t_data *, int);
 int             modif_args_hist(t_data *, int);
 t_hist		*add_elem_key(t_hist *, char *);
 
@@ -248,10 +291,17 @@ char            **take_tab_stars(char *, char *, t_data *);
 int             glob_error(const char *, int);
 int             check_stars(char *);
 
+/*magics_tools.c*/
+char            **my_magic_wordtab(char *, int, int);
+char            *epur_return_line(char *);
+int             modify_magic_line(t_data *);
+
 /*magics*/
 int             magic_quotes(t_data *);
+int             exe_magic_quotes(t_data *, char **, int, int);
 int             loop_magic(t_data *, char **);
-char            **my_magic_wordtab(char *, int);
+char            *change_magic_result(char *, char *);
+char            *fill_result_magic(char *, char *, char *);
 
 /* **************** FCT_CLAVIER ************** */
 

@@ -5,10 +5,27 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:49:37 2016 Thomas CHABOT
-** Last update Wed Jun  1 15:48:55 2016 Thomas LE MOULLEC
+** Last update Thu Jun  2 13:07:20 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
+
+void		delete_existant_alias(t_data *data)
+{
+  if (data->alias != NULL)
+    {
+      while (data->alias->prev != NULL)
+        data->alias = data->alias->prev;
+      while (data->alias->next != NULL &&
+             my_strcmp(data->alias->name, data->parser.tab_args[1]) == ERROR)
+        data->alias = data->alias->next;
+      if (my_strcmp(data->alias->name, data->parser.tab_args[1]) == SUCCESS)
+        delete_alias(data);
+      if (data->alias != NULL)
+        while (data->alias->next != NULL)
+          data->alias = data->alias->next;
+    }
+}
 
 int		new_alias(t_data *data)
 {
@@ -27,26 +44,11 @@ int		new_alias(t_data *data)
     {
       tmp = my_strcpy(data->parser.tab_args[2]);
       while (data->parser.tab_args[j] != NULL)
-	{
-	  tmp = my_strcat(tmp, data->parser.tab_args[j], ' ');
-	  j++;
-	}
+	  tmp = my_strcat(tmp, data->parser.tab_args[j++], ' ');
     }
   else
     tmp = my_strcpy("\0");
-  if (data->alias != NULL)
-    {
-      while (data->alias->prev != NULL)
-	data->alias = data->alias->prev;
-      while (data->alias->next != NULL &&
-	     my_strcmp(data->alias->name, data->parser.tab_args[1]) == ERROR)
-	data->alias = data->alias->next;
-      if (my_strcmp(data->alias->name, data->parser.tab_args[1]) == SUCCESS)
-	delete_alias(data);
-      if (data->alias != NULL)
-	while (data->alias->next != NULL)
-	  data->alias = data->alias->next;
-    }
+  delete_existant_alias(data);
   data->alias = add_elem_alias(data->alias, tmp, \
 			       data->parser.tab_args[1]);
   return (SUCCESS);

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Thu Jun  2 21:41:57 2016 steeve payraudeau
+** Last update Fri Jun  3 11:00:21 2016 steeve payraudeau
 */
 
 #ifndef STRUCT_H_
@@ -35,6 +35,9 @@
 
 #define NB_SIGNALS	5
 
+#define NO_MATCH	": No match.\n"
+#define SHOW_ALIAS	"alias "
+#define EXIT_THIS	"exit\n"
 #define ERROR_ALIAS	"Invalid alias name.\n"
 #define NULL_CMD	"Invalid null command.\n"
 #define ERROR_UNALIAS	"unalias: Too few arguments.\n"
@@ -48,8 +51,16 @@
 #define IS_DIR		": Is a directory.\n"
 #define FOUND_DIR	": No such file or directory.\n"
 #define MISSING_NAME	"Missing name for redirect.\n"
-#define EVENT		"Event not found.\n"
+#define EVENT		": Event not found.\n"
 #define MAGIC_ERROR	"Unmatched `.\n"
+#define EXEC_ERROR	": Exec format error. Binary file not executable.\n"
+#define REPEAT_FEW	"repeat: Too few arguments.\n"
+#define UNDEF_VAR	": Undefined variable.\n"
+#define SET_LETTER	"setenv: Variable name must begin with a letter.\n"
+#define SET_ALPHA	"setenv: Variable name must contain alphanumeric characters.\n"
+#define BAD_FORM	"repeat: Badly formed number.\n"
+#define ERR_WHERE	"where: Too few arguments.\n"
+#define ERR_WHICH	"which: Too few arguments.\n"
 
 #define SIG_SIGABRT	"Aborted\n"
 #define SIG_SIGFPE	"Floating exception\n"
@@ -102,6 +113,8 @@ typedef struct		s_shell
   int			save_fd;
   int			exit_status;
   int			*cond;
+  int			nb_repeat;
+  char			*tab_builtins[15];
 }			t_shell;
 
 typedef struct		s_hist
@@ -122,6 +135,14 @@ typedef struct		s_alias
   struct s_alias	*next;
 }			t_alias;
 
+typedef struct		s_local
+{
+  char			*name;
+  char			*cmd;
+  struct s_local        *prev;
+  struct s_local        *next;
+}			t_local;
+
 typedef struct		s_key
 {
   char			*key;
@@ -135,6 +156,7 @@ struct		       	s_data
   t_shell		shell;
   t_parser		parser;
   t_alias		*alias;
+  t_local		*local;
 };
 
 typedef struct		s_buil
