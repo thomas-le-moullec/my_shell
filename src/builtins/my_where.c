@@ -5,10 +5,29 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:03 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:33:29 2016 Thomas CHABOT
+** Last update Fri Jun  3 13:43:51 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
+
+char            *cut_str(char *str)
+{
+  char          *new_str;
+  int           i;
+  int           j;
+
+  new_str = NULL;
+  i = my_strlen(str);
+  new_str = my_mallok(new_str, my_strlen(str));
+  while (i > 0 && str[i] != '/')
+    i--;
+  i++;
+  j = 0;
+  while (str[i])
+    new_str[j++] = str[i++];
+  new_str[j] = '\0';
+  return (new_str);
+}
 
 int		check_where(char *tmp)
 {

@@ -5,29 +5,10 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:52 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:14:37 2016 Thomas CHABOT
+** Last update Fri Jun  3 13:50:50 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
-
-char		*cut_str(char *str)
-{
-  char		*new_str;
-  int		i;
-  int		j;
-
-  new_str = NULL;
-  i = my_strlen(str);
-  new_str = my_mallok(new_str, my_strlen(str));
-  while (i > 0 && str[i] != '/')
-    i--;
-  i++;
-  j = 0;
-  while (str[i])
-    new_str[j++] = str[i++];
-  new_str[j] = '\0';
-  return (new_str);
-}
 
 int		check_which(t_data *data, char *tmp, int limit, int i)
 {
@@ -68,6 +49,14 @@ char		*get_which(char *str)
   return (new_str);
 }
 
+int		show_which_built(char *str, int b)
+{
+  my_putstr(str, 1);
+  my_putstr(": shell built-in command.\n", 1);
+  b = 1;
+  return (b);
+}
+
 int		my_which_loop(t_data *data, char *tmp, int nb, int limit)
 {
   int		a;
@@ -82,16 +71,13 @@ int		my_which_loop(t_data *data, char *tmp, int nb, int limit)
       while (data->shell.path[i] && limit == 0)
 	{
 	  tmp = NULL;
-	  tmp = my_strcat(data->shell.path[i], data->parser.tab_args[a], '/');
+	  tmp = my_strcat(data->shell.path[i++], data->parser.tab_args[a], '/');
 	  if (is_builtin(data, data->parser.tab_args[a]) == 2 && b == 0)
 	    {
-	      my_putstr(data->parser.tab_args[a], 1);
-	      my_putstr(": shell built-in command.\n", 1);
-	      b = 1;
+	      b = show_which_built(data->parser.tab_args[a], b);
 	      limit = 1;
 	    }
 	  limit = check_which(data, tmp, limit, i);
-	  i++;
 	  free(tmp);
 	}
       if (nb > 1)
