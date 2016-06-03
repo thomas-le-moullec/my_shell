@@ -5,13 +5,15 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:48 2016 Hervé TCHIKLADZE
-** Last update Wed Jun  1 17:08:01 2016 steeve payraudeau
+** Last update Thu Jun  2 10:12:45 2016 steeve payraudeau
 */
 
 #include "42sh.h"
 
 int		fct_right(t_data *data, int *i)
 {
+  if (data->shell.line == NULL)
+    return (STOP);
   if ((*i) < my_strlen(data->shell.line))
     {
       (*i) += 1;

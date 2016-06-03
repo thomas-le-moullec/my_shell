@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 12:51:48 2016 Thomas CHABOT
-** Last update Thu Jun  2 20:15:35 2016 Thomas CHABOT
+** Last update Fri Jun  3 10:58:41 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -67,6 +67,8 @@ int		init_shell(t_data *data)
   data->alias = add_elem_alias(data->alias, "ls -l", "ll");
   data->hist = NULL;
   data->shell.exit_status = 0;
+  data->shell.tmp_hist = NULL;
+  data->shell.pos_list = 0;
   data->local = NULL;
   init_tab_builtins(data);
   return (SUCCESS);

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Thu Jun  2 20:18:22 2016 Thomas CHABOT
+** Last update Fri Jun  3 13:18:58 2016 leo LE DIOURON
 */
 
 #ifndef STRUCT_H_
@@ -27,6 +27,9 @@
 #define DEFAUT		0
 #define AND		1
 #define OR		2
+
+#define LCTRL		12
+#define DCTRL		4
 
 #define MAGIC		"108 97 103 111 117 100 97 108 101"
 
@@ -58,6 +61,7 @@
 #define BAD_FORM	"repeat: Badly formed number.\n"
 #define ERR_WHERE	"where: Too few arguments.\n"
 #define ERR_WHICH	"which: Too few arguments.\n"
+#define IEOF		"Use \"exit\" to leave tcsh.\n"
 
 #define SIG_SIGABRT	"Aborted\n"
 #define SIG_SIGFPE	"Floating exception\n"
@@ -97,6 +101,8 @@ typedef struct		s_shell
   int			bin;
   char			*line;
   char			*tmp_magic;
+  char			*tmp_hist;
+  int			pos_list;
   char			**env;
   char			*pwd;
   char			*oldpwd;
@@ -146,7 +152,7 @@ typedef struct		s_key
 
 struct		       	s_data
 {
-  t_key			tab_key[10];
+  t_key			tab_key[12];
   t_hist		*hist;
   t_shell		shell;
   t_parser		parser;

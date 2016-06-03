@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 31 19:48:27 2016 steeve payraudeau
-** Last update Wed Jun  1 23:46:22 2016 Thomas LE MOULLEC
+** Last update Fri Jun  3 11:10:37 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -33,12 +33,12 @@ int		laboratory_key(t_data *data, char *buffer, int *i)
   int		err;
 
   err = ERROR;
-  if (data->shell.line != NULL)
-    if ((err = found_key(data, buffer, i)) == STOP)
-      return (STOP);
+  if ((err = found_key(data, buffer, i)) == STOP)
+    return (STOP);
   if (err == ERROR && buffer[0] >= ' ' && buffer[0] <= '~')
     {
       data->shell.line = cp_str(data->shell.line, buffer, *i);
+      data->shell.tmp_hist = my_strcpy(data->shell.line);
       my_putstr(tgetstr("im", NULL), 1);
       my_putstr(buffer, 1);
       my_putstr(tgetstr("ei", NULL), 1);
@@ -61,9 +61,10 @@ int		catch_key(t_data *data)
       	return (ERROR);
       buffer[nbr] = '\0';
       if (laboratory_key(data, buffer, &i) == STOP)
-	return (STOP);
+	return (ERROR);
     }
-  /*historique*/
+  while (data->hist != NULL && data->hist->next != NULL)
+    data->hist = data->hist->next;
   my_putstr("\n", 1);
   return (SUCCESS);
 }
@@ -74,17 +75,19 @@ int		my_shell_key(t_data *data)
     exit(0);
   mode_canon(0);
   disp_prompt(data);
-  data->shell.line = NULL;
+  data->shell.line = my_strcpy("\0");
+  data->shell.tmp_hist = my_strcpy("\0");
   while (catch_key(data) != ERROR)
     {
+      mode_canon(1);
       if (data->shell.line != NULL)
 	if (parser_line(data) == ERROR)
-	  {
-	    mode_canon(1);
-	    return (ERROR);
-	  }
+	  return (ERROR);
+      mode_canon(0);
       disp_prompt(data);
-      data->shell.line = NULL;
+      data->shell.pos_list = 0;
+      data->shell.line = my_strcpy("\0");
+      data->shell.tmp_hist = my_strcpy("\0");
     }
   mode_canon(1);
   my_putstr(EXIT_THIS, 1);

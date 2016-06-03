@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:34 2016 Hervé TCHIKLADZE
-** Last update Wed Jun  1 18:07:39 2016 steeve payraudeau
+** Last update Thu Jun  2 22:13:29 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -32,6 +32,7 @@ void		delete_char(t_data *data, int i)
   new[j] = '\0';
   my_free(data->shell.line);
   data->shell.line = my_strcpy(new);
+  data->shell.tmp_hist = my_strcpy(data->shell.line);
   my_free(new);
 }
 
@@ -44,6 +45,8 @@ int             fct_supp(t_data *data, int *i)
 
 int             fct_delete(t_data *data, int *i)
 {
+  if (data->shell.line == NULL)
+    return (STOP);
   if ((*i) > 0)
     {
       (*i) -= 1;

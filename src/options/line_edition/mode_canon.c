@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 16:44:55 2016 Hervé TCHIKLADZE
-** Last update Wed Jun  1 18:09:12 2016 steeve payraudeau
+** Last update Wed Jun  1 22:12:30 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -23,6 +23,8 @@ int			mode_canon(int mode)
 	return (ERROR);
       next.c_lflag &= ~ECHO;
       next.c_lflag &= ~ICANON;
+      next.c_cc[VMIN] = 1;
+      next.c_cc[VTIME] = 0;
       if (ioctl(0, TCSETS, &next) < 0)
 	return (ERROR);
     }
@@ -55,8 +57,12 @@ int		init_tab(t_data *data)
   data->tab_key[7].function = fct_kome;
   data->tab_key[8].key = tigetstr("kend");
   data->tab_key[8].function = fct_end;
-  data->tab_key[9].key = NULL;
-  data->tab_key[9].function = NULL;
+  data->tab_key[9].key = my_char(LCTRL);
+  data->tab_key[9].function = fct_clear;
+  data->tab_key[10].key = my_char(DCTRL);
+  data->tab_key[10].function = fct_eof;
+  data->tab_key[11].key = NULL;
+  data->tab_key[11].function = NULL;
   return (SUCCESS);
 }
 

@@ -5,14 +5,15 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:23:21 2016 Hervé TCHIKLADZE
-** Last update Wed Jun  1 17:07:55 2016 steeve payraudeau
+** Last update Thu Jun  2 10:11:42 2016 steeve payraudeau
 */
 
 #include "42sh.h"
 
 int		fct_left(t_data *data, int *i)
 {
-  (void)data;
+  if (data->shell.line == NULL)
+    return (STOP);
   if ((*i) > 0)
     {
       (*i) -= 1;

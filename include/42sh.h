@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:33:02 2016 Thomas CHABOT
+** Last update Fri Jun  3 13:37:37 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -310,6 +310,7 @@ char            *fill_result_magic(char *, char *, char *);
 int		fct_up(t_data *, int *);
 /* fct_down.c */
 int		fct_down(t_data *, int *);
+void            clear_print_line(char *, int *, int);
 /* fct_right.c */
 int		fct_right(t_data *, int *);
 /* fct_left.c */
@@ -322,6 +323,15 @@ int		fct_supp(t_data *, int *);
 /* fct_move.c  */
 int		fct_end(t_data *, int *);
 int		fct_kome(t_data *, int *);
+/* fct_clear.c */
+int		fct_clear(t_data *,int *);
+/* fct_clear.c */
+int		fct_eof(t_data *,int *);
+char		*my_char(char);
+/* fct_tools.c */
+int             found_tabo_comp(char **, char *);
+int             reinit_cursor(t_data *, int);
+void            found_positions(char *, int, int *, int *);
 
 /* **************** MYLIB ****************** */
 
@@ -384,5 +394,7 @@ char		*get_dir(char *);
 void            show_alias(t_data *);
 
 int             count_occurrence(char *, char);
+
+char		*check_in_set(t_data *, char *);
 
 #endif /* SH42_H_ */

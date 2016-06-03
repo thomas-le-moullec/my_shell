@@ -5,14 +5,29 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:20:07 2016 Hervé TCHIKLADZE
-** Last update Wed Jun  1 16:57:16 2016 steeve payraudeau
+** Last update Thu Jun  2 22:40:53 2016 steeve payraudeau
 */
 
 #include "42sh.h"
 
 int		fct_up(t_data *data, int *i)
 {
-  (void)i;
-  (void)data;
+  int		tmp;
+
+  tmp = my_strlen(data->shell.line);
+  if (data->hist != NULL)
+    {
+      if (data->hist->prev != NULL && data->shell.pos_list == 1)
+	{
+	  data->hist = data->hist->prev;
+	  data->shell.line = my_strcpy(data->hist->str);
+	}
+      else
+	{
+	  data->shell.line = my_strcpy(data->hist->str);
+	  data->shell.pos_list = 1;
+	}
+      clear_print_line(data->shell.line, i, tmp);
+    }
   return (SUCCESS);
 }
