@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:23:05 2016 Thomas CHABOT
-** Last update Thu Jun  2 20:05:19 2016 Thomas CHABOT
+** Last update Fri Jun  3 16:08:26 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -36,13 +36,14 @@ int		my_exec(t_data *data)
       data->shell.built = STOP;
       if ((data->shell.built = my_builtins(data)) == ERROR)
 	return (ERROR);
-      if (data->shell.built != STOP)
+      if (data->shell.built != STOP && data->shell.nb_repeat == 0)
 	return (STOP);
       data->shell.path = my_free_tab(data->shell.path);
       if (get_path(data) == ERROR)
 	return (ERROR);
-      if (execution(data) == ERROR)
-	return (ERROR);
+      if (my_strcmp(data->parser.tab_args[0], "echo") != SUCCESS)
+	if (execution(data) == ERROR)
+	  return (ERROR);
       i++;
     }
   return (SUCCESS);
