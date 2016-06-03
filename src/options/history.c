@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Thu Jun  2 14:07:00 2016 leo LE DIOURON
+** Last update Fri Jun  3 20:29:03 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -53,14 +53,20 @@ char		*take_tmp_hist(t_data *data, int y)
   while (data->parser.tab_pipe[y][i] && data->parser.tab_pipe[y][i] != '!')
     i++;
   if (data->parser.tab_pipe[y][i] == '\0')
-    return (NULL);
+    {
+      result = my_free(result);
+      return (NULL);
+    }
   i++;
-  while ( data->parser.tab_pipe[y][i] && data->parser.tab_pipe[y][i] != ' ' \
+  while (data->parser.tab_pipe[y][i] && data->parser.tab_pipe[y][i] != ' ' \
 	  && data->parser.tab_pipe[y][i] != '\t')
     result[j++] = data->parser.tab_pipe[y][i++];
   result[j] = '\0';
   if (j == 0)
-    return (NULL);
+    {
+      result = my_free(result);
+      return (NULL);
+    }
   return (result);
 }
 
@@ -71,7 +77,10 @@ int		modif_args_hist(t_data *data, int y)
   if ((tmp_hist = take_tmp_hist(data, y)) == NULL)
     return (STOP);
   if (check_n_hist(data, tmp_hist, y) == SUCCESS)
-    return (SUCCESS);
+    {
+      tmp_hist = my_free(tmp_hist);
+      return (SUCCESS);
+    }
   else
     {
       while (data->hist->prev != NULL \
@@ -87,7 +96,9 @@ int		modif_args_hist(t_data *data, int y)
     }
   while (data->hist->next != NULL)
     data->hist = data->hist->next;
+  tmp_hist = my_free(tmp_hist);
   modif_args_hist(data, y);
+  tmp_hist = my_free(tmp_hist);
   return (SUCCESS);
 }
 

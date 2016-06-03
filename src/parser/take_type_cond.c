@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Sat Apr 30 14:55:07 2016 leo LE DIOURON
-** Last update Wed May 25 16:08:53 2016 leo LE DIOURON
+** Last update Fri Jun  3 20:57:40 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -14,7 +14,7 @@ void		take_type_cond(t_data *data, int i, int x, int y)
 {
   data->shell.cond = my_free(data->shell.cond);
   data->shell.cond = my_mallok\
-    (data->shell.cond,(count_tab(data->parser.tab_cond) + 1) * sizeof(int));
+    (data->shell.cond, (count_tab(data->parser.tab_cond) + 1) * sizeof(int));
   while (data->parser.tab_sep[i][x] != '\0')
     {
       data->shell.cond[y] = DEFAUT;

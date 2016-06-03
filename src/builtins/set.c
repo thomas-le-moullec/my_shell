@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:10:27 2016 leo LE DIOURON
-** Last update Fri Jun  3 15:27:01 2016 Thomas LE MOULLEC
+** Last update Fri Jun  3 20:11:26 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -110,6 +110,8 @@ int		my_set(t_data *data)
       if (my_strcmp(data->local->name, "tperiod") == SUCCESS)
 	data->period.init = get_time_period();
       j++;
+      name = my_free(name);
+      cmd = my_free(cmd);
     }
   return (SUCCESS);
 }

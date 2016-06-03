@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:34 2016 Hervé TCHIKLADZE
-** Last update Fri Jun  3 13:18:57 2016 steeve payraudeau
+** Last update Fri Jun  3 18:18:25 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -30,10 +30,11 @@ void		delete_char(t_data *data, int i)
       w++;
     }
   new[j] = '\0';
-  my_free(data->shell.line);
+  data->shell.line = my_free(data->shell.line);
   data->shell.line = my_strcpy(new);
+  data->shell.tmp_hist = my_free(data->shell.tmp_hist);
   data->shell.tmp_hist = my_strcpy(data->shell.line);
-  my_free(new);
+  new = my_free(new);
 }
 
 int             fct_supp(t_data *data, int *i)

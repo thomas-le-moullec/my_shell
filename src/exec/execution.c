@@ -28,13 +28,23 @@ int		father(pid_t cpid, t_data *data)
 int		exec_without_path(t_data *data)
 {
   pid_t		cpid;
+  char		*tmp;
 
-  if ((access(take_path_exec(data->parser.tab_args[0]), F_OK | R_OK) == ERROR)
+  tmp = NULL;
+  tmp = take_path_exec(data->parser.tab_args[0]);
+  if ((access(tmp, F_OK | R_OK) == ERROR)
       || (((access(data->parser.tab_args[0], X_OK) == ERROR)) \
       || (check_str_access(data->parser.tab_args[0]) == ERROR)))
-    return (error_not_found(data));
-  if (access(data->parser.tab_args[0], F_OK) == ERROR)
-    return (error_dir(data, data->parser.tab_args[0]));
+    {
+      tmp = my_free(tmp);
+      return (error_not_found(data));
+    }
+  if (access(tmp, F_OK) == ERROR)
+    {
+      tmp = my_free(tmp);
+      return (error_dir(data, data->parser.tab_args[0]));
+    }
+  tmp = my_free(tmp);
   if ((cpid = fork()) == -1)
     return (ERROR);
   if (cpid == 0)

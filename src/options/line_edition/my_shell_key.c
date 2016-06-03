@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 31 19:48:27 2016 steeve payraudeau
-** Last update Fri Jun  3 15:32:02 2016 Thomas LE MOULLEC
+** Last update Fri Jun  3 21:14:01 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -38,6 +38,7 @@ int		laboratory_key(t_data *data, char *buffer, int *i)
   if (err == ERROR && buffer[0] >= ' ' && buffer[0] <= '~')
     {
       data->shell.line = cp_str(data->shell.line, buffer, *i);
+      data->shell.tmp_hist = my_free(data->shell.tmp_hist);
       data->shell.tmp_hist = my_strcpy(data->shell.line);
       my_putstr(tgetstr("im", NULL), 1);
       my_putstr(buffer, 1);
@@ -90,10 +91,14 @@ int		my_shell_key(t_data *data)
       mode_canon(0);
       disp_prompt(data);
       data->shell.pos_list = 0;
+      data->shell.line = my_free(data->shell.line);
       data->shell.line = my_strcpy("\0");
+      data->shell.tmp_hist = my_free(data->shell.tmp_hist);
       data->shell.tmp_hist = my_strcpy("\0");
     }
   mode_canon(1);
   my_putstr(EXIT_THIS, 1);
+  data->shell.line = my_free(data->shell.line);
+  data->shell.tmp_hist = my_free(data->shell.tmp_hist);
   return (SUCCESS);
 }

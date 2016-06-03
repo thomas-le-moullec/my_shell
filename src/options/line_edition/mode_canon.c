@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 16:44:55 2016 Hervé TCHIKLADZE
-** Last update Fri Jun  3 16:46:08 2016 leo LE DIOURON
+** Last update Fri Jun  3 20:39:44 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -86,6 +86,5 @@ int		init_term(t_data *data)
       init_tab(data);
       return (SUCCESS);
     }
-  printf("STOP\n");
   return (ERROR);
 }

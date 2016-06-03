@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:35:36 2016 Thomas CHABOT
-** Last update Tue May 17 17:46:30 2016 Hervé TCHIKLADZE
+** Last update Fri Jun  3 19:57:50 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -27,7 +27,7 @@ void		*my_free_tab(char **tabo)
     {
       while (tabo[i] != NULL)
 	{
-	  my_free(tabo[i]);
+	  tabo[i] = my_free(tabo[i]);
 	  i++;
 	}
       my_free(tabo);

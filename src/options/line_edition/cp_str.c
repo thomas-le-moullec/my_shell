@@ -5,10 +5,10 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Wed Jun  1 16:08:54 2016 steeve payraudeau
-** Last update Wed Jun  1 20:27:53 2016 steeve payraudeau
+** Last update Fri Jun  3 21:20:56 2016 Thomas CHABOT
 */
 
-#include <42sh.h>
+#include "42sh.h"
 
 char            *strcop_char(char **str, char c)
 {
@@ -33,7 +33,7 @@ char            *strcop_char(char **str, char c)
 	}
       back[i++] = c;
       back[i] = '\0';
-      free((*str));
+      (*str) = my_free((*str));
     }
   return (back);
 }
@@ -58,6 +58,7 @@ char		*cp_str(char *str, char *new, int pos)
 	tmp = strcop_char(&tmp, new[j++]);
       while (str[i] != '\0' && i < my_strlen(str))
 	tmp = strcop_char(&tmp, str[i++]);
+      str = my_free(str);
       return (tmp);
     }
   return (str);

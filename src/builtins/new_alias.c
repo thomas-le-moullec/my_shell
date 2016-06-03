@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:49:37 2016 Thomas CHABOT
-** Last update Fri Jun  3 15:23:11 2016 Thomas LE MOULLEC
+** Last update Fri Jun  3 20:04:26 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -51,5 +51,6 @@ int		new_alias(t_data *data)
   delete_existant_alias(data);
   data->alias = add_elem_alias(data->alias, tmp, \
 			       data->parser.tab_args[1]);
+  tmp = my_free(tmp);
   return (SUCCESS);
 }

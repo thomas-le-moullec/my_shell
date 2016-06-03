@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:52 2016 Thomas CHABOT
-** Last update Fri Jun  3 16:32:56 2016 leo LE DIOURON
+** Last update Fri Jun  3 18:16:05 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -78,7 +78,7 @@ void		my_which_loop(t_data *data, char *tmp, int nb, int limit)
 	      limit = 1;
 	    }
 	  limit = check_which(data, tmp, limit, i);
-	  free(tmp);
+	  tmp = my_free(tmp);
 	}
       if (nb > 1)
 	limit = 0;

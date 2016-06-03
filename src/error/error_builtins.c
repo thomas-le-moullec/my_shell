@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Mon May 16 14:34:21 2016 Thomas CHABOT
-** Last update Fri Jun  3 16:43:54 2016 leo LE DIOURON
+** Last update Fri Jun  3 18:09:17 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -52,5 +52,6 @@ int		error_event(t_data *data, char *str)
   data->shell.exit_status = 1;
   while (data->hist->next != NULL)
     data->hist = data->hist->next;
+  str = my_free(str);
   return (ERROR);
 }

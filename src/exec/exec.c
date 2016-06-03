@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:23:05 2016 Thomas CHABOT
-** Last update Fri Jun  3 16:36:10 2016 leo LE DIOURON
+** Last update Fri Jun  3 20:07:17 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -29,6 +29,7 @@ int		my_exec(t_data *data)
   int		i;
 
   i = 0;
+  data->shell.path = my_free_tab(data->shell.path);
   if (get_path(data) == ERROR)
     return (ERROR);
   while (i <= data->shell.nb_repeat)

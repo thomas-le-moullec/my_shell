@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:53:48 2016 leo LE DIOURON
+** Last update Fri Jun  3 20:54:32 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -25,15 +25,16 @@ int		pipe_loop(t_data *data)
       data->parser.tab_pipe[i] = my_epur_str(data->parser.tab_pipe[i]);
       if (data->parser.tab_pipe[i] == NULL)
 	return (STOP);
-      data->parser.tab_args = my_str_to_wordtab\
+      data->parser.tab_args = my_str_to_wordtab \
 	(data->parser.tab_pipe[i], " \t");
-      if (my_repeat(data) == ERROR)
-	return (STOP);
-      if (modify_inhib_glob_pipe(data) == STOP)
-	return (STOP);
-      if (my_exec(data) == ERROR)
-	return (STOP);
-      my_free_tab(data->parser.tab_args);
+      if (my_repeat(data) == ERROR \
+	  || modify_inhib_glob_pipe(data) == STOP \
+	  || my_exec(data) == ERROR)
+	{
+	  data->parser.tab_args = my_free_tab(data->parser.tab_args);
+	  return (STOP);
+	}
+      data->parser.tab_args = my_free_tab(data->parser.tab_args);
       i++;
     }
   return (SUCCESS);
@@ -56,7 +57,10 @@ int		cond_loop(t_data *data)
 	  data->parser.tab_pipe = my_str_to_wordtab \
 	    (data->parser.tab_cond[i], "|");
 	  if (take_nb_pipe(data) == ERROR)
-	    return (STOP);
+	    {
+	      my_free_cond(data);
+	      return (STOP);
+	    }
 	  pipe_loop(data);
 	}
       gestion_condition(data, i);
@@ -73,7 +77,7 @@ int		sep_loop(t_data *data)
   i = 0;
   while (data->parser.tab_sep[i] != NULL)
     {
-      if ((data->parser.tab_cond = my_cond_to_wordtab	\
+      if ((data->parser.tab_cond = my_cond_to_wordtab \
 	   (data->parser.tab_sep[i], "&|")) == NULL)
 	return (my_put_error(NULL_CMD, 1));
       if (data->parser.tab_cond != NULL)
@@ -82,7 +86,11 @@ int		sep_loop(t_data *data)
 	  if (cond_loop(data) == ERROR)
 	    return (ERROR);
 	}
-      my_free_tab(data->parser.tab_cond);
+      if (data->parser.tab_cond != NULL)
+	{
+	  my_free_tab(data->parser.tab_cond);
+	  data->parser.tab_cond = NULL;
+	}
       i++;
     }
   return (SUCCESS);

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri Jun  3 17:02:55 2016 leo LE DIOURON
+** Last update Fri Jun  3 20:08:34 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -389,6 +389,10 @@ int		my_free_loop(t_data *);
 void		*my_free(void *);
 
 void		my_free_alias(t_alias *);
+void		my_free_local(t_local *);
+void		my_free_hist(t_hist *);
+void		my_free_shell(t_shell *);
+void		my_free_parser(t_parser *);
 
 void		*my_mallok(void *, int);
 

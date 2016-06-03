@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:03 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:43:51 2016 Thomas CHABOT
+** Last update Fri Jun  3 18:16:20 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -60,7 +60,7 @@ int		my_where_loop(t_data *data, int nb, char *tmp, int a)
             }
 	  check_where(tmp);
 	  i++;
-	  free(tmp);
+	  tmp = my_free(tmp);
 	}
       a++;
     }

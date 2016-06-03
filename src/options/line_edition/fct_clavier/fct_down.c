@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:34 2016 Hervé TCHIKLADZE
-** Last update Thu Jun  2 22:41:48 2016 steeve payraudeau
+** Last update Fri Jun  3 21:04:18 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -36,11 +36,13 @@ int             fct_down(t_data *data, int *i)
     return (STOP);
   if (data->hist->next == NULL)
     {
+      data->shell.line = my_free(data->shell.line);
       data->shell.line = my_strcpy(data->shell.tmp_hist);
       data->shell.pos_list = 0;
     }
   if (data->hist->next != NULL)
     {
+      data->shell.line = my_free(data->shell.line);
       data->hist = data->hist->next;
       data->shell.line = my_strcpy(data->hist->str);
     }

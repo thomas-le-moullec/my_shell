@@ -5,7 +5,7 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Mon May 30 13:20:44 2016 Thomas LE MOULLEC
-** Last update Mon May 30 18:35:16 2016 Thomas CHABOT
+** Last update Fri Jun  3 18:15:45 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -26,7 +26,7 @@ char		*my_strcar(char *str, char c)
       stock[i] = str[i];
       i++;
     }
-  free(str);
+  str = my_free(str);
   stock[i] = c;
   i++;
   stock[i] = '\0';

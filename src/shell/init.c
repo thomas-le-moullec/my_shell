@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 12:51:48 2016 Thomas CHABOT
-** Last update Fri Jun  3 10:58:41 2016 steeve payraudeau
+** Last update Fri Jun  3 19:46:54 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -58,6 +58,7 @@ int		get_pwd(t_data *data)
 
 int		init_shell(t_data *data)
 {
+  
   data->shell.path = NULL;
   get_pwd(data);
   get_old_pwd(data);

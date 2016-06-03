@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 15:19:24 2016 Thomas CHABOT
-** Last update Tue May 31 20:52:58 2016 Thomas LE MOULLEC
+** Last update Fri Jun  3 17:48:44 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -61,10 +61,9 @@ int		check_invalid_null(t_data *data, int i)
 	return (my_put_error(NULL_CMD, 1));
     }
   if (ret == 2)
-    {
-      if (check_sign_redir(tabo[0]) == SUCCESS)
-	return (my_put_error(MISSING_NAME, 1));
-    }
+    if (check_sign_redir(tabo[0]) == SUCCESS)
+      return (my_put_error(MISSING_NAME, 1));
+  my_free_tab(tabo);
   return (SUCCESS);
 }
 

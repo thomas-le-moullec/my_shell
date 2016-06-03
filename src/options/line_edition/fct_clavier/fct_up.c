@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:20:07 2016 Hervé TCHIKLADZE
-** Last update Thu Jun  2 22:40:53 2016 steeve payraudeau
+** Last update Fri Jun  3 21:14:27 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -17,6 +17,7 @@ int		fct_up(t_data *data, int *i)
   tmp = my_strlen(data->shell.line);
   if (data->hist != NULL)
     {
+      data->shell.line = my_free(data->shell.line);
       if (data->hist->prev != NULL && data->shell.pos_list == 1)
 	{
 	  data->hist = data->hist->prev;

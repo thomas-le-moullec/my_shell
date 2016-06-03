@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Mon May 16 16:50:31 2016 leo LE DIOURON
-** Last update Fri Jun  3 14:00:21 2016 Thomas CHABOT
+** Last update Fri Jun  3 18:12:17 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -94,13 +94,18 @@ int		replace_string(t_data *data, int j, int i, char *var_env)
       data->parser.tab_pipe[j][i] = ' ';
       my_putstr(var_env, 1);
       my_putstr(UNDEF_VAR, 1);
+      result = my_free(result);
       return (ERROR);
     }
   if (nb != ERROR)
     result = my_strcpy_equal(data->shell.env[nb]);
   if (result == NULL || result[0] == '\0')
-    return (ERROR);
+    {
+      result = my_free(result);
+      return (ERROR);
+    }
   creat_new_string(data, result, j);
+  result = my_free(result);
   return (SUCCESS);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:34 2016 Hervé TCHIKLADZE
-** Last update Fri Jun  3 16:50:16 2016 leo LE DIOURON
+** Last update Fri Jun  3 20:32:53 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -86,6 +86,8 @@ int             fct_tab(t_data *data, int *i)
       else
 	print_autocompletion(data, tabo[0], i);
       reinit_cursor(data, *i);
+      tabo = my_free_tab(tabo);
     }
+  tmp = my_free(tmp);
   return (SUCCESS);
 }

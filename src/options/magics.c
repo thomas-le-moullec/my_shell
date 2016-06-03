@@ -5,7 +5,7 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Tue May 31 14:37:40 2016 Thomas LE MOULLEC
-** Last update Thu Jun  2 14:25:02 2016 leo LE DIOURON
+** Last update Fri Jun  3 18:15:00 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -47,8 +47,8 @@ char		*change_magic_result(char *line, char *buffer)
                      (my_strlen(line)
                       + my_strlen(buffer) + 1));
   result = fill_result_magic(result, line, buffer);
-  free(line);
-  free(buffer);
+  line = my_free(line);
+  buffer = my_free(buffer);
   result = epur_return_line(result);
   return (result);
 }
@@ -116,6 +116,6 @@ int		magic_quotes(t_data *data)
   if ((loop_magic(data, tabo)) == ERROR)
     return (ERROR);
   data->shell.line = my_strcpy(data->shell.tmp_magic);
-  free(data->shell.tmp_magic);
+  data->shell.tmp_magic = my_free(data->shell.tmp_magic);
   return (SUCCESS);
 }
