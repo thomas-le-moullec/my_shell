@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Wed Jun  1 18:14:16 2016 steeve payraudeau
+## Last update Thu Jun  2 13:18:49 2016 steeve payraudeau
 ##
 
 DETAILS		=		no
@@ -80,12 +80,15 @@ OPT_KEY		=		src/options/line_edition/my_shell_key.c		\
 				src/options/line_edition/mode_canon.c		\
 				src/options/line_edition/cp_str.c		\
 				src/options/line_edition/fct_clavier/fct_move.c	\
+				src/options/line_edition/fct_clavier/fct_eof.c	\
 				src/options/line_edition/fct_clavier/fct_up.c	\
 				src/options/line_edition/fct_clavier/fct_down.c	\
 				src/options/line_edition/fct_clavier/fct_right.c\
 				src/options/line_edition/fct_clavier/fct_left.c	\
 				src/options/line_edition/fct_clavier/fct_tab.c	\
+				src/options/line_edition/fct_clavier/fct_tools.c\
 				src/options/line_edition/fct_clavier/fct_delete.c\
+				src/options/line_edition/fct_clavier/fct_clear.c\
 
 MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/my_putchar.c				\

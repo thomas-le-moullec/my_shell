@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Wed Jun  1 20:11:31 2016 steeve payraudeau
+** Last update Thu Jun  2 21:41:57 2016 steeve payraudeau
 */
 
 #ifndef STRUCT_H_
@@ -27,6 +27,9 @@
 #define DEFAUT		0
 #define AND		1
 #define OR		2
+
+#define LCTRL		12
+#define DCTRL		4
 
 #define MAGIC		"108 97 103 111 117 100 97 108 101"
 
@@ -86,6 +89,8 @@ typedef struct		s_shell
   int			bin;
   char			*line;
   char			*tmp_magic;
+  char			*tmp_hist;
+  int			pos_list;
   char			**env;
   char			*pwd;
   char			*oldpwd;
@@ -125,7 +130,7 @@ typedef struct		s_key
 
 struct		       	s_data
 {
-  t_key			tab_key[10];
+  t_key			tab_key[12];
   t_hist		*hist;
   t_shell		shell;
   t_parser		parser;

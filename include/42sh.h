@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Wed Jun  1 20:15:17 2016 steeve payraudeau
+** Last update Thu Jun  2 22:40:25 2016 steeve payraudeau
 */
 
 #ifndef SH42_H_
@@ -259,6 +259,7 @@ char            **my_magic_wordtab(char *, int);
 int		fct_up(t_data *, int *);
 /* fct_down.c */
 int		fct_down(t_data *, int *);
+void            clear_print_line(char *, int *, int);
 /* fct_right.c */
 int		fct_right(t_data *, int *);
 /* fct_left.c */
@@ -271,6 +272,15 @@ int		fct_supp(t_data *, int *);
 /* fct_move.c  */
 int		fct_end(t_data *, int *);
 int		fct_kome(t_data *, int *);
+/* fct_clear.c */
+int		fct_clear(t_data *,int *);
+/* fct_clear.c */
+int		fct_eof(t_data *,int *);
+char		*my_char(char);
+/* fct_tools.c */
+int             found_tabo_comp(char **, char *);
+int             reinit_cursor(t_data *, int);
+void            found_positions(char *, int, int *, int *);
 
 /* **************** MYLIB ****************** */
 
