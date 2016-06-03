@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:10:27 2016 leo LE DIOURON
-** Last update Thu Jun  2 10:09:05 2016 leo LE DIOURON
+** Last update Fri Jun  3 15:27:01 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -107,6 +107,8 @@ int		my_set(t_data *data)
       name = take_name_local(data->parser.tab_args[j]);
       cmd = take_cmd_local(data->parser.tab_args[j]);
       data->local = add_elem_local(data->local, cmd, name);
+      if (my_strcmp(data->local->name, "tperiod") == SUCCESS)
+	data->period.init = get_time_period();
       j++;
     }
   return (SUCCESS);

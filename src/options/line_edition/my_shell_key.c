@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 31 19:48:27 2016 steeve payraudeau
-** Last update Fri Jun  3 13:54:56 2016 leo LE DIOURON
+** Last update Fri Jun  3 15:32:02 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -80,6 +80,8 @@ int		my_shell_key(t_data *data)
   while (catch_key(data) != ERROR)
     {
       mode_canon(1);
+      if (periodic(data) == ERROR)
+	return (ERROR);
       postcmd(*data);
       if (data->shell.line != NULL)
 	if (parser_line(data) == ERROR)

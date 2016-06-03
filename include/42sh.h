@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri Jun  3 14:15:24 2016 Thomas CHABOT
+** Last update Fri Jun  3 15:32:44 2016 Thomas LE MOULLEC
 */
 
 #ifndef SH42_H_
@@ -308,6 +308,9 @@ char            *fill_result_magic(char *, char *, char *);
 void		precmd(t_data);
 void		postcmd(t_data);
 
+/* periodic.c */
+int		periodic(t_data *);
+int		get_time_period();
 
 /* **************** FCT_CLAVIER ************** */
 

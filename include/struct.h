@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:32:29 2016 steeve payraudeau
+** Last update Fri Jun  3 15:25:06 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -153,6 +153,13 @@ typedef struct		s_key
   int			(*function)(t_data *, int *);
 }			t_key;
 
+typedef struct		s_period
+{
+  int			cycle;
+  int			init;
+  int			cmpt;
+}			t_period;
+
 struct		       	s_data
 {
   t_key			tab_key[15];
@@ -161,6 +168,7 @@ struct		       	s_data
   t_parser		parser;
   t_alias		*alias;
   t_local		*local;
+  t_period		period;
 };
 
 typedef struct		s_buil

@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Fri Jun  3 14:03:04 2016 leo LE DIOURON
+## Last update Fri Jun  3 15:28:31 2016 Thomas LE MOULLEC
 ##
 
 DETAILS		=		no
@@ -84,6 +84,7 @@ OPT		=		src/options/var_env.c				\
 				src/options/magics.c				\
 				src/options/print_hist.c			\
 				src/options/pre_post_cmd.c			\
+				src/options/periodic.c				\
 
 OPT_KEY		=		src/options/line_edition/my_shell_key.c		\
 				src/options/line_edition/mode_canon.c		\
