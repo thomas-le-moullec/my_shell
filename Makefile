@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Fri Jun  3 11:00:57 2016 steeve payraudeau
+## Last update Fri Jun  3 13:25:49 2016 leo LE DIOURON
 ##
 
 DETAILS		=		no
@@ -121,7 +121,7 @@ MY_LIB		=		src/mylib/my_putstr.c				\
 				src/mylib/count_occurrence.c			\
 				src/mylib/get_dir.c				\
 				src/mylib/my_free_alias.c			\
-
+				src/mylib/check_in_set.c			\
 
 SRC	=			$(MAIN)						\
 				$(MY_SHELL)					\
