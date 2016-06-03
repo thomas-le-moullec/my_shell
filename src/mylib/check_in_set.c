@@ -5,10 +5,29 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Jun  3 13:20:30 2016 leo LE DIOURON
-** Last update Fri Jun  3 13:27:40 2016 leo LE DIOURON
+** Last update Fri Jun  3 13:35:39 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
+
+char	*check_in_alias(t_data *data, char *str)
+{
+  char	*result;
+
+  result = NULL;
+  if (data->alias != NULL)
+    {
+      while (data->alias->prev != NULL)
+	data->alias = data->alias->prev;
+      while (data->alias->next != NULL &&
+	     my_strcmp(data->alias->name, str) == ERROR)
+	data->alias = data->alias->next;
+      if (my_strcmp(data->alias->name, str) != ERROR)
+	result = my_strcpy(data->alias->cmd);
+    }
+  return (result);
+}
+
 
 char	*check_in_set(t_data *data, char *str)
 {

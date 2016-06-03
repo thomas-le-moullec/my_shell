@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:26:16 2016 leo LE DIOURON
+** Last update Fri Jun  3 14:02:35 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -303,6 +303,11 @@ int             loop_magic(t_data *, char **);
 char            *change_magic_result(char *, char *);
 char            *fill_result_magic(char *, char *, char *);
 
+/* pre_post_cmd.c */
+void		precmd(t_data);
+void		postcmd(t_data);
+
+
 /* **************** FCT_CLAVIER ************** */
 
 /* fct_up.c */
@@ -394,6 +399,7 @@ void            show_alias(t_data *);
 
 int             count_occurrence(char *, char);
 
+char		*check_in_alias(t_data *, char *);
 char		*check_in_set(t_data *, char *);
 
 #endif /* SH42_H_ */

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 18:20:10 2016 Thomas CHABOT
-** Last update Mon May 30 10:46:01 2016 Thomas CHABOT
+** Last update Fri Jun  3 13:50:27 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -18,6 +18,17 @@ char		*check_cd(t_data *data)
       && data->parser.tab_args[1][1] == '\0')
     return (data->shell.oldpwd);
   return (data->parser.tab_args[1]);
+}
+
+void		cwdcmd(t_data data)
+{
+  char		*result;
+
+  if ((result = check_in_alias(&data, "cwdcmd")) != NULL)
+    {
+      data.shell.line = my_strcpy(result);
+      parser_line(&data);
+    }
 }
 
 int		my_cd(t_data *data)
@@ -43,6 +54,7 @@ int		my_cd(t_data *data)
 	  return (ERROR);
 	}
       get_pwd(data);
+      cwdcmd(*data);
       return (SUCCESS);
     }
   return (ERROR);
