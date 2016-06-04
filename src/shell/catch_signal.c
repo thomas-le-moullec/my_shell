@@ -5,10 +5,18 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 24 13:24:43 2016 steeve payraudeau
-** Last update Fri Jun  3 13:35:27 2016 steeve payraudeau
+** Last update Sat Jun  4 10:32:53 2016 steeve payraudeau
 */
 
 #include "42sh.h"
+
+void		my_stop(char *str, int nbr)
+{
+  if (isatty(0) != 0)
+    mode_canon(1);
+  my_putstr(str, 1);
+  exit(nbr);
+}
 
 void		*my_handler(int sign)
 {
@@ -17,9 +25,12 @@ void		*my_handler(int sign)
       my_putstr("\n/$> ", 1);
       return (NULL);
     }
-  if (sign == SIGTERM)
-    my_putstr("\nSIGNAL SIGTERM!\n", 1);
-  my_putstr("\n/$> ", 1);
+  if (sign == SIGSEGV)
+    my_stop("Segmentation fault\n", 139);
+  if (sign == SIGUSR1)
+    my_stop("User defined signal 1\n", 138);
+  if (sign == SIGUSR2)
+    my_stop("User defined signal 2\n", 140);
   return (NULL);
 }
 
@@ -29,6 +40,8 @@ void		init_signaux()
     my_putstr("ERROR SIGINT\n", 2);
   if ((signal(SIGTERM, (void (*)(int))my_handler)) == SIG_ERR)
     my_putstr("ERROR SIGTERM\n", 2);
+  if ((signal(SIGSEGV, (void (*)(int))my_handler)) == SIG_ERR)
+    my_putstr("ERROR SIGSEGV\n", 2);
   if ((signal(SIGQUIT, (void (*)(int))my_handler)) == SIG_ERR)
     my_putstr("ERROR SIGQUIT\n", 2);
   if ((signal(SIGUSR1, (void (*)(int))my_handler)) == SIG_ERR)
