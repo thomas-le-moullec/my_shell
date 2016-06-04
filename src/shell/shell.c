@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sat Jun  4 14:02:28 2016 leo LE DIOURON
+** Last update Sat Jun  4 16:11:08 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -96,7 +96,8 @@ int		parser_line(t_data *data)
 {
   data->shell.chk_magic = 0;
   data->shell.nb_repeat = 0;
-  data->hist = add_elem_key(data->hist, data->shell.line);
+  if (data->shell.line != NULL && data->shell.line[0] != '\0')
+    data->hist = add_elem_key(data->hist, data->shell.line);
   if (inhib(data) != ERROR)
     {
       if (data->parser.quote != 2)

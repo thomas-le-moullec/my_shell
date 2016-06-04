@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Thu Jun  2 14:12:07 2016 leo LE DIOURON
-** Last update Thu Jun  2 14:13:50 2016 leo LE DIOURON
+** Last update Sat Jun  4 15:39:00 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -49,6 +49,8 @@ char            *epur_return_line(char *str)
         str[i] = ' ';
       i++;
     }
+  if (i == 0)
+    return (NULL);
   return (str);
 }
 
@@ -66,6 +68,8 @@ int             modify_magic_line(t_data *data)
   while (read(fd, &c, 1) > 0)
     buffer = my_strcat(buffer, "\0", c);
   close(fd);
-  data->shell.tmp_magic = change_magic_result(data->shell.tmp_magic, buffer);
+  if ((data->shell.tmp_magic = \
+       change_magic_result(data->shell.tmp_magic, buffer)) == NULL)
+    return (ERROR);
   return (SUCCESS);
 }

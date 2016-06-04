@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Thu Jun  2 14:05:56 2016 leo LE DIOURON
-** Last update Thu Jun  2 14:08:09 2016 leo LE DIOURON
+** Last update Sat Jun  4 15:28:01 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -24,6 +24,8 @@ int             get_nb_cmd(t_data *data, char *tmp_hist, int y)
       data->hist = data->hist->next;
       nb--;
     }
+  if (nb != 0)
+    return (ERROR);
   data->parser.tab_pipe[y] = change_line_hist(data, tmp_hist, y);
   while (data->hist->next != NULL)
     data->hist = data->hist->next;
@@ -44,6 +46,8 @@ int             get_relative_cmd(t_data *data, char *tmp_hist, int y)
       data->hist = data->hist->prev;
       nb--;
     }
+  if (nb != 0)
+    return (ERROR);
   data->parser.tab_pipe[y] = change_line_hist(data, tmp_hist, y);
   while (data->hist->next != NULL)
     data->hist = data->hist->next;

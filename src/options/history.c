@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Sat Jun  4 11:29:15 2016 Hervé TCHIKLADZE
+** Last update Sat Jun  4 15:18:09 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -48,7 +48,9 @@ char		*take_tmp_hist(t_data *data, int y, int i, int j)
 		     * (my_strlen(data->parser.tab_pipe[y]) + 1));
   while (data->parser.tab_pipe[y][i] && data->parser.tab_pipe[y][i] != '!')
     i++;
-  if (data->parser.tab_pipe[y][i] == '\0')
+  if (data->parser.tab_pipe[y][i] == '\0' || \
+      (i > 0 && data->parser.tab_pipe[y][i - 1] != ' ' && \
+       data->parser.tab_pipe[y][i - 1] != '\t'))
     {
       result = my_free(result);
       return (NULL);

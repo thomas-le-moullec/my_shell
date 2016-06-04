@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:25:51 2016 Thomas CHABOT
-** Last update Wed Jun  1 18:31:25 2016 steeve payraudeau
+** Last update Sat Jun  4 14:29:05 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -15,7 +15,7 @@ int		my_exit(t_data *data)
   int		nb;
 
   if (count_tab(data->parser.tab_args) > 2)
-    return (ERROR);
+    return (my_put_error(EXIT_FAIL, 1));
   if (count_tab(data->parser.tab_args) == 1)
     {
       if (isatty(0) != 0)
@@ -25,7 +25,7 @@ int		my_exit(t_data *data)
     }
   if ((nb = my_getnbr(data->parser.tab_args[1])) == ERROR \
       && my_strcmp(data->parser.tab_args[1], "-1") == ERROR)
-    return (ERROR);
+    return (my_put_error(EXIT_FAIL, 1));
   if (isatty(0) != 0)
     mode_canon(1);
   end_fct(data);

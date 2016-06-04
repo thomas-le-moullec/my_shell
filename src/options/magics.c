@@ -5,7 +5,7 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Tue May 31 14:37:40 2016 Thomas LE MOULLEC
-** Last update Fri Jun  3 18:15:00 2016 Thomas CHABOT
+** Last update Sat Jun  4 15:45:35 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -31,7 +31,8 @@ char		*fill_result_magic(char *result, char *line, char *buffer)
   f = 0;
   while (line[j] != '\0' && line[j] != '`')
     j++;
-  j++;
+  if (line[j] != '\0')
+    j++;
   while (line[j] != '\0')
     result[k++] = line[j++];
   result[k] = '\0';
@@ -42,6 +43,8 @@ char		*change_magic_result(char *line, char *buffer)
 {
   char          *result;
 
+  if (buffer == NULL || buffer[0] == '\0')
+    return (NULL);
   result = NULL;
   result = my_mallok(result, sizeof(char) *
                      (my_strlen(line)
@@ -49,7 +52,8 @@ char		*change_magic_result(char *line, char *buffer)
   result = fill_result_magic(result, line, buffer);
   line = my_free(line);
   buffer = my_free(buffer);
-  result = epur_return_line(result);
+  if ((result = epur_return_line(result)) == NULL)
+    return (NULL);
   return (result);
 }
 

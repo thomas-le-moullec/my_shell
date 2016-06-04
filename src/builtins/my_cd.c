@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 18:20:10 2016 Thomas CHABOT
-** Last update Fri Jun  3 13:50:27 2016 leo LE DIOURON
+** Last update Sat Jun  4 16:25:43 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -26,6 +26,7 @@ void		cwdcmd(t_data data)
 
   if ((result = check_in_alias(&data, "cwdcmd")) != NULL)
     {
+      init_shell(&data);
       data.shell.line = my_strcpy(result);
       parser_line(&data);
     }

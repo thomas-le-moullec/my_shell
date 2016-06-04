@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Sat Jun  4 08:49:40 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 14:27:11 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -38,6 +38,7 @@
 
 #define NB_SIGNALS	5
 
+#define EXIT_FAIL	"exit: Expression Syntax.\n"
 #define NO_MATCH	": No match.\n"
 #define SHOW_ALIAS	"alias "
 #define EXIT_THIS	"exit\n"
@@ -53,6 +54,7 @@
 #define PERM_DENIED	": Permission denied.\n"
 #define IS_DIR		": Is a directory.\n"
 #define FOUND_DIR	": No such file or directory.\n"
+#define FOUND_ENV	": No such file or directory\n"
 #define MISSING_NAME	"Missing name for redirect.\n"
 #define EVENT		": Event not found.\n"
 #define MAGIC_ERROR	"Unmatched `.\n"
