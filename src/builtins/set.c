@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:10:27 2016 leo LE DIOURON
-** Last update Sat Jun  4 11:01:38 2016 steeve payraudeau
+** Last update Sat Jun  4 11:26:25 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -94,7 +94,7 @@ int		my_set(t_data *data)
   char		*name;
   char		*cmd;
 
-  j = 1;
+  j = 0;
   nb = count_tab(data->parser.tab_args);
   if (nb == 1)
     {
@@ -102,7 +102,7 @@ int		my_set(t_data *data)
 	show_set(data);
       return (SUCCESS);
     }
-  while (j < nb)
+  while (++j < nb)
     {
       name = take_name_local(data->parser.tab_args[j]);
       cmd = take_cmd_local(data->parser.tab_args[j]);
@@ -110,7 +110,6 @@ int		my_set(t_data *data)
       data->local = add_elem_local(data->local, cmd, name);
       if (my_strcmp(data->local->name, "tperiod") == SUCCESS)
 	data->period.init = get_time_period();
-      j++;
       name = my_free(name);
       cmd = my_free(cmd);
     }

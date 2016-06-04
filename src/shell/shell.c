@@ -5,16 +5,13 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Fri Jun  3 20:54:32 2016 Thomas CHABOT
+** Last update Sat Jun  4 11:35:00 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
 
-int		pipe_loop(t_data *data)
+int		pipe_loop(t_data *data, int i)
 {
-  int		i;
-
-  i = 0;
   while (data->parser.tab_pipe[i] != NULL)
     {
       if (modify_str_pipe(data, i) == STOP)
@@ -40,13 +37,11 @@ int		pipe_loop(t_data *data)
   return (SUCCESS);
 }
 
-int		cond_loop(t_data *data)
+int		cond_loop(t_data *data, int i)
 {
-  int		i;
   int		a;
   int		stop_loop;
 
-  i = 0;
   stop_loop = SUCCESS;
   while (data->parser.tab_cond[i] != NULL && stop_loop != ERROR)
     {
@@ -61,7 +56,7 @@ int		cond_loop(t_data *data)
 	      my_free_cond(data);
 	      return (STOP);
 	    }
-	  pipe_loop(data);
+	  pipe_loop(data, 0);
 	}
       gestion_condition(data, i);
       my_free_cond(data);
@@ -83,7 +78,7 @@ int		sep_loop(t_data *data)
       if (data->parser.tab_cond != NULL)
 	{
 	  take_type_cond(data, i, 0, 0);
-	  if (cond_loop(data) == ERROR)
+	  if (cond_loop(data, 0) == ERROR)
 	    return (ERROR);
 	}
       if (data->parser.tab_cond != NULL)

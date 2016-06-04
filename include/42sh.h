@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat Jun  4 11:02:12 2016 steeve payraudeau
+** Last update Sat Jun  4 11:35:21 2016 Hervé TCHIKLADZE
 */
 
 #ifndef SH42_H_
@@ -35,8 +35,8 @@
 void            end_fct(t_data *);
 
 /* shell.c */
-int		pipe_loop(t_data *);
-int		cond_loop(t_data *);
+int		pipe_loop(t_data *, int);
+int		cond_loop(t_data *, int);
 int		sep_loop(t_data *);
 int		my_shell(t_data *);
 int		parser_line(t_data *);
@@ -69,6 +69,10 @@ void		gestion_condition(t_data *, int);
 
 /* **************** EXEC ****************** */
 
+/* exec_without_path.c */
+int             exec_without_path_fork(t_data *);
+int		exec_without_path(t_data *);
+
 /* exec.c */
 int		check_str_access(char *);
 int		my_exec(t_data *);
@@ -82,7 +86,6 @@ int		my_builtins(t_data *, int);
 int		father(pid_t, t_data *);
 int		execution(t_data *);
 int		exec_with_path(t_data *, int);
-int		exec_without_path(t_data *);
 
 /* redirection_outfile.c */
 int		err_redir_outfile(t_data *, int);
@@ -244,6 +247,10 @@ void		disp_prompt(t_data *);
 
 /* **************** OPTIONS ****************** */
 
+/* modif_args_hist.c */
+int             modif_args_hist(t_data *, int);
+int             modif_args_hist_check(t_data *, int, char *);
+
 /* cp_str.c */
 char            *strcop_char(char **, char);
 char            *cp_str(char *, char *, int);
@@ -267,8 +274,7 @@ int             check_n_hist(t_data *, char *, int);
 
 /* history.c */
 char            *change_line_hist(t_data *, char *, int);
-char            *take_tmp_hist(t_data *, int);
-int             modif_args_hist(t_data *, int);
+char            *take_tmp_hist(t_data *, int, int, int);
 t_hist		*add_elem_key(t_hist *, char *);
 
 /* print_hist.c */

@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 31 19:48:27 2016 steeve payraudeau
-** Last update Fri Jun  3 21:14:01 2016 Thomas CHABOT
+** Last update Sat Jun  4 11:16:50 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -70,32 +70,35 @@ int		catch_key(t_data *data)
   return (SUCCESS);
 }
 
+int		my_shell_key_loop(t_data *data)
+{
+  mode_canon(1);
+  if (periodic(data) == ERROR)
+    return (ERROR);
+  postcmd(*data);
+  if (data->shell.line != NULL)
+    if (parser_line(data) == ERROR)
+      return (ERROR);
+  precmd(*data);
+  mode_canon(0);
+  disp_prompt(data);
+  data->shell.pos_list = 0;
+  data->shell.line = my_free(data->shell.line);
+  data->shell.line = my_strcpy("\0");
+  data->shell.tmp_hist = my_free(data->shell.tmp_hist);
+  data->shell.tmp_hist = my_strcpy("\0");
+  return (SUCCESS);
+}
+
 int		my_shell_key(t_data *data)
 {
   if (init_term(data) == ERROR)
     exit(0);
   mode_canon(0);
   disp_prompt(data);
-  data->shell.line = my_strcpy("\0");
-  data->shell.tmp_hist = my_strcpy("\0");
   while (catch_key(data) != ERROR)
-    {
-      mode_canon(1);
-      if (periodic(data) == ERROR)
-	return (ERROR);
-      postcmd(*data);
-      if (data->shell.line != NULL)
-	if (parser_line(data) == ERROR)
-	  return (ERROR);
-      precmd(*data);
-      mode_canon(0);
-      disp_prompt(data);
-      data->shell.pos_list = 0;
-      data->shell.line = my_free(data->shell.line);
-      data->shell.line = my_strcpy("\0");
-      data->shell.tmp_hist = my_free(data->shell.tmp_hist);
-      data->shell.tmp_hist = my_strcpy("\0");
-    }
+    if (my_shell_key_loop(data) == ERROR)
+      return (ERROR);
   mode_canon(1);
   my_putstr(EXIT_THIS, 1);
   data->shell.line = my_free(data->shell.line);

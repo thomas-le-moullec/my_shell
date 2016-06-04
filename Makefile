@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Fri Jun  3 17:01:31 2016 leo LE DIOURON
+## Last update Sat Jun  4 11:33:32 2016 Hervé TCHIKLADZE
 ##
 
 DETAILS		=		no
@@ -57,6 +57,7 @@ BUILTINS	=		src/builtins/my_exit.c				\
 
 EXEC		=		src/exec/exec.c					\
 				src/exec/in_and_out.c				\
+				src/exec/exec_without_path.c			\
 				src/exec/execution.c				\
 				src/exec/my_builtins.c				\
 				src/exec/redirection_outfile.c			\
@@ -76,6 +77,7 @@ ERROR		=		src/error/ambiguous.c				\
 OPT		=		src/options/var_env.c				\
 				src/options/inhib.c				\
 				src/options/history.c				\
+				src/options/modif_args_hist.c			\
 				src/options/special_history.c			\
 				src/options/alias.c				\
 				src/options/change_alias.c			\

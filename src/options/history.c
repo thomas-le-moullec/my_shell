@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Fri Jun  3 20:29:03 2016 Thomas CHABOT
+** Last update Sat Jun  4 11:29:15 2016 Hervé TCHIKLADZE
 */
 
 #include "42sh.h"
@@ -39,14 +39,10 @@ char            *change_line_hist(t_data *data, char *tmp_hist, int y)
   return (result);
 }
 
-char		*take_tmp_hist(t_data *data, int y)
+char		*take_tmp_hist(t_data *data, int y, int i, int j)
 {
   char		*result;
-  int		i;
-  int		j;
 
-  i = 0;
-  j = 0;
   result = NULL;
   result = my_mallok(result, sizeof(char) \
 		     * (my_strlen(data->parser.tab_pipe[y]) + 1));
@@ -68,38 +64,6 @@ char		*take_tmp_hist(t_data *data, int y)
       return (NULL);
     }
   return (result);
-}
-
-int		modif_args_hist(t_data *data, int y)
-{
-  char		*tmp_hist;
-
-  if ((tmp_hist = take_tmp_hist(data, y)) == NULL)
-    return (STOP);
-  if (check_n_hist(data, tmp_hist, y) == SUCCESS)
-    {
-      tmp_hist = my_free(tmp_hist);
-      return (SUCCESS);
-    }
-  else
-    {
-      while (data->hist->prev != NULL \
-	     && my_strncmp(data->hist->str, tmp_hist,
-			my_strlen(tmp_hist)) == ERROR)
-	data->hist = data->hist->prev;
-      if (data->hist->prev != NULL ||
-	  my_strncmp(data->hist->str, tmp_hist,
-	   my_strlen(tmp_hist)) == SUCCESS)
-	data->parser.tab_pipe[y] = change_line_hist(data, tmp_hist, y);
-      else
-	return (error_event(data, tmp_hist));
-    }
-  while (data->hist->next != NULL)
-    data->hist = data->hist->next;
-  tmp_hist = my_free(tmp_hist);
-  modif_args_hist(data, y);
-  tmp_hist = my_free(tmp_hist);
-  return (SUCCESS);
 }
 
 t_hist		*add_elem_key(t_hist *list, char *str)
