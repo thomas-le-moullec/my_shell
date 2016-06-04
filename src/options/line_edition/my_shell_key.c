@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 31 19:48:27 2016 steeve payraudeau
-** Last update Sat Jun  4 20:19:11 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 21:00:40 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -47,7 +47,7 @@ static int		laboratory_key(t_data *data, char *buffer, int *i)
       my_putstr(tmp, 1);
       tmp = NULL;
       my_putstr(buffer, 1);
-      if ((tmp = tgetstr("ei", NULL), 1) == NULL)
+      if ((tmp = tgetstr("ei", NULL)) == NULL)
 	exit(1);
       my_putstr(tmp, 1);
       (*i)++;

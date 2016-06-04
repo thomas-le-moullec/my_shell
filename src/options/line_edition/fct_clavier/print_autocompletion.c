@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Jun  3 16:49:38 2016 leo LE DIOURON
-** Last update Sat Jun  4 20:40:36 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 21:01:35 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -22,7 +22,7 @@ static int	replace_autocompletion(t_data *data, \
     {
       if ((tmp = tgetstr("le", NULL)) == NULL)
 	exit(1);
-      my_putstr(tmp);
+      my_putstr(tmp, 1);
       tmp = NULL;
       if ((tmp = tgetstr("dc", NULL)) == NULL)
 	exit(1);

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat Jun  4 19:42:08 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 21:00:12 2016 Thomas LE MOULLEC
 */
 
 #ifndef SH42_H_
@@ -31,24 +31,19 @@
 #include "define.h"
 
 void            end_fct(t_data *);
-int		pipe_loop(t_data *, int);
-int		cond_loop(t_data *, int);
 int		sep_loop(t_data *);
 int		my_shell(t_data *);
 int		parser_line(t_data *);
 int             my_shell_key(t_data *);
-int	        catch_key(t_data *);
 int		get_env(t_data *, char **);
 int		get_path(t_data *);
 int		get_home(t_data *);
 int		get_old_pwd(t_data *);
 int		get_pwd(t_data *);
 int		init_shell(t_data *);
-void    	*my_handler(int);
 void		init_signaux();
 int             modify_str_pipe(t_data *, int);
 int             modify_inhib_glob_pipe(t_data *);
-void		pipe_alias(t_data *, int);
 int		gestion_condition(t_data *, int);
 int		exec_without_path(t_data *);
 int		check_str_access(char *);
@@ -90,8 +85,6 @@ int	        parser_cond(t_data *);
 int		parser_sep(t_data *);
 int		take_outfile(char *, int, t_data *);
 int		take_infile(char *, int, t_data *);
-int		manage_outfile(t_data *, int, int *);
-int		manage_infile(t_data *, int, int *);
 int		check_redir_in(t_data *, char *);
 int		check_redir_out(t_data *, char *);
 int		parser_redir(t_data *, int);
@@ -112,49 +105,27 @@ int             glob_error(const char *, int);
 void		bin_not_comp(t_data *);
 void		disp_prompt(t_data *);
 int             modif_args_hist(t_data *, int);
-int             modif_args_hist_check(t_data *, int, char *);
 char            *strcop_char(char **, char);
 char            *cp_str(char *, char *, int);
 int		var_env_loc(t_data *, int);
-int		replace_string(t_data *, int, int, char *);
-char		*take_var(t_data *, int, int);
-void            creat_new_string(t_data *, char *, int);
 int             inhib(t_data *);
 char            *modify_str(t_data *, char, int);
-int             check_special_char(char, char *);
 int             args_convert(t_data *);
-int             get_nb_cmd(t_data *, char *, int);
-int             get_relative_cmd(t_data *, char *, int);
 int             check_n_hist(t_data *, char *, int);
 char            *change_line_hist(t_data *, char *, int);
 char            *take_tmp_hist(t_data *, int, int, int);
 t_hist		*add_elem_key(t_hist *, char *);
-t_hist		*get_time(t_hist *);
-void		print_hist_date(t_data *);
 int		print_hist(t_data *);
 int		mode_canon(int);
-int             init_tab_ctrl(t_data *);
-int		init_tab(t_data *);
 int		init_term(t_data *);
 t_alias         *add_elem_alias(t_alias *, char *, char *);
-int             check_alias_in(t_data *, int, int *);
-void            modify_string_alias(t_data *, int, int, int);
-int             find_valid_alias(t_data *, int, int *);
-void            change_alias_loop(t_data *, int, int *, int);
 int             change_alias(t_data *, int);
 int             my_glob(t_data *);
-char            **replace_stars(t_data *, int *);
-char            **take_tab_stars(char *, char *, t_data *);
-int             glob_error(const char *, int);
-int             check_stars(char *);
 char            **my_magic_wordtab(char *, int, int);
 char            *epur_return_line(char *);
 int             modify_magic_line(t_data *);
 int             magic_quotes(t_data *);
-int             exe_magic_quotes(t_data *, char **, int, int);
-int             loop_magic(t_data *, char **);
 char            *change_magic_result(char *, char *);
-char            *fill_result_magic(char *, char *, char *);
 void		precmd(t_data);
 void		postcmd(t_data);
 int		periodic(t_data *);
@@ -220,5 +191,6 @@ void            show_alias(t_data *);
 int             count_occurrence(char *, char);
 char		*check_in_alias(t_data *, char *);
 char		*check_in_set(t_data *, char *);
+t_hist          *get_time(t_hist *);
 
 #endif /* SH42_H_ */

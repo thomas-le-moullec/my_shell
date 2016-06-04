@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:34 2016 Hervé TCHIKLADZE
-** Last update Sat Jun  4 20:36:11 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 21:01:12 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -82,8 +82,10 @@ int             fct_tab(t_data *data, int *i)
       found_tabo_comp(tabo, data->shell.line) == SUCCESS)
     {
       if (count_tab(tabo) > 1)
-	if ((print_list_auto(data, tabo)) == ERROR)
-	  return (ERROR);
+	{
+	  if ((print_list_auto(data, tabo)) == ERROR)
+	    return (ERROR);
+	}
       else
 	print_autocompletion(data, tabo[0], i);
       reinit_cursor(data, *i);
