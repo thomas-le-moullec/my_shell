@@ -5,7 +5,7 @@
 ## Login   <payrau_a@epitech.net>
 ## 
 ## Started on  Tue May 24 16:10:08 2016 steeve payraudeau
-## Last update Sat Jun  4 11:33:32 2016 Hervé TCHIKLADZE
+## Last update Sat Jun  4 13:21:56 2016 Thomas CHABOT
 ##
 
 DETAILS		=		no
@@ -53,6 +53,7 @@ BUILTINS	=		src/builtins/my_exit.c				\
 				src/builtins/unset.c				\
 				src/builtins/my_repeat.c			\
 				src/builtins/my_which.c				\
+				src/builtins/my_check_which.c			\
 				src/builtins/my_where.c				\
 
 EXEC		=		src/exec/exec.c					\
