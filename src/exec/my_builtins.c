@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Fri Jun  3 16:35:49 2016 leo LE DIOURON
+** Last update Sat Jun  4 11:45:33 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -50,7 +50,7 @@ int		my_builtins(t_data *data, int i)
 			      {"env", my_env}, {"setenv", my_setenv},
 			      {"unsetenv", my_unsetenv}, {"echo", my_echo},
 			      {"builtins", show_builtins},
-			      {"alias", new_alias},{"unalias", unalias},
+			      {"alias", new_alias}, {"unalias", unalias},
 			      {"history", print_hist}, {"set", my_set},
 			      {"unset", my_unset}, {"which", my_which},
 			      {"where", my_where}, {NULL, NULL}};

@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Sat Jun  4 11:20:59 2016 Hervé TCHIKLADZE
-** Last update Sat Jun  4 11:23:17 2016 Hervé TCHIKLADZE
+** Last update Sat Jun  4 11:45:19 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -23,7 +23,7 @@ int             exec_without_path_fork(t_data *data)
           exit(1);
           return (ERROR);
         }
-      if (execve(data->parser.tab_args[0],				\
+      if (execve(data->parser.tab_args[0], \
                  data->parser.tab_args, data->shell.env) == ERROR)
         bin_not_comp(data);
     }

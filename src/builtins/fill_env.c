@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Sat Apr 30 16:26:26 2016 leo LE DIOURON
-** Last update Mon May 30 13:31:05 2016 leo LE DIOURON
+** Last update Sat Jun  4 11:44:18 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -37,14 +37,14 @@ char		**fill_env_loop(t_data *data, int value, char **new_env, int i)
   int		j;
 
   j = 0;
-  new_env = my_mallok(new_env,						\
+  new_env = my_mallok(new_env, \
 		      (count_tab(data->shell.env) + 1) * sizeof(char *));
   while (data->shell.env[j] != NULL)
     {
       if (j == i && value == 2)
 	new_env[j] = my_strcat(data->parser.tab_args[1], "\0", '=');
       if (j == i && value == 3)
-	new_env[j] = my_strcat(data->parser.tab_args[1],		\
+	new_env[j] = my_strcat(data->parser.tab_args[1], \
 			       data->parser.tab_args[2], '=');
       if (j != i)
 	new_env[j] = my_strcpy(data->shell.env[j]);
