@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat Jun  4 14:02:46 2016 leo LE DIOURON
+** Last update Sat Jun  4 17:17:02 2016 Thomas LE MOULLEC
 */
 
 #ifndef SH42_H_
@@ -28,6 +28,7 @@
 #include <glob.h>
 #include <time.h>
 #include "struct.h"
+#include "define.h"
 
 void            end_fct(t_data *);
 int		pipe_loop(t_data *, int);

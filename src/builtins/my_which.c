@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:52 2016 Thomas CHABOT
-** Last update Sat Jun  4 13:19:59 2016 Thomas CHABOT
+** Last update Sat Jun  4 17:03:17 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -35,7 +35,7 @@ char		*get_which(char *str)
 int		show_which_built(char *str, int b)
 {
   my_putstr(str, 1);
-  my_putstr(": shell built-in command.\n", 1);
+  my_putstr(BUILT_WHI, 1);
   b = 1;
   return (b);
 }

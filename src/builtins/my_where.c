@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:03 2016 Thomas CHABOT
-** Last update Fri Jun  3 18:16:20 2016 Thomas CHABOT
+** Last update Sat Jun  4 17:02:43 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -55,7 +55,7 @@ int		my_where_loop(t_data *data, int nb, char *tmp, int a)
           if (is_builtin(data, data->parser.tab_args[a]) == 2 && b == 0)
             {
               my_putstr(data->parser.tab_args[a], 1);
-              my_putstr(" is a shell built-in\n", 1);
+              my_putstr(BUILT_WHE, 1);
               b = 1;
             }
 	  check_where(tmp);

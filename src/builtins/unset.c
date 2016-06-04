@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:20:02 2016 leo LE DIOURON
-** Last update Sat Jun  4 11:05:06 2016 steeve payraudeau
+** Last update Sat Jun  4 17:14:07 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -80,7 +80,7 @@ int		my_unset(t_data *data)
   j = 1;
   nb = count_tab(data->parser.tab_args);
   if (nb == 1)
-    return (my_put_error("unset: Too few arguments.\n", 1));
+    return (my_put_error(ERR_SET, 1));
   while (data->parser.tab_args[j] != NULL && data->local != NULL)
     unset_name(data, data->parser.tab_args[j++]);
   return (SUCCESS);
