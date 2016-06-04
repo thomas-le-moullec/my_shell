@@ -5,20 +5,21 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 24 13:24:43 2016 steeve payraudeau
-** Last update Sat Jun  4 17:15:55 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 20:48:59 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-void		my_stop(char *str, int nbr)
+static void		my_stop(char *str, int nbr)
 {
   if (isatty(0) != 0)
-    mode_canon(1);
+    if ((mode_canon(1)) == ERROR)
+      exit(1);
   my_putstr(str, 1);
   exit(nbr);
 }
 
-void		*my_handler(int sign)
+static void		*my_handler(int sign)
 {
   if (sign == SIGINT)
     {

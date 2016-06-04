@@ -5,16 +5,16 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:34 2016 Hervé TCHIKLADZE
-** Last update Fri Jun  3 20:32:53 2016 Thomas CHABOT
+** Last update Sat Jun  4 20:36:11 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-char		*my_strcpy_posi(t_data *data, int i)
+static char		*my_strcpy_posi(t_data *data, int i)
 {
-  char		*new;
-  int		us;
-  int		tmp;
+  char			*new;
+  int			us;
+  int			tmp;
 
   tmp = i;
   us = 0;
@@ -30,10 +30,10 @@ char		*my_strcpy_posi(t_data *data, int i)
   return (new);
 }
 
-char		**my_autocomplete(char *str)
+static char		**my_autocomplete(char *str)
 {
-  glob_t	tab_glob;
-  int		err;
+  glob_t		tab_glob;
+  int			err;
 
   err = glob(str, GLOB_MARK | GLOB_ERR, NULL, &tab_glob);
   if (err != 0)
@@ -41,19 +41,19 @@ char		**my_autocomplete(char *str)
   return (tab_glob.gl_pathv);
 }
 
-int		print_list_auto(t_data *data, char **tabo)
+static int		print_list_auto(t_data *data, char **tabo)
 {
-  char		buffer[2];
-  int		nbr;
-  int		size;
+  char			buffer[2];
+  int			nbr;
+  int			size;
 
   my_putstr("\n", 1);
   buffer[0] = '\0';
   if ((nbr = count_tab(tabo)) > 30)
     {
-      my_putstr("There are ", 1);
+      my_putstr(INTRO_RE, 1);
       my_put_nbr(nbr, 1);
-      my_putstr(" rows, list them anyway? [n/y] ", 1);
+      my_putstr(LIST_ROW, 1);
       if ((size = read(0, buffer, 1)) <= 0)
 	return (ERROR);
       buffer[size] = '\0';
@@ -82,7 +82,8 @@ int             fct_tab(t_data *data, int *i)
       found_tabo_comp(tabo, data->shell.line) == SUCCESS)
     {
       if (count_tab(tabo) > 1)
-	print_list_auto(data, tabo);
+	if ((print_list_auto(data, tabo)) == ERROR)
+	  return (ERROR);
       else
 	print_autocompletion(data, tabo[0], i);
       reinit_cursor(data, *i);

@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Thu Jun  2 14:12:07 2016 leo LE DIOURON
-** Last update Sat Jun  4 15:39:00 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 20:08:33 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -18,14 +18,15 @@ char            **my_magic_wordtab(char *str, int cmpt, int i)
 
   tabo = NULL;
   y = 0;
-  tabo = my_mallok(tabo, sizeof(char *) * (cmpt + 1));
+  tabo = my_mallok(tabo, sizeof(*tabo) * (cmpt + 1));
   while (str[i] != '\0')
     {
       x = 0;
       if (str[i] == '`')
         {
           i++;
-          tabo[y] = my_mallok(tabo[y], sizeof(char) * (my_strlen(str) + 1));
+          tabo[y] = my_mallok(tabo[y], sizeof(*tabo[y]) * \
+			      (my_strlen(str) + 1));
           while (str[i] != '\0' && str[i] != '`')
             tabo[y][x++] = str[i++];
           tabo[y][x] = '\0';
@@ -60,10 +61,10 @@ int             modify_magic_line(t_data *data)
   char          *buffer;
   char          c;
 
-  if ((fd = open("/tmp/magic_file", O_RDONLY)) == ERROR)
+  if ((fd = open("/tmp/magic_file", O_RDONLY)) == -1)
     return (ERROR);
   buffer = NULL;
-  buffer = my_mallok(buffer, sizeof(char));
+  buffer = my_mallok(buffer, sizeof(*buffer));
   buffer[0] = '\0';
   while (read(fd, &c, 1) > 0)
     buffer = my_strcat(buffer, "\0", c);

@@ -5,27 +5,10 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:20:02 2016 leo LE DIOURON
-** Last update Sat Jun  4 19:21:00 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:43:26 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
-
-void            delete_existant_local(t_data *data, char *name)
-{
-  if (data->local != NULL)
-    {
-      while (data->local->prev != NULL)
-	data->local = data->local->prev;
-      while (data->local->next != NULL &&
-	     my_strcmp(data->local->name, name) == ERROR)
-        data->local = data->local->next;
-      if (my_strcmp(data->local->name, name) == SUCCESS)
-	delete_local(data);
-      if (data->local != NULL)
-	while (data->local->next != NULL)
-          data->local = data->local->next;
-    }
-}
 
 static int		end_begin_local(t_data *data)
 {
@@ -59,6 +42,23 @@ static int		delete_local(t_data *data)
       return (SUCCESS);
     }
   return (end_begin_local(data));
+}
+
+void            delete_existant_local(t_data *data, char *name)
+{
+  if (data->local != NULL)
+    {
+      while (data->local->prev != NULL)
+	data->local = data->local->prev;
+      while (data->local->next != NULL &&
+	     my_strcmp(data->local->name, name) == ERROR)
+        data->local = data->local->next;
+      if (my_strcmp(data->local->name, name) == SUCCESS)
+	delete_local(data);
+      if (data->local != NULL)
+	while (data->local->next != NULL)
+          data->local = data->local->next;
+    }
 }
 
 static void		unset_name(t_data *data, char *str)

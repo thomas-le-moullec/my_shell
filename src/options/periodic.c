@@ -5,16 +5,16 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Fri Jun  3 15:00:02 2016 Thomas LE MOULLEC
-** Last update Fri Jun  3 15:33:21 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:59:22 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int		get_time_period()
+int			get_time_period()
 {
-  struct tm	*tmp;
-  time_t	t;
-  int		sec;
+  struct tm		*tmp;
+  time_t		t;
+  int			sec;
 
   sec = 0;
   if (!(t = time(NULL)))
@@ -25,11 +25,11 @@ int		get_time_period()
   return (sec);
 }
 
-int		periodic(t_data *data)
+int			periodic(t_data *data)
 {
-  char		*tmp;
-  char		*line_tmp;
-  char		*str_time;
+  char			*tmp;
+  char			*line_tmp;
+  char			*str_time;
 
   if ((tmp = check_in_alias(data, "periodic")) != NULL && \
       ((str_time = check_in_set(data, "tperiod")) != NULL) && \

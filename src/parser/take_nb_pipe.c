@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 18:19:34 2016 leo LE DIOURON
-** Last update Tue May 31 20:18:10 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 20:44:03 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -17,7 +17,7 @@ int		take_nb_pipe(t_data *data)
   j = 1;
   data->parser.nb_pipe = my_mallok \
     (data->parser.nb_pipe, (count_tab(data->parser.tab_pipe) + 1) \
-     * sizeof(int));
+     * sizeof(*data->parser.nb_pipe));
   data->parser.nb_pipe[0] = BEGIN;
   while (data->parser.tab_pipe[j] != NULL)
     {

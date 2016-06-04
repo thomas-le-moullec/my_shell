@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 16:44:55 2016 Hervé TCHIKLADZE
-** Last update Sat Jun  4 10:50:17 2016 steeve payraudeau
+** Last update Sat Jun  4 20:10:53 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -34,7 +34,7 @@ int			mode_canon(int mode)
   return (SUCCESS);
 }
 
-int		init_tab_ctrl(t_data *data)
+static int		init_tab_ctrl(t_data *data)
 {
   data->tab_key[9].key = my_char(LCTRL);
   data->tab_key[9].function = fct_clear;
@@ -51,7 +51,7 @@ int		init_tab_ctrl(t_data *data)
   return (SUCCESS);
 }
 
-void		init_fct_key(t_data *data)
+static void		init_fct_key(t_data *data)
 {
   data->tab_key[0].function = fct_up;
   data->tab_key[1].function = fct_down;
@@ -64,10 +64,11 @@ void		init_fct_key(t_data *data)
   data->tab_key[8].function = fct_end;
 }
 
-int		init_tab(t_data *data)
+static int		init_tab(t_data *data)
 {
-  char		*tmp;
+  char			*tmp;
 
+  tmp = NULL;
   if ((tmp = tigetstr("smkx")) == NULL)
     exit(0);
   my_putstr(tmp, 1);

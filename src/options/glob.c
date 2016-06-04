@@ -5,14 +5,14 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Sat May 28 15:40:07 2016 steeve payraudeau
-** Last update Thu Jun  2 15:02:41 2016 leo LE DIOURON
+** Last update Sat Jun  4 19:49:39 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int		check_hook(char *str)
+static int		check_hook(char *str)
 {
-  int		i;
+  int			i;
 
   i = 0;
   while (str[i] != '\0')
@@ -30,9 +30,9 @@ int		check_hook(char *str)
   return (ERROR);
 }
 
-int		check_stars(char *str)
+static int		check_stars(char *str)
 {
-  int		i;
+  int			i;
 
   i = 0;
   while (str[i] != '\0')
@@ -44,10 +44,11 @@ int		check_stars(char *str)
   return (ERROR);
 }
 
-char		**take_tab_stars(char *str, char *str_err, t_data *data)
+static char		**take_tab_stars(char *str, char *str_err, \
+					 t_data *data)
 {
-  glob_t	tab_glob;
-  int		err;
+  glob_t		tab_glob;
+  int			err;
 
   err = glob(str, 0, glob_error, &tab_glob);
   if (err != 0)
@@ -60,12 +61,12 @@ char		**take_tab_stars(char *str, char *str_err, t_data *data)
   return (tab_glob.gl_pathv);
 }
 
-char		**replace_stars(t_data *data, int *j)
+static char		**replace_stars(t_data *data, int *j)
 {
-  char		**tabo;
-  char		**result;
-  int		i;
-  int		k;
+  char			**tabo;
+  char			**result;
+  int			i;
+  int			k;
 
   i = -1;
   k = 0;

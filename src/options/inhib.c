@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 13:07:47 2016 Hervé TCHIKLADZE
-** Last update Thu Jun  2 16:18:52 2016 leo LE DIOURON
+** Last update Sat Jun  4 19:52:17 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -36,9 +36,9 @@ int		args_convert(t_data *data)
   return (SUCCESS);
 }
 
-int		check_special_char(char c, char *sep)
+static int		check_special_char(char c, char *sep)
 {
-  int		i;
+  int			i;
 
   i = 0;
   while (sep[i] != '\0')
@@ -57,7 +57,7 @@ char		*modify_str(t_data *data, char c, int i)
 
   j = -1;
   new_string = NULL;
-  new_string = my_mallok(new_string, sizeof(char) * \
+  new_string = my_mallok(new_string, sizeof(*new_string) * \
 			 (my_strlen(data->shell.line) + 1));
   while (data->shell.line[++j] != '\0' && j < i)
     new_string[j] = data->shell.line[j];

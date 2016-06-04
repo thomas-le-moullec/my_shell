@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:19:15 2016 steeve payraudeau
-** Last update Thu Jun  2 17:57:59 2016 steeve payraudeau
+** Last update Sat Jun  4 20:38:35 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -29,14 +29,18 @@ int             found_tabo_comp(char **tabo, char *line)
 int             reinit_cursor(t_data *data, int i)
 {
   int           max;
+  char		*tmp;
 
+  tmp = NULL;
   if (data->shell.line != NULL)
     max = my_strlen(data->shell.line);
   else
     return (STOP);
   while (max > i)
     {
-      my_putstr(tgetstr("le", NULL), 1);
+      if ((tmp = tgetstr("le", NULL)) == NULL)
+	exit(1);
+      my_putstr(tmp, 1);
       max--;
     }
   return (SUCCESS);

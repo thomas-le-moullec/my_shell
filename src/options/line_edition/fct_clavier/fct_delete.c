@@ -5,16 +5,16 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:34 2016 Hervé TCHIKLADZE
-** Last update Fri Jun  3 18:18:25 2016 Thomas CHABOT
+** Last update Sat Jun  4 20:23:10 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-void		delete_char(t_data *data, int i)
+static void		delete_char(t_data *data, int i)
 {
-  char		*new;
-  int		j;
-  int		w;
+  char			*new;
+  int			j;
+  int			w;
 
   new = NULL;
   new = my_mallok(new, sizeof(*new) * my_strlen(data->shell.line));
@@ -23,10 +23,7 @@ void		delete_char(t_data *data, int i)
   while (data->shell.line[w] != '\0')
     {
       if (w != i)
-	{
-	  new[j] = data->shell.line[w];
-	  j++;
-	}
+	new[j++] = data->shell.line[w];
       w++;
     }
   new[j] = '\0';
@@ -39,20 +36,33 @@ void		delete_char(t_data *data, int i)
 
 int             fct_supp(t_data *data, int *i)
 {
-  my_putstr(tgetstr("dc", NULL), 1);
+  char		*tmp;
+
+  tmp = NULL;
+  if ((tmp = tgetstr("dc", NULL)) == NULL)
+    exit(1);
+  my_putstr(tmp, 1);
   delete_char(data, *i);
   return (SUCCESS);
 }
 
 int             fct_delete(t_data *data, int *i)
 {
+  char		*tmp;
+
+  tmp = NULL;
   if (data->shell.line == NULL)
     return (STOP);
   if ((*i) > 0)
     {
       (*i) -= 1;
-      my_putstr(tgetstr("le", NULL), 1);
-      my_putstr(tgetstr("dc", NULL), 1);
+      if ((tmp = tgetstr("le", NULL)) == NULL)
+	exit(1);
+      my_putstr(tmp, 1);
+      tmp = NULL;
+      if ((tmp = tgetstr("dc", NULL)) == NULL)
+	exit(1);
+      my_putstr(tmp, 1);
       delete_char(data, *i);
     }
   return (SUCCESS);

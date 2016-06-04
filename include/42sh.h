@@ -1,11 +1,11 @@
 /*
-** 42sh.h for 42sh in /home/chabot_t/rendu/PSU/PSU_2015_42sh
+** 42sh.h for 42sh inb /home/chabot_t/rendu/PSU/PSU_2015_42sh
 ** 
 ** Made by Thomas CHABOT
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat Jun  4 17:17:02 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:42:08 2016 Thomas LE MOULLEC
 */
 
 #ifndef SH42_H_
@@ -50,69 +50,41 @@ int             modify_str_pipe(t_data *, int);
 int             modify_inhib_glob_pipe(t_data *);
 void		pipe_alias(t_data *, int);
 int		gestion_condition(t_data *, int);
-int             exec_without_path_fork(t_data *);
 int		exec_without_path(t_data *);
 int		check_str_access(char *);
 int		my_exec(t_data *);
 void		init_tab_builtins(t_data *);
-int		show_builtins(t_data *);
 int		my_builtins(t_data *, int);
 int		father(pid_t, t_data *);
 int		execution(t_data *);
-int		exec_with_path(t_data *, int);
-int		err_redir_outfile(t_data *, int);
-int		err_db_redir_outfile(t_data *, int);
 int		redirection_outfile(t_data *);
 int		redirection_infile(t_data *);
-int             double_infile_redir(t_data *);
-int             infile_simple(t_data *);
-int		manage_all_redir(t_data *);
-int		manage_pipe(t_data *);
 int		in_and_out(t_data *);
 int		make_pipe(t_data *);
 char		*take_path_exec(char *);
 int		check_signal(t_data *, int);
-int		access_path_er(t_data *);
-int		access_path_file(t_data *);
-int             find_path_exec(t_data *);
 int		access_path(t_data *);
-char		*check_cd(t_data *);
 int		my_cd(t_data *);
 int		my_env(t_data *);
 int		check_env_exist(t_data *, char *);
-int		setenv_empty(t_data *, int);
 int		my_setenv(t_data *);
-int		check_alpha(char *);
-char		**fill_env_none(t_data *, char **, int);
-char		**fill_env_loop(t_data *, int, char **, int);
 char		**fill_env(t_data *, int);
 int		my_exit(t_data *);
-char		**unsetenv_loop(t_data *, int);
 int		my_unsetenv(t_data *);
-void            delete_existant_alias(t_data *);
 int		new_alias(t_data *);
 int		delete_alias(t_data *);
 int		unalias(t_data *);
 int		my_echo(t_data *);
 int		my_history(t_data *);
 void            delete_existant_local(t_data *, char *);
-int             delete_local(t_data *);
 int		my_unset(t_data *);
-void		show_set(t_data *);
-t_local         *add_elem_local(t_local *, char *, char *);
-char            *take_cmd_local(char *);
-char            *take_name_local(char *);
 int		my_set(t_data *);
 int		my_repeat(t_data *);
-int		check_where(char *);
-int		my_where_loop(t_data *, int, char *, int);
 int		is_builtin(t_data *, char *);
 int		my_where(t_data *);
 char		*cut_str(char *);
-int		check_which(t_data *, char *, int, int);
 char		*get_which(char *);
 int		my_which_check(t_data *, char *, int, int);
-void		my_which_loop(t_data *, char *, int, int);
 int		my_which(t_data *);
 int	        parser_cond(t_data *);
 int		parser_sep(t_data *);

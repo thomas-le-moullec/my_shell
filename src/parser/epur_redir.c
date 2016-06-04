@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 15:18:44 2016 leo LE DIOURON
-** Last update Wed May  4 18:07:03 2016 Thomas CHABOT
+** Last update Sat Jun  4 20:42:00 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -16,7 +16,7 @@ char		*epur_redir(char *str, int i)
   char		*result;
 
   result = NULL;
-  result = my_mallok(result, my_strlen(str));
+  result = my_mallok(result, sizeof(*result) * (my_strlen(str) + 1));
   j = 0;
   while (str[j] != '\0' && j != i)
     {

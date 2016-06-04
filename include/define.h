@@ -5,7 +5,7 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:17:27 2016 Thomas LE MOULLEC
-** Last update Sat Jun  4 19:25:36 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 20:36:13 2016 Thomas LE MOULLEC
 */
 
 #ifndef DEFINE_H_
@@ -42,6 +42,8 @@
 # define NO_MATCH       ": No match.\n"
 # define SHOW_ALIAS     "alias "
 # define EXIT_THIS      "exit\n"
+# define INTRO_RE	"There are "
+# define LIST_ROW	" rows, list them anyway? [n/y] "
 # define ERROR_ALIAS    "Invalid alias name.\n"
 # define NULL_CMD       "Invalid null command.\n"
 # define ERROR_UNALIAS  "unalias: Too few arguments.\n"

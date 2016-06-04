@@ -5,14 +5,14 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Thu Jun  2 14:05:56 2016 leo LE DIOURON
-** Last update Sat Jun  4 15:28:01 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 20:04:51 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int             get_nb_cmd(t_data *data, char *tmp_hist, int y)
+static int		get_nb_cmd(t_data *data, char *tmp_hist, int y)
 {
-  int           nb;
+  int			nb;
 
   nb = 0;
   if ((nb = my_getnbr(tmp_hist)) == ERROR)
@@ -32,9 +32,9 @@ int             get_nb_cmd(t_data *data, char *tmp_hist, int y)
   return (SUCCESS);
 }
 
-int             get_relative_cmd(t_data *data, char *tmp_hist, int y)
+static int		get_relative_cmd(t_data *data, char *tmp_hist, int y)
 {
-  int           nb;
+  int			nb;
 
   nb = 0;
   tmp_hist = &tmp_hist[1];

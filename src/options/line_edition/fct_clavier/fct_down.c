@@ -5,22 +5,33 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:34 2016 Hervé TCHIKLADZE
-** Last update Fri Jun  3 21:04:18 2016 Thomas CHABOT
+** Last update Sat Jun  4 20:27:44 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
 void		clear_print_line(char *line, int *i, int tmp)
 {
+  char		*str_tmp;
+
+  str_tmp = NULL;
   while ((*i) < tmp)
     {
-      my_putstr(tgetstr("nd", NULL), 1);
+      if ((str_tmp = tgetstr("nd", NULL)) == NULL)
+	exit(1);
+      my_putstr(str_tmp, 1);
       (*i)++;
     }
   while (tmp > 0)
     {
-      my_putstr(tgetstr("le", NULL), 1);
-      my_putstr(tgetstr("dc", NULL), 1);
+      str_tmp = NULL;
+      if ((str_tmp = tgetstr("le", NULL)) == NULL)
+	exit(1);
+      my_putstr(str_tmp, 1);
+      str_tmp = NULL;
+      if ((str_tmp = tgetstr("dc", NULL)) == NULL)
+	exit(1);
+      my_putstr(str_tmp, 1);
       tmp--;
     }
   (*i) = my_strlen(line);

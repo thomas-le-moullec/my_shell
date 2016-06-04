@@ -5,12 +5,12 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed May 25 10:01:19 2016 leo LE DIOURON
-** Last update Thu Jun  2 13:15:16 2016 leo LE DIOURON
+** Last update Sat Jun  4 20:52:31 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-void		pipe_alias(t_data *data, int i)
+static void		pipe_alias(t_data *data, int i)
 {
   int		a;
 

@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:05:04 2016 steeve payraudeau
-** Last update Wed Jun  1 22:16:09 2016 steeve payraudeau
+** Last update Sat Jun  4 20:18:33 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -23,8 +23,13 @@ char		*my_char(char c)
 
 int             fct_clear(t_data *data, int *i)
 {
+  char		*tmp;
+
+  tmp = NULL;
   (void)i;
-  my_putstr(tgetstr("cl", NULL), 1);
+  if ((tmp = tgetstr("cl", NULL)) == NULL)
+    exit(1);
+  my_putstr(tmp, 1);
   disp_prompt(data);
   if (data->shell.line != NULL)
     my_putstr(data->shell.line, 1);

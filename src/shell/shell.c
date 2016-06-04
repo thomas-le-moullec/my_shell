@@ -5,12 +5,12 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sat Jun  4 16:11:08 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 20:54:20 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int		pipe_loop(t_data *data, int i)
+static int		pipe_loop(t_data *data, int i)
 {
   while (data->parser.tab_pipe[i] != NULL)
     {
@@ -37,10 +37,10 @@ int		pipe_loop(t_data *data, int i)
   return (SUCCESS);
 }
 
-int		cond_loop(t_data *data, int i)
+static int		cond_loop(t_data *data, int i)
 {
-  int		a;
-  int		stop_loop;
+  int			a;
+  int			stop_loop;
 
   stop_loop = SUCCESS;
   while (data->parser.tab_cond[i] != NULL && stop_loop != ERROR)

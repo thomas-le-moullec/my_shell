@@ -5,12 +5,12 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 15:19:24 2016 Thomas CHABOT
-** Last update Fri Jun  3 17:48:44 2016 Thomas CHABOT
+** Last update Sat Jun  4 20:43:24 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int		manage_outfile(t_data *data, int i, int *j)
+static int		manage_outfile(t_data *data, int i, int *j)
 {
   if (take_outfile(data->parser.tab_cond[i], *j, data) == ERROR)
     return (ERROR);
@@ -21,7 +21,7 @@ int		manage_outfile(t_data *data, int i, int *j)
   return (SUCCESS);
 }
 
-int		manage_infile(t_data *data, int i, int *j)
+static int		manage_infile(t_data *data, int i, int *j)
 {
   if (take_infile(data->parser.tab_cond[i], *j, data) == ERROR)
     return (ERROR);
@@ -32,9 +32,9 @@ int		manage_infile(t_data *data, int i, int *j)
   return (SUCCESS);
 }
 
-int		check_sign_redir(char *str)
+static int		check_sign_redir(char *str)
 {
-  int		i;
+  int			i;
 
   i = 0;
   while (str[i] != '\0')
@@ -46,10 +46,10 @@ int		check_sign_redir(char *str)
   return (SUCCESS);
 }
 
-int		check_invalid_null(t_data *data, int i)
+static int		check_invalid_null(t_data *data, int i)
 {
-  char		**tabo;
-  int		ret;
+  char			**tabo;
+  int			ret;
 
   tabo = my_str_to_wordtab(data->parser.tab_cond[i], " ");
   ret = count_tab(tabo);

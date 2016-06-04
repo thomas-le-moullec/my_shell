@@ -5,16 +5,16 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Mon May 16 16:50:31 2016 leo LE DIOURON
-** Last update Sat Jun  4 17:25:15 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 20:07:46 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-char		*take_var(t_data *data, int j, int i)
+static char		*take_var(t_data *data, int j, int i)
 {
-  int		a;
-  int		k;
-  char		*var_env;
+  int			a;
+  int			k;
+  char			*var_env;
 
   a = i;
   k = 0;
@@ -23,7 +23,7 @@ char		*take_var(t_data *data, int j, int i)
 	 data->parser.tab_pipe[j][i] != '\t' &&
 	 data->parser.tab_pipe[j][i] != ' ')
     i++;
-  var_env = my_mallok(var_env, sizeof(char *) * (i - a + 1));
+  var_env = my_mallok(var_env, sizeof(*var_env) * (i - a + 1));
   i = a;
   while (data->parser.tab_pipe[j][i] != '\0' &&
 	 data->parser.tab_pipe[j][i] != '\t' &&
@@ -33,18 +33,18 @@ char		*take_var(t_data *data, int j, int i)
   return (var_env);
 }
 
-void		creat_new_string(t_data *data, char *result, int j)
+static void		creat_new_string(t_data *data, char *result, int j)
 {
-  char		*new_string;
-  int		i;
-  int		k;
-  int		l;
+  char			*new_string;
+  int			i;
+  int			k;
+  int			l;
 
   i = 0;
   l = 0;
   k = 0;
   new_string = NULL;
-  new_string = my_mallok(new_string, sizeof(char) * \
+  new_string = my_mallok(new_string, sizeof(*new_string) * \
                          (my_strlen(data->parser.tab_pipe[j]) + \
                           my_strlen(result) + 1));
   while (data->parser.tab_pipe[j][i] && data->parser.tab_pipe[j][i] != '$')
@@ -62,9 +62,9 @@ void		creat_new_string(t_data *data, char *result, int j)
   new_string = my_free(new_string);
 }
 
-char		*take_var_local(t_data *data, char *var)
+static char		*take_var_local(t_data *data, char *var)
 {
-  char		*result;
+  char			*result;
 
   result = NULL;
   while (data->local->prev != NULL)
@@ -80,10 +80,10 @@ char		*take_var_local(t_data *data, char *var)
   return (result);
 }
 
-int		replace_string(t_data *data, int j, int i, char *var_env)
+static int		replace_string(t_data *data, int j, int i, char *var_env)
 {
-  int		nb;
-  char		*res;
+  int			nb;
+  char			*res;
 
   res = NULL;
   nb = ERROR;

@@ -5,12 +5,13 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Sat Jun  4 11:28:45 2016 Hervé TCHIKLADZE
-** Last update Sat Jun  4 15:19:16 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:57:30 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int             modif_args_hist_check(t_data *data, int y, char *tmp_hist)
+static int             modif_args_hist_check(t_data *data, int y, \
+					     char *tmp_hist)
 {
   while (data->hist->prev != NULL \
 	 && my_strncmp(data->hist->str, tmp_hist,
@@ -29,6 +30,7 @@ int             modif_args_hist(t_data *data, int y)
 {
   char          *tmp_hist;
 
+  tmp_hist = NULL;
   if ((tmp_hist = take_tmp_hist(data, y, 0, 0)) == NULL)
     return (STOP);
   if (check_n_hist(data, tmp_hist, y) == SUCCESS)

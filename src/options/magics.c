@@ -5,16 +5,17 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Tue May 31 14:37:40 2016 Thomas LE MOULLEC
-** Last update Sat Jun  4 15:45:35 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:55:03 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-char		*fill_result_magic(char *result, char *line, char *buffer)
+static char		*fill_result_magic(char *result, char *line, \
+					   char *buffer)
 {
-  int		k;
-  int		f;
-  int		j;
+  int			k;
+  int			f;
+  int			j;
 
   j = 0;
   f = 0;
@@ -46,7 +47,7 @@ char		*change_magic_result(char *line, char *buffer)
   if (buffer == NULL || buffer[0] == '\0')
     return (NULL);
   result = NULL;
-  result = my_mallok(result, sizeof(char) *
+  result = my_mallok(result, sizeof(*result) *
                      (my_strlen(line)
                       + my_strlen(buffer) + 1));
   result = fill_result_magic(result, line, buffer);
@@ -57,16 +58,17 @@ char		*change_magic_result(char *line, char *buffer)
   return (result);
 }
 
-int		exe_magic_quotes(t_data *data, char **tabo, int fd, int j)
+static int		exe_magic_quotes(t_data *data, char **tabo, \
+					 int fd, int j)
 {
-  int		cpid;
-  int		status;
+  int			cpid;
+  int			status;
 
-  if ((cpid = fork()) == ERROR)
+  if ((cpid = fork()) == -1)
     return (ERROR);
   if (cpid == 0)
     {
-      if ((dup2(fd, 1)) == ERROR)
+      if ((dup2(fd, 1)) == -1)
 	return (ERROR);
       data->shell.line = my_strcpy(tabo[j]);
       if (inhib(data) != ERROR)
@@ -84,16 +86,16 @@ int		exe_magic_quotes(t_data *data, char **tabo, int fd, int j)
   return (SUCCESS);
 }
 
-int		loop_magic(t_data *data, char **tabo)
+static int		loop_magic(t_data *data, char **tabo)
 {
-  int		j;
-  int		fd;
+  int			j;
+  int			fd;
 
   j = 0;
   while (tabo[j] != NULL)
     {
       if ((fd = open("/tmp/magic_file", O_CREAT | O_RDWR \
-		     | O_TRUNC, S_IRWXU)) == ERROR)
+		     | O_TRUNC, S_IRWXU)) == -1)
 	return (ERROR);
       if (exe_magic_quotes(data, tabo, fd, j) == ERROR)
 	return (ERROR);

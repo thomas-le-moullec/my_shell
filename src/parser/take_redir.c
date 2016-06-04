@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 15:15:06 2016 leo LE DIOURON
-** Last update Wed Jun  1 09:49:56 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 20:46:10 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -28,7 +28,8 @@ int             take_outfile(char *str, int i, t_data *data)
   j = i;
   while (str[j] != '\0' && str[j] != ' ' && str[j] != '\t')
     j++;
-  data->parser.outfile = my_mallok(data->parser.outfile, (j - i + 1));
+  data->parser.outfile = my_mallok \
+    (data->parser.outfile, sizeof(*data->parser.outfile) * (j - i + 1));
   j = 0;
   while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' && \
 	 str[i] != '<' && str[i] != '>')
@@ -55,7 +56,8 @@ int             take_infile(char *str, int i, t_data *data)
   j = i;
   while (str[j] != '\0' && str[j] != ' ' && str[j] != '\t')
     j++;
-  data->parser.infile = my_mallok(data->parser.infile, (j - i + 1));
+  data->parser.infile = my_mallok \
+    (data->parser.infile, sizeof(*data->parser.infile) * (j - i + 1));
   j = 0;
   while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' && \
 	 str[i] != '<' && str[i] != '>')

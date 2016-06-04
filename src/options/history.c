@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 **
 ** Started on  Tue May 17 16:05:48 2016 Hervé TCHIKLADZE
-** Last update Sat Jun  4 15:18:09 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:50:53 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -21,7 +21,7 @@ char            *change_line_hist(t_data *data, char *tmp_hist, int y)
   i = 0;
   f = 0;
   result = NULL;
-  result = my_mallok(result, sizeof(char) *
+  result = my_mallok(result, sizeof(*result) *
                      (my_strlen(data->parser.tab_pipe[y])
                       + my_strlen(data->hist->str) + 1));
   while (data->parser.tab_pipe[y][i] && data->parser.tab_pipe[y][i] != '!')
@@ -44,7 +44,7 @@ char		*take_tmp_hist(t_data *data, int y, int i, int j)
   char		*result;
 
   result = NULL;
-  result = my_mallok(result, sizeof(char) \
+  result = my_mallok(result, sizeof(*result) \
 		     * (my_strlen(data->parser.tab_pipe[y]) + 1));
   while (data->parser.tab_pipe[y][i] && data->parser.tab_pipe[y][i] != '!')
     i++;

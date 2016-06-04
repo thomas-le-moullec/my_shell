@@ -5,19 +5,19 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Mon May 23 17:45:40 2016 Hervé TCHIKLADZE
-** Last update Thu Jun  2 14:56:21 2016 leo LE DIOURON
+** Last update Sat Jun  4 19:47:47 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-void            modify_string_alias(t_data *data, int i, int j, int f)
+static void            modify_string_alias(t_data *data, int i, int j, int f)
 {
   int           k;
   char          *result;
 
   k = 0;
   result = NULL;
-  result = my_mallok(result, sizeof(char) *
+  result = my_mallok(result, sizeof(*result) *
 		     (my_strlen(data->parser.tab_pipe[i])
 		      + my_strlen(data->alias->cmd) + 1));
   while (k < j)
@@ -38,7 +38,7 @@ void            modify_string_alias(t_data *data, int i, int j, int f)
   result = my_free(result);
 }
 
-int             check_alias_in(t_data *data, int i, int *j)
+static int             check_alias_in(t_data *data, int i, int *j)
 {
   int           x;
 
@@ -54,18 +54,18 @@ int             check_alias_in(t_data *data, int i, int *j)
   return (x);
 }
 
-int		find_valid_alias(t_data *data, int i, int *j)
+static int		find_valid_alias(t_data *data, int i, int *j)
 {
-  int		x;
-  int		a;
-  int		f;
-  char		*tmp;
+  int			x;
+  int			a;
+  int			f;
+  char			*tmp;
 
   a = 0;
   f = -1;
   x = check_alias_in(data, i, j);
   tmp = NULL;
-  tmp = my_mallok(tmp, sizeof(char) *
+  tmp = my_mallok(tmp, sizeof(*tmp) *
 		  (my_strlen(data->parser.tab_pipe[i]) + 1));
   while (++f < *j);
   while (f < x)
@@ -83,9 +83,9 @@ int		find_valid_alias(t_data *data, int i, int *j)
   return (a);
 }
 
-void		change_alias_loop(t_data *data, int i, int *j, int a)
+static void		change_alias_loop(t_data *data, int i, int *j, int a)
 {
-  int		k;
+  int			k;
 
   k = 0;
   if (a == 1)

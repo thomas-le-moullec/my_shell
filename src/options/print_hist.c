@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 31 13:45:29 2016 Thomas CHABOT
-** Last update Tue May 31 14:54:32 2016 Thomas CHABOT
+** Last update Sat Jun  4 20:02:53 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -24,12 +24,22 @@ t_hist          *get_time(t_hist *new_elem)
   return (new_elem);
 }
 
-void		print_hist_date(t_data *data)
+static void		print_hist_date(t_data *data)
 {
   my_put_nbr(data->hist->hour + 2, 1);
   my_putchar(':', 1);
   my_put_nbr(data->hist->min, 1);
   my_putstr("  ", 1);
+}
+
+static int	disp_hist(t_data *data, int nb_line)
+{
+  my_put_nbr(nb_line++, 1);
+  my_putstr("  ", 1);
+  print_hist_date(data);
+  my_putstr(data->hist->str, 1);
+  my_putstr("\n", 1);
+  return (nb_line);
 }
 
 int             print_hist(t_data *data)
@@ -43,17 +53,9 @@ int             print_hist(t_data *data)
     data->hist = data->hist->prev;
   while (data->hist->next != NULL)
     {
-      my_put_nbr(nb_line++, 1);
-      my_putstr("  ", 1);
-      print_hist_date(data);
-      my_putstr(data->hist->str, 1);
-      my_putstr("\n", 1);
+      nb_line = disp_hist(data, nb_line);
       data->hist = data->hist->next;
     }
-  my_put_nbr(nb_line++, 1);
-  my_putstr("  ", 1);
-  print_hist_date(data);
-  my_putstr(data->hist->str, 1);
-  my_putstr("\n", 1);
+  nb_line = disp_hist(data, nb_line);
   return (SUCCESS);
 }

@@ -5,14 +5,14 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Tue May 31 19:48:27 2016 steeve payraudeau
-** Last update Sat Jun  4 11:16:50 2016 Hervé TCHIKLADZE
+** Last update Sat Jun  4 20:19:11 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int		found_key(t_data *data, char *buffer, int *j)
+static int		found_key(t_data *data, char *buffer, int *j)
 {
-  int		i;
+  int			i;
 
   i = 0;
   while (data->tab_key[i].key != NULL)
@@ -28,11 +28,13 @@ int		found_key(t_data *data, char *buffer, int *j)
   return (ERROR);
 }
 
-int		laboratory_key(t_data *data, char *buffer, int *i)
+static int		laboratory_key(t_data *data, char *buffer, int *i)
 {
-  int		err;
+  int			err;
+  char			*tmp;
 
   err = ERROR;
+  tmp = NULL;
   if ((err = found_key(data, buffer, i)) == STOP)
     return (STOP);
   if (err == ERROR && buffer[0] >= ' ' && buffer[0] <= '~')
@@ -40,19 +42,24 @@ int		laboratory_key(t_data *data, char *buffer, int *i)
       data->shell.line = cp_str(data->shell.line, buffer, *i);
       data->shell.tmp_hist = my_free(data->shell.tmp_hist);
       data->shell.tmp_hist = my_strcpy(data->shell.line);
-      my_putstr(tgetstr("im", NULL), 1);
+      if ((tmp = tgetstr("im", NULL)) == NULL)
+	exit(1);
+      my_putstr(tmp, 1);
+      tmp = NULL;
       my_putstr(buffer, 1);
-      my_putstr(tgetstr("ei", NULL), 1);
+      if ((tmp = tgetstr("ei", NULL), 1) == NULL)
+	exit(1);
+      my_putstr(tmp, 1);
       (*i)++;
     }
   return (SUCCESS);
 }
 
-int		catch_key(t_data *data)
+static int		catch_key(t_data *data)
 {
-  char		buffer[8];
-  int		nbr;
-  int		i;
+  char			buffer[8];
+  int			nbr;
+  int			i;
 
   nbr = 0;
   i = 0;
@@ -70,9 +77,10 @@ int		catch_key(t_data *data)
   return (SUCCESS);
 }
 
-int		my_shell_key_loop(t_data *data)
+static int		my_shell_key_loop(t_data *data)
 {
-  mode_canon(1);
+  if (mode_canon(1) == ERROR)
+    return (ERROR);
   if (periodic(data) == ERROR)
     return (ERROR);
   postcmd(*data);
@@ -80,7 +88,8 @@ int		my_shell_key_loop(t_data *data)
     if (parser_line(data) == ERROR)
       return (ERROR);
   precmd(*data);
-  mode_canon(0);
+  if ((mode_canon(0)) == ERROR)
+    return (ERROR);
   disp_prompt(data);
   data->shell.pos_list = 0;
   data->shell.line = my_free(data->shell.line);
@@ -94,12 +103,14 @@ int		my_shell_key(t_data *data)
 {
   if (init_term(data) == ERROR)
     exit(0);
-  mode_canon(0);
+  if ((mode_canon(0)) == ERROR)
+    return (ERROR);
   disp_prompt(data);
   while (catch_key(data) != ERROR)
     if (my_shell_key_loop(data) == ERROR)
       return (ERROR);
-  mode_canon(1);
+  if ((mode_canon(1)) == ERROR)
+    return (ERROR);
   my_putstr(EXIT_THIS, 1);
   data->shell.line = my_free(data->shell.line);
   data->shell.tmp_hist = my_free(data->shell.tmp_hist);

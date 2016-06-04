@@ -5,18 +5,23 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 17:21:34 2016 Hervé TCHIKLADZE
-** Last update Thu Jun  2 10:22:24 2016 steeve payraudeau
+** Last update Sat Jun  4 20:30:40 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
 int             fct_kome(t_data *data, int *i)
 {
+  char		*tmp;
+
+  tmp = NULL;
   if (data->shell.line == NULL)
     return (STOP);
   while ((*i) > 0)
     {
-      my_putstr(tgetstr("le", NULL), 1);
+      if ((tmp = tgetstr("le", NULL)) == NULL)
+	exit(1);
+      my_putstr(tmp, 1);
       (*i)--;
     }
   return (SUCCESS);
@@ -24,11 +29,16 @@ int             fct_kome(t_data *data, int *i)
 
 int             fct_end(t_data *data, int *i)
 {
+  char		*tmp;
+
+  tmp = NULL;
   if (data->shell.line == NULL)
     return (STOP);
   while ((*i) < my_strlen(data->shell.line))
     {
-      my_putstr(tgetstr("nd", NULL), 1);
+      if ((tmp = tgetstr("nd", NULL)) == NULL)
+	exit(1);
+      my_putstr(tmp, 1);
       (*i)++;
     }
   return (SUCCESS);
