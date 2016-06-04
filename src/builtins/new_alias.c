@@ -5,12 +5,12 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:49:37 2016 Thomas CHABOT
-** Last update Fri Jun  3 20:04:26 2016 Thomas CHABOT
+** Last update Sat Jun  4 19:12:55 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-void		delete_existant_alias(t_data *data)
+static void		delete_existant_alias(t_data *data)
 {
   if (data->alias != NULL)
     {

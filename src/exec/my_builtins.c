@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 16:27:00 2016 Thomas CHABOT
-** Last update Sat Jun  4 11:45:33 2016 steeve payraudeau
+** Last update Sat Jun  4 19:35:38 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -29,9 +29,9 @@ void		init_tab_builtins(t_data *data)
   data->shell.tab_builtins[14] = "which";
 }
 
-int		show_builtins(t_data *data)
+static int		show_builtins(t_data *data)
 {
-  int		i;
+  int			i;
 
   i = 0;
   while (i < 15)

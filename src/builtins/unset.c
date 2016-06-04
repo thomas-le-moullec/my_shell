@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:20:02 2016 leo LE DIOURON
-** Last update Sat Jun  4 17:14:07 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:21:00 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -27,20 +27,8 @@ void            delete_existant_local(t_data *data, char *name)
     }
 }
 
-int             delete_local(t_data *data)
+static int		end_begin_local(t_data *data)
 {
-  if (data->local->next != NULL && data->local->prev != NULL)
-    {
-      data->local->next->prev = data->local->prev;
-      data->local->prev->next = data->local->next;
-      data->local = data->local->prev;
-      return (SUCCESS);
-    }
-  if (data->local->prev == NULL && data->local->next == NULL)
-    {
-      data->local = NULL;
-      return (SUCCESS);
-    }
   if (data->local->next == NULL)
     {
       data->local->prev->next = NULL;
@@ -56,7 +44,24 @@ int             delete_local(t_data *data)
   return (SUCCESS);
 }
 
-void		unset_name(t_data *data, char *str)
+static int		delete_local(t_data *data)
+{
+  if (data->local->next != NULL && data->local->prev != NULL)
+    {
+      data->local->next->prev = data->local->prev;
+      data->local->prev->next = data->local->next;
+      data->local = data->local->prev;
+      return (SUCCESS);
+    }
+  if (data->local->prev == NULL && data->local->next == NULL)
+    {
+      data->local = NULL;
+      return (SUCCESS);
+    }
+  return (end_begin_local(data));
+}
+
+static void		unset_name(t_data *data, char *str)
 {
   while (data->local != NULL && data->local->prev != NULL)
     {

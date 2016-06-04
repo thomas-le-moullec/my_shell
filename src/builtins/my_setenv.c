@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 16:40:35 2016 Thomas CHABOT
-** Last update Thu Jun  2 13:08:30 2016 leo LE DIOURON
+** Last update Sat Jun  4 19:04:20 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -26,7 +26,7 @@ int		check_env_exist(t_data *data, char *str)
   return (ERROR);
 }
 
-int		setenv_empty(t_data *data, int nb)
+static int		setenv_empty(t_data *data, int nb)
 {
   if (data->shell.env == NULL)
     {
@@ -39,9 +39,9 @@ int		setenv_empty(t_data *data, int nb)
   return (SUCCESS);
 }
 
-int		check_alpha(char *str)
+static int		check_alpha(char *str)
 {
-  int		i;
+  int			i;
 
   i = 0;
   if ((str[0] < 'a' || str[0] > 'z') \

@@ -5,12 +5,12 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 16:40:08 2016 leo LE DIOURON
-** Last update Thu Jun  2 10:20:40 2016 Thomas CHABOT
+** Last update Sat Jun  4 19:38:55 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int             err_redir_outfile(t_data *data, int err)
+static int             err_redir_outfile(t_data *data, int err)
 {
   err = errno;
   my_putstr(data->parser.outfile, 1);
@@ -23,7 +23,7 @@ int             err_redir_outfile(t_data *data, int err)
   return (my_put_error(IS_DIR, 1));
 }
 
-int             err_db_redir_outfile(t_data *data, int err)
+static int             err_db_redir_outfile(t_data *data, int err)
 {
   err = errno;
   my_putstr(data->parser.outfile, 1);
@@ -46,13 +46,13 @@ int		redirection_outfile(t_data *data)
   stat(data->parser.outfile, &s);
   if (data->parser.db_out == 0)
     if ((fd = open(data->parser.outfile, \
-		   O_CREAT | O_RDWR | O_TRUNC, S_IRWXU)) == ERROR)
+		   O_CREAT | O_RDWR | O_TRUNC, S_IRWXU)) == -1)
       return (err_redir_outfile(data, err));
   if (data->parser.db_out == 1)
     if ((fd = open(data->parser.outfile, \
-		   O_CREAT | O_RDWR | O_APPEND, S_IRWXU)) == ERROR)
+		   O_CREAT | O_RDWR | O_APPEND, S_IRWXU)) == -1)
       return (err_db_redir_outfile(data, err));
-  if (dup2(fd, 1) == ERROR)
+  if (dup2(fd, 1) == -1)
     return (ERROR);
   close(fd);
   return (SUCCESS);

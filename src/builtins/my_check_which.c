@@ -5,14 +5,14 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Sat Jun  4 13:19:19 2016 Thomas CHABOT
-** Last update Sat Jun  4 13:19:54 2016 Thomas CHABOT
+** Last update Sat Jun  4 18:55:50 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int             check_which(t_data *data, char *tmp, int limit, int i)
+static int             check_which(t_data *data, char *tmp, int limit, int i)
 {
-  if (access(tmp, X_OK) == SUCCESS)
+  if (access(tmp, X_OK) == 0)
     {
       my_putstr(get_which(tmp), 1);
       my_putchar('\n', 1);

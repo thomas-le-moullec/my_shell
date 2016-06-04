@@ -5,12 +5,12 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 18:20:10 2016 Thomas CHABOT
-** Last update Sat Jun  4 16:25:43 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 18:54:35 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-char		*check_cd(t_data *data)
+static char		*check_cd(t_data *data)
 {
   if (count_tab(data->parser.tab_args) == 1)
     return (data->shell.home);
@@ -20,10 +20,11 @@ char		*check_cd(t_data *data)
   return (data->parser.tab_args[1]);
 }
 
-void		cwdcmd(t_data data)
+static void		cwdcmd(t_data data)
 {
-  char		*result;
+  char			*result;
 
+  result = NULL;
   if ((result = check_in_alias(&data, "cwdcmd")) != NULL)
     {
       init_shell(&data);
@@ -40,12 +41,12 @@ int		my_cd(t_data *data)
 
   tmp = NULL;
   tmp = check_cd(data);
-  if (stat(tmp, &s) != ERROR && (s.st_mode & S_IFREG))
+  if (stat(tmp, &s) != -1 && (s.st_mode & S_IFREG))
     return (error_dir(data, tmp));
   if (tmp != NULL)
     {
       data->shell.oldpwd = my_strcpy(data->shell.pwd);
-      if (chdir(tmp) == ERROR)
+      if (chdir(tmp) == -1)
 	{
 	  err = errno;
 	  if (err == 13)

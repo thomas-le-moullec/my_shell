@@ -5,10 +5,27 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 10:15:56 2016 Thomas CHABOT
-** Last update Wed Jun  1 15:59:18 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:18:34 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
+
+static int	end_begin_alias(t_data *data)
+{
+  if (data->alias->next == NULL)
+    {
+      data->alias->prev->next = NULL;
+      data->alias = data->alias->prev;
+      return (SUCCESS);
+    }
+  if (data->alias->prev == NULL)
+    {
+      data->alias->next->prev = NULL;
+      data->alias = data->alias->next;
+      return (SUCCESS);
+    }
+  return (SUCCESS);
+}
 
 int		delete_alias(t_data *data)
 {
@@ -24,19 +41,7 @@ int		delete_alias(t_data *data)
       data->alias = NULL;
       return (SUCCESS);
     }
-  if (data->alias->next == NULL)
-    {
-      data->alias->prev->next = NULL;
-      data->alias = data->alias->prev;
-      return (SUCCESS);
-    }
-  if (data->alias->prev == NULL)
-    {
-      data->alias->next->prev = NULL;
-      data->alias = data->alias->next;
-      return (SUCCESS);
-    }
-  return (SUCCESS);
+  return (end_begin_alias(data));
 }
 
 int		unalias(t_data *data)

@@ -5,12 +5,12 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Sun May 29 14:48:43 2016 Thomas CHABOT
-** Last update Thu Jun  2 20:02:27 2016 Thomas CHABOT
+** Last update Sat Jun  4 19:29:29 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int             access_path_er(t_data *data)
+static int             access_path_er(t_data *data)
 {
   if (data->shell.env == NULL || (my_strlen(data->parser.tab_args[0]) < 2 || \
                                   ((data->parser.tab_args[0][0] == '.' && \
@@ -20,23 +20,23 @@ int             access_path_er(t_data *data)
   return (SUCCESS);
 }
 
-int             access_path_file(t_data *data)
+static int		access_path_file(t_data *data)
 {
-  struct stat   s;
+  struct stat		s;
 
-  if ((stat(data->parser.tab_args[0], &s) == SUCCESS) && (s.st_mode & S_IFDIR))
+  if ((stat(data->parser.tab_args[0], &s) == 0) && (s.st_mode & S_IFDIR))
       return (ERROR);
-  if ((stat(data->parser.tab_args[0], &s) != ERROR) && ((s.st_mode & S_IFREG) \
-				   && !(s.st_mode & S_IXUSR)		\
-				   && access_path_er(data) == ERROR))
+  if ((stat(data->parser.tab_args[0], &s) != -1) && ((s.st_mode & S_IFREG) \
+				   && !(s.st_mode & S_IXUSR) \
+				   && access_path_er(data) == -1))
     return (ERROR);
   return (SUCCESS);
 }
 
-int		find_path_exec(t_data *data)
+static int		find_path_exec(t_data *data)
 {
-  char		*tmp;
-  int		i;
+  char			*tmp;
+  int			i;
 
   i = 0;
   while (data->shell.path != NULL && data->shell.path[i] != NULL)

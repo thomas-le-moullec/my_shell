@@ -5,21 +5,21 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 17:37:26 2016 Thomas CHABOT
-** Last update Sun May 29 10:53:20 2016 steeve payraudeau
+** Last update Sat Jun  4 19:05:52 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-char		**unsetenv_loop(t_data* data, int i)
+static char		**unsetenv_loop(t_data* data, int i)
 {
-  char		**new_env;
-  int		j;
-  int		k;
+  char			**new_env;
+  int			j;
+  int			k;
 
   j = 0;
   k = 0;
   new_env = NULL;
-  new_env = my_mallok(new_env, count_tab(data->shell.env) * sizeof(char *));
+  new_env = my_mallok(new_env, count_tab(data->shell.env) * sizeof(*new_env));
   while (data->shell.env[j] != NULL)
     {
       if (j != i)

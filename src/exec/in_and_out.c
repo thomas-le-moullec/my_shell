@@ -5,12 +5,12 @@
 ** Login   <le-dio_l@epitech.net>
 **
 ** Started on  Fri Apr 29 17:57:25 2016 leo LE DIOURON
-** Last update Wed Jun  1 09:35:02 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:34:15 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int		manage_all_redir(t_data *data)
+static int		manage_all_redir(t_data *data)
 {
   if (data->parser.outfile != NULL && \
       (data->parser.check_pos_pipe == ALONE || \
@@ -25,7 +25,7 @@ int		manage_all_redir(t_data *data)
   return (SUCCESS);
 }
 
-int		manage_pipe(t_data *data)
+static int		manage_pipe(t_data *data)
 {
   if (data->parser.check_pos_pipe != ALONE && \
       data->parser.check_pos_pipe != END)

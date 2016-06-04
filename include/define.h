@@ -5,7 +5,7 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:17:27 2016 Thomas LE MOULLEC
-** Last update Sat Jun  4 17:19:36 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:25:36 2016 Thomas LE MOULLEC
 */
 
 #ifndef DEFINE_H_
@@ -33,8 +33,6 @@
 # define ACTRL          1
 # define ECTRL          5
 # define UCTRL          21
-
-# define MAGIC          "108 97 103 111 117 100 97 108 101"
 
 # define NB_SIGNALS     5
 
@@ -71,6 +69,7 @@
 # define ERR_WHERE      "where: Too few arguments.\n"
 # define ERR_WHICH      "which: Too few arguments.\n"
 # define ERR_QUOTE      "Unmatched "
+# define ERR_GLOB	"Error Global.\n"
 # define IEOF           "Use \"exit\" to leave 42sh.\n"
 
 # define SIG_SIGABRT    "Aborted\n"

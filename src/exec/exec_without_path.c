@@ -5,14 +5,14 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Sat Jun  4 11:20:59 2016 Hervé TCHIKLADZE
-** Last update Sat Jun  4 11:45:19 2016 steeve payraudeau
+** Last update Sat Jun  4 19:33:10 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int             exec_without_path_fork(t_data *data)
+static int		exec_without_path_fork(t_data *data)
 {
-  pid_t         cpid;
+  pid_t			cpid;
 
   if ((cpid = fork()) == -1)
     return (ERROR);
@@ -24,7 +24,7 @@ int             exec_without_path_fork(t_data *data)
           return (ERROR);
         }
       if (execve(data->parser.tab_args[0], \
-                 data->parser.tab_args, data->shell.env) == ERROR)
+                 data->parser.tab_args, data->shell.env) == -1)
         bin_not_comp(data);
     }
   else
@@ -39,14 +39,14 @@ int             exec_without_path(t_data *data)
 
   tmp = NULL;
   tmp = take_path_exec(data->parser.tab_args[0]);
-  if ((access(tmp, F_OK | R_OK) == ERROR)
-      || (((access(data->parser.tab_args[0], X_OK) == ERROR)) \
+  if ((access(tmp, F_OK | R_OK) == -1)
+      || (((access(data->parser.tab_args[0], X_OK) == -1)) \
 	  || (check_str_access(data->parser.tab_args[0]) == ERROR)))
     {
       tmp = my_free(tmp);
       return (error_not_found(data));
     }
-  if (access(tmp, F_OK) == ERROR)
+  if (access(tmp, F_OK) == -1)
     {
       tmp = my_free(tmp);
       return (error_dir(data, data->parser.tab_args[0]));

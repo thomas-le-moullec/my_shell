@@ -5,34 +5,32 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:10:27 2016 leo LE DIOURON
-** Last update Sat Jun  4 11:26:25 2016 Hervé TCHIKLADZE
+** Last update Sat Jun  4 19:16:05 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-void		show_set(t_data *data)
+static void		show_set(t_data *data)
 {
   while (data->local->prev != NULL)
     data->local = data->local->prev;
   while (data->local->next != NULL)
     {
       my_putstr(data->local->name, 1);
-      my_putstr("\t", 1);
-      my_putstr("\t", 1);
+      my_putstr("\t\t", 1);
       my_putstr(data->local->cmd, 1);
       my_putstr("\n", 1);
       data->local = data->local->next;
     }
   my_putstr(data->local->name, 1);
-  my_putstr("\t", 1);
-  my_putstr("\t", 1);
+  my_putstr("\t\t", 1);
   my_putstr(data->local->cmd, 1);
   my_putstr("\n", 1);
 }
 
-t_local         *add_elem_local(t_local *local, char *cmd, char *name)
+static t_local         *add_elem_local(t_local *local, char *cmd, char *name)
 {
-  t_local       *new_elem;
+  t_local	       *new_elem;
 
   new_elem = NULL;
   new_elem = my_mallok(new_elem, sizeof(*new_elem));
@@ -50,14 +48,14 @@ t_local         *add_elem_local(t_local *local, char *cmd, char *name)
   return (new_elem);
 }
 
-char		*take_name_local(char *str)
+static char		*take_name_local(char *str)
 {
-  char		*result;
-  int		i;
+  char			*result;
+  int			i;
 
   i = 0;
   result = NULL;
-  result = my_mallok(result, sizeof(char) * (my_strlen(str) + 1));
+  result = my_mallok(result, sizeof(*result) * (my_strlen(str) + 1));
   while (str[i] != '\0' && str[i] != '=')
     {
       result[i] = str[i];
@@ -67,16 +65,16 @@ char		*take_name_local(char *str)
   return (result);
 }
 
-char		*take_cmd_local(char *str)
+static char		*take_cmd_local(char *str)
 {
-  char		*result;
-  int		i;
-  int		j;
+  char			*result;
+  int			i;
+  int			j;
 
   i = 0;
   j = 0;
   result = NULL;
-  result = my_mallok(result, sizeof(char) * (my_strlen(str) + 1));
+  result = my_mallok(result, sizeof(*result) * (my_strlen(str) + 1));
   while (str[i] != '\0' && str[i] != '=')
     i++;
   if (str[i] != '\0')

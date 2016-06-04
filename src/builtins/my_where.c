@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:03 2016 Thomas CHABOT
-** Last update Sat Jun  4 17:02:43 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:08:22 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -18,7 +18,7 @@ char            *cut_str(char *str)
 
   new_str = NULL;
   i = my_strlen(str);
-  new_str = my_mallok(new_str, my_strlen(str));
+  new_str = my_mallok(new_str, sizeof(*new_str) * my_strlen(str));
   while (i > 0 && str[i] != '/')
     i--;
   i++;
@@ -29,9 +29,9 @@ char            *cut_str(char *str)
   return (new_str);
 }
 
-int		check_where(char *tmp)
+static int		check_where(char *tmp)
 {
-  if (access(tmp, X_OK) == SUCCESS)
+  if (access(tmp, X_OK) == 0)
     {
       my_putstr(tmp, 1);
       my_putchar('\n', 1);
@@ -39,10 +39,10 @@ int		check_where(char *tmp)
   return (SUCCESS);
 }
 
-int		my_where_loop(t_data *data, int nb, char *tmp, int a)
+static int		my_where_loop(t_data *data, int nb, char *tmp, int a)
 {
-  int		i;
-  static int	b = 0;
+  int			i;
+  static int		b = 0;
 
   while (nb-- > 1)
     {

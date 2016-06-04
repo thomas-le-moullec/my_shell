@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 09:08:44 2016 Thomas CHABOT
-** Last update Sat Jun  4 10:15:39 2016 steeve payraudeau
+** Last update Sat Jun  4 18:47:19 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -19,7 +19,7 @@ void		end_fct(t_data *data)
   my_free_local(data->local);
 }
 
-int		check_env_term(t_data *data)
+static int     	check_env_term(t_data *data)
 {
   int		j;
 

@@ -5,14 +5,14 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Sat Apr 30 16:26:26 2016 leo LE DIOURON
-** Last update Sat Jun  4 11:44:18 2016 steeve payraudeau
+** Last update Sat Jun  4 19:21:19 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-char            **fill_env_none(t_data *data, char **new_env, int nb)
+static char            **fill_env_none(t_data *data, char **new_env, int nb)
 {
-  int           j;
+  int		       j;
 
   j = 0;
   new_env = my_mallok(new_env, \
@@ -32,9 +32,10 @@ char            **fill_env_none(t_data *data, char **new_env, int nb)
   return (new_env);
 }
 
-char		**fill_env_loop(t_data *data, int value, char **new_env, int i)
+static char		**fill_env_loop(t_data *data, int value, \
+					char **new_env, int i)
 {
-  int		j;
+  int			j;
 
   j = 0;
   new_env = my_mallok(new_env, \

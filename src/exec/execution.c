@@ -5,7 +5,7 @@
 ** Login   <payrau_a@epitech.net>
 ** 
 ** Started on  Sat Jun  4 11:44:59 2016 steeve payraudeau
-** Last update Sat Jun  4 11:45:01 2016 steeve payraudeau
+** Last update Sat Jun  4 19:31:45 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -26,10 +26,10 @@ int		father(pid_t cpid, t_data *data)
   return (SUCCESS);
 }
 
-int		exec_with_path(t_data *data, int i)
+static int		exec_with_path(t_data *data, int i)
 {
-  pid_t		cpid;
-  char		*tmp;
+  pid_t			cpid;
+  char			*tmp;
 
   tmp = NULL;
   if (i == -2)
@@ -45,7 +45,7 @@ int		exec_with_path(t_data *data, int i)
 	  exit(1);
 	  return (ERROR);
 	}
-      if (execve(tmp, data->parser.tab_args, data->shell.env) == ERROR)
+      if (execve(tmp, data->parser.tab_args, data->shell.env) == -1)
 	exit(1);
     }
   else

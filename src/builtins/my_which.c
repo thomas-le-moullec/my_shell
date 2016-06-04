@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:52 2016 Thomas CHABOT
-** Last update Sat Jun  4 17:03:17 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 19:11:31 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -25,26 +25,26 @@ char		*get_which(char *str)
     i--;
   while (i > 0 && str[i] != '/')
     i--;
-  new_str = my_mallok(new_str, sizeof(char) * my_strlen(str) + 1);
+  new_str = my_mallok(new_str, sizeof(*new_str) * (my_strlen(str) + 1));
   while (str[i])
     new_str[j++] = str[i++];
   new_str[j] = '\0';
   return (new_str);
 }
 
-int		show_which_built(char *str, int b)
+static int		show_which_built(char *str)
 {
   my_putstr(str, 1);
   my_putstr(BUILT_WHI, 1);
-  b = 1;
-  return (b);
+  return (1);
 }
 
-void		my_which_loop(t_data *data, char *tmp, int nb, int limit)
+static void		my_which_loop(t_data *data, char *tmp, \
+				      int nb, int limit)
 {
-  int		a;
-  int		i;
-  static int	b = 0;
+  int			a;
+  int			i;
+  static int		b = 0;
 
   a = 1;
   while (nb-- > 1 && limit == 0)
@@ -57,7 +57,7 @@ void		my_which_loop(t_data *data, char *tmp, int nb, int limit)
 	  tmp = my_strcat(data->shell.path[i++], data->parser.tab_args[a], '/');
 	  if (is_builtin(data, data->parser.tab_args[a]) == 2 && b == 0)
 	    {
-	      b = show_which_built(data->parser.tab_args[a], b);
+	      b = show_which_built(data->parser.tab_args[a]);
 	      limit = 1;
 	    }
 	  limit = my_which_check(data, tmp, limit, i);

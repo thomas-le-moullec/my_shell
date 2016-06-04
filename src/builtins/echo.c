@@ -5,12 +5,12 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Tue May 24 13:09:26 2016 leo LE DIOURON
-** Last update Wed Jun  1 15:23:44 2016 Thomas LE MOULLEC
+** Last update Sat Jun  4 18:50:00 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-void		my_putstr_echo(t_data *data, char *str, int fd)
+static void    	my_putstr_echo(t_data *data, char *str, int fd)
 {
   int		i;
 
@@ -35,7 +35,7 @@ void		my_putstr_echo(t_data *data, char *str, int fd)
     }
 }
 
-int             my_echo_outfile(t_data *data)
+static int	my_echo_outfile(t_data *data)
 {
   int           fd;
 
@@ -54,7 +54,7 @@ int             my_echo_outfile(t_data *data)
   return (fd);
 }
 
-int		take_fd_echo(t_data *data)
+static int     	take_fd_echo(t_data *data)
 {
   int		fd;
 
@@ -70,11 +70,11 @@ int		take_fd_echo(t_data *data)
   return (fd);
 }
 
-int	my_echo(t_data *data)
+int		my_echo(t_data *data)
 {
-  int	j;
-  int	n;
-  int	fd;
+  int		j;
+  int		n;
+  int		fd;
 
   j = 1;
   n = 0;

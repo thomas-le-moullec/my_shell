@@ -5,19 +5,20 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Fri Apr 29 16:45:44 2016 leo LE DIOURON
-** Last update Thu Jun  2 14:03:50 2016 leo LE DIOURON
+** Last update Sat Jun  4 19:37:30 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-int		double_infile_redir(t_data *data)
+static int		double_infile_redir(t_data *data)
 {
-  char		*str;
-  char		*result;
-  int		fd;
+  char			*str;
+  char			*result;
+  int			fd;
 
+  str = NULL;
   if ((fd = open("/tmp/tempo42", O_CREAT | O_RDWR | O_TRUNC, S_IRWXU))
-      == ERROR)
+      == -1)
     return (ERROR);
   my_putstr("? ", 1);
   if ((str = get_next_line(0)) == NULL)
@@ -36,14 +37,14 @@ int		double_infile_redir(t_data *data)
   return (SUCCESS);
 }
 
-int		infile_simple(t_data *data)
+static int		infile_simple(t_data *data)
 {
-  int		err;
-  int		fd;
-  struct stat	s;
+  int			err;
+  int			fd;
+  struct stat		s;
 
   stat(data->parser.infile, &s);
-  if ((fd = open(data->parser.infile, O_RDONLY)) == ERROR)
+  if ((fd = open(data->parser.infile, O_RDONLY)) == -1)
     {
       err = errno;
       my_putstr(data->parser.infile, 1);
@@ -74,7 +75,7 @@ int		redirection_infile(t_data *data)
     {
       if (double_infile_redir(data) == ERROR)
 	return (ERROR);
-      if ((fd = open("/tmp/tempo42", O_RDONLY)) == ERROR)
+      if ((fd = open("/tmp/tempo42", O_RDONLY)) == -1)
         return (ERROR);
       if (dup2(fd, 0) == -1)
         return (ERROR);

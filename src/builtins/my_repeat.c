@@ -5,28 +5,28 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Thu Jun  2 10:37:07 2016 Thomas CHABOT
-** Last update Fri Jun  3 16:17:06 2016 leo LE DIOURON
+** Last update Sat Jun  4 19:02:28 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
-char		**my_repeat_change(char **tabo)
+static char		**my_repeat_change(char **tabo)
 {
-  int		i;
-  int		j;
-  int		a;
-  char		**new_tabo;
+  int			i;
+  int			j;
+  int			a;
+  char			**new_tabo;
 
   i = 1;
   j = 0;
   a = 0;
   new_tabo = NULL;
-  new_tabo = my_mallok(new_tabo, sizeof(char *) * count_tab(tabo));
+  new_tabo = my_mallok(new_tabo, sizeof(*new_tabo) * count_tab(tabo));
   while (tabo[++i])
     {
       a = 0;
       new_tabo[j] = NULL;
-      new_tabo[j] = my_mallok(new_tabo[j], sizeof(char) \
+      new_tabo[j] = my_mallok(new_tabo[j], sizeof(*new_tabo[j]) \
 			      * (my_strlen(tabo[i]) + 1));
       while (tabo[i][a])
 	{
