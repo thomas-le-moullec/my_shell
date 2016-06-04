@@ -5,26 +5,18 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 09:08:44 2016 Thomas CHABOT
-** Last update Fri Jun  3 20:48:22 2016 Thomas CHABOT
+** Last update Sat Jun  4 10:15:39 2016 steeve payraudeau
 */
 
 #include "42sh.h"
 
 void		end_fct(t_data *data)
 {
-  int		i;
-
-  i = 9;
   my_free_alias(data->alias);
   my_free_hist(data->hist);
   my_free_shell(&data->shell);
   my_free_parser(&data->parser);
   my_free_local(data->local);
-  while (data->tab_key[i].key != NULL)
-    {
-      data->tab_key[i].key = my_free(data->tab_key[i].key);
-      i++;
-    }
 }
 
 int		check_env_term(t_data *data)
