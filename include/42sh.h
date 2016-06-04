@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Fri Jun  3 20:08:34 2016 Thomas CHABOT
+** Last update Sat Jun  4 11:02:12 2016 steeve payraudeau
 */
 
 #ifndef SH42_H_
@@ -156,6 +156,7 @@ int		my_echo(t_data *);
 int		my_history(t_data *);
 
 /* my_unset.c */
+void            delete_existant_local(t_data *, char *);
 int             delete_local(t_data *);
 int		my_unset(t_data *);
 

@@ -5,10 +5,27 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed Jun  1 21:20:02 2016 leo LE DIOURON
-** Last update Thu Jun  2 10:07:36 2016 leo LE DIOURON
+** Last update Sat Jun  4 11:05:06 2016 steeve payraudeau
 */
 
 #include "42sh.h"
+
+void            delete_existant_local(t_data *data, char *name)
+{
+  if (data->local != NULL)
+    {
+      while (data->local->prev != NULL)
+	data->local = data->local->prev;
+      while (data->local->next != NULL &&
+	     my_strcmp(data->local->name, name) == ERROR)
+        data->local = data->local->next;
+      if (my_strcmp(data->local->name, name) == SUCCESS)
+	delete_local(data);
+      if (data->local != NULL)
+	while (data->local->next != NULL)
+          data->local = data->local->next;
+    }
+}
 
 int             delete_local(t_data *data)
 {
