@@ -5,27 +5,10 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:52 2016 Thomas CHABOT
-** Last update Fri Jun  3 18:16:05 2016 Thomas CHABOT
+** Last update Sat Jun  4 13:19:59 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
-
-int		check_which(t_data *data, char *tmp, int limit, int i)
-{
-  if (access(tmp, X_OK) == SUCCESS)
-    {
-      my_putstr(get_which(tmp), 1);
-      my_putchar('\n', 1);
-      limit = 1;
-    }
-  else
-    if (i + 1 == count_tab(data->shell.path))
-      {
-	not_found_cmd(data, cut_str(tmp), i);
-	limit = 1;
-      }
-  return (limit);
-}
 
 char		*get_which(char *str)
 {
@@ -77,7 +60,7 @@ void		my_which_loop(t_data *data, char *tmp, int nb, int limit)
 	      b = show_which_built(data->parser.tab_args[a], b);
 	      limit = 1;
 	    }
-	  limit = check_which(data, tmp, limit, i);
+	  limit = my_which_check(data, tmp, limit, i);
 	  tmp = my_free(tmp);
 	}
       if (nb > 1)

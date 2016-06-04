@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat Jun  4 11:43:36 2016 steeve payraudeau
+** Last update Sat Jun  4 13:21:36 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -110,6 +110,7 @@ int		my_where(t_data *);
 char		*cut_str(char *);
 int		check_which(t_data *, char *, int, int);
 char		*get_which(char *);
+int		my_which_check(t_data *, char *, int, int);
 void		my_which_loop(t_data *, char *, int, int);
 int		my_which(t_data *);
 int	        parser_cond(t_data *);
