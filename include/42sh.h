@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat Jun  4 13:21:36 2016 Thomas CHABOT
+** Last update Sat Jun  4 14:02:46 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -48,7 +48,7 @@ void		init_signaux();
 int             modify_str_pipe(t_data *, int);
 int             modify_inhib_glob_pipe(t_data *);
 void		pipe_alias(t_data *, int);
-void		gestion_condition(t_data *, int);
+int		gestion_condition(t_data *, int);
 int             exec_without_path_fork(t_data *);
 int		exec_without_path(t_data *);
 int		check_str_access(char *);

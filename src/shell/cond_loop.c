@@ -5,12 +5,12 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Thu Jun  2 13:20:52 2016 leo LE DIOURON
-** Last update Thu Jun  2 13:21:43 2016 leo LE DIOURON
+** Last update Sat Jun  4 14:01:58 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
 
-void		gestion_condition(t_data *data, int i)
+int		gestion_condition(t_data *data, int i)
 {
   if (data->shell.exit_status != 0 && data->shell.cond[i] == AND)
     while (data->shell.cond[i] == AND)
@@ -18,4 +18,5 @@ void		gestion_condition(t_data *data, int i)
   if (data->shell.exit_status == 0 && data->shell.cond[i] == OR)
     while (data->shell.cond[i] == OR)
       i++;
+  return (i);
 }

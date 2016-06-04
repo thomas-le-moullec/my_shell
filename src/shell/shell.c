@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sat Jun  4 11:35:00 2016 Hervé TCHIKLADZE
+** Last update Sat Jun  4 14:02:28 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -58,9 +58,10 @@ int		cond_loop(t_data *data, int i)
 	    }
 	  pipe_loop(data, 0);
 	}
-      gestion_condition(data, i);
+      i = gestion_condition(data, i);
       my_free_cond(data);
-      i++;
+      if (data->parser.tab_cond[i] != NULL)
+	i++;
     }
   return (SUCCESS);
 }
