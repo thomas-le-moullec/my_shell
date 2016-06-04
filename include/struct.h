@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Fri Jun  3 16:41:42 2016 leo LE DIOURON
+** Last update Sat Jun  4 08:49:40 2016 Thomas LE MOULLEC
 */
 
 #ifndef STRUCT_H_
@@ -65,7 +65,7 @@
 #define BAD_FORM	"repeat: Badly formed number.\n"
 #define ERR_WHERE	"where: Too few arguments.\n"
 #define ERR_WHICH	"which: Too few arguments.\n"
-#define IEOF		"Use \"exit\" to leave tcsh.\n"
+#define IEOF		"Use \"exit\" to leave 42sh.\n"
 
 #define SIG_SIGABRT	"Aborted\n"
 #define SIG_SIGFPE	"Floating exception\n"
