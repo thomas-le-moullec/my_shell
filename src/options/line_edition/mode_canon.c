@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Tue May 17 16:44:55 2016 Hervé TCHIKLADZE
-** Last update Fri Jun  3 20:39:44 2016 Thomas CHABOT
+** Last update Sat Jun  4 10:50:17 2016 steeve payraudeau
 */
 
 #include "42sh.h"
@@ -51,27 +51,37 @@ int		init_tab_ctrl(t_data *data)
   return (SUCCESS);
 }
 
+void		init_fct_key(t_data *data)
+{
+  data->tab_key[0].function = fct_up;
+  data->tab_key[1].function = fct_down;
+  data->tab_key[2].function = fct_right;
+  data->tab_key[3].function = fct_left;
+  data->tab_key[4].function = fct_tab;
+  data->tab_key[5].function = fct_delete;
+  data->tab_key[6].function = fct_supp;
+  data->tab_key[7].function = fct_kome;
+  data->tab_key[8].function = fct_end;
+}
+
 int		init_tab(t_data *data)
 {
-  my_putstr(tigetstr("smkx"), 1);
-  data->tab_key[0].key = tigetstr("kcuu1");
-  data->tab_key[0].function = fct_up;
-  data->tab_key[1].key = tigetstr("kcud1");
-  data->tab_key[1].function = fct_down;
-  data->tab_key[2].key = tigetstr("kcuf1");
-  data->tab_key[2].function = fct_right;
-  data->tab_key[3].key = tigetstr("kcub1");
-  data->tab_key[3].function = fct_left;
-  data->tab_key[4].key = tigetstr("ht");
-  data->tab_key[4].function = fct_tab;
-  data->tab_key[5].key = tigetstr("kbs");
-  data->tab_key[5].function = fct_delete;
-  data->tab_key[6].key = tigetstr("kdch1");
-  data->tab_key[6].function = fct_supp;
-  data->tab_key[7].key = tigetstr("khome");
-  data->tab_key[7].function = fct_kome;
-  data->tab_key[8].key = tigetstr("kend");
-  data->tab_key[8].function = fct_end;
+  char		*tmp;
+
+  if ((tmp = tigetstr("smkx")) == NULL)
+    exit(0);
+  my_putstr(tmp, 1);
+  if ((data->tab_key[0].key = tigetstr("kcuu1")) == NULL ||
+      (data->tab_key[1].key = tigetstr("kcud1")) == NULL ||
+      (data->tab_key[2].key = tigetstr("kcuf1")) == NULL ||
+      (data->tab_key[3].key = tigetstr("kcub1")) == NULL ||
+      (data->tab_key[4].key = tigetstr("ht")) == NULL ||
+      (data->tab_key[5].key = tigetstr("kbs")) == NULL ||
+      (data->tab_key[6].key = tigetstr("kdch1")) == NULL ||
+      (data->tab_key[7].key = tigetstr("khome")) == NULL ||
+      (data->tab_key[8].key = tigetstr("kend")) == NULL)
+    exit(0);
+  init_fct_key(data);
   init_tab_ctrl(data);
   return (SUCCESS);
 }
