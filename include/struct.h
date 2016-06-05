@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Sat Jun  4 17:19:14 2016 Thomas LE MOULLEC
+** Last update Sun Jun  5 10:43:20 2016 Thomas CHABOT
 */
 
 #ifndef STRUCT_H_
@@ -35,6 +35,7 @@ typedef struct		s_parser
   int			check_pos_pipe;
   int			*nb_pipe;
   int			quote;
+  int			pos;
 }			t_parser;
 
 typedef struct		s_shell

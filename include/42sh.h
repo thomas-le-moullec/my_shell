@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat Jun  4 21:00:12 2016 Thomas LE MOULLEC
+** Last update Sun Jun  5 14:26:03 2016 Thomas CHABOT
 */
 
 #ifndef SH42_H_
@@ -78,8 +78,6 @@ int		my_repeat(t_data *);
 int		is_builtin(t_data *, char *);
 int		my_where(t_data *);
 char		*cut_str(char *);
-char		*get_which(char *);
-int		my_which_check(t_data *, char *, int, int);
 int		my_which(t_data *);
 int	        parser_cond(t_data *);
 int		parser_sep(t_data *);
@@ -92,7 +90,7 @@ char		*epur_redir(char *, int);
 int		take_nb_pipe(t_data *);
 void		take_type_cond(t_data *, int, int, int);
 int		ambiguous(t_data *, int);
-int		not_found_cmd(t_data *, char *, int);
+int		not_found_cmd(t_data *, char *);
 int		error_denied(t_data *, char *);
 void		error_no_file(t_data *, char *);
 int		error_alpha(t_data *, int);
@@ -192,5 +190,8 @@ int             count_occurrence(char *, char);
 char		*check_in_alias(t_data *, char *);
 char		*check_in_set(t_data *, char *);
 t_hist          *get_time(t_hist *);
+int		is_in_alias(t_data *, char *);
+int		show_the_built(char *, int);
+char		*get_which(char *);
 
 #endif /* SH42_H_ */

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Tue Apr 26 13:36:04 2016 Thomas CHABOT
-** Last update Sat Jun  4 20:54:20 2016 Thomas LE MOULLEC
+** Last update Sun Jun  5 10:57:33 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -24,6 +24,7 @@ static int		pipe_loop(t_data *data, int i)
 	return (STOP);
       data->parser.tab_args = my_str_to_wordtab \
 	(data->parser.tab_pipe[i], " \t");
+      data->shell.nb_repeat = 0;
       if (my_repeat(data) == ERROR \
 	  || modify_inhib_glob_pipe(data) == STOP \
 	  || my_exec(data) == ERROR)
