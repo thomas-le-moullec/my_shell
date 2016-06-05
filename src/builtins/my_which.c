@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:52 2016 Thomas CHABOT
-** Last update Sun Jun  5 14:25:41 2016 Thomas CHABOT
+** Last update Sun Jun  5 14:48:17 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -27,7 +27,8 @@ static int              check_which(t_data *data, char *tmp, int limit, int i)
   return (limit);
 }
 
-static int             my_which_check(t_data *data, char *tmp, int limit, int i)
+static int             my_which_check(t_data *data, char *tmp, \
+				      int limit, int i)
 {
   if (limit == 0)
     limit = check_which(data, tmp, limit, i);
