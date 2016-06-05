@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sun Jun  5 14:28:27 2016 Thomas CHABOT
+** Last update Sun Jun  5 16:17:20 2016 Thomas LE MOULLEC
 */
 
 #ifndef SH42_H_
@@ -153,6 +153,7 @@ void		my_putchar(char, int);
 void		my_putstr(char *, int);
 void		my_put_nbr(int, int);
 int		my_getnbr(char *);
+int		my_getnbr_repeat(char *);
 int		my_strlen(char *);
 void		my_show_env(char **, int);
 void		my_show_tab(char **);

@@ -5,7 +5,7 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:17:27 2016 Thomas LE MOULLEC
-** Last update Sun Jun  5 14:12:58 2016 leo LE DIOURON
+** Last update Sun Jun  5 16:18:43 2016 Thomas LE MOULLEC
 */
 
 #ifndef DEFINE_H_
@@ -17,6 +17,7 @@
 
 # define STOP           -2
 # define ERROR          -1
+# define ERROR_REPEAT   -894982
 # define SUCCESS        0
 
 # define ALONE          0

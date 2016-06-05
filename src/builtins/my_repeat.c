@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Thu Jun  2 10:37:07 2016 Thomas CHABOT
-** Last update Sun Jun  5 10:57:58 2016 Thomas CHABOT
+** Last update Sun Jun  5 16:17:30 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -49,7 +49,8 @@ int		my_repeat(t_data *data)
   i = count_tab(data->parser.tab_args);
   if (i < 3)
     return (my_put_error(REPEAT_FEW, 1));
-  if ((data->shell.nb_repeat = my_getnbr(data->parser.tab_args[1])) == ERROR)
+  if ((data->shell.nb_repeat = my_getnbr_repeat \
+       (data->parser.tab_args[1])) == ERROR_REPEAT)
     return (my_put_error(BAD_FORM, 1));
   data->shell.nb_repeat -= 1;
   data->parser.tab_args = my_repeat_change(data->parser.tab_args);

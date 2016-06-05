@@ -5,15 +5,22 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Fri May 20 13:32:31 2016 Hervé TCHIKLADZE
-** Last update Mon May 30 10:46:27 2016 Thomas CHABOT
+** Last update Sun Jun  5 16:12:29 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
 
 int		error_not_found(t_data *data)
 {
-  my_putstr(data->parser.tab_args[0], 1);
-  my_putstr(NOT_FOUND, 1);
+  int		i;
+
+  i = 0;
+  while (i <= data->shell.nb_repeat)
+    {
+      my_putstr(data->parser.tab_args[0], 1);
+      my_putstr(NOT_FOUND, 1);
+      i++;
+    }
   data->shell.exit_status = 1;
   return (ERROR);
 }
