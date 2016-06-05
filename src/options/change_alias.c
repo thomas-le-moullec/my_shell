@@ -5,7 +5,7 @@
 ** Login   <tchikl_h@epitech.net>
 ** 
 ** Started on  Mon May 23 17:45:40 2016 Hervé TCHIKLADZE
-** Last update Sat Jun  4 19:47:47 2016 Thomas LE MOULLEC
+** Last update Sun Jun  5 13:47:03 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -38,7 +38,7 @@ static void            modify_string_alias(t_data *data, int i, int j, int f)
   result = my_free(result);
 }
 
-static int             check_alias_in(t_data *data, int i, int *j)
+int             check_alias_in(t_data *data, int i, int *j)
 {
   int           x;
 
@@ -54,35 +54,6 @@ static int             check_alias_in(t_data *data, int i, int *j)
   return (x);
 }
 
-static int		find_valid_alias(t_data *data, int i, int *j)
-{
-  int			x;
-  int			a;
-  int			f;
-  char			*tmp;
-
-  a = 0;
-  f = -1;
-  x = check_alias_in(data, i, j);
-  tmp = NULL;
-  tmp = my_mallok(tmp, sizeof(*tmp) *
-		  (my_strlen(data->parser.tab_pipe[i]) + 1));
-  while (++f < *j);
-  while (f < x)
-    tmp[a++] = data->parser.tab_pipe[i][f++];
-  tmp[a] = '\0';
-  a = 0;
-  while (data->alias->prev != NULL && a == 0)
-    if (my_strcmp(tmp, data->alias->name) == SUCCESS)
-      a = 1;
-    else
-      data->alias = data->alias->prev;
-  if (my_strcmp(tmp, data->alias->name) == SUCCESS)
-    a = 1;
-  free(tmp);
-  return (a);
-}
-
 static void		change_alias_loop(t_data *data, int i, int *j, int a)
 {
   int			k;
@@ -91,6 +62,8 @@ static void		change_alias_loop(t_data *data, int i, int *j, int a)
   if (a == 1)
     {
       modify_string_alias(data, i, *j, 0);
+      while (data->alias->next != NULL)
+	data->alias = data->alias->next;
       while (data->parser.tab_pipe[i][*j] != '\0' &&
 	     data->alias->cmd[k++] != '\0')
 	(*j)++;
@@ -112,6 +85,13 @@ int            change_alias(t_data *data, int i)
   if (data->alias != NULL)
     {
       a = find_valid_alias(data, i, &j);
+      if (data->shell.alias_loop == 1)
+	{
+	  my_putstr(ALIAS_LOOP, 1);
+	  return (1);
+	}
+      if (a == 1)
+	data->alias->flag = 1;
       change_alias_loop(data, i, &j, a);
       if (a == 1)
 	return (1);

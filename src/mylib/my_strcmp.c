@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 10:24:58 2016 Thomas CHABOT
-** Last update Thu Jun  2 11:27:02 2016 steeve payraudeau
+** Last update Sun Jun  5 11:56:02 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -37,6 +37,8 @@ int		my_strncmp(char *one, char *two, int n)
 	return (ERROR);
       i++;
     }
+  if (i < n && one[i] != two[i])
+    return (ERROR);
   return (SUCCESS);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:39:01 2016 Thomas CHABOT
-** Last update Sat Jun  4 21:00:12 2016 Thomas LE MOULLEC
+** Last update Sun Jun  5 13:47:42 2016 leo LE DIOURON
 */
 
 #ifndef SH42_H_
@@ -66,6 +66,8 @@ int		my_setenv(t_data *);
 char		**fill_env(t_data *, int);
 int		my_exit(t_data *);
 int		my_unsetenv(t_data *);
+int             check_alias_in(t_data *, int, int *);
+int             find_valid_alias(t_data *, int , int *);
 int		new_alias(t_data *);
 int		delete_alias(t_data *);
 int		unalias(t_data *);
