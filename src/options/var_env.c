@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Mon May 16 16:50:31 2016 leo LE DIOURON
-** Last update Sat Jun  4 20:07:46 2016 Thomas LE MOULLEC
+** Last update Sun Jun  5 14:03:08 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -86,7 +86,6 @@ static int		replace_string(t_data *data, int j, int i, char *var_env)
   char			*res;
 
   res = NULL;
-  nb = ERROR;
   if (((data->local == NULL) || \
        (res = take_var_local(data, var_env)) == NULL) \
       && (nb = check_env_exist(data, var_env)) == ERROR)
@@ -95,6 +94,7 @@ static int		replace_string(t_data *data, int j, int i, char *var_env)
       my_putstr(var_env, 1);
       my_putstr(UNDEF_VAR, 1);
       res = my_free(res);
+      data->shell.exit_status = 1;
       return (ERROR);
     }
   if (nb != ERROR)

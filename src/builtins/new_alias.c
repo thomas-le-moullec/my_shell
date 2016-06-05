@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:49:37 2016 Thomas CHABOT
-** Last update Sat Jun  4 19:12:55 2016 Thomas LE MOULLEC
+** Last update Sun Jun  5 14:13:56 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -25,6 +25,18 @@ static void		delete_existant_alias(t_data *data)
         while (data->alias->next != NULL)
           data->alias = data->alias->next;
     }
+}
+
+static int	add_end_alias(t_data *data, char *tmp)
+{
+  delete_existant_alias(data);
+  if (my_strcmp(tmp, "alias") == SUCCESS ||
+      my_strcmp(tmp, "unalias") == SUCCESS)
+    return (my_put_error(DANGER, 1));
+  data->alias = add_elem_alias(data->alias, tmp, \
+                               data->parser.tab_args[1]);
+  return (SUCCESS);
+
 }
 
 int		new_alias(t_data *data)
@@ -48,9 +60,7 @@ int		new_alias(t_data *data)
     }
   else
     tmp = my_strcpy("\0");
-  delete_existant_alias(data);
-  data->alias = add_elem_alias(data->alias, tmp, \
-			       data->parser.tab_args[1]);
+  add_end_alias(data, tmp);
   tmp = my_free(tmp);
   return (SUCCESS);
 }

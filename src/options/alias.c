@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Wed May 18 16:23:34 2016 Thomas CHABOT
-** Last update Sun Jun  5 13:46:23 2016 leo LE DIOURON
+** Last update Sun Jun  5 14:16:14 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -47,7 +47,6 @@ int              find_valid_alias(t_data *data, int i, int *j)
   free(tmp);
   return (a);
 }
-
 
 t_alias		*add_elem_alias(t_alias *alias, char *cmd, char *name)
 {
