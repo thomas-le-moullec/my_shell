@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue May 24 09:49:37 2016 Thomas CHABOT
-** Last update Sun Jun  5 14:13:56 2016 leo LE DIOURON
+** Last update Sun Jun  5 14:27:22 2016 Thomas LE MOULLEC
 */
 
 #include "42sh.h"
@@ -30,8 +30,8 @@ static void		delete_existant_alias(t_data *data)
 static int	add_end_alias(t_data *data, char *tmp)
 {
   delete_existant_alias(data);
-  if (my_strcmp(tmp, "alias") == SUCCESS ||
-      my_strcmp(tmp, "unalias") == SUCCESS)
+  if (my_strcmp(data->parser.tab_args[1], "alias") == SUCCESS ||
+      my_strcmp(data->parser.tab_args[1], "unalias") == SUCCESS)
     return (my_put_error(DANGER, 1));
   data->alias = add_elem_alias(data->alias, tmp, \
                                data->parser.tab_args[1]);
