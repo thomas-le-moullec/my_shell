@@ -5,7 +5,7 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Mon May 16 16:50:31 2016 leo LE DIOURON
-** Last update Sun Jun  5 14:03:08 2016 leo LE DIOURON
+** Last update Sun Jun  5 14:45:09 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
@@ -80,18 +80,18 @@ static char		*take_var_local(t_data *data, char *var)
   return (result);
 }
 
-static int		replace_string(t_data *data, int j, int i, char *var_env)
+static int		replace_string(t_data *data, int j, int i, char *v_e)
 {
   int			nb;
   char			*res;
 
   res = NULL;
-  if (((data->local == NULL) || \
-       (res = take_var_local(data, var_env)) == NULL) \
-      && (nb = check_env_exist(data, var_env)) == ERROR)
+  nb = ERROR;
+  if (((data->local == NULL) || (res = take_var_local(data, v_e)) == NULL) \
+      && (nb = check_env_exist(data, v_e)) == ERROR)
     {
       data->parser.tab_pipe[j][i] = ' ';
-      my_putstr(var_env, 1);
+      my_putstr(v_e, 1);
       my_putstr(UNDEF_VAR, 1);
       res = my_free(res);
       data->shell.exit_status = 1;
