@@ -5,20 +5,30 @@
 ** Login   <le-dio_l@epitech.net>
 ** 
 ** Started on  Wed May 25 10:01:19 2016 leo LE DIOURON
-** Last update Sat Jun  4 20:52:31 2016 Thomas LE MOULLEC
+** Last update Sun Jun  5 13:24:51 2016 leo LE DIOURON
 */
 
 #include "42sh.h"
 
 static void		pipe_alias(t_data *data, int i)
 {
-  int		a;
-
-  a = 0;
+  data->shell.alias_loop = 0;
   if (my_strncmp(data->parser.tab_pipe[i], "alias ", 6) != SUCCESS &&
       my_strncmp(data->parser.tab_pipe[i], "unalias ", 8) != SUCCESS)
-    while (change_alias(data, i) == 1 && a < 2)
-      a++;
+    while (change_alias(data, i) == 1 && data->shell.alias_loop == 0);
+  if (data->alias != NULL)
+    {
+      while (data->alias->prev != NULL)
+	{
+	  data->alias->flag = 0;
+	  data->alias = data->alias->prev;
+	}
+      data->alias->flag = 0;
+      while (data->alias->next != NULL)
+	data->alias = data->alias->next;
+    }
+  if (data->shell.alias_loop == 1)
+    data->shell.exit_status = 1;
 }
 
 int		modify_str_pipe(t_data *data, int i)
@@ -28,7 +38,7 @@ int		modify_str_pipe(t_data *data, int i)
       if (var_env_loc(data, i) == ERROR)
 	return (STOP);
       pipe_alias(data, i);
-      if (modif_args_hist(data, i) == ERROR)
+      if (data->shell.alias_loop == 1 || modif_args_hist(data, i) == ERROR)
 	return (STOP);
     }
   return (SUCCESS);

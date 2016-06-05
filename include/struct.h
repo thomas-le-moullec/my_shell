@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 ** 
 ** Started on  Tue Apr 26 09:36:23 2016 Thomas CHABOT
-** Last update Sun Jun  5 10:43:20 2016 Thomas CHABOT
+** Last update Sun Jun  5 14:27:57 2016 Thomas CHABOT
 */
 
 #ifndef STRUCT_H_
@@ -40,6 +40,7 @@ typedef struct		s_parser
 
 typedef struct		s_shell
 {
+  int			alias_loop;
   int			chk_magic;
   int			bin;
   char			*line;
@@ -73,6 +74,7 @@ typedef struct		s_hist
 
 typedef struct		s_alias
 {
+  int			flag;
   char			*name;
   char			*cmd;
   struct s_alias	*prev;

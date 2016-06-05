@@ -5,7 +5,7 @@
 ** Login   <le-mou_t@epitech.net>
 ** 
 ** Started on  Sat Jun  4 17:17:27 2016 Thomas LE MOULLEC
-** Last update Sat Jun  4 20:36:13 2016 Thomas LE MOULLEC
+** Last update Sun Jun  5 14:12:58 2016 leo LE DIOURON
 */
 
 #ifndef DEFINE_H_
@@ -73,6 +73,8 @@
 # define ERR_QUOTE      "Unmatched "
 # define ERR_GLOB	"Error Global.\n"
 # define IEOF           "Use \"exit\" to leave 42sh.\n"
+# define ALIAS_LOOP	"Alias loop.\n"
+# define DANGER		"alias: Too dangerous to alias that.\n"
 
 # define SIG_SIGABRT    "Aborted\n"
 # define SIG_SIGFPE     "Floating exception\n"
