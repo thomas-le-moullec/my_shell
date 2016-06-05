@@ -5,7 +5,7 @@
 ** Login   <chabot_t@epitech.net>
 **
 ** Started on  Thu Jun  2 13:38:03 2016 Thomas CHABOT
-** Last update Sun Jun  5 14:18:25 2016 Thomas CHABOT
+** Last update Sun Jun  5 15:37:00 2016 Thomas CHABOT
 */
 
 #include "42sh.h"
@@ -37,7 +37,9 @@ static int		my_where_loop(t_data *data, int nb, char *tmp, int a)
 	    b = is_in_alias(data, tmp);
           if (is_builtin(data, data->parser.tab_args[a]) == 2 && b == 0)
 	    b = show_the_built(data->parser.tab_args[a], 2);
-	  if (is_builtin(data, data->parser.tab_args[a]) != 2)
+	  if (is_builtin(data, data->parser.tab_args[a]) != 2 \
+	      || (is_builtin(data, data->parser.tab_args[a]) == 2 \
+		  && access(tmp, X_OK) == 0))
 	    check_where(tmp);
 	  i++;
 	  tmp = my_free(tmp);
